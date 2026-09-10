@@ -98,17 +98,317 @@ abstract class AppLocalizations {
     Locale('en'),
   ];
 
-  /// No description provided for @hello.
+  /// Greeting shown to the user on the home screen
   ///
   /// In en, this message translates to:
-  /// **'Hello'**
-  String get hello;
+  /// **'Good morning'**
+  String get goodMorning;
 
-  /// No description provided for @welcome.
+  /// Label showing today's sales
   ///
   /// In en, this message translates to:
-  /// **'Welcome to our application!'**
-  String get welcome;
+  /// **'Today\'s Sales'**
+  String get todaySales;
+
+  /// Label showing today's orders
+  ///
+  /// In en, this message translates to:
+  /// **'Today\'s Orders'**
+  String get todayOrders;
+
+  /// Label showing purchases
+  ///
+  /// In en, this message translates to:
+  /// **'Purchases'**
+  String get purchases;
+
+  /// Label showing net profit
+  ///
+  /// In en, this message translates to:
+  /// **'Net Profit'**
+  String get netProfit;
+
+  /// Unit showing the number of orders
+  ///
+  /// In en, this message translates to:
+  /// **'orders'**
+  String get orders;
+
+  /// Title of the sales overview section
+  ///
+  /// In en, this message translates to:
+  /// **'Sales Overview'**
+  String get salesOverview;
+
+  /// Filter option for today
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get today;
+
+  /// Filter option for the current week
+  ///
+  /// In en, this message translates to:
+  /// **'Week'**
+  String get week;
+
+  /// Filter option for the current month
+  ///
+  /// In en, this message translates to:
+  /// **'Month'**
+  String get month;
+
+  /// Label showing total revenue for today
+  ///
+  /// In en, this message translates to:
+  /// **'Total Revenue Today'**
+  String get totalRevenueToday;
+
+  /// Subtitle for the sales chart
+  ///
+  /// In en, this message translates to:
+  /// **'Revenue over time'**
+  String get revenueOverTime;
+
+  /// Egyptian pound currency abbreviation
+  ///
+  /// In en, this message translates to:
+  /// **'EGP'**
+  String get currencyEgp;
+
+  /// Sales chart time label
+  ///
+  /// In en, this message translates to:
+  /// **'8AM'**
+  String get chartTime8Am;
+
+  /// Sales chart time label
+  ///
+  /// In en, this message translates to:
+  /// **'10AM'**
+  String get chartTime10Am;
+
+  /// Sales chart time label
+  ///
+  /// In en, this message translates to:
+  /// **'12PM'**
+  String get chartTime12Pm;
+
+  /// Sales chart time label
+  ///
+  /// In en, this message translates to:
+  /// **'2PM'**
+  String get chartTime2Pm;
+
+  /// Sales chart time label
+  ///
+  /// In en, this message translates to:
+  /// **'4PM'**
+  String get chartTime4Pm;
+
+  /// Sales chart time label
+  ///
+  /// In en, this message translates to:
+  /// **'6PM'**
+  String get chartTime6Pm;
+
+  /// Text indicating comparison with yesterday
+  ///
+  /// In en, this message translates to:
+  /// **'vs yesterday'**
+  String get vsYesterday;
+
+  /// Title of the top selling products section
+  ///
+  /// In en, this message translates to:
+  /// **'Top Selling Products'**
+  String get topSellingProducts;
+
+  /// Button used to view all products
+  ///
+  /// In en, this message translates to:
+  /// **'View All'**
+  String get viewAll;
+
+  /// Title of the low stock section
+  ///
+  /// In en, this message translates to:
+  /// **'Low Stock'**
+  String get lowStock;
+
+  /// Label referring to items or products
+  ///
+  /// In en, this message translates to:
+  /// **'Items'**
+  String get items;
+
+  /// Button used to manage items
+  ///
+  /// In en, this message translates to:
+  /// **'Manage'**
+  String get manage;
+
+  /// No description provided for @unitsSold.
+  ///
+  /// In en, this message translates to:
+  /// **'units sold'**
+  String get unitsSold;
+
+  /// No description provided for @pitaBreadBundle.
+  ///
+  /// In en, this message translates to:
+  /// **'Pita Bread Bundle'**
+  String get pitaBreadBundle;
+
+  /// No description provided for @sunflowerCookingOil.
+  ///
+  /// In en, this message translates to:
+  /// **'Sunflower Cooking Oil'**
+  String get sunflowerCookingOil;
+
+  /// No description provided for @egyptianWhiteRice.
+  ///
+  /// In en, this message translates to:
+  /// **'Egyptian White Rice 5kg'**
+  String get egyptianWhiteRice;
+
+  /// No description provided for @refinedSugar.
+  ///
+  /// In en, this message translates to:
+  /// **'Refined Sugar 1kg'**
+  String get refinedSugar;
+
+  /// No description provided for @tomatoPaste.
+  ///
+  /// In en, this message translates to:
+  /// **'Tomato Paste 400g'**
+  String get tomatoPaste;
+
+  /// No description provided for @redLentils.
+  ///
+  /// In en, this message translates to:
+  /// **'Red Lentils 1kg'**
+  String get redLentils;
+
+  /// No description provided for @liptonTea.
+  ///
+  /// In en, this message translates to:
+  /// **'Lipton Black Tea 100 bags'**
+  String get liptonTea;
+
+  /// No description provided for @left.
+  ///
+  /// In en, this message translates to:
+  /// **'left'**
+  String get left;
+
+  /// No description provided for @aiAssistant.
+  ///
+  /// In en, this message translates to:
+  /// **'AI Assistant'**
+  String get aiAssistant;
+
+  /// No description provided for @connectedToStore.
+  ///
+  /// In en, this message translates to:
+  /// **'Connected to your store'**
+  String get connectedToStore;
+
+  /// No description provided for @askMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask'**
+  String get askMode;
+
+  /// No description provided for @listenMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Listen'**
+  String get listenMode;
+
+  /// No description provided for @responseMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Response'**
+  String get responseMode;
+
+  /// No description provided for @howCanHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'How can I help you?'**
+  String get howCanHelp;
+
+  /// No description provided for @assistantHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the mic or choose a question below'**
+  String get assistantHint;
+
+  /// No description provided for @tryAsking.
+  ///
+  /// In en, this message translates to:
+  /// **'TRY ASKING'**
+  String get tryAsking;
+
+  /// No description provided for @typeQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Or type your question...'**
+  String get typeQuestion;
+
+  /// No description provided for @holdToSpeak.
+  ///
+  /// In en, this message translates to:
+  /// **'Hold to speak'**
+  String get holdToSpeak;
+
+  /// No description provided for @assistantQuestionSales.
+  ///
+  /// In en, this message translates to:
+  /// **'What did I sell today?'**
+  String get assistantQuestionSales;
+
+  /// No description provided for @assistantQuestionProducts.
+  ///
+  /// In en, this message translates to:
+  /// **'How much did I make today?'**
+  String get assistantQuestionProducts;
+
+  /// No description provided for @assistantQuestionRestock.
+  ///
+  /// In en, this message translates to:
+  /// **'Which products sold the most?'**
+  String get assistantQuestionRestock;
+
+  /// No description provided for @assistantQuestionInventory.
+  ///
+  /// In en, this message translates to:
+  /// **'What do I need to restock?'**
+  String get assistantQuestionInventory;
+
+  /// Home navigation item
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get home;
+
+  /// Reports navigation item
+  ///
+  /// In en, this message translates to:
+  /// **'Reports'**
+  String get reports;
+
+  /// Inventory navigation item
+  ///
+  /// In en, this message translates to:
+  /// **'Inventory'**
+  String get inventory;
+
+  /// Profile navigation item
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
 }
 
 class _AppLocalizationsDelegate
