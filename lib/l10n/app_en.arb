@@ -1,5 +1,167 @@
-
 {
-    "hello": "Hello",
-    "welcome": "Welcome to our application!"
+  "@@locale": "en",
+
+  "goodMorning": "Good morning",
+  "@goodMorning": {
+    "description": "Greeting shown to the user on the home screen"
+  },
+
+  "todaySales": "Today's Sales",
+  "@todaySales": {
+    "description": "Label showing today's sales"
+  },
+
+  "todayOrders": "Today's Orders",
+  "@todayOrders": {
+    "description": "Label showing today's orders"
+  },
+
+  "purchases": "Purchases",
+  "@purchases": {
+    "description": "Label showing purchases"
+  },
+
+  "netProfit": "Net Profit",
+  "@netProfit": {
+    "description": "Label showing net profit"
+  },
+
+  "orders": "orders",
+  "@orders": {
+    "description": "Unit showing the number of orders"
+  },
+
+  "salesOverview": "Sales Overview",
+  "@salesOverview": {
+    "description": "Title of the sales overview section"
+  },
+
+  "today": "Today",
+  "@today": {
+    "description": "Filter option for today"
+  },
+
+  "week": "Week",
+  "@week": {
+    "description": "Filter option for the current week"
+  },
+
+  "month": "Month",
+  "@month": {
+    "description": "Filter option for the current month"
+  },
+
+  "totalRevenueToday": "Total Revenue Today",
+  "@totalRevenueToday": {
+    "description": "Label showing total revenue for today"
+  },
+
+  "revenueOverTime": "Revenue over time",
+  "@revenueOverTime": {
+    "description": "Subtitle for the sales chart"
+  },
+
+  "currencyEgp": "EGP",
+  "@currencyEgp": {
+    "description": "Egyptian pound currency abbreviation"
+  },
+
+  "chartTime8Am": "8AM",
+  "@chartTime8Am": {
+    "description": "Sales chart time label"
+  },
+  "chartTime10Am": "10AM",
+  "@chartTime10Am": {
+    "description": "Sales chart time label"
+  },
+  "chartTime12Pm": "12PM",
+  "@chartTime12Pm": {
+    "description": "Sales chart time label"
+  },
+  "chartTime2Pm": "2PM",
+  "@chartTime2Pm": {
+    "description": "Sales chart time label"
+  },
+  "chartTime4Pm": "4PM",
+  "@chartTime4Pm": {
+    "description": "Sales chart time label"
+  },
+  "chartTime6Pm": "6PM",
+  "@chartTime6Pm": {
+    "description": "Sales chart time label"
+  },
+
+  "vsYesterday": "vs yesterday",
+  "@vsYesterday": {
+    "description": "Text indicating comparison with yesterday"
+  },
+
+  "topSellingProducts": "Top Selling Products",
+  "@topSellingProducts": {
+    "description": "Title of the top selling products section"
+  },
+
+  "viewAll": "View All",
+  "@viewAll": {
+    "description": "Button used to view all products"
+  },
+
+  "lowStock": "Low Stock",
+  "@lowStock": {
+    "description": "Title of the low stock section"
+  },
+
+  "items": "Items",
+  "@items": {
+    "description": "Label referring to items or products"
+  },
+
+  "manage": "Manage",
+  "@manage": {
+    "description": "Button used to manage items"
+  },
+
+  "unitsSold": "units sold",
+  "pitaBreadBundle": "Pita Bread Bundle",
+  "sunflowerCookingOil": "Sunflower Cooking Oil",
+  "egyptianWhiteRice": "Egyptian White Rice 5kg",
+  "refinedSugar": "Refined Sugar 1kg",
+  "tomatoPaste": "Tomato Paste 400g",
+  "redLentils": "Red Lentils 1kg",
+  "liptonTea": "Lipton Black Tea 100 bags",
+  "left": "left",
+  "aiAssistant": "AI Assistant",
+  "connectedToStore": "Connected to your store",
+  "askMode": "Ask",
+  "listenMode": "Listen",
+  "responseMode": "Response",
+  "howCanHelp": "How can I help you?",
+  "assistantHint": "Tap the mic or choose a question below",
+  "tryAsking": "TRY ASKING",
+  "typeQuestion": "Or type your question...",
+  "holdToSpeak": "Hold to speak",
+  "assistantQuestionSales": "What did I sell today?",
+  "assistantQuestionProducts": "How much did I make today?",
+  "assistantQuestionRestock": "Which products sold the most?",
+  "assistantQuestionInventory": "What do I need to restock?",
+
+  "home": "Home",
+  "@home": {
+    "description": "Home navigation item"
+  },
+
+  "reports": "Reports",
+  "@reports": {
+    "description": "Reports navigation item"
+  },
+
+  "inventory": "Inventory",
+  "@inventory": {
+    "description": "Inventory navigation item"
+  },
+
+  "profile": "Profile",
+  "@profile": {
+    "description": "Profile navigation item"
+  }
 }

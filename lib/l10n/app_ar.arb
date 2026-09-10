@@ -1,5 +1,167 @@
-
 {
-    "hello": "مرحبا",
-    "welcome": "مرحبا بك في تطبيقنا!"
+  "@@locale": "ar",
+
+  "goodMorning": "صباح الخير",
+  "@goodMorning": {
+    "description": "Greeting shown to the user on the home screen"
+  },
+
+  "todaySales": "مبيعات اليوم",
+  "@todaySales": {
+    "description": "Label showing today's sales"
+  },
+
+  "todayOrders": "طلبات اليوم",
+  "@todayOrders": {
+    "description": "Label showing today's orders"
+  },
+
+  "purchases": "المشتريات",
+  "@purchases": {
+    "description": "Label showing purchases"
+  },
+
+  "netProfit": "صافي الربح",
+  "@netProfit": {
+    "description": "Label showing net profit"
+  },
+
+  "orders": "طلبات",
+  "@orders": {
+    "description": "Unit showing the number of orders"
+  },
+
+  "salesOverview": "نظرة عامة على المبيعات",
+  "@salesOverview": {
+    "description": "Title of the sales overview section"
+  },
+
+  "today": "اليوم",
+  "@today": {
+    "description": "Filter option for today"
+  },
+
+  "week": "الأسبوع",
+  "@week": {
+    "description": "Filter option for the current week"
+  },
+
+  "month": "الشهر",
+  "@month": {
+    "description": "Filter option for the current month"
+  },
+
+  "totalRevenueToday": "إجمالي إيرادات اليوم",
+  "@totalRevenueToday": {
+    "description": "Label showing total revenue for today"
+  },
+
+  "revenueOverTime": "الإيرادات بمرور الوقت",
+  "@revenueOverTime": {
+    "description": "Subtitle for the sales chart"
+  },
+
+  "currencyEgp": "ج.م",
+  "@currencyEgp": {
+    "description": "Egyptian pound currency abbreviation"
+  },
+
+  "chartTime8Am": "٨ ص",
+  "@chartTime8Am": {
+    "description": "Sales chart time label"
+  },
+  "chartTime10Am": "١٠ ص",
+  "@chartTime10Am": {
+    "description": "Sales chart time label"
+  },
+  "chartTime12Pm": "١٢ م",
+  "@chartTime12Pm": {
+    "description": "Sales chart time label"
+  },
+  "chartTime2Pm": "٢ م",
+  "@chartTime2Pm": {
+    "description": "Sales chart time label"
+  },
+  "chartTime4Pm": "٤ م",
+  "@chartTime4Pm": {
+    "description": "Sales chart time label"
+  },
+  "chartTime6Pm": "٦ م",
+  "@chartTime6Pm": {
+    "description": "Sales chart time label"
+  },
+
+  "vsYesterday": "مقارنة بالأمس",
+  "@vsYesterday": {
+    "description": "Text indicating comparison with yesterday"
+  },
+
+  "topSellingProducts": "المنتجات الأكثر مبيعًا",
+  "@topSellingProducts": {
+    "description": "Title of the top selling products section"
+  },
+
+  "viewAll": "عرض الكل",
+  "@viewAll": {
+    "description": "Button used to view all products"
+  },
+
+  "lowStock": "مخزون منخفض",
+  "@lowStock": {
+    "description": "Title of the low stock section"
+  },
+
+  "items": "المنتجات",
+  "@items": {
+    "description": "Label referring to items or products"
+  },
+
+  "manage": "إدارة",
+  "@manage": {
+    "description": "Button used to manage items"
+  },
+
+  "unitsSold": "وحدة مباعة",
+  "pitaBreadBundle": "عبوة خبز بلدي",
+  "sunflowerCookingOil": "زيت دوار الشمس",
+  "egyptianWhiteRice": "أرز أبيض مصري 5 كجم",
+  "refinedSugar": "سكر أبيض 1 كجم",
+  "tomatoPaste": "صلصة طماطم 400 جم",
+  "redLentils": "عدس أحمر 1 كجم",
+  "liptonTea": "شاي ليبتون 100 كيس",
+  "left": "متبقي",
+  "aiAssistant": "المساعد الذكي",
+  "connectedToStore": "متصل بمتجرك",
+  "askMode": "اسأل",
+  "listenMode": "استمع",
+  "responseMode": "الرد",
+  "howCanHelp": "كيف يمكنني مساعدتك؟",
+  "assistantHint": "اضغط على الميكروفون أو اختر سؤالًا",
+  "tryAsking": "جرب أن تسأل",
+  "typeQuestion": "أو اكتب سؤالك...",
+  "holdToSpeak": "اضغط للتحدث",
+  "assistantQuestionSales": "ماذا بعت اليوم؟",
+  "assistantQuestionProducts": "كم ربحت اليوم؟",
+  "assistantQuestionRestock": "ما أكثر المنتجات مبيعًا؟",
+  "assistantQuestionInventory": "ما الذي أحتاج إلى إعادة تخزينه؟",
+
+  "home": "الرئيسية",
+  "@home": {
+    "description": "Home navigation item"
+  },
+
+  "reports": "التقارير",
+  "@reports": {
+    "description": "Reports navigation item"
+  },
+
+  "inventory": "المخزون",
+  "@inventory": {
+    "description": "Inventory navigation item"
+  },
+
+  "profile": "الملف الشخصي",
+  "@profile": {
+    "description": "Profile navigation item"
+  }
 }

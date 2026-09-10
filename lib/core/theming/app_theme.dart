@@ -9,6 +9,7 @@ class AppTheme {
         brightness: Brightness.light,
         scaffoldBackgroundColor: AppColorsLight.background,
         primaryColor: AppColorsLight.primary,
+        canvasColor: AppColorsLight.textSecondary,
         colorScheme: ColorScheme.light(
           primary: AppColorsLight.primary,
           secondary: AppColorsLight.primaryGradientEnd,
@@ -51,5 +52,7 @@ class AppTheme {
         ),
         cardColor: AppColorsDark.surface,
         dividerColor: AppColorsDark.border,
+                canvasColor: AppColorsDark.textSecondary,
+
       );
 }
