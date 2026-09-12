@@ -163,4 +163,172 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get profile => 'الملف الشخصي';
+
+  @override
+  String get reportsSubtitle => 'نظرة عامة على أداء متجرك';
+
+  @override
+  String get custom => 'مخصص';
+
+  @override
+  String get totalRevenue => 'إجمالي الإيرادات';
+
+  @override
+  String get totalOrders => 'إجمالي الطلبات';
+
+  @override
+  String get avgOrderValue => 'متوسط قيمة الطلب';
+
+  @override
+  String get revenueTrend => 'اتجاه الإيرادات';
+
+  @override
+  String get vsPreviousPeriod => 'مقارنة بالفترة السابقة';
+
+  @override
+  String get dayMon => 'إثنين';
+
+  @override
+  String get dayTue => 'ثلاثاء';
+
+  @override
+  String get dayWed => 'أربعاء';
+
+  @override
+  String get dayThu => 'خميس';
+
+  @override
+  String get dayFri => 'جمعة';
+
+  @override
+  String get daySat => 'سبت';
+
+  @override
+  String get salesByCategory => 'المبيعات حسب الفئة';
+
+  @override
+  String get categoryGroceries => 'بقالة';
+
+  @override
+  String get categoryBeverages => 'مشروبات';
+
+  @override
+  String get categoryDairy => 'ألبان';
+
+  @override
+  String get categoryHousehold => 'مستلزمات منزلية';
+
+  @override
+  String get categoryOther => 'أخرى';
+
+  @override
+  String get detailedReports => 'تقارير تفصيلية';
+
+  @override
+  String get salesReport => 'تقرير المبيعات';
+
+  @override
+  String get salesReportDesc => 'الإيرادات والطلبات وطرق الدفع';
+
+  @override
+  String get inventoryReport => 'تقرير المخزون';
+
+  @override
+  String get inventoryReportDesc => 'مستويات المخزون وحركته';
+
+  @override
+  String get profitLossReport => 'الأرباح والخسائر';
+
+  @override
+  String get profitLossReportDesc => 'التكاليف والهوامش وصافي الربح';
+
+  @override
+  String get taxReport => 'التقرير الضريبي';
+
+  @override
+  String get taxReportDesc => 'ملخص ضريبة القيمة المضافة';
+
+  @override
+  String get exportReport => 'تصدير التقرير';
+
+  @override
+  String get salesReportsTitle => 'تقارير المبيعات';
+
+  @override
+  String get thisMonth => 'هذا الشهر';
+
+  @override
+  String get totalSales => 'إجمالي المبيعات';
+
+  @override
+  String get comparedToLastMonth => 'مقارنة بالشهر الماضي';
+
+  @override
+  String get avgOrder => 'متوسط الطلب';
+
+  @override
+  String get ordersLabel => 'الطلبات';
+
+  @override
+  String get customers => 'العملاء';
+
+  @override
+  String get salesPerformance => 'أداء المبيعات';
+
+  @override
+  String get filterDaily => 'يومي';
+
+  @override
+  String get filterWeekly => 'أسبوعي';
+
+  @override
+  String get filterMonthly => 'شهري';
+
+  @override
+  String get dailyOverview => 'نظرة يومية';
+
+  @override
+  String get salesBreakdown => 'تحليل المبيعات';
+
+  @override
+  String get byPaymentMethod => 'حسب طريقة الدفع';
+
+  @override
+  String get paymentCash => 'نقدي';
+
+  @override
+  String get paymentCard => 'بطاقة';
+
+  @override
+  String get paymentWallet => 'محفظة';
+
+  @override
+  String get paymentOther => 'أخرى';
+
+  @override
+  String get recentTransactions => 'أحدث العمليات';
+
+  @override
+  String get seeAll => 'مشاهدة الكل';
+
+  @override
+  String get exportReportAsPdf => 'تصدير التقرير كـ PDF';
+
+  @override
+  String get lastSyncedToday => 'آخر مزامنة: اليوم الساعة';
+
+  @override
+  String get productLiptonTea => 'شاي ليبتون أخضر 400 جم';
+
+  @override
+  String get productBaladiBread => 'عيش بلدي (5 أرغفة)';
+
+  @override
+  String get productSunflowerOilHayat => 'زيت عباد الشمس حياة 1.8 لتر';
+
+  @override
+  String get productHalawaExtraFine => 'حلاوة طحينية فاخرة 500 جم';
+
+  @override
+  String get productSafiWater => 'مياه صافي 1.5 لتر × 6';
 }

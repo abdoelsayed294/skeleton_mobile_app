@@ -352,4 +352,256 @@ class AppStyles {
     fontWeight: FontWeight.w900,
     color: AppColorsDark.textPrimary,
   );
+
+  // ------- Reports screen (Light) -------
+  static TextStyle reportsHeaderTitleLight = GoogleFonts.plusJakartaSans(
+    fontSize: 18,
+    fontWeight: FontWeight.w800,
+    color: AppColorsLight.textPrimary,
+  );
+
+  static TextStyle monthNavLabelLight = GoogleFonts.plusJakartaSans(
+    fontSize: 14,
+    fontWeight: FontWeight.w700,
+    color: AppColorsLight.textPrimary,
+  );
+
+  static TextStyle monthNavBadgeLight = GoogleFonts.plusJakartaSans(
+    fontSize: 12,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+  );
+
+  static TextStyle totalSalesLabelLight = GoogleFonts.plusJakartaSans(
+    fontSize: 11,
+    fontWeight: FontWeight.w700,
+    color: Colors.white.withValues(alpha: 0.64),
+    letterSpacing: 0.6,
+  );
+
+  static TextStyle totalSalesAmountLight = GoogleFonts.syne(
+    fontSize: 28,
+    fontWeight: FontWeight.w800,
+    color: Colors.white,
+  );
+
+  static TextStyle totalSalesUnitLight = GoogleFonts.plusJakartaSans(
+    fontSize: 13,
+    fontWeight: FontWeight.w700,
+    color: Colors.white.withValues(alpha: 0.7),
+  );
+
+  static TextStyle totalSalesChangeLight = GoogleFonts.plusJakartaSans(
+    fontSize: 11,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+  );
+
+  static TextStyle totalSalesCompareLight = GoogleFonts.plusJakartaSans(
+    fontSize: 11,
+    fontWeight: FontWeight.w500,
+    color: Colors.white.withValues(alpha: 0.6),
+  );
+
+  static TextStyle totalSalesStatLabelLight = GoogleFonts.plusJakartaSans(
+    fontSize: 10,
+    fontWeight: FontWeight.w500,
+    color: Colors.white.withValues(alpha: 0.55),
+  );
+
+  static TextStyle totalSalesStatValueLight = GoogleFonts.plusJakartaSans(
+    fontSize: 14,
+    fontWeight: FontWeight.w800,
+    color: Colors.white,
+  );
+
+  static TextStyle chartPeakBubbleLight = GoogleFonts.plusJakartaSans(
+    fontSize: 11,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+  );
+
+  static TextStyle salesBreakdownBigNumberLight = GoogleFonts.syne(
+    fontSize: 22,
+    fontWeight: FontWeight.w800,
+    color: AppColorsLight.textPrimary,
+  );
+
+  static TextStyle salesBreakdownBigLabelLight = GoogleFonts.plusJakartaSans(
+    fontSize: 11,
+    fontWeight: FontWeight.w500,
+    color: AppColorsLight.textSecondary,
+  );
+
+  static TextStyle paymentLegendLabelLight = GoogleFonts.plusJakartaSans(
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
+    color: AppColorsLight.textPrimary,
+  );
+
+  static TextStyle paymentLegendPercentLight = GoogleFonts.plusJakartaSans(
+    fontSize: 12,
+    fontWeight: FontWeight.w700,
+    color: AppColorsLight.textPrimary,
+  );
+
+  static TextStyle topProductRankLight = GoogleFonts.plusJakartaSans(
+    fontSize: 12,
+    fontWeight: FontWeight.w700,
+    color: AppColorsLight.textMuted,
+  );
+
+  static TextStyle topProductPriceLight = GoogleFonts.syne(
+    fontSize: 13,
+    fontWeight: FontWeight.w800,
+    color: AppColorsLight.textPrimary,
+  );
+
+  static TextStyle topProductChangeLight = GoogleFonts.plusJakartaSans(
+    fontSize: 10,
+    fontWeight: FontWeight.w700,
+    color: AppColorsLight.success,
+  );
+
+  static TextStyle txnIdLight = GoogleFonts.plusJakartaSans(
+    fontSize: 12,
+    fontWeight: FontWeight.w700,
+    color: AppColorsLight.textPrimary,
+  );
+
+  static TextStyle txnMetaLight = GoogleFonts.plusJakartaSans(
+    fontSize: 10,
+    fontWeight: FontWeight.w500,
+    color: AppColorsLight.textSecondary,
+  );
+
+  static TextStyle txnTagLight = GoogleFonts.plusJakartaSans(
+    fontSize: 9,
+    fontWeight: FontWeight.w700,
+    color: AppColorsLight.textSecondary,
+  );
+
+  static TextStyle txnAmountLight = GoogleFonts.syne(
+    fontSize: 13,
+    fontWeight: FontWeight.w800,
+    color: AppColorsLight.textPrimary,
+  );
+
+  static TextStyle exportPdfButtonTextLight = GoogleFonts.plusJakartaSans(
+    fontSize: 14,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+  );
+
+  static TextStyle lastSyncedLight = GoogleFonts.plusJakartaSans(
+    fontSize: 10,
+    fontWeight: FontWeight.w500,
+    color: AppColorsLight.textMuted,
+  );
+
+  // ------- Reports screen (Dark) -------
+  static TextStyle reportsHeaderTitleDark = GoogleFonts.plusJakartaSans(
+    fontSize: 18,
+    fontWeight: FontWeight.w800,
+    color: AppColorsDark.textPrimary,
+  );
+
+  static TextStyle monthNavLabelDark = GoogleFonts.plusJakartaSans(
+    fontSize: 14,
+    fontWeight: FontWeight.w700,
+    color: AppColorsDark.textPrimary,
+  );
+
+  static TextStyle monthNavBadgeDark = GoogleFonts.plusJakartaSans(
+    fontSize: 12,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+  );
+
+  static TextStyle totalSalesLabelDark = totalSalesLabelLight;
+  static TextStyle totalSalesAmountDark = totalSalesAmountLight;
+  static TextStyle totalSalesUnitDark = totalSalesUnitLight;
+  static TextStyle totalSalesChangeDark = totalSalesChangeLight;
+  static TextStyle totalSalesCompareDark = totalSalesCompareLight;
+  static TextStyle totalSalesStatLabelDark = totalSalesStatLabelLight;
+  static TextStyle totalSalesStatValueDark = totalSalesStatValueLight;
+  static TextStyle chartPeakBubbleDark = chartPeakBubbleLight;
+
+  static TextStyle salesBreakdownBigNumberDark = GoogleFonts.syne(
+    fontSize: 22,
+    fontWeight: FontWeight.w800,
+    color: AppColorsDark.textPrimary,
+  );
+
+  static TextStyle salesBreakdownBigLabelDark = GoogleFonts.plusJakartaSans(
+    fontSize: 11,
+    fontWeight: FontWeight.w500,
+    color: AppColorsDark.textSecondary,
+  );
+
+  static TextStyle paymentLegendLabelDark = GoogleFonts.plusJakartaSans(
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
+    color: AppColorsDark.textPrimary,
+  );
+
+  static TextStyle paymentLegendPercentDark = GoogleFonts.plusJakartaSans(
+    fontSize: 12,
+    fontWeight: FontWeight.w700,
+    color: AppColorsDark.textPrimary,
+  );
+
+  static TextStyle topProductRankDark = GoogleFonts.plusJakartaSans(
+    fontSize: 12,
+    fontWeight: FontWeight.w700,
+    color: AppColorsDark.textMuted,
+  );
+
+  static TextStyle topProductPriceDark = GoogleFonts.syne(
+    fontSize: 13,
+    fontWeight: FontWeight.w800,
+    color: AppColorsDark.textPrimary,
+  );
+
+  static TextStyle topProductChangeDark = GoogleFonts.plusJakartaSans(
+    fontSize: 10,
+    fontWeight: FontWeight.w700,
+    color: AppColorsDark.success,
+  );
+
+  static TextStyle txnIdDark = GoogleFonts.plusJakartaSans(
+    fontSize: 12,
+    fontWeight: FontWeight.w700,
+    color: AppColorsDark.textPrimary,
+  );
+
+  static TextStyle txnMetaDark = GoogleFonts.plusJakartaSans(
+    fontSize: 10,
+    fontWeight: FontWeight.w500,
+    color: AppColorsDark.textSecondary,
+  );
+
+  static TextStyle txnTagDark = GoogleFonts.plusJakartaSans(
+    fontSize: 9,
+    fontWeight: FontWeight.w700,
+    color: AppColorsDark.textSecondary,
+  );
+
+  static TextStyle txnAmountDark = GoogleFonts.syne(
+    fontSize: 13,
+    fontWeight: FontWeight.w800,
+    color: AppColorsDark.textPrimary,
+  );
+
+  static TextStyle exportPdfButtonTextDark = GoogleFonts.plusJakartaSans(
+    fontSize: 14,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+  );
+
+  static TextStyle lastSyncedDark = GoogleFonts.plusJakartaSans(
+    fontSize: 10,
+    fontWeight: FontWeight.w500,
+    color: AppColorsDark.textMuted,
+  );
 }

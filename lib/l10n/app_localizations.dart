@@ -409,6 +409,342 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Profile'**
   String get profile;
+
+  /// No description provided for @reportsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Overview of your business performance'**
+  String get reportsSubtitle;
+
+  /// No description provided for @custom.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom'**
+  String get custom;
+
+  /// No description provided for @totalRevenue.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Revenue'**
+  String get totalRevenue;
+
+  /// No description provided for @totalOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Orders'**
+  String get totalOrders;
+
+  /// No description provided for @avgOrderValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Avg. Order Value'**
+  String get avgOrderValue;
+
+  /// No description provided for @revenueTrend.
+  ///
+  /// In en, this message translates to:
+  /// **'Revenue Trend'**
+  String get revenueTrend;
+
+  /// No description provided for @vsPreviousPeriod.
+  ///
+  /// In en, this message translates to:
+  /// **'vs previous period'**
+  String get vsPreviousPeriod;
+
+  /// No description provided for @dayMon.
+  ///
+  /// In en, this message translates to:
+  /// **'Mon'**
+  String get dayMon;
+
+  /// No description provided for @dayTue.
+  ///
+  /// In en, this message translates to:
+  /// **'Tue'**
+  String get dayTue;
+
+  /// No description provided for @dayWed.
+  ///
+  /// In en, this message translates to:
+  /// **'Wed'**
+  String get dayWed;
+
+  /// No description provided for @dayThu.
+  ///
+  /// In en, this message translates to:
+  /// **'Thu'**
+  String get dayThu;
+
+  /// No description provided for @dayFri.
+  ///
+  /// In en, this message translates to:
+  /// **'Fri'**
+  String get dayFri;
+
+  /// No description provided for @daySat.
+  ///
+  /// In en, this message translates to:
+  /// **'Sat'**
+  String get daySat;
+
+  /// No description provided for @salesByCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Sales by Category'**
+  String get salesByCategory;
+
+  /// No description provided for @categoryGroceries.
+  ///
+  /// In en, this message translates to:
+  /// **'Groceries'**
+  String get categoryGroceries;
+
+  /// No description provided for @categoryBeverages.
+  ///
+  /// In en, this message translates to:
+  /// **'Beverages'**
+  String get categoryBeverages;
+
+  /// No description provided for @categoryDairy.
+  ///
+  /// In en, this message translates to:
+  /// **'Dairy'**
+  String get categoryDairy;
+
+  /// No description provided for @categoryHousehold.
+  ///
+  /// In en, this message translates to:
+  /// **'Household'**
+  String get categoryHousehold;
+
+  /// No description provided for @categoryOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get categoryOther;
+
+  /// No description provided for @detailedReports.
+  ///
+  /// In en, this message translates to:
+  /// **'Detailed Reports'**
+  String get detailedReports;
+
+  /// No description provided for @salesReport.
+  ///
+  /// In en, this message translates to:
+  /// **'Sales Report'**
+  String get salesReport;
+
+  /// No description provided for @salesReportDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Revenue, orders and payment methods'**
+  String get salesReportDesc;
+
+  /// No description provided for @inventoryReport.
+  ///
+  /// In en, this message translates to:
+  /// **'Inventory Report'**
+  String get inventoryReport;
+
+  /// No description provided for @inventoryReportDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Stock levels and movement history'**
+  String get inventoryReportDesc;
+
+  /// No description provided for @profitLossReport.
+  ///
+  /// In en, this message translates to:
+  /// **'Profit & Loss'**
+  String get profitLossReport;
+
+  /// No description provided for @profitLossReportDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Costs, margins and net profit'**
+  String get profitLossReportDesc;
+
+  /// No description provided for @taxReport.
+  ///
+  /// In en, this message translates to:
+  /// **'Tax Report'**
+  String get taxReport;
+
+  /// No description provided for @taxReportDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'VAT summary for filing'**
+  String get taxReportDesc;
+
+  /// No description provided for @exportReport.
+  ///
+  /// In en, this message translates to:
+  /// **'Export Report'**
+  String get exportReport;
+
+  /// No description provided for @salesReportsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sales Reports'**
+  String get salesReportsTitle;
+
+  /// No description provided for @thisMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'This Month'**
+  String get thisMonth;
+
+  /// No description provided for @totalSales.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Sales'**
+  String get totalSales;
+
+  /// No description provided for @comparedToLastMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'compared to last month'**
+  String get comparedToLastMonth;
+
+  /// No description provided for @avgOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Avg. Order'**
+  String get avgOrder;
+
+  /// No description provided for @ordersLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Orders'**
+  String get ordersLabel;
+
+  /// No description provided for @customers.
+  ///
+  /// In en, this message translates to:
+  /// **'Customers'**
+  String get customers;
+
+  /// No description provided for @salesPerformance.
+  ///
+  /// In en, this message translates to:
+  /// **'Sales Performance'**
+  String get salesPerformance;
+
+  /// No description provided for @filterDaily.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily'**
+  String get filterDaily;
+
+  /// No description provided for @filterWeekly.
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly'**
+  String get filterWeekly;
+
+  /// No description provided for @filterMonthly.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly'**
+  String get filterMonthly;
+
+  /// No description provided for @dailyOverview.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily overview'**
+  String get dailyOverview;
+
+  /// No description provided for @salesBreakdown.
+  ///
+  /// In en, this message translates to:
+  /// **'Sales Breakdown'**
+  String get salesBreakdown;
+
+  /// No description provided for @byPaymentMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'By payment method'**
+  String get byPaymentMethod;
+
+  /// No description provided for @paymentCash.
+  ///
+  /// In en, this message translates to:
+  /// **'Cash'**
+  String get paymentCash;
+
+  /// No description provided for @paymentCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Card'**
+  String get paymentCard;
+
+  /// No description provided for @paymentWallet.
+  ///
+  /// In en, this message translates to:
+  /// **'Wallet'**
+  String get paymentWallet;
+
+  /// No description provided for @paymentOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get paymentOther;
+
+  /// No description provided for @recentTransactions.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent Transactions'**
+  String get recentTransactions;
+
+  /// No description provided for @seeAll.
+  ///
+  /// In en, this message translates to:
+  /// **'See All'**
+  String get seeAll;
+
+  /// No description provided for @exportReportAsPdf.
+  ///
+  /// In en, this message translates to:
+  /// **'Export Report as PDF'**
+  String get exportReportAsPdf;
+
+  /// No description provided for @lastSyncedToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Last synced: Today at'**
+  String get lastSyncedToday;
+
+  /// No description provided for @productLiptonTea.
+  ///
+  /// In en, this message translates to:
+  /// **'Lipton Leaf Tea 400g'**
+  String get productLiptonTea;
+
+  /// No description provided for @productBaladiBread.
+  ///
+  /// In en, this message translates to:
+  /// **'Baladi Bread (Pack 5)'**
+  String get productBaladiBread;
+
+  /// No description provided for @productSunflowerOilHayat.
+  ///
+  /// In en, this message translates to:
+  /// **'Hayat Sunflower Oil 1.8L'**
+  String get productSunflowerOilHayat;
+
+  /// No description provided for @productHalawaExtraFine.
+  ///
+  /// In en, this message translates to:
+  /// **'Halawa Extra Fine 500g'**
+  String get productHalawaExtraFine;
+
+  /// No description provided for @productSafiWater.
+  ///
+  /// In en, this message translates to:
+  /// **'Safi Water 1.5L x6'**
+  String get productSafiWater;
 }
 
 class _AppLocalizationsDelegate
