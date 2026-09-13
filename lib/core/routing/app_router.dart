@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:skeleton_mobile_app/core/widgets/main_navigation_screen.dart';
 import 'package:skeleton_mobile_app/features/home/ui/scereens/home_screan.dart';
 import 'package:skeleton_mobile_app/features/inventory/ui/scereens/inventory_screan.dart';
 import 'package:skeleton_mobile_app/features/product_details/ui/scereens/product_details_screan.dart';
@@ -14,6 +15,10 @@ class AppRouter {
           builder: (_) => const Scaffold(
             body: Center(child: Text('Hello World!')),
           ),
+        );
+      case Routes.mainScreen:
+        return MaterialPageRoute(
+          builder: (_) => const MainNavigationScreen(),
         );
         
       case Routes.inventoryScreen:
