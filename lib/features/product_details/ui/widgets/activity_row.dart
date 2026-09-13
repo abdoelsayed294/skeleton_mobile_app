@@ -5,9 +5,8 @@ import 'package:skeleton_mobile_app/features/product_details/ui/widgets/product_
 
 class ActivityRow extends StatelessWidget {
   final ActivityEntry entry;
-  final bool isLast;
 
-  const ActivityRow({required this.entry, required this.isLast});
+  const ActivityRow({super.key, required this.entry});
 
   @override
   Widget build(BuildContext context) {
@@ -15,14 +14,18 @@ class ActivityRow extends StatelessWidget {
     final isDark = theme.brightness == Brightness.dark;
 
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 10.h),
-      decoration: isLast
-          ? null
-          : BoxDecoration(
-              border: Border(
-                bottom: BorderSide(color: theme.dividerColor.withValues(alpha: 0.6)),
-              ),
-            ),
+      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
+      decoration: BoxDecoration(
+        color: theme.cardColor,
+        borderRadius: BorderRadius.circular(14.r),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.04),
+            blurRadius: 8.r,
+            offset: Offset(0, 2.h),
+          ),
+        ],
+      ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -31,7 +34,7 @@ class ActivityRow extends StatelessWidget {
             height: 34.w,
             decoration: BoxDecoration(
               color: entry.color.withValues(alpha: 0.12),
-              borderRadius: BorderRadius.circular(10.r),
+              shape: BoxShape.circle,
             ),
             child: Icon(entry.icon, size: 16.sp, color: entry.color),
           ),

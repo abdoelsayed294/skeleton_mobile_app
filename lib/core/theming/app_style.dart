@@ -36,7 +36,7 @@ class AppStyles {
   );
 
   static TextStyle font12MediumLight = GoogleFonts.plusJakartaSans(
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: FontWeight.w500,
     color: AppColorsLight.textSecondary,
   );
@@ -277,8 +277,8 @@ class AppStyles {
   );
 
   static TextStyle salesChartLabelDark = GoogleFonts.plusJakartaSans(
-    fontSize: 12,
-    fontWeight: FontWeight.w700,
+    fontSize: 8,
+    fontWeight: FontWeight.w500,
     color: AppColorsDark.textMuted,
   );
 
@@ -289,8 +289,8 @@ class AppStyles {
   );
 
   static TextStyle productSubtitleDark = GoogleFonts.plusJakartaSans(
-    fontSize: 12,
-    fontWeight: FontWeight.w700,
+    fontSize: 8,
+    fontWeight: FontWeight.w500,
     color: AppColorsDark.textSecondary,
   );
 

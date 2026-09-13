@@ -28,9 +28,11 @@ class SkeletonApp extends StatelessWidget {
                   debugShowCheckedModeBanner: false,
                   theme: AppTheme.lightTheme,
                   darkTheme: AppTheme.darkTheme,
-                  themeMode: theme == AppThemeenum.light ? ThemeMode.light : ThemeMode.dark,
+                  themeMode: theme == AppThemeenum.light
+                      ? ThemeMode.light
+                      : ThemeMode.dark,
                   onGenerateRoute: appRouter.generateRoute,
-                  initialRoute: Routes.mainScreen,
+                  initialRoute: Routes.productDetailsScreen,
                   localizationsDelegates:
                       AppLocalizations.localizationsDelegates,
                   supportedLocales: AppLocalizations.supportedLocales,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:skeleton_mobile_app/core/theming/app_color.dart';
 import 'package:skeleton_mobile_app/features/product_details/ui/widgets/product_activity_section.dart';
 import 'package:skeleton_mobile_app/features/product_details/ui/widgets/product_details_app_bar.dart';
 import 'package:skeleton_mobile_app/features/product_details/ui/widgets/product_edit_button.dart';
@@ -14,7 +15,17 @@ class ProductDetailsScrean extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: ProductEditButton(
+        onPressed: () {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Edit Product — coming soon')),
+          );
+        },
+      ),
       body: SafeArea(
         child: Column(
           children: [
@@ -28,7 +39,7 @@ class ProductDetailsScrean extends StatelessWidget {
             Expanded(
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
-                padding: EdgeInsets.fromLTRB(20.w, 6.h, 20.w, 24.h),
+                padding: EdgeInsets.fromLTRB(20.w, 6.h, 20.w, 90.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -73,7 +84,7 @@ class ProductDetailsScrean extends StatelessWidget {
                       entries: [
                         ActivityEntry(
                           icon: Icons.sync_rounded,
-                          color: const Color(0xFF059669),
+                          color: isDark ? AppColorsDark.success : AppColorsLight.success,
                           title: 'Stock Added',
                           subtitle: '+50 units from SoundTech',
                           value: '+50',
@@ -81,7 +92,7 @@ class ProductDetailsScrean extends StatelessWidget {
                         ),
                         ActivityEntry(
                           icon: Icons.sell_outlined,
-                          color: const Color(0xFFD97706),
+                          color: isDark ? AppColorsDark.warningAlt : AppColorsLight.warning,
                           title: 'Product Sold',
                           subtitle: '3 units · POS Terminal #2',
                           value: r'$239.97',
@@ -89,7 +100,7 @@ class ProductDetailsScrean extends StatelessWidget {
                         ),
                         ActivityEntry(
                           icon: Icons.local_shipping_outlined,
-                          color: const Color(0xFF1E88E5),
+                          color: isDark ? AppColorsDark.primary : AppColorsLight.primary,
                           title: 'Purchase Received',
                           subtitle: 'PO#4420 · 100 units',
                           value: '+100',
@@ -97,7 +108,7 @@ class ProductDetailsScrean extends StatelessWidget {
                         ),
                         ActivityEntry(
                           icon: Icons.tune_rounded,
-                          color: const Color(0xFFE11D48),
+                          color: isDark ? AppColorsDark.error : AppColorsLight.error,
                           title: 'Stock Adjustment',
                           subtitle: 'Damaged goods write-off',
                           value: '-2',
@@ -108,10 +119,6 @@ class ProductDetailsScrean extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(20.w, 8.h, 20.w, 16.h),
-              child: const ProductEditButton(),
             ),
           ],
         ),

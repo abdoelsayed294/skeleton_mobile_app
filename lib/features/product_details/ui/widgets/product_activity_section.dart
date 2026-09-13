@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
-import 'package:skeleton_mobile_app/features/home/ui/widgets/section_card.dart';
 import 'package:skeleton_mobile_app/features/product_details/ui/widgets/activity_row.dart';
 
 class ActivityEntry {
@@ -54,18 +53,13 @@ class ProductActivitySection extends StatelessWidget {
           ],
         ),
         SizedBox(height: 10.h),
-        SectionCard(
-          child: Padding(
-            padding: EdgeInsets.only(bottom: 2.h),
-            child: Column(
-              children: List.generate(entries.length, (index) {
-                return ActivityRow(
-                  entry: entries[index],
-                  isLast: index == entries.length - 1,
-                );
-              }),
-            ),
-          ),
+        Column(
+          children: List.generate(entries.length, (index) {
+            return Padding(
+              padding: EdgeInsets.only(bottom: index == entries.length - 1 ? 0 : 10.h),
+              child: ActivityRow(entry: entries[index]),
+            );
+          }),
         ),
       ],
     );
