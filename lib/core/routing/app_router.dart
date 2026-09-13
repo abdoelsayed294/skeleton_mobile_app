@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:skeleton_mobile_app/core/widgets/main_navigation_screen.dart';
 import 'package:skeleton_mobile_app/features/home/ui/scereens/home_screan.dart';
 import 'package:skeleton_mobile_app/features/inventory/ui/scereens/inventory_screan.dart';
+import 'package:skeleton_mobile_app/features/product_details/ui/scereens/product_details_screan.dart';
 import 'package:skeleton_mobile_app/features/profile/ui/scereens/profile_screan.dart';
 import 'package:skeleton_mobile_app/features/reports/ui/scereens/reports_screan.dart';
 import 'routes.dart';
@@ -35,6 +36,10 @@ class AppRouter {
       case Routes.homeScreen:
         return MaterialPageRoute(
           builder: (_) => const HomeScrean(),
+        );
+      case Routes.productDetailsScreen:
+        return MaterialPageRoute(
+          builder: (_) => const ProductDetailsScrean(),
         );
       default:
         return MaterialPageRoute(
