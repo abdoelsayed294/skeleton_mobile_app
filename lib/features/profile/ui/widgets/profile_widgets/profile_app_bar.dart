@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeleton_mobile_app/core/theming/app_color.dart';
+import 'package:skeleton_mobile_app/core/helpers/extesions.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
+import 'package:skeleton_mobile_app/core/routing/routes.dart';
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
 
 class ProfileAppBar extends StatelessWidget {
@@ -28,25 +30,29 @@ class ProfileAppBar extends StatelessWidget {
                     .copyWith(fontSize: 24.sp, height: 1.2),
           ),
         ),
-        Container(
-          width: 36.w,
-          height: 36.w,
-          decoration: BoxDecoration(
-            color: surface,
-            borderRadius: BorderRadius.circular(18.r),
-            border: Border.all(color: border, width: 1.w),
-            boxShadow: [
-              BoxShadow(
-                color: primary.withValues(alpha: 0.08),
-                blurRadius: 8,
-                offset: const Offset(0, 2),
-              ),
-            ],
-          ),
-          child: Icon(
-            Icons.notifications_none_rounded,
-            color: textPrimary,
-            size: 20.sp,
+        InkWell(
+          onTap: () => context.pushNamed(Routes.notificationsScreen),
+          borderRadius: BorderRadius.circular(18.r),
+          child: Container(
+            width: 36.w,
+            height: 36.w,
+            decoration: BoxDecoration(
+              color: surface,
+              borderRadius: BorderRadius.circular(18.r),
+              border: Border.all(color: border, width: 1.w),
+              boxShadow: [
+                BoxShadow(
+                  color: primary.withValues(alpha: 0.08),
+                  blurRadius: 8,
+                  offset: const Offset(0, 2),
+                ),
+              ],
+            ),
+            child: Icon(
+              Icons.notifications_none_rounded,
+              color: textPrimary,
+              size: 20.sp,
+            ),
           ),
         ),
       ],
