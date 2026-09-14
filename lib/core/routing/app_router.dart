@@ -4,6 +4,7 @@ import 'package:skeleton_mobile_app/features/home/ui/scereens/home_screan.dart';
 import 'package:skeleton_mobile_app/features/inventory/ui/scereens/inventory_screan.dart';
 import 'package:skeleton_mobile_app/features/product_details/ui/scereens/product_details_screan.dart';
 import 'package:skeleton_mobile_app/features/profile/ui/scereens/profile_screan.dart';
+import 'package:skeleton_mobile_app/features/purchases/ui/scereens/purchases_screan.dart';
 import 'package:skeleton_mobile_app/features/reports/ui/scereens/reports_screan.dart';
 import 'routes.dart';
 
@@ -12,41 +13,28 @@ class AppRouter {
     switch (settings.name) {
       case Routes.appStartScreen:
         return MaterialPageRoute(
-          builder: (_) => const Scaffold(
-            body: Center(child: Text('Hello World!')),
-          ),
+          builder: (_) =>
+              const Scaffold(body: Center(child: Text('Hello World!'))),
         );
       case Routes.mainScreen:
-        return MaterialPageRoute(
-          builder: (_) => const MainNavigationScreen(),
-        );
-        
+        return MaterialPageRoute(builder: (_) => const MainNavigationScreen());
+
       case Routes.inventoryScreen:
-        return MaterialPageRoute(
-          builder: (_) => const InventoryScrean(),
-        );
+        return MaterialPageRoute(builder: (_) => const InventoryScrean());
       case Routes.reportsScreen:
-        return MaterialPageRoute(
-          builder: (_) => const ReportsScrean(),
-        );
+        return MaterialPageRoute(builder: (_) => const ReportsScrean());
       case Routes.profileScreen:
-        return MaterialPageRoute(
-          builder: (_) => const ProfileScrean(),
-        );
+        return MaterialPageRoute(builder: (_) => const ProfileScrean());
       case Routes.homeScreen:
-        return MaterialPageRoute(
-          builder: (_) => const HomeScrean(),
-        );
+        return MaterialPageRoute(builder: (_) => const HomeScrean());
       case Routes.productDetailsScreen:
-        return MaterialPageRoute(
-          builder: (_) => const ProductDetailsScrean(),
-        );
+        return MaterialPageRoute(builder: (_) => const ProductDetailsScrean());
+      case Routes.purchasesScreen:
+        return MaterialPageRoute(builder: (_) => const PurchasesScrean());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
-            body: Center(
-              child: Text('No route defined for ${settings.name}'),
-            ),
+            body: Center(child: Text('No route defined for ${settings.name}')),
           ),
         );
     }
