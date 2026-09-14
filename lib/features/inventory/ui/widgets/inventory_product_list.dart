@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:skeleton_mobile_app/core/routing/routes.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
 import 'package:skeleton_mobile_app/features/inventory/ui/widgets/inventory_product_tile.dart';
 import 'package:skeleton_mobile_app/features/inventory/ui/widgets/inventory_stats.dart';
@@ -121,6 +122,8 @@ class InventoryProductList extends StatelessWidget {
         SizedBox(height: 10.h),
         ...products.asMap().entries.map(
           (entry) => InventoryProductTile(
+            onTap: () =>
+                Navigator.of(context).pushNamed(Routes.productDetailsScreen),
             name: entry.value.$1,
             category: entry.value.$2,
             quantity: entry.value.$3,

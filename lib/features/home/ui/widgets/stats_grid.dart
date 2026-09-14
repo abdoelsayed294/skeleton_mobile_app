@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:skeleton_mobile_app/core/routing/routes.dart';
 import 'package:skeleton_mobile_app/core/theming/app_color.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
@@ -59,7 +60,10 @@ class _StatsGridState extends State<StatsGrid> {
                 icon: Icons.shopping_bag_outlined,
                 isNegative: true,
                 isSelected: selectedCardIndex == 2,
-                onTap: () => setState(() => selectedCardIndex = 2),
+                onTap: () {
+                  setState(() => selectedCardIndex = 2);
+                  Navigator.of(context).pushNamed(Routes.purchasesScreen);
+                },
               ),
             ),
             SizedBox(width: 12.w),

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import 'package:skeleton_mobile_app/core/helpers/extesions.dart';
 import 'package:skeleton_mobile_app/core/helpers/spacing.dart';
+import 'package:skeleton_mobile_app/core/routing/routes.dart';
 import 'package:skeleton_mobile_app/features/reports/ui/widgets/category_breakdown.dart';
 import 'package:skeleton_mobile_app/features/reports/ui/widgets/export_pdf_button.dart';
 import 'package:skeleton_mobile_app/features/reports/ui/widgets/last_synced_footer.dart';
@@ -52,7 +54,10 @@ class _ReportsScreanState extends State<ReportsScrean> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 verticalSpace(6),
-                const ReportsAppBar(),
+                ReportsAppBar(
+                  onProfileTap: () =>
+                      context.pushReplacementNamed(Routes.profileScreen),
+                ),
                 verticalSpace(16),
                 MonthNavigator(
                   monthLabel: monthLabel,

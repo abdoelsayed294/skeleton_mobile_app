@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:skeleton_mobile_app/core/routing/routes.dart';
 import 'package:skeleton_mobile_app/core/theming/app_color.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
@@ -32,14 +33,18 @@ class NotificationAppBar extends StatelessWidget {
         const Spacer(),
         Icon(Icons.more_vert_rounded, color: iconColor, size: 21.sp),
         SizedBox(width: 10.w),
-        Container(
-          width: 34.w,
-          height: 34.w,
-          decoration: BoxDecoration(color: primary, shape: BoxShape.circle),
-          child: Icon(
-            Icons.person_outline_rounded,
-            color: Colors.white,
-            size: 19.sp,
+        InkWell(
+          onTap: () => Navigator.of(context).pushNamed(Routes.profileScreen),
+          borderRadius: BorderRadius.circular(17.r),
+          child: Ink(
+            width: 34.w,
+            height: 34.w,
+            decoration: BoxDecoration(color: primary, shape: BoxShape.circle),
+            child: Icon(
+              Icons.person_outline_rounded,
+              color: Colors.white,
+              size: 19.sp,
+            ),
           ),
         ),
       ],
