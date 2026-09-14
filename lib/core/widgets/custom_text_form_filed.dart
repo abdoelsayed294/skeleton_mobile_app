@@ -3,23 +3,23 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeleton_mobile_app/core/theming/app_color.dart';
 
 class CustomTextFormField extends StatefulWidget {
-  Color? filledColor;
-  Color borderColor;
-  TextStyle? hintStyle;
-  String? hintText;
-  Widget? label;
-  TextStyle? labelStyle;
-  Widget? prefixIcon;
-  Widget? suffixIcon;
-  TextEditingController? controller;
-  String? Function(String?)? validator;
-  TextInputType? keyboardType;
-  bool isObscureText;
-  bool isPassword;
-  TextStyle? textStyle;
-  bool readonly;
+  final Color? filledColor;
+  final Color borderColor;
+  final TextStyle? hintStyle;
+  final String? hintText;
+  final Widget? label;
+  final TextStyle? labelStyle;
+  final Widget? prefixIcon;
+  final Widget? suffixIcon;
+  final TextEditingController? controller;
+  final String? Function(String?)? validator;
+  final TextInputType? keyboardType;
+  final bool isObscureText;
+  final bool isPassword;
+  final TextStyle? textStyle;
+  final bool readonly;
 
-  CustomTextFormField({
+  const CustomTextFormField({
     super.key,
     this.controller,
     this.validator,
@@ -43,11 +43,21 @@ class CustomTextFormField extends StatefulWidget {
 }
 
 class _CustomTextFormFieldState extends State<CustomTextFormField> {
+  late bool _isObscureText;
+
+  @override
+  void initState() {
+    super.initState();
+    _isObscureText = widget.isObscureText;
+  }
+
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final errorColor = isDark ? AppColorsDark.error : AppColorsLight.error;
     return TextFormField(
       style: widget.textStyle,
-      obscureText: widget.isObscureText,
+      obscureText: _isObscureText,
       keyboardType: widget.keyboardType,
       controller: widget.controller,
       validator: widget.validator,
@@ -64,8 +74,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         suffixIcon: widget.isPassword
             ? IconButton(
                 onPressed: () {
-                  widget.isObscureText = !widget.isObscureText;
-                  setState(() {});
+                  setState(() => _isObscureText = !_isObscureText);
                 },
                 icon: Icon(
                   widget.isObscureText
@@ -84,11 +93,11 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.r),
-          borderSide: const BorderSide(color: AppColorsLight.error),
+          borderSide: BorderSide(color: errorColor),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.r),
-          borderSide: const BorderSide(color: AppColorsLight.error),
+          borderSide: BorderSide(color: errorColor),
         ),
       ),
     );

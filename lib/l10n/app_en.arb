@@ -270,5 +270,26 @@
   "nileFoodsDistribution": "Nile Foods Distribution",
   "deltaExpressWholesale": "Delta Express Wholesale",
   "kareemGeneralImports": "Kareem General Imports",
-  "medPharmaSupplies": "MedPharma Supplies"
+  "medPharmaSupplies": "MedPharma Supplies",
+
+  "editProfile": "Edit Profile",
+  "fullName": "Full Name",
+  "emailAddress": "Email Address",
+  "personalInformation": "Personal Information",
+  "storeBusinessDetails": "Store & Business Details",
+  "storeAddressPrimaryBranch": "Store Address / Primary Branch",
+  "taxCommercialRegNumber": "Tax / Commercial Reg. Number",
+  "securityAccess": "Security & Access",
+  "changePassword": "Change Password",
+  "lastUpdatedDaysAgo": "Last updated {days} days ago",
+  "twoFactorAuthentication": "Two-Factor Authentication",
+  "smsAuthenticatorActive": "SMS & Authenticator App active",
+  "saveChanges": "Save Changes",
+  "cancel": "Cancel",
+  "activeBranches": "{count} Active",
+  "memberSince": "MEMBER SINCE",
+  "status": "STATUS",
+  "verified": "Verified",
+  "storeOwner": "STORE OWNER",
+  "taxRegistrationNumber": "CR-904812-EGY"
 }

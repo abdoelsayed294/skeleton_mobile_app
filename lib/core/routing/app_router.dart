@@ -4,6 +4,7 @@ import 'package:skeleton_mobile_app/features/home/ui/scereens/home_screan.dart';
 import 'package:skeleton_mobile_app/features/inventory/ui/scereens/inventory_screan.dart';
 import 'package:skeleton_mobile_app/features/product_details/ui/scereens/product_details_screan.dart';
 import 'package:skeleton_mobile_app/features/profile/ui/scereens/profile_screan.dart';
+import 'package:skeleton_mobile_app/features/profile/ui/scereens/edit_profile_screan.dart';
 import 'package:skeleton_mobile_app/features/purchases/ui/scereens/purchases_screan.dart';
 import 'package:skeleton_mobile_app/features/reports/ui/scereens/reports_screan.dart';
 import 'routes.dart';
@@ -25,6 +26,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const ReportsScrean());
       case Routes.profileScreen:
         return MaterialPageRoute(builder: (_) => const ProfileScrean());
+      case Routes.editProfileScreen:
+        return MaterialPageRoute(builder: (_) => const EditProfileScrean());
       case Routes.homeScreen:
         return MaterialPageRoute(builder: (_) => const HomeScrean());
       case Routes.productDetailsScreen:
