@@ -261,6 +261,182 @@ class AppLocalizationsAr extends AppLocalizations {
   String get totalOrders => 'إجمالي الطلبات';
 
   @override
+  String get notificationsTitle => 'الإشعارات';
+
+  @override
+  String get notificationsAll => 'الكل';
+
+  @override
+  String get notificationsUnread => 'غير مقروءة';
+
+  @override
+  String get markAllRead => 'تحديد الكل كمقروء';
+
+  @override
+  String get noNotifications => 'لا توجد إشعارات جديدة';
+
+  @override
+  String get notificationLowStockTitle => 'تنبيه مخزون منخفض';
+
+  @override
+  String get notificationLowStockBody =>
+      'بعض المنتجات أقل من الحد الأدنى للمخزون.';
+
+  @override
+  String get notificationSaleTitle => 'تم تسجيل عملية بيع جديدة';
+
+  @override
+  String get notificationSaleBody => 'تمت إضافة طلب جديد إلى مبيعات اليوم.';
+
+  @override
+  String get notificationInventoryTitle => 'تم تحديث المخزون';
+
+  @override
+  String get notificationInventoryBody => 'تمت مزامنة بيانات المخزون بنجاح.';
+
+  @override
+  String get justNow => 'منذ لحظات';
+
+  @override
+  String get minutesAgo => 'منذ ١٢ دقيقة';
+
+  @override
+  String get hourAgo => 'منذ ساعة';
+
+  @override
+  String get activityStream => 'سجل النشاط';
+
+  @override
+  String get unreadUpdates => 'تحديثات غير مقروءة';
+
+  @override
+  String get todaySmall => 'اليوم';
+
+  @override
+  String get readAll => 'قراءة الكل';
+
+  @override
+  String get inventoryAndStock => 'المخزون والتوريد';
+
+  @override
+  String get ordersAndSales => 'الطلبات والمبيعات';
+
+  @override
+  String get notificationToday => 'اليوم';
+
+  @override
+  String get notificationTodayCount => '٣ تحديثات';
+
+  @override
+  String get notificationYesterday => 'أمس';
+
+  @override
+  String get notificationYesterdayCount => 'تحديثان';
+
+  @override
+  String get notificationEarlier => 'سابقًا';
+
+  @override
+  String get notificationEarlierDate => '١٧ نوفمبر';
+
+  @override
+  String get notificationTenMinutesAgo => 'منذ ١٠ دقائق';
+
+  @override
+  String get notificationThreeLeft => 'متبقي ٣';
+
+  @override
+  String get notificationQuickReorder => 'إعادة طلب سريعة';
+
+  @override
+  String get notificationPurchaseTitle => 'تم استلام أمر شراء جديد';
+
+  @override
+  String get notificationPurchaseBody =>
+      'قامت SoundTech Co., Ltd. بتسليم ٥٠ وحدة من سماعات Wireless Earbuds Pro.';
+
+  @override
+  String get notificationOneHourAgo => 'منذ ساعة';
+
+  @override
+  String get notificationPoNumber => 'أمر شراء #8842';
+
+  @override
+  String get notificationFiftyUnits => '٥٠ وحدة';
+
+  @override
+  String get notificationTargetTitle => 'تم تحقيق الهدف اليومي 🎉';
+
+  @override
+  String get notificationTargetBody =>
+      'تجاوزت مبيعات اليوم ١٢,٠٠٠ جنيه عبر الفروع.';
+
+  @override
+  String get notificationThreeHoursAgo => 'منذ ٣ ساعات';
+
+  @override
+  String get notificationGoal => '١٠٨٪ من الهدف';
+
+  @override
+  String get notificationRevenue => '١٢,٤٨٠ ج.م';
+
+  @override
+  String get notificationPaymentTitle => 'موعد دفع المورد غدًا';
+
+  @override
+  String get notificationPaymentBody =>
+      'فاتورة Delta Express Wholesale رقم #INV-1039 بقيمة ٩,١٠٠ ج.م مستحقة في ٢٠ نوفمبر.';
+
+  @override
+  String get notificationPaymentTime => '٤:٣٠ م';
+
+  @override
+  String get notificationInvoice => 'فاتورة #INV-1039';
+
+  @override
+  String get notificationPaymentAmount => '٩,١٠٠ ج.م';
+
+  @override
+  String get notificationShiftTitle => 'تم إغلاق وردية الكاشير';
+
+  @override
+  String get notificationShiftBody =>
+      'تم إغلاق الكاشير رقم ٢ بواسطة أحمد بإجمالي نقدية ٤,٢٥٠ ج.م.';
+
+  @override
+  String get notificationShiftTime => '١١:٠٠ م';
+
+  @override
+  String get notificationTerminal => 'الكاشير #02';
+
+  @override
+  String get notificationOperator => 'المشغل: أحمد';
+
+  @override
+  String get notificationBackupTitle =>
+      'اكتمل النسخ الاحتياطي السحابي الأسبوعي';
+
+  @override
+  String get notificationBackupBody =>
+      'تم حفظ جميع سجلات المبيعات والمخزون بأمان.';
+
+  @override
+  String get notificationBackupDate => '١٧ نوفمبر';
+
+  @override
+  String get notificationVerified => 'تم التحقق من السلامة';
+
+  @override
+  String get notificationStorage => '٤١٨ ميجابايت';
+
+  @override
+  String get notificationPreferences => 'تفضيلات الإشعارات';
+
+  @override
+  String get notificationPreferencesBody =>
+      'إعداد الإشعارات والرسائل وحدود التنبيه';
+
+  @override
   String get avgOrderValue => 'متوسط قيمة الطلب';
 
   @override

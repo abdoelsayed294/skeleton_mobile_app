@@ -602,6 +602,342 @@ abstract class AppLocalizations {
   /// **'Total Orders'**
   String get totalOrders;
 
+  /// No description provided for @notificationsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notificationsTitle;
+
+  /// No description provided for @notificationsAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get notificationsAll;
+
+  /// No description provided for @notificationsUnread.
+  ///
+  /// In en, this message translates to:
+  /// **'Unread'**
+  String get notificationsUnread;
+
+  /// No description provided for @markAllRead.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark all read'**
+  String get markAllRead;
+
+  /// No description provided for @noNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'You are all caught up'**
+  String get noNotifications;
+
+  /// No description provided for @notificationLowStockTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Low stock alert'**
+  String get notificationLowStockTitle;
+
+  /// No description provided for @notificationLowStockBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Some products are below their minimum stock level.'**
+  String get notificationLowStockBody;
+
+  /// No description provided for @notificationSaleTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'New sale recorded'**
+  String get notificationSaleTitle;
+
+  /// No description provided for @notificationSaleBody.
+  ///
+  /// In en, this message translates to:
+  /// **'A new order was added to today\'s sales.'**
+  String get notificationSaleBody;
+
+  /// No description provided for @notificationInventoryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Inventory updated'**
+  String get notificationInventoryTitle;
+
+  /// No description provided for @notificationInventoryBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Your inventory data was synced successfully.'**
+  String get notificationInventoryBody;
+
+  /// No description provided for @justNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Just now'**
+  String get justNow;
+
+  /// No description provided for @minutesAgo.
+  ///
+  /// In en, this message translates to:
+  /// **'12 minutes ago'**
+  String get minutesAgo;
+
+  /// No description provided for @hourAgo.
+  ///
+  /// In en, this message translates to:
+  /// **'1 hour ago'**
+  String get hourAgo;
+
+  /// No description provided for @activityStream.
+  ///
+  /// In en, this message translates to:
+  /// **'Activity Stream'**
+  String get activityStream;
+
+  /// No description provided for @unreadUpdates.
+  ///
+  /// In en, this message translates to:
+  /// **'unread updates'**
+  String get unreadUpdates;
+
+  /// No description provided for @todaySmall.
+  ///
+  /// In en, this message translates to:
+  /// **'today'**
+  String get todaySmall;
+
+  /// No description provided for @readAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Read All'**
+  String get readAll;
+
+  /// No description provided for @inventoryAndStock.
+  ///
+  /// In en, this message translates to:
+  /// **'Inventory & Stock'**
+  String get inventoryAndStock;
+
+  /// No description provided for @ordersAndSales.
+  ///
+  /// In en, this message translates to:
+  /// **'Orders & Sales'**
+  String get ordersAndSales;
+
+  /// No description provided for @notificationToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get notificationToday;
+
+  /// No description provided for @notificationTodayCount.
+  ///
+  /// In en, this message translates to:
+  /// **'3 updates'**
+  String get notificationTodayCount;
+
+  /// No description provided for @notificationYesterday.
+  ///
+  /// In en, this message translates to:
+  /// **'Yesterday'**
+  String get notificationYesterday;
+
+  /// No description provided for @notificationYesterdayCount.
+  ///
+  /// In en, this message translates to:
+  /// **'2 updates'**
+  String get notificationYesterdayCount;
+
+  /// No description provided for @notificationEarlier.
+  ///
+  /// In en, this message translates to:
+  /// **'Earlier'**
+  String get notificationEarlier;
+
+  /// No description provided for @notificationEarlierDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Nov 17'**
+  String get notificationEarlierDate;
+
+  /// No description provided for @notificationTenMinutesAgo.
+  ///
+  /// In en, this message translates to:
+  /// **'10m ago'**
+  String get notificationTenMinutesAgo;
+
+  /// No description provided for @notificationThreeLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'3 left'**
+  String get notificationThreeLeft;
+
+  /// No description provided for @notificationQuickReorder.
+  ///
+  /// In en, this message translates to:
+  /// **'Quick Reorder'**
+  String get notificationQuickReorder;
+
+  /// No description provided for @notificationPurchaseTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'New Purchase Order Received'**
+  String get notificationPurchaseTitle;
+
+  /// No description provided for @notificationPurchaseBody.
+  ///
+  /// In en, this message translates to:
+  /// **'SoundTech Co., Ltd. delivered 50 units of Wireless Earbuds Pro.'**
+  String get notificationPurchaseBody;
+
+  /// No description provided for @notificationOneHourAgo.
+  ///
+  /// In en, this message translates to:
+  /// **'1h ago'**
+  String get notificationOneHourAgo;
+
+  /// No description provided for @notificationPoNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'PO #8842'**
+  String get notificationPoNumber;
+
+  /// No description provided for @notificationFiftyUnits.
+  ///
+  /// In en, this message translates to:
+  /// **'50 Units'**
+  String get notificationFiftyUnits;
+
+  /// No description provided for @notificationTargetTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Target Achieved 🎉'**
+  String get notificationTargetTitle;
+
+  /// No description provided for @notificationTargetBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Today\'s sales surpassed EGP 12,000 across branches.'**
+  String get notificationTargetBody;
+
+  /// No description provided for @notificationThreeHoursAgo.
+  ///
+  /// In en, this message translates to:
+  /// **'3h ago'**
+  String get notificationThreeHoursAgo;
+
+  /// No description provided for @notificationGoal.
+  ///
+  /// In en, this message translates to:
+  /// **'108% of goal'**
+  String get notificationGoal;
+
+  /// No description provided for @notificationRevenue.
+  ///
+  /// In en, this message translates to:
+  /// **'EGP 12,480.00'**
+  String get notificationRevenue;
+
+  /// No description provided for @notificationPaymentTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Supplier Payment Due Tomorrow'**
+  String get notificationPaymentTitle;
+
+  /// No description provided for @notificationPaymentBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Delta Express Wholesale invoice #INV-1039 (EGP 9,100) due Nov 20.'**
+  String get notificationPaymentBody;
+
+  /// No description provided for @notificationPaymentTime.
+  ///
+  /// In en, this message translates to:
+  /// **'4:30 PM'**
+  String get notificationPaymentTime;
+
+  /// No description provided for @notificationInvoice.
+  ///
+  /// In en, this message translates to:
+  /// **'Invoice #INV-1039'**
+  String get notificationInvoice;
+
+  /// No description provided for @notificationPaymentAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'EGP 9,100.00'**
+  String get notificationPaymentAmount;
+
+  /// No description provided for @notificationShiftTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cashier Shift Closed'**
+  String get notificationShiftTitle;
+
+  /// No description provided for @notificationShiftBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Terminal #2 closed by Ahmed with total cash EGP 4,250.'**
+  String get notificationShiftBody;
+
+  /// No description provided for @notificationShiftTime.
+  ///
+  /// In en, this message translates to:
+  /// **'11:00 PM'**
+  String get notificationShiftTime;
+
+  /// No description provided for @notificationTerminal.
+  ///
+  /// In en, this message translates to:
+  /// **'Terminal #02'**
+  String get notificationTerminal;
+
+  /// No description provided for @notificationOperator.
+  ///
+  /// In en, this message translates to:
+  /// **'Operator: Ahmed'**
+  String get notificationOperator;
+
+  /// No description provided for @notificationBackupTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly Cloud Backup Complete'**
+  String get notificationBackupTitle;
+
+  /// No description provided for @notificationBackupBody.
+  ///
+  /// In en, this message translates to:
+  /// **'All sales and inventory records safely backed up.'**
+  String get notificationBackupBody;
+
+  /// No description provided for @notificationBackupDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Nov 17'**
+  String get notificationBackupDate;
+
+  /// No description provided for @notificationVerified.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified Integrity'**
+  String get notificationVerified;
+
+  /// No description provided for @notificationStorage.
+  ///
+  /// In en, this message translates to:
+  /// **'418 MB'**
+  String get notificationStorage;
+
+  /// No description provided for @notificationPreferences.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification Preferences'**
+  String get notificationPreferences;
+
+  /// No description provided for @notificationPreferencesBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Configure push, SMS & alert thresholds'**
+  String get notificationPreferencesBody;
+
   /// No description provided for @avgOrderValue.
   ///
   /// In en, this message translates to:

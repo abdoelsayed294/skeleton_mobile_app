@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeleton_mobile_app/core/helpers/spacing.dart';
+import 'package:skeleton_mobile_app/core/helpers/extesions.dart';
 import 'package:skeleton_mobile_app/core/local/app_language.dart';
 import 'package:skeleton_mobile_app/core/local/locale_cubit.dart';
 import 'package:skeleton_mobile_app/core/theming/app_color.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
 import 'package:skeleton_mobile_app/core/theming/app_theme_cubit.dart';
+import 'package:skeleton_mobile_app/core/routing/routes.dart';
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
 
 class AppBarHome extends StatelessWidget {
@@ -79,6 +81,7 @@ class AppBarHome extends StatelessWidget {
         _AppBarAction(
           icon: Icons.notifications_none_rounded,
           tooltip: 'Notifications',
+          onTap: () => context.pushNamed(Routes.notificationsScreen),
         ),
       ],
     );

@@ -7,6 +7,7 @@ import 'package:skeleton_mobile_app/features/profile/ui/scereens/profile_screan.
 import 'package:skeleton_mobile_app/features/profile/ui/scereens/edit_profile_screan.dart';
 import 'package:skeleton_mobile_app/features/purchases/ui/scereens/purchases_screan.dart';
 import 'package:skeleton_mobile_app/features/reports/ui/scereens/reports_screan.dart';
+import 'package:skeleton_mobile_app/features/notifications/ui/screens/notifications_screen.dart';
 import 'routes.dart';
 
 class AppRouter {
@@ -34,6 +35,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const ProductDetailsScrean());
       case Routes.purchasesScreen:
         return MaterialPageRoute(builder: (_) => const PurchasesScrean());
+      case Routes.notificationsScreen:
+        return MaterialPageRoute(builder: (_) => const NotificationsScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

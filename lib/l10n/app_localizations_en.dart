@@ -261,6 +261,182 @@ class AppLocalizationsEn extends AppLocalizations {
   String get totalOrders => 'Total Orders';
 
   @override
+  String get notificationsTitle => 'Notifications';
+
+  @override
+  String get notificationsAll => 'All';
+
+  @override
+  String get notificationsUnread => 'Unread';
+
+  @override
+  String get markAllRead => 'Mark all read';
+
+  @override
+  String get noNotifications => 'You are all caught up';
+
+  @override
+  String get notificationLowStockTitle => 'Low stock alert';
+
+  @override
+  String get notificationLowStockBody =>
+      'Some products are below their minimum stock level.';
+
+  @override
+  String get notificationSaleTitle => 'New sale recorded';
+
+  @override
+  String get notificationSaleBody => 'A new order was added to today\'s sales.';
+
+  @override
+  String get notificationInventoryTitle => 'Inventory updated';
+
+  @override
+  String get notificationInventoryBody =>
+      'Your inventory data was synced successfully.';
+
+  @override
+  String get justNow => 'Just now';
+
+  @override
+  String get minutesAgo => '12 minutes ago';
+
+  @override
+  String get hourAgo => '1 hour ago';
+
+  @override
+  String get activityStream => 'Activity Stream';
+
+  @override
+  String get unreadUpdates => 'unread updates';
+
+  @override
+  String get todaySmall => 'today';
+
+  @override
+  String get readAll => 'Read All';
+
+  @override
+  String get inventoryAndStock => 'Inventory & Stock';
+
+  @override
+  String get ordersAndSales => 'Orders & Sales';
+
+  @override
+  String get notificationToday => 'Today';
+
+  @override
+  String get notificationTodayCount => '3 updates';
+
+  @override
+  String get notificationYesterday => 'Yesterday';
+
+  @override
+  String get notificationYesterdayCount => '2 updates';
+
+  @override
+  String get notificationEarlier => 'Earlier';
+
+  @override
+  String get notificationEarlierDate => 'Nov 17';
+
+  @override
+  String get notificationTenMinutesAgo => '10m ago';
+
+  @override
+  String get notificationThreeLeft => '3 left';
+
+  @override
+  String get notificationQuickReorder => 'Quick Reorder';
+
+  @override
+  String get notificationPurchaseTitle => 'New Purchase Order Received';
+
+  @override
+  String get notificationPurchaseBody =>
+      'SoundTech Co., Ltd. delivered 50 units of Wireless Earbuds Pro.';
+
+  @override
+  String get notificationOneHourAgo => '1h ago';
+
+  @override
+  String get notificationPoNumber => 'PO #8842';
+
+  @override
+  String get notificationFiftyUnits => '50 Units';
+
+  @override
+  String get notificationTargetTitle => 'Daily Target Achieved 🎉';
+
+  @override
+  String get notificationTargetBody =>
+      'Today\'s sales surpassed EGP 12,000 across branches.';
+
+  @override
+  String get notificationThreeHoursAgo => '3h ago';
+
+  @override
+  String get notificationGoal => '108% of goal';
+
+  @override
+  String get notificationRevenue => 'EGP 12,480.00';
+
+  @override
+  String get notificationPaymentTitle => 'Supplier Payment Due Tomorrow';
+
+  @override
+  String get notificationPaymentBody =>
+      'Delta Express Wholesale invoice #INV-1039 (EGP 9,100) due Nov 20.';
+
+  @override
+  String get notificationPaymentTime => '4:30 PM';
+
+  @override
+  String get notificationInvoice => 'Invoice #INV-1039';
+
+  @override
+  String get notificationPaymentAmount => 'EGP 9,100.00';
+
+  @override
+  String get notificationShiftTitle => 'Cashier Shift Closed';
+
+  @override
+  String get notificationShiftBody =>
+      'Terminal #2 closed by Ahmed with total cash EGP 4,250.';
+
+  @override
+  String get notificationShiftTime => '11:00 PM';
+
+  @override
+  String get notificationTerminal => 'Terminal #02';
+
+  @override
+  String get notificationOperator => 'Operator: Ahmed';
+
+  @override
+  String get notificationBackupTitle => 'Weekly Cloud Backup Complete';
+
+  @override
+  String get notificationBackupBody =>
+      'All sales and inventory records safely backed up.';
+
+  @override
+  String get notificationBackupDate => 'Nov 17';
+
+  @override
+  String get notificationVerified => 'Verified Integrity';
+
+  @override
+  String get notificationStorage => '418 MB';
+
+  @override
+  String get notificationPreferences => 'Notification Preferences';
+
+  @override
+  String get notificationPreferencesBody =>
+      'Configure push, SMS & alert thresholds';
+
+  @override
   String get avgOrderValue => 'Avg. Order Value';
 
   @override
