@@ -481,4 +481,68 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get medPharmaSupplies => 'MedPharma Supplies';
+
+  @override
+  String get editProfile => 'Edit Profile';
+
+  @override
+  String get fullName => 'Full Name';
+
+  @override
+  String get emailAddress => 'Email Address';
+
+  @override
+  String get personalInformation => 'Personal Information';
+
+  @override
+  String get storeBusinessDetails => 'Store & Business Details';
+
+  @override
+  String get storeAddressPrimaryBranch => 'Store Address / Primary Branch';
+
+  @override
+  String get taxCommercialRegNumber => 'Tax / Commercial Reg. Number';
+
+  @override
+  String get securityAccess => 'Security & Access';
+
+  @override
+  String get changePassword => 'Change Password';
+
+  @override
+  String lastUpdatedDaysAgo(Object days) {
+    return 'Last updated $days days ago';
+  }
+
+  @override
+  String get twoFactorAuthentication => 'Two-Factor Authentication';
+
+  @override
+  String get smsAuthenticatorActive => 'SMS & Authenticator App active';
+
+  @override
+  String get saveChanges => 'Save Changes';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String activeBranches(Object count) {
+    return '$count Active';
+  }
+
+  @override
+  String get memberSince => 'MEMBER SINCE';
+
+  @override
+  String get status => 'STATUS';
+
+  @override
+  String get verified => 'Verified';
+
+  @override
+  String get storeOwner => 'STORE OWNER';
+
+  @override
+  String get taxRegistrationNumber => 'CR-904812-EGY';
 }

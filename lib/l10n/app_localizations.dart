@@ -1033,6 +1033,126 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'MedPharma Supplies'**
   String get medPharmaSupplies;
+
+  /// No description provided for @editProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Profile'**
+  String get editProfile;
+
+  /// No description provided for @fullName.
+  ///
+  /// In en, this message translates to:
+  /// **'Full Name'**
+  String get fullName;
+
+  /// No description provided for @emailAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Email Address'**
+  String get emailAddress;
+
+  /// No description provided for @personalInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal Information'**
+  String get personalInformation;
+
+  /// No description provided for @storeBusinessDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Store & Business Details'**
+  String get storeBusinessDetails;
+
+  /// No description provided for @storeAddressPrimaryBranch.
+  ///
+  /// In en, this message translates to:
+  /// **'Store Address / Primary Branch'**
+  String get storeAddressPrimaryBranch;
+
+  /// No description provided for @taxCommercialRegNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Tax / Commercial Reg. Number'**
+  String get taxCommercialRegNumber;
+
+  /// No description provided for @securityAccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Security & Access'**
+  String get securityAccess;
+
+  /// No description provided for @changePassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Password'**
+  String get changePassword;
+
+  /// No description provided for @lastUpdatedDaysAgo.
+  ///
+  /// In en, this message translates to:
+  /// **'Last updated {days} days ago'**
+  String lastUpdatedDaysAgo(Object days);
+
+  /// No description provided for @twoFactorAuthentication.
+  ///
+  /// In en, this message translates to:
+  /// **'Two-Factor Authentication'**
+  String get twoFactorAuthentication;
+
+  /// No description provided for @smsAuthenticatorActive.
+  ///
+  /// In en, this message translates to:
+  /// **'SMS & Authenticator App active'**
+  String get smsAuthenticatorActive;
+
+  /// No description provided for @saveChanges.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Changes'**
+  String get saveChanges;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @activeBranches.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} Active'**
+  String activeBranches(Object count);
+
+  /// No description provided for @memberSince.
+  ///
+  /// In en, this message translates to:
+  /// **'MEMBER SINCE'**
+  String get memberSince;
+
+  /// No description provided for @status.
+  ///
+  /// In en, this message translates to:
+  /// **'STATUS'**
+  String get status;
+
+  /// No description provided for @verified.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified'**
+  String get verified;
+
+  /// No description provided for @storeOwner.
+  ///
+  /// In en, this message translates to:
+  /// **'STORE OWNER'**
+  String get storeOwner;
+
+  /// No description provided for @taxRegistrationNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'CR-904812-EGY'**
+  String get taxRegistrationNumber;
 }
 
 class _AppLocalizationsDelegate

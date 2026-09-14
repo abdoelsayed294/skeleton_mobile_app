@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeleton_mobile_app/core/theming/app_color.dart';
-import 'package:skeleton_mobile_app/features/profile/ui/widgets/profile_stat_item.dart';
+import 'package:skeleton_mobile_app/features/profile/ui/widgets/profile_widgets/profile_stat_item.dart';
 
 class ProfileStatData {
   final String value;

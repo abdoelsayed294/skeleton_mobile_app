@@ -270,5 +270,26 @@
   "nileFoodsDistribution": "توزيع أغذية النيل",
   "deltaExpressWholesale": "دلتا إكسبريس للجملة",
   "kareemGeneralImports": "كريم للاستيراد",
-  "medPharmaSupplies": "مستلزمات ميدفارما"
+  "medPharmaSupplies": "مستلزمات ميدفارما",
+
+  "editProfile": "تعديل الملف الشخصي",
+  "fullName": "الاسم بالكامل",
+  "emailAddress": "البريد الإلكتروني",
+  "personalInformation": "المعلومات الشخصية",
+  "storeBusinessDetails": "تفاصيل المتجر والنشاط",
+  "storeAddressPrimaryBranch": "عنوان المتجر / الفرع الرئيسي",
+  "taxCommercialRegNumber": "الرقم الضريبي / التجاري",
+  "securityAccess": "الأمان والوصول",
+  "changePassword": "تغيير كلمة المرور",
+  "lastUpdatedDaysAgo": "آخر تحديث منذ {days} يومًا",
+  "twoFactorAuthentication": "المصادقة الثنائية",
+  "smsAuthenticatorActive": "رسائل SMS وتطبيق المصادقة نشطان",
+  "saveChanges": "حفظ التغييرات",
+  "cancel": "إلغاء",
+  "activeBranches": "{count} نشط",
+  "memberSince": "عضو منذ",
+  "status": "الحالة",
+  "verified": "موثق",
+  "storeOwner": "مالك المتجر",
+  "taxRegistrationNumber": "CR-904812-EGY"
 }

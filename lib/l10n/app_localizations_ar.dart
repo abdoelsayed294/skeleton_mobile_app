@@ -481,4 +481,68 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get medPharmaSupplies => 'مستلزمات ميدفارما';
+
+  @override
+  String get editProfile => 'تعديل الملف الشخصي';
+
+  @override
+  String get fullName => 'الاسم بالكامل';
+
+  @override
+  String get emailAddress => 'البريد الإلكتروني';
+
+  @override
+  String get personalInformation => 'المعلومات الشخصية';
+
+  @override
+  String get storeBusinessDetails => 'تفاصيل المتجر والنشاط';
+
+  @override
+  String get storeAddressPrimaryBranch => 'عنوان المتجر / الفرع الرئيسي';
+
+  @override
+  String get taxCommercialRegNumber => 'الرقم الضريبي / التجاري';
+
+  @override
+  String get securityAccess => 'الأمان والوصول';
+
+  @override
+  String get changePassword => 'تغيير كلمة المرور';
+
+  @override
+  String lastUpdatedDaysAgo(Object days) {
+    return 'آخر تحديث منذ $days يومًا';
+  }
+
+  @override
+  String get twoFactorAuthentication => 'المصادقة الثنائية';
+
+  @override
+  String get smsAuthenticatorActive => 'رسائل SMS وتطبيق المصادقة نشطان';
+
+  @override
+  String get saveChanges => 'حفظ التغييرات';
+
+  @override
+  String get cancel => 'إلغاء';
+
+  @override
+  String activeBranches(Object count) {
+    return '$count نشط';
+  }
+
+  @override
+  String get memberSince => 'عضو منذ';
+
+  @override
+  String get status => 'الحالة';
+
+  @override
+  String get verified => 'موثق';
+
+  @override
+  String get storeOwner => 'مالك المتجر';
+
+  @override
+  String get taxRegistrationNumber => 'CR-904812-EGY';
 }

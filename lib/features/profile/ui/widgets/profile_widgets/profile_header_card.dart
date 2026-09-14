@@ -8,6 +8,7 @@ class ProfileHeaderCard extends StatelessWidget {
   final String businessName;
   final String roleLabel;
   final String editLabel;
+  final VoidCallback? onEdit;
 
   const ProfileHeaderCard({
     super.key,
@@ -15,6 +16,7 @@ class ProfileHeaderCard extends StatelessWidget {
     required this.businessName,
     required this.roleLabel,
     required this.editLabel,
+    this.onEdit,
   });
 
   @override
@@ -91,7 +93,7 @@ class ProfileHeaderCard extends StatelessWidget {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: onEdit,
                       child: Text(
                         editLabel,
                         style:
