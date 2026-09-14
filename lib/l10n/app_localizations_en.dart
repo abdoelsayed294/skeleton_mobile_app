@@ -180,6 +180,42 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profile => 'Profile';
 
   @override
+  String get management => 'Management';
+
+  @override
+  String get profileEdit => 'Edit';
+
+  @override
+  String get profileOwnerRole => 'STORE OWNER';
+
+  @override
+  String get profileBranches => 'Branches';
+
+  @override
+  String get profileEmployees => 'Employees';
+
+  @override
+  String get profileCashiers => 'Cashiers';
+
+  @override
+  String get profileSuppliers => 'Suppliers';
+
+  @override
+  String get storeInformation => 'Store Information';
+
+  @override
+  String get storeName => 'Store Name';
+
+  @override
+  String get phoneNumber => 'Phone Number';
+
+  @override
+  String get address => 'Address';
+
+  @override
+  String get businessType => 'Business Type';
+
+  @override
   String get storeDashboard => 'Store Dashboard';
 
   @override
@@ -211,6 +247,8 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get groceryCategory => 'Grocery';
+
+  @override
   String get reportsSubtitle => 'Overview of your business performance';
 
   @override

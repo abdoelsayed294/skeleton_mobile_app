@@ -440,6 +440,78 @@ abstract class AppLocalizations {
   /// **'Profile'**
   String get profile;
 
+  /// No description provided for @management.
+  ///
+  /// In en, this message translates to:
+  /// **'Management'**
+  String get management;
+
+  /// No description provided for @profileEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get profileEdit;
+
+  /// No description provided for @profileOwnerRole.
+  ///
+  /// In en, this message translates to:
+  /// **'STORE OWNER'**
+  String get profileOwnerRole;
+
+  /// No description provided for @profileBranches.
+  ///
+  /// In en, this message translates to:
+  /// **'Branches'**
+  String get profileBranches;
+
+  /// No description provided for @profileEmployees.
+  ///
+  /// In en, this message translates to:
+  /// **'Employees'**
+  String get profileEmployees;
+
+  /// No description provided for @profileCashiers.
+  ///
+  /// In en, this message translates to:
+  /// **'Cashiers'**
+  String get profileCashiers;
+
+  /// No description provided for @profileSuppliers.
+  ///
+  /// In en, this message translates to:
+  /// **'Suppliers'**
+  String get profileSuppliers;
+
+  /// No description provided for @storeInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Store Information'**
+  String get storeInformation;
+
+  /// No description provided for @storeName.
+  ///
+  /// In en, this message translates to:
+  /// **'Store Name'**
+  String get storeName;
+
+  /// No description provided for @phoneNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone Number'**
+  String get phoneNumber;
+
+  /// No description provided for @address.
+  ///
+  /// In en, this message translates to:
+  /// **'Address'**
+  String get address;
+
+  /// No description provided for @businessType.
+  ///
+  /// In en, this message translates to:
+  /// **'Business Type'**
+  String get businessType;
+
   /// No description provided for @storeDashboard.
   ///
   /// In en, this message translates to:
@@ -505,6 +577,7 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Grocery'**
   String get groceryCategory;
+
   /// No description provided for @reportsSubtitle.
   ///
   /// In en, this message translates to:
