@@ -5,6 +5,7 @@ import 'package:skeleton_mobile_app/core/widgets/animated_navbar/navbar_item.dar
 import 'package:skeleton_mobile_app/features/home/ui/scereens/home_screan.dart';
 import 'package:skeleton_mobile_app/features/inventory/ui/scereens/inventory_screan.dart';
 import 'package:skeleton_mobile_app/features/profile/ui/scereens/profile_screan.dart';
+import 'package:skeleton_mobile_app/features/purchases/ui/scereens/purchases_screan.dart';
 import 'package:skeleton_mobile_app/features/reports/ui/scereens/reports_screan.dart';
 
 class MainNavigationScreen extends StatefulWidget {
@@ -15,7 +16,7 @@ class MainNavigationScreen extends StatefulWidget {
 }
 
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
-  int _currentIndex = 0;
+  int _currentIndex = 1;
 
   static const _screens = [
     HomeScrean(),
@@ -53,9 +54,13 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         items: _navItems,
         currentIndex: _currentIndex,
         onTap: (index) => setState(() => _currentIndex = index),
-        backgroundColor: isDark ? AppColorsDark.surface : AppColorsLight.surface,
+        backgroundColor: isDark
+            ? AppColorsDark.surface
+            : AppColorsLight.surface,
         activeColor: isDark ? AppColorsDark.primary : AppColorsLight.primary,
-        inactiveColor: isDark ? AppColorsDark.textMuted : AppColorsLight.textMuted,
+        inactiveColor: isDark
+            ? AppColorsDark.textMuted
+            : AppColorsLight.textMuted,
       ),
     );
   }
