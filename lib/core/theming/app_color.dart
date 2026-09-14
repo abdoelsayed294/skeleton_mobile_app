@@ -46,6 +46,15 @@ class AppColorsLight {
   static const Color warning = Color(0xFFD97706);
   static const Color warningAlt = Color(0xFFF59E0B);
   static const Color warningBg = Color(0xFFFEF3C7);
+
+  // Category / accent tags (payment methods, report types, nav bar, etc.)
+  static const Color accentOrange = Color(0xFFF97316);
+  static const Color accentGreen = Color(0xFF059669);
+  static const Color accentPurple = Color(0xFF7C3AED);
+  static const Color accentPink = Color(0xFFEC4899);
+
+  // Fixed-dark hero card background (stays the same across both themes)
+  static const Color heroCardBackground = Color(0xFF101B2D);
 }
 
 class AppColorsDark {
@@ -85,4 +94,13 @@ class AppColorsDark {
   static const Color warning = Color(0xFFFBBF24);
   static const Color warningAlt = Color(0xFFF59E0B);
   static const Color warningBorder = Color(0x66781F0F); // approx rgba(120,53,15,0.4)
+
+  // Category / accent tags (payment methods, report types, nav bar, etc.)
+  static const Color accentOrange = Color(0xFFF97316);
+  static const Color accentGreen = Color(0xFF059669);
+  static const Color accentPurple = Color(0xFF7C3AED);
+  static const Color accentPink = Color(0xFFEC4899);
+
+  // Fixed-dark hero card background (stays the same across both themes)
+  static const Color heroCardBackground = Color(0xFF101B2D);
 }
