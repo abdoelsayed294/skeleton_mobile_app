@@ -180,6 +180,42 @@ class AppLocalizationsAr extends AppLocalizations {
   String get profile => 'الملف الشخصي';
 
   @override
+  String get management => 'الإدارة';
+
+  @override
+  String get profileEdit => 'تعديل';
+
+  @override
+  String get profileOwnerRole => 'مالك المتجر';
+
+  @override
+  String get profileBranches => 'الفروع';
+
+  @override
+  String get profileEmployees => 'الموظفين';
+
+  @override
+  String get profileCashiers => 'الصرافين';
+
+  @override
+  String get profileSuppliers => 'الموردين';
+
+  @override
+  String get storeInformation => 'معلومات المتجر';
+
+  @override
+  String get storeName => 'اسم المتجر';
+
+  @override
+  String get phoneNumber => 'رقم الهاتف';
+
+  @override
+  String get address => 'العنوان';
+
+  @override
+  String get businessType => 'نوع النشاط';
+
+  @override
   String get storeDashboard => 'لوحة المتجر';
 
   @override
@@ -211,6 +247,8 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get groceryCategory => 'بقالة';
+
+  @override
   String get reportsSubtitle => 'نظرة عامة على أداء متجرك';
 
   @override
