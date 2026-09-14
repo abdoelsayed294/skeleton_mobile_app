@@ -84,6 +84,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get manage => 'Manage';
 
   @override
+  String get totalProducts => 'Products';
+
+  @override
+  String get outOfStock => 'Out of Stock';
+
+  @override
+  String get inStock => 'In Stock';
+
+  @override
+  String get minimumStock => 'min';
+
+  @override
+  String get sort => 'Sort';
+
+  @override
   String get unitsSold => 'units sold';
 
   @override
@@ -163,6 +178,75 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profile => 'Profile';
+
+  @override
+  String get management => 'Management';
+
+  @override
+  String get profileEdit => 'Edit';
+
+  @override
+  String get profileOwnerRole => 'STORE OWNER';
+
+  @override
+  String get profileBranches => 'Branches';
+
+  @override
+  String get profileEmployees => 'Employees';
+
+  @override
+  String get profileCashiers => 'Cashiers';
+
+  @override
+  String get profileSuppliers => 'Suppliers';
+
+  @override
+  String get storeInformation => 'Store Information';
+
+  @override
+  String get storeName => 'Store Name';
+
+  @override
+  String get phoneNumber => 'Phone Number';
+
+  @override
+  String get address => 'Address';
+
+  @override
+  String get businessType => 'Business Type';
+
+  @override
+  String get storeDashboard => 'Store Dashboard';
+
+  @override
+  String get searchProducts => 'Search products...';
+
+  @override
+  String get allCategory => 'All';
+
+  @override
+  String get drinksCategory => 'Drinks';
+
+  @override
+  String get foodCategory => 'Food';
+
+  @override
+  String get snacksCategory => 'Snacks';
+
+  @override
+  String get householdCategory => 'Household';
+
+  @override
+  String get allProducts => 'All Products';
+
+  @override
+  String get unitsInStock => 'units in stock';
+
+  @override
+  String get bakeryCategory => 'Bakery';
+
+  @override
+  String get groceryCategory => 'Grocery';
 
   @override
   String get reportsSubtitle => 'Overview of your business performance';

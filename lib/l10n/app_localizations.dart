@@ -248,6 +248,36 @@ abstract class AppLocalizations {
   /// **'Manage'**
   String get manage;
 
+  /// No description provided for @totalProducts.
+  ///
+  /// In en, this message translates to:
+  /// **'Products'**
+  String get totalProducts;
+
+  /// No description provided for @outOfStock.
+  ///
+  /// In en, this message translates to:
+  /// **'Out of Stock'**
+  String get outOfStock;
+
+  /// No description provided for @inStock.
+  ///
+  /// In en, this message translates to:
+  /// **'In Stock'**
+  String get inStock;
+
+  /// No description provided for @minimumStock.
+  ///
+  /// In en, this message translates to:
+  /// **'min'**
+  String get minimumStock;
+
+  /// No description provided for @sort.
+  ///
+  /// In en, this message translates to:
+  /// **'Sort'**
+  String get sort;
+
   /// No description provided for @unitsSold.
   ///
   /// In en, this message translates to:
@@ -409,6 +439,144 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Profile'**
   String get profile;
+
+  /// No description provided for @management.
+  ///
+  /// In en, this message translates to:
+  /// **'Management'**
+  String get management;
+
+  /// No description provided for @profileEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get profileEdit;
+
+  /// No description provided for @profileOwnerRole.
+  ///
+  /// In en, this message translates to:
+  /// **'STORE OWNER'**
+  String get profileOwnerRole;
+
+  /// No description provided for @profileBranches.
+  ///
+  /// In en, this message translates to:
+  /// **'Branches'**
+  String get profileBranches;
+
+  /// No description provided for @profileEmployees.
+  ///
+  /// In en, this message translates to:
+  /// **'Employees'**
+  String get profileEmployees;
+
+  /// No description provided for @profileCashiers.
+  ///
+  /// In en, this message translates to:
+  /// **'Cashiers'**
+  String get profileCashiers;
+
+  /// No description provided for @profileSuppliers.
+  ///
+  /// In en, this message translates to:
+  /// **'Suppliers'**
+  String get profileSuppliers;
+
+  /// No description provided for @storeInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Store Information'**
+  String get storeInformation;
+
+  /// No description provided for @storeName.
+  ///
+  /// In en, this message translates to:
+  /// **'Store Name'**
+  String get storeName;
+
+  /// No description provided for @phoneNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone Number'**
+  String get phoneNumber;
+
+  /// No description provided for @address.
+  ///
+  /// In en, this message translates to:
+  /// **'Address'**
+  String get address;
+
+  /// No description provided for @businessType.
+  ///
+  /// In en, this message translates to:
+  /// **'Business Type'**
+  String get businessType;
+
+  /// No description provided for @storeDashboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Store Dashboard'**
+  String get storeDashboard;
+
+  /// No description provided for @searchProducts.
+  ///
+  /// In en, this message translates to:
+  /// **'Search products...'**
+  String get searchProducts;
+
+  /// No description provided for @allCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get allCategory;
+
+  /// No description provided for @drinksCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Drinks'**
+  String get drinksCategory;
+
+  /// No description provided for @foodCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Food'**
+  String get foodCategory;
+
+  /// No description provided for @snacksCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Snacks'**
+  String get snacksCategory;
+
+  /// No description provided for @householdCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Household'**
+  String get householdCategory;
+
+  /// No description provided for @allProducts.
+  ///
+  /// In en, this message translates to:
+  /// **'All Products'**
+  String get allProducts;
+
+  /// No description provided for @unitsInStock.
+  ///
+  /// In en, this message translates to:
+  /// **'units in stock'**
+  String get unitsInStock;
+
+  /// No description provided for @bakeryCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Bakery'**
+  String get bakeryCategory;
+
+  /// No description provided for @groceryCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Grocery'**
+  String get groceryCategory;
 
   /// No description provided for @reportsSubtitle.
   ///
