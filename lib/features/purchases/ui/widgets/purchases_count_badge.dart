@@ -8,17 +8,21 @@ class PurchasesCountBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 9.w, vertical: 3.h),
       decoration: BoxDecoration(
-        color: AppColorsLight.avatarBg,
+        color: isDark
+            ? AppColorsDark.primary.withValues(alpha: .12)
+            : AppColorsLight.avatarBg,
         borderRadius: BorderRadius.circular(12.r),
       ),
       child: Text(
         '48',
-        style: AppStyles.statChangeLight.copyWith(
-          color: AppColorsLight.primary,
-        ),
+        style: (isDark ? AppStyles.statChangeDark : AppStyles.statChangeLight)
+            .copyWith(
+              color: isDark ? AppColorsDark.primary : AppColorsLight.primary,
+            ),
       ),
     );
   }

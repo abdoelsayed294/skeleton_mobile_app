@@ -11,7 +11,7 @@ class PurchasesScrean extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: const AddPurchaseButton(),
       body: SafeArea(
         child: SingleChildScrollView(

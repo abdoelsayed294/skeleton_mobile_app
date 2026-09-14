@@ -913,6 +913,126 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Safi Water 1.5L x6'**
   String get productSafiWater;
+
+  /// No description provided for @totalPurchases.
+  ///
+  /// In en, this message translates to:
+  /// **'TOTAL PURCHASES'**
+  String get totalPurchases;
+
+  /// No description provided for @vsLastMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'+ 12.4% vs last month'**
+  String get vsLastMonth;
+
+  /// No description provided for @ordersUpper.
+  ///
+  /// In en, this message translates to:
+  /// **'ORDERS'**
+  String get ordersUpper;
+
+  /// No description provided for @sourcesUpper.
+  ///
+  /// In en, this message translates to:
+  /// **'SOURCES'**
+  String get sourcesUpper;
+
+  /// No description provided for @purchaseCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Purchases'**
+  String get purchaseCount;
+
+  /// No description provided for @suppliers.
+  ///
+  /// In en, this message translates to:
+  /// **'Suppliers'**
+  String get suppliers;
+
+  /// No description provided for @recentPurchases.
+  ///
+  /// In en, this message translates to:
+  /// **'RECENT PURCHASES'**
+  String get recentPurchases;
+
+  /// No description provided for @addPurchase.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Purchase'**
+  String get addPurchase;
+
+  /// No description provided for @paid.
+  ///
+  /// In en, this message translates to:
+  /// **'PAID'**
+  String get paid;
+
+  /// No description provided for @partial.
+  ///
+  /// In en, this message translates to:
+  /// **'PARTIAL'**
+  String get partial;
+
+  /// No description provided for @pending.
+  ///
+  /// In en, this message translates to:
+  /// **'PENDING'**
+  String get pending;
+
+  /// No description provided for @itemsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} Items'**
+  String itemsCount(Object count);
+
+  /// No description provided for @remainingAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'{amount} remaining'**
+  String remainingAmount(Object amount);
+
+  /// No description provided for @dueDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Due {date}'**
+  String dueDate(Object date);
+
+  /// No description provided for @freshMarketSupplier.
+  ///
+  /// In en, this message translates to:
+  /// **'Fresh Market Supplier'**
+  String get freshMarketSupplier;
+
+  /// No description provided for @alGhazalTrading.
+  ///
+  /// In en, this message translates to:
+  /// **'Al-Ghazal Trading Co.'**
+  String get alGhazalTrading;
+
+  /// No description provided for @nileFoodsDistribution.
+  ///
+  /// In en, this message translates to:
+  /// **'Nile Foods Distribution'**
+  String get nileFoodsDistribution;
+
+  /// No description provided for @deltaExpressWholesale.
+  ///
+  /// In en, this message translates to:
+  /// **'Delta Express Wholesale'**
+  String get deltaExpressWholesale;
+
+  /// No description provided for @kareemGeneralImports.
+  ///
+  /// In en, this message translates to:
+  /// **'Kareem General Imports'**
+  String get kareemGeneralImports;
+
+  /// No description provided for @medPharmaSupplies.
+  ///
+  /// In en, this message translates to:
+  /// **'MedPharma Supplies'**
+  String get medPharmaSupplies;
 }
 
 class _AppLocalizationsDelegate

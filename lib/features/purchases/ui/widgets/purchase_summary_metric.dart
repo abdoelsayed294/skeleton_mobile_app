@@ -21,12 +21,17 @@ class PurchaseSummaryMetric extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: EdgeInsets.fromLTRB(12.w, 12.h, 12.w, 10.h),
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: .72),
+        color: isDark
+            ? AppColorsDark.background
+            : Colors.white.withValues(alpha: .72),
         borderRadius: BorderRadius.circular(16.r),
-        border: Border.all(color: AppColorsLight.border),
+        border: Border.all(
+          color: isDark ? AppColorsDark.border : AppColorsLight.border,
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,18 +42,32 @@ class PurchaseSummaryMetric extends StatelessWidget {
               SizedBox(width: 6.w),
               Text(
                 title,
-                style: AppStyles.statTitleLight.copyWith(fontSize: 10),
+                style:
+                    (isDark
+                            ? AppStyles.statTitleDark
+                            : AppStyles.statTitleLight)
+                        .copyWith(fontSize: 10),
               ),
             ],
           ),
           SizedBox(height: 8.h),
-          Text(value, style: AppStyles.statValueLight.copyWith(fontSize: 22)),
+          Text(
+            value,
+            style: (isDark ? AppStyles.statValueDark : AppStyles.statValueLight)
+                .copyWith(fontSize: 22),
+          ),
           Text(
             subtitle,
-            style: AppStyles.font12MediumLight.copyWith(
-              color: AppColorsLight.textMuted,
-              fontSize: 10,
-            ),
+            style:
+                (isDark
+                        ? AppStyles.font12MediumDark
+                        : AppStyles.font12MediumLight)
+                    .copyWith(
+                      color: isDark
+                          ? AppColorsDark.textMuted
+                          : AppColorsLight.textMuted,
+                      fontSize: 10,
+                    ),
           ),
         ],
       ),
