@@ -249,5 +249,26 @@
   "productBaladiBread": "عيش بلدي (5 أرغفة)",
   "productSunflowerOilHayat": "زيت عباد الشمس حياة 1.8 لتر",
   "productHalawaExtraFine": "حلاوة طحينية فاخرة 500 جم",
-  "productSafiWater": "مياه صافي 1.5 لتر × 6"
+  "productSafiWater": "مياه صافي 1.5 لتر × 6",
+
+  "totalPurchases": "إجمالي المشتريات",
+  "vsLastMonth": "+ 12.4% مقارنة بالشهر الماضي",
+  "ordersUpper": "الطلبات",
+  "sourcesUpper": "المصادر",
+  "purchaseCount": "مشتريات",
+  "suppliers": "الموردون",
+  "recentPurchases": "أحدث المشتريات",
+  "addPurchase": "إضافة مشتريات",
+  "paid": "مدفوع",
+  "partial": "جزئي",
+  "pending": "معلق",
+  "itemsCount": "{count} عنصر",
+  "remainingAmount": "{amount} متبقي",
+  "dueDate": "موعد الاستحقاق {date}",
+  "freshMarketSupplier": "مورد سوق فريش",
+  "alGhazalTrading": "شركة الغزال للتجارة",
+  "nileFoodsDistribution": "توزيع أغذية النيل",
+  "deltaExpressWholesale": "دلتا إكسبريس للجملة",
+  "kareemGeneralImports": "كريم للاستيراد",
+  "medPharmaSupplies": "مستلزمات ميدفارما"
 }

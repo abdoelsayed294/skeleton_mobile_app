@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeleton_mobile_app/core/theming/app_color.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
+import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
 
 class PurchaseRecord {
   final String name, date, invoice, items, amount, status, initials;
@@ -29,17 +30,27 @@ class PurchaseRecordCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final statusColor = record.status == 'PAID'
-        ? AppColorsLight.success
-        : record.status == 'PARTIAL'
-        ? AppColorsLight.warning
-        : AppColorsLight.error;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final l10n = AppLocalizations.of(context)!;
+    final surface = isDark ? AppColorsDark.surface : AppColorsLight.surface;
+    final border = isDark ? AppColorsDark.border : AppColorsLight.border;
+    final primaryText = isDark
+        ? AppColorsDark.textPrimary
+        : AppColorsLight.textPrimary;
+    final mutedText = isDark
+        ? AppColorsDark.textMuted
+        : AppColorsLight.textMuted;
+    final statusColor = record.status == l10n.paid
+        ? (isDark ? AppColorsDark.success : AppColorsLight.success)
+        : record.status == l10n.partial
+        ? (isDark ? AppColorsDark.warning : AppColorsLight.warning)
+        : (isDark ? AppColorsDark.error : AppColorsLight.error);
     return Container(
       padding: EdgeInsets.fromLTRB(16.w, 16.h, 16.w, 14.h),
       decoration: BoxDecoration(
-        color: AppColorsLight.surface,
+        color: surface,
         borderRadius: BorderRadius.circular(16.r),
-        border: Border.all(color: AppColorsLight.border),
+        border: Border.all(color: border),
         boxShadow: const [
           BoxShadow(
             color: Color(0x0A1E88E5),
@@ -65,10 +76,14 @@ class PurchaseRecordCard extends StatelessWidget {
                 ),
                 child: Text(
                   record.initials,
-                  style: AppStyles.font12MediumLight.copyWith(
-                    color: record.color,
-                    fontWeight: FontWeight.w700,
-                  ),
+                  style:
+                      (isDark
+                              ? AppStyles.font12MediumDark
+                              : AppStyles.font12MediumLight)
+                          .copyWith(
+                            color: record.color,
+                            fontWeight: FontWeight.w700,
+                          ),
                 ),
               ),
               SizedBox(width: 12.w),
@@ -80,16 +95,23 @@ class PurchaseRecordCard extends StatelessWidget {
                       record.name,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: AppStyles.font14MediumLight.copyWith(
-                        fontWeight: FontWeight.w700,
-                      ),
+                      style:
+                          (isDark
+                                  ? AppStyles.font14MediumDark
+                                  : AppStyles.font14MediumLight)
+                              .copyWith(
+                                color: primaryText,
+                                fontWeight: FontWeight.w700,
+                              ),
                     ),
                     SizedBox(height: 3.h),
                     Text(
                       record.date,
-                      style: AppStyles.font12MediumLight.copyWith(
-                        color: AppColorsLight.textMuted,
-                      ),
+                      style:
+                          (isDark
+                                  ? AppStyles.font12MediumDark
+                                  : AppStyles.font12MediumLight)
+                              .copyWith(color: mutedText),
                     ),
                   ],
                 ),
@@ -113,22 +135,38 @@ class PurchaseRecordCard extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.symmetric(vertical: 12.h),
-            child: Divider(height: 1, color: AppColorsLight.borderLight),
+            child: Divider(height: 1, color: border),
           ),
           Row(
             children: [
-              Text(record.invoice, style: AppStyles.font12MediumLight),
+              Text(
+                record.invoice,
+                style: isDark
+                    ? AppStyles.font12MediumDark
+                    : AppStyles.font12MediumLight,
+              ),
               Text(
                 '  ·  ${record.items}',
-                style: AppStyles.font12MediumLight.copyWith(
-                  color: AppColorsLight.textMuted,
-                ),
+                style:
+                    (isDark
+                            ? AppStyles.font12MediumDark
+                            : AppStyles.font12MediumLight)
+                        .copyWith(color: mutedText),
               ),
               const Spacer(),
-              Text('EGP  ', style: AppStyles.font12MediumLight),
+              Text(
+                'EGP  ',
+                style: isDark
+                    ? AppStyles.font12MediumDark
+                    : AppStyles.font12MediumLight,
+              ),
               Text(
                 record.amount,
-                style: AppStyles.statValueLight.copyWith(fontSize: 16),
+                style:
+                    (isDark
+                            ? AppStyles.statValueDark
+                            : AppStyles.statValueLight)
+                        .copyWith(fontSize: 16),
               ),
             ],
           ),
@@ -139,13 +177,21 @@ class PurchaseRecordCard extends StatelessWidget {
                 padding: EdgeInsets.only(top: 4.h),
                 child: Text(
                   record.remaining ?? record.due!,
-                  style: AppStyles.font12MediumLight.copyWith(
-                    color: record.due != null
-                        ? AppColorsLight.error
-                        : AppColorsLight.warning,
-                    fontSize: 10,
-                    fontWeight: FontWeight.w700,
-                  ),
+                  style:
+                      (isDark
+                              ? AppStyles.font12MediumDark
+                              : AppStyles.font12MediumLight)
+                          .copyWith(
+                            color: record.due != null
+                                ? (isDark
+                                      ? AppColorsDark.error
+                                      : AppColorsLight.error)
+                                : (isDark
+                                      ? AppColorsDark.warning
+                                      : AppColorsLight.warning),
+                            fontSize: 10,
+                            fontWeight: FontWeight.w700,
+                          ),
                 ),
               ),
             ),

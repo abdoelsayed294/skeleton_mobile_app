@@ -249,5 +249,26 @@
   "productBaladiBread": "Baladi Bread (Pack 5)",
   "productSunflowerOilHayat": "Hayat Sunflower Oil 1.8L",
   "productHalawaExtraFine": "Halawa Extra Fine 500g",
-  "productSafiWater": "Safi Water 1.5L x6"
+  "productSafiWater": "Safi Water 1.5L x6",
+
+  "totalPurchases": "TOTAL PURCHASES",
+  "vsLastMonth": "+ 12.4% vs last month",
+  "ordersUpper": "ORDERS",
+  "sourcesUpper": "SOURCES",
+  "purchaseCount": "Purchases",
+  "suppliers": "Suppliers",
+  "recentPurchases": "RECENT PURCHASES",
+  "addPurchase": "Add Purchase",
+  "paid": "PAID",
+  "partial": "PARTIAL",
+  "pending": "PENDING",
+  "itemsCount": "{count} Items",
+  "remainingAmount": "{amount} remaining",
+  "dueDate": "Due {date}",
+  "freshMarketSupplier": "Fresh Market Supplier",
+  "alGhazalTrading": "Al-Ghazal Trading Co.",
+  "nileFoodsDistribution": "Nile Foods Distribution",
+  "deltaExpressWholesale": "Delta Express Wholesale",
+  "kareemGeneralImports": "Kareem General Imports",
+  "medPharmaSupplies": "MedPharma Supplies"
 }

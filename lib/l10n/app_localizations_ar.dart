@@ -415,4 +415,70 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get productSafiWater => 'مياه صافي 1.5 لتر × 6';
+
+  @override
+  String get totalPurchases => 'إجمالي المشتريات';
+
+  @override
+  String get vsLastMonth => '+ 12.4% مقارنة بالشهر الماضي';
+
+  @override
+  String get ordersUpper => 'الطلبات';
+
+  @override
+  String get sourcesUpper => 'المصادر';
+
+  @override
+  String get purchaseCount => 'مشتريات';
+
+  @override
+  String get suppliers => 'الموردون';
+
+  @override
+  String get recentPurchases => 'أحدث المشتريات';
+
+  @override
+  String get addPurchase => 'إضافة مشتريات';
+
+  @override
+  String get paid => 'مدفوع';
+
+  @override
+  String get partial => 'جزئي';
+
+  @override
+  String get pending => 'معلق';
+
+  @override
+  String itemsCount(Object count) {
+    return '$count عنصر';
+  }
+
+  @override
+  String remainingAmount(Object amount) {
+    return '$amount متبقي';
+  }
+
+  @override
+  String dueDate(Object date) {
+    return 'موعد الاستحقاق $date';
+  }
+
+  @override
+  String get freshMarketSupplier => 'مورد سوق فريش';
+
+  @override
+  String get alGhazalTrading => 'شركة الغزال للتجارة';
+
+  @override
+  String get nileFoodsDistribution => 'توزيع أغذية النيل';
+
+  @override
+  String get deltaExpressWholesale => 'دلتا إكسبريس للجملة';
+
+  @override
+  String get kareemGeneralImports => 'كريم للاستيراد';
+
+  @override
+  String get medPharmaSupplies => 'مستلزمات ميدفارما';
 }

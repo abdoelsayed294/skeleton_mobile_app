@@ -415,4 +415,70 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get productSafiWater => 'Safi Water 1.5L x6';
+
+  @override
+  String get totalPurchases => 'TOTAL PURCHASES';
+
+  @override
+  String get vsLastMonth => '+ 12.4% vs last month';
+
+  @override
+  String get ordersUpper => 'ORDERS';
+
+  @override
+  String get sourcesUpper => 'SOURCES';
+
+  @override
+  String get purchaseCount => 'Purchases';
+
+  @override
+  String get suppliers => 'Suppliers';
+
+  @override
+  String get recentPurchases => 'RECENT PURCHASES';
+
+  @override
+  String get addPurchase => 'Add Purchase';
+
+  @override
+  String get paid => 'PAID';
+
+  @override
+  String get partial => 'PARTIAL';
+
+  @override
+  String get pending => 'PENDING';
+
+  @override
+  String itemsCount(Object count) {
+    return '$count Items';
+  }
+
+  @override
+  String remainingAmount(Object amount) {
+    return '$amount remaining';
+  }
+
+  @override
+  String dueDate(Object date) {
+    return 'Due $date';
+  }
+
+  @override
+  String get freshMarketSupplier => 'Fresh Market Supplier';
+
+  @override
+  String get alGhazalTrading => 'Al-Ghazal Trading Co.';
+
+  @override
+  String get nileFoodsDistribution => 'Nile Foods Distribution';
+
+  @override
+  String get deltaExpressWholesale => 'Delta Express Wholesale';
+
+  @override
+  String get kareemGeneralImports => 'Kareem General Imports';
+
+  @override
+  String get medPharmaSupplies => 'MedPharma Supplies';
 }
