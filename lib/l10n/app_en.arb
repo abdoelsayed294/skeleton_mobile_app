@@ -117,6 +117,12 @@
   },
 
   "manage": "Manage",
+
+  "totalProducts": "Products",
+  "outOfStock": "Out of Stock",
+  "inStock": "In Stock",
+  "minimumStock": "min",
+  "sort": "Sort",
   "@manage": {
     "description": "Button used to manage items"
   },
@@ -161,6 +167,17 @@
   },
 
   "profile": "Profile",
+  "storeDashboard": "Store Dashboard",
+  "searchProducts": "Search products...",
+  "allCategory": "All",
+  "drinksCategory": "Drinks",
+  "foodCategory": "Food",
+  "snacksCategory": "Snacks",
+  "householdCategory": "Household",
+  "allProducts": "All Products",
+  "unitsInStock": "units in stock",
+  "bakeryCategory": "Bakery",
+  "groceryCategory": "Grocery",
   "@profile": {
     "description": "Profile navigation item"
   },

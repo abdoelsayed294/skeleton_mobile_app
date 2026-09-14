@@ -84,6 +84,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get manage => 'Manage';
 
   @override
+  String get totalProducts => 'Products';
+
+  @override
+  String get outOfStock => 'Out of Stock';
+
+  @override
+  String get inStock => 'In Stock';
+
+  @override
+  String get minimumStock => 'min';
+
+  @override
+  String get sort => 'Sort';
+
+  @override
   String get unitsSold => 'units sold';
 
   @override
@@ -165,6 +180,37 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profile => 'Profile';
 
   @override
+  String get storeDashboard => 'Store Dashboard';
+
+  @override
+  String get searchProducts => 'Search products...';
+
+  @override
+  String get allCategory => 'All';
+
+  @override
+  String get drinksCategory => 'Drinks';
+
+  @override
+  String get foodCategory => 'Food';
+
+  @override
+  String get snacksCategory => 'Snacks';
+
+  @override
+  String get householdCategory => 'Household';
+
+  @override
+  String get allProducts => 'All Products';
+
+  @override
+  String get unitsInStock => 'units in stock';
+
+  @override
+  String get bakeryCategory => 'Bakery';
+
+  @override
+  String get groceryCategory => 'Grocery';
   String get reportsSubtitle => 'Overview of your business performance';
 
   @override

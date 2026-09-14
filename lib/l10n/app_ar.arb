@@ -117,6 +117,12 @@
   },
 
   "manage": "إدارة",
+
+  "totalProducts": "المنتجات",
+  "outOfStock": "نفد المخزون",
+  "inStock": "متوفر",
+  "minimumStock": "الحد الأدنى",
+  "sort": "ترتيب",
   "@manage": {
     "description": "Button used to manage items"
   },
@@ -161,6 +167,17 @@
   },
 
   "profile": "الملف الشخصي",
+  "storeDashboard": "لوحة المتجر",
+  "searchProducts": "ابحث عن المنتجات...",
+  "allCategory": "الكل",
+  "drinksCategory": "مشروبات",
+  "foodCategory": "أغذية",
+  "snacksCategory": "وجبات خفيفة",
+  "householdCategory": "منزلية",
+  "allProducts": "كل المنتجات",
+  "unitsInStock": "وحدة في المخزون",
+  "bakeryCategory": "مخبوزات",
+  "groceryCategory": "بقالة",
   "@profile": {
     "description": "Profile navigation item"
   },
