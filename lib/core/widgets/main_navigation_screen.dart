@@ -4,8 +4,6 @@ import 'package:skeleton_mobile_app/core/widgets/animated_navbar/animated_navbar
 import 'package:skeleton_mobile_app/core/widgets/animated_navbar/navbar_item.dart';
 import 'package:skeleton_mobile_app/features/home/ui/scereens/home_screan.dart';
 import 'package:skeleton_mobile_app/features/inventory/ui/scereens/inventory_screan.dart';
-import 'package:skeleton_mobile_app/features/profile/ui/scereens/profile_screan.dart';
-import 'package:skeleton_mobile_app/features/purchases/ui/scereens/purchases_screan.dart';
 import 'package:skeleton_mobile_app/features/reports/ui/scereens/reports_screan.dart';
 
 class MainNavigationScreen extends StatefulWidget {
@@ -18,12 +16,7 @@ class MainNavigationScreen extends StatefulWidget {
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
   int _currentIndex = 0;
 
-  static const _screens = [
-    HomeScrean(),
-    ReportsScrean(),
-    InventoryScrean(),
-    ProfileScrean(),
-  ];
+  static const _screens = [HomeScrean(), ReportsScrean(), InventoryScrean()];
 
   static const _navItems = [
     AnimatedNavbarItem(
@@ -37,10 +30,6 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     AnimatedNavbarItem(
       icon: Icon(Icons.inventory_2_outlined),
       activeIcon: Icon(Icons.inventory_2_rounded),
-    ),
-    AnimatedNavbarItem(
-      icon: Icon(Icons.person_outline_rounded),
-      activeIcon: Icon(Icons.person_rounded),
     ),
   ];
 

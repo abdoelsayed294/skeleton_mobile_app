@@ -18,6 +18,63 @@ class AppLocalizationsAr extends AppLocalizations {
   String get todayOrders => 'طلبات اليوم';
 
   @override
+  String get returns => 'المرتجعات';
+
+  @override
+  String get itemsSold => 'المنتجات المباعة';
+
+  @override
+  String get stockKeepingUnits => 'وحدات التخزين';
+
+  @override
+  String get profitDetails => 'تفاصيل الأرباح';
+
+  @override
+  String get grossProfit => 'إجمالي الربح';
+
+  @override
+  String get margin => 'الهامش';
+
+  @override
+  String get revenue => 'الإيرادات';
+
+  @override
+  String get expenses => 'المصروفات';
+
+  @override
+  String get netMargin => 'هامش صافي الربح';
+
+  @override
+  String get year => 'السنة';
+
+  @override
+  String get expenseBreakdown => 'تفصيل المصروفات';
+
+  @override
+  String get moneyWentToday => 'أين ذهبت الأموال اليوم';
+
+  @override
+  String get cogs => 'تكلفة البضائع';
+
+  @override
+  String get operations => 'التشغيل';
+
+  @override
+  String get salaries => 'الرواتب';
+
+  @override
+  String get weeklyProfitSummary => 'ملخص الأرباح الأسبوعي';
+
+  @override
+  String get last7DaysPerformance => 'أداء آخر 7 أيام';
+
+  @override
+  String get weekTotal => 'إجمالي الأسبوع';
+
+  @override
+  String get lastWeek => 'مقارنة بالأسبوع الماضي';
+
+  @override
   String get purchases => 'المشتريات';
 
   @override

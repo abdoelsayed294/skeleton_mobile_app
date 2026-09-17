@@ -16,6 +16,86 @@
     "description": "Label showing today's orders"
   },
 
+  "returns": "المرتجعات",
+  "@returns": {
+    "description": "Label showing returned sales"
+  },
+
+  "itemsSold": "المنتجات المباعة",
+  "@itemsSold": {
+    "description": "Label showing the number of items sold"
+  },
+
+  "stockKeepingUnits": "وحدات التخزين",
+  "@stockKeepingUnits": {
+    "description": "Short label for stock keeping units"
+  },
+
+  "profitDetails": "تفاصيل الأرباح",
+  "@profitDetails": {
+    "description": "Title for the profit details screen"
+  },
+  "grossProfit": "إجمالي الربح",
+  "@grossProfit": {
+    "description": "Gross profit metric label"
+  },
+  "margin": "الهامش",
+  "@margin": {
+    "description": "Profit margin metric label"
+  },
+  "revenue": "الإيرادات",
+  "@revenue": {
+    "description": "Revenue metric label"
+  },
+  "expenses": "المصروفات",
+  "@expenses": {
+    "description": "Expenses metric label"
+  },
+  "netMargin": "هامش صافي الربح",
+  "@netMargin": {
+    "description": "Net margin label"
+  },
+  "year": "السنة",
+  "@year": {
+    "description": "Year period filter label"
+  },
+  "expenseBreakdown": "تفصيل المصروفات",
+  "@expenseBreakdown": {
+    "description": "Expense breakdown section title"
+  },
+  "moneyWentToday": "أين ذهبت الأموال اليوم",
+  "@moneyWentToday": {
+    "description": "Expense breakdown subtitle"
+  },
+  "cogs": "تكلفة البضائع",
+  "@cogs": {
+    "description": "Cost of goods sold label"
+  },
+  "operations": "التشغيل",
+  "@operations": {
+    "description": "Operations expense label"
+  },
+  "salaries": "الرواتب",
+  "@salaries": {
+    "description": "Salaries expense label"
+  },
+  "weeklyProfitSummary": "ملخص الأرباح الأسبوعي",
+  "@weeklyProfitSummary": {
+    "description": "Weekly profit summary section title"
+  },
+  "last7DaysPerformance": "أداء آخر 7 أيام",
+  "@last7DaysPerformance": {
+    "description": "Weekly profit summary subtitle"
+  },
+  "weekTotal": "إجمالي الأسبوع",
+  "@weekTotal": {
+    "description": "Weekly total label"
+  },
+  "lastWeek": "مقارنة بالأسبوع الماضي",
+  "@lastWeek": {
+    "description": "Weekly comparison label"
+  },
+
   "purchases": "المشتريات",
   "@purchases": {
     "description": "Label showing purchases"

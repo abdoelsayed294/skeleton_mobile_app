@@ -31,7 +31,10 @@ class _StatsGridState extends State<StatsGrid> {
                 change: '+12.5%',
                 icon: Icons.shopping_bag_outlined,
                 isSelected: selectedCardIndex == 0,
-                onTap: () => setState(() => selectedCardIndex = 0),
+                onTap: () {
+                  setState(() => selectedCardIndex = 0);
+                  Navigator.of(context).pushNamed(Routes.todaySalesScreen);
+                },
               ),
             ),
             SizedBox(width: 12.w),
@@ -76,7 +79,10 @@ class _StatsGridState extends State<StatsGrid> {
                 icon: Icons.attach_money_rounded,
                 accentColor: const Color(0xFF059669),
                 isSelected: selectedCardIndex == 3,
-                onTap: () => setState(() => selectedCardIndex = 3),
+                onTap: () {
+                  setState(() => selectedCardIndex = 3);
+                  Navigator.of(context).pushNamed(Routes.profitDetailsScreen);
+                },
               ),
             ),
           ],

@@ -116,6 +116,120 @@ abstract class AppLocalizations {
   /// **'Today\'s Orders'**
   String get todayOrders;
 
+  /// Label showing returned sales
+  ///
+  /// In en, this message translates to:
+  /// **'Returns'**
+  String get returns;
+
+  /// Label showing the number of items sold
+  ///
+  /// In en, this message translates to:
+  /// **'Items Sold'**
+  String get itemsSold;
+
+  /// Short label for stock keeping units
+  ///
+  /// In en, this message translates to:
+  /// **'SKUs'**
+  String get stockKeepingUnits;
+
+  /// Title for the profit details screen
+  ///
+  /// In en, this message translates to:
+  /// **'Profit Details'**
+  String get profitDetails;
+
+  /// Gross profit metric label
+  ///
+  /// In en, this message translates to:
+  /// **'Gross Profit'**
+  String get grossProfit;
+
+  /// Profit margin metric label
+  ///
+  /// In en, this message translates to:
+  /// **'Margin'**
+  String get margin;
+
+  /// Revenue metric label
+  ///
+  /// In en, this message translates to:
+  /// **'Revenue'**
+  String get revenue;
+
+  /// Expenses metric label
+  ///
+  /// In en, this message translates to:
+  /// **'Expenses'**
+  String get expenses;
+
+  /// Net margin label
+  ///
+  /// In en, this message translates to:
+  /// **'Net Margin'**
+  String get netMargin;
+
+  /// Year period filter label
+  ///
+  /// In en, this message translates to:
+  /// **'Year'**
+  String get year;
+
+  /// Expense breakdown section title
+  ///
+  /// In en, this message translates to:
+  /// **'Expense Breakdown'**
+  String get expenseBreakdown;
+
+  /// Expense breakdown subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Where the money went today'**
+  String get moneyWentToday;
+
+  /// Cost of goods sold label
+  ///
+  /// In en, this message translates to:
+  /// **'COGS'**
+  String get cogs;
+
+  /// Operations expense label
+  ///
+  /// In en, this message translates to:
+  /// **'Operations'**
+  String get operations;
+
+  /// Salaries expense label
+  ///
+  /// In en, this message translates to:
+  /// **'Salaries'**
+  String get salaries;
+
+  /// Weekly profit summary section title
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly Profit Summary'**
+  String get weeklyProfitSummary;
+
+  /// Weekly profit summary subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Last 7 days performance'**
+  String get last7DaysPerformance;
+
+  /// Weekly total label
+  ///
+  /// In en, this message translates to:
+  /// **'Week Total'**
+  String get weekTotal;
+
+  /// Weekly comparison label
+  ///
+  /// In en, this message translates to:
+  /// **'vs Last Week'**
+  String get lastWeek;
+
   /// Label showing purchases
   ///
   /// In en, this message translates to:

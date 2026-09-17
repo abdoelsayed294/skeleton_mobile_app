@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:skeleton_mobile_app/core/widgets/main_navigation_screen.dart';
 import 'package:skeleton_mobile_app/features/home/ui/scereens/home_screan.dart';
+import 'package:skeleton_mobile_app/features/home/ui/scereens/today_sales_screen.dart';
+import 'package:skeleton_mobile_app/features/home/ui/scereens/profit_details_screen.dart';
 import 'package:skeleton_mobile_app/features/inventory/ui/scereens/inventory_screan.dart';
 import 'package:skeleton_mobile_app/features/product_details/ui/scereens/product_details_screan.dart';
 import 'package:skeleton_mobile_app/features/profile/ui/scereens/profile_screan.dart';
@@ -25,6 +27,10 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const InventoryScrean());
       case Routes.reportsScreen:
         return MaterialPageRoute(builder: (_) => const ReportsScrean());
+      case Routes.todaySalesScreen:
+        return MaterialPageRoute(builder: (_) => const TodaySalesScreen());
+      case Routes.profitDetailsScreen:
+        return MaterialPageRoute(builder: (_) => const ProfitDetailsScreen());
       case Routes.profileScreen:
         return MaterialPageRoute(builder: (_) => const ProfileScrean());
       case Routes.editProfileScreen:

@@ -41,6 +41,7 @@ class _AnimatedSpotlightNavbarState extends State<AnimatedSpotlightNavbar>
 
   double _startX = 0;
   double _endX = 0;
+  TextDirection? _lastTextDirection;
 
   @override
   void initState() {
@@ -79,6 +80,26 @@ class _AnimatedSpotlightNavbarState extends State<AnimatedSpotlightNavbar>
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    final textDirection = Directionality.of(context);
+    if (_lastTextDirection == null) {
+      _lastTextDirection = textDirection;
+      return;
+    }
+
+    if (_lastTextDirection != textDirection) {
+      _lastTextDirection = textDirection;
+      _startX = _endX;
+      _endX = _calculateCenterX(widget.currentIndex);
+      _controller
+        ..reset()
+        ..forward();
+    }
+  }
+
+  @override
   void dispose() {
     _controller.dispose();
     super.dispose();
@@ -87,12 +108,15 @@ class _AnimatedSpotlightNavbarState extends State<AnimatedSpotlightNavbar>
   double _calculateCenterX(int index) {
     final totalWidth = MediaQuery.of(context).size.width;
     final itemWidth = totalWidth / widget.items.length;
-    return itemWidth * index + itemWidth / 2;
+    final isRtl = Directionality.of(context) == TextDirection.rtl;
+    final visualIndex = isRtl ? widget.items.length - 1 - index : index;
+    return itemWidth * visualIndex + itemWidth / 2;
   }
 
   @override
   Widget build(BuildContext context) {
     final bottomPadding = MediaQuery.of(context).padding.bottom;
+    final textDirection = Directionality.of(context);
 
     return Container(
       height: widget.height + bottomPadding,
@@ -106,14 +130,17 @@ class _AnimatedSpotlightNavbarState extends State<AnimatedSpotlightNavbar>
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(widget.borderRadius),
         ),
-        child: Stack(
-          children: [
-            _buildSpotlight(),
-            Padding(
-              padding: EdgeInsets.only(bottom: bottomPadding),
-              child: Stack(children: [_buildIndicator(), _buildIcons()]),
-            ),
-          ],
+        child: Directionality(
+          textDirection: textDirection,
+          child: Stack(
+            children: [
+              _buildSpotlight(),
+              Padding(
+                padding: EdgeInsets.only(bottom: bottomPadding),
+                child: Stack(children: [_buildIndicator(), _buildIcons()]),
+              ),
+            ],
+          ),
         ),
       ),
     );

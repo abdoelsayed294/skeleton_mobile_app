@@ -54,10 +54,7 @@ class _ReportsScreanState extends State<ReportsScrean> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 verticalSpace(6),
-                ReportsAppBar(
-                  onProfileTap: () =>
-                      context.pushReplacementNamed(Routes.profileScreen),
-                ),
+                ReportsAppBar(),
                 verticalSpace(16),
                 MonthNavigator(
                   monthLabel: monthLabel,

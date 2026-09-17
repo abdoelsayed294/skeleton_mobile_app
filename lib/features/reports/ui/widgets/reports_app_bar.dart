@@ -33,10 +33,7 @@ class ReportsAppBar extends StatelessWidget {
                 : AppStyles.reportsHeaderTitleLight,
           ),
         ),
-        ReportsAppBarIconButton(
-          icon: Icons.person_outline_rounded,
-          onTap: onProfileTap,
-        ),
+      
       ],
     );
   }

@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeleton_mobile_app/core/helpers/spacing.dart';
-import 'package:skeleton_mobile_app/core/helpers/extesions.dart';
 import 'package:skeleton_mobile_app/core/local/app_language.dart';
 import 'package:skeleton_mobile_app/core/local/locale_cubit.dart';
 import 'package:skeleton_mobile_app/core/theming/app_color.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
 import 'package:skeleton_mobile_app/core/theming/app_theme_cubit.dart';
-import 'package:skeleton_mobile_app/core/routing/routes.dart';
+import 'package:skeleton_mobile_app/features/home/ui/widgets/app_bar_action.dart';
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
 
 class AppBarHome extends StatelessWidget {
@@ -63,13 +62,13 @@ class AppBarHome extends StatelessWidget {
           ],
         ),
         const Spacer(),
-        _AppBarAction(
+        AppBarAction(
           icon: isDark ? Icons.light_mode_outlined : Icons.dark_mode_outlined,
           tooltip: isDark ? 'Light theme' : 'Dark theme',
           onTap: context.read<AppThemeCubit>().toggleTheme,
         ),
         SizedBox(width: 5.w),
-        _AppBarAction(
+        AppBarAction(
           icon: Icons.language_rounded,
           tooltip: isArabic ? 'Switch to English' : 'التبديل للعربية',
           isAccent: true,
@@ -77,77 +76,7 @@ class AppBarHome extends StatelessWidget {
             isArabic ? AppLanguage.english : AppLanguage.arabic,
           ),
         ),
-        SizedBox(width: 5.w),
-        _AppBarAction(
-          icon: Icons.notifications_none_rounded,
-          tooltip: 'Notifications',
-          onTap: () => context.pushNamed(Routes.notificationsScreen),
-        ),
       ],
-    );
-  }
-}
-
-class _AppBarAction extends StatelessWidget {
-  final IconData icon;
-  final String tooltip;
-  final bool isAccent;
-  final VoidCallback? onTap;
-
-  const _AppBarAction({
-    required this.icon,
-    required this.tooltip,
-    this.isAccent = false,
-    this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final accent = theme.primaryColor;
-    return Tooltip(
-      message: tooltip,
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(11.r),
-        child: Container(
-          width: 34.w,
-          height: 34.w,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: isAccent
-                  ? [accent.withValues(alpha: 0.14), theme.cardColor]
-                  : [theme.cardColor, theme.cardColor.withValues(alpha: 0.86)],
-            ),
-            borderRadius: BorderRadius.circular(11.r),
-            border: Border.all(
-              color: isAccent
-                  ? accent.withValues(alpha: 0.35)
-                  : theme.dividerColor.withValues(alpha: 0.9),
-              width: 1.w,
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: accent.withValues(alpha: isAccent ? 0.12 : 0.06),
-                blurRadius: 5.r,
-                offset: Offset(0, 2.h),
-              ),
-            ],
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                icon,
-                size: 15.sp,
-                color: isAccent ? accent : theme.canvasColor,
-              ),
-            ],
-          ),
-        ),
-      ),
     );
   }
 }

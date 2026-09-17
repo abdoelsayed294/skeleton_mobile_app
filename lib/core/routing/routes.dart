@@ -5,6 +5,8 @@ class Routes {
   static const String mainScreen = '/main';
   static const String inventoryScreen = '/inventory';
   static const String reportsScreen = '/reports';
+  static const String todaySalesScreen = '/today-sales';
+  static const String profitDetailsScreen = '/profit-details';
   static const String profileScreen = '/profile';
   static const String homeScreen = '/home';
   static const String productDetailsScreen = '/product-details';

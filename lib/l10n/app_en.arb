@@ -16,6 +16,86 @@
     "description": "Label showing today's orders"
   },
 
+  "returns": "Returns",
+  "@returns": {
+    "description": "Label showing returned sales"
+  },
+
+  "itemsSold": "Items Sold",
+  "@itemsSold": {
+    "description": "Label showing the number of items sold"
+  },
+
+  "stockKeepingUnits": "SKUs",
+  "@stockKeepingUnits": {
+    "description": "Short label for stock keeping units"
+  },
+
+  "profitDetails": "Profit Details",
+  "@profitDetails": {
+    "description": "Title for the profit details screen"
+  },
+  "grossProfit": "Gross Profit",
+  "@grossProfit": {
+    "description": "Gross profit metric label"
+  },
+  "margin": "Margin",
+  "@margin": {
+    "description": "Profit margin metric label"
+  },
+  "revenue": "Revenue",
+  "@revenue": {
+    "description": "Revenue metric label"
+  },
+  "expenses": "Expenses",
+  "@expenses": {
+    "description": "Expenses metric label"
+  },
+  "netMargin": "Net Margin",
+  "@netMargin": {
+    "description": "Net margin label"
+  },
+  "year": "Year",
+  "@year": {
+    "description": "Year period filter label"
+  },
+  "expenseBreakdown": "Expense Breakdown",
+  "@expenseBreakdown": {
+    "description": "Expense breakdown section title"
+  },
+  "moneyWentToday": "Where the money went today",
+  "@moneyWentToday": {
+    "description": "Expense breakdown subtitle"
+  },
+  "cogs": "COGS",
+  "@cogs": {
+    "description": "Cost of goods sold label"
+  },
+  "operations": "Operations",
+  "@operations": {
+    "description": "Operations expense label"
+  },
+  "salaries": "Salaries",
+  "@salaries": {
+    "description": "Salaries expense label"
+  },
+  "weeklyProfitSummary": "Weekly Profit Summary",
+  "@weeklyProfitSummary": {
+    "description": "Weekly profit summary section title"
+  },
+  "last7DaysPerformance": "Last 7 days performance",
+  "@last7DaysPerformance": {
+    "description": "Weekly profit summary subtitle"
+  },
+  "weekTotal": "Week Total",
+  "@weekTotal": {
+    "description": "Weekly total label"
+  },
+  "lastWeek": "vs Last Week",
+  "@lastWeek": {
+    "description": "Weekly comparison label"
+  },
+
   "purchases": "Purchases",
   "@purchases": {
     "description": "Label showing purchases"

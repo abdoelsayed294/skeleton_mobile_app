@@ -18,6 +18,63 @@ class AppLocalizationsEn extends AppLocalizations {
   String get todayOrders => 'Today\'s Orders';
 
   @override
+  String get returns => 'Returns';
+
+  @override
+  String get itemsSold => 'Items Sold';
+
+  @override
+  String get stockKeepingUnits => 'SKUs';
+
+  @override
+  String get profitDetails => 'Profit Details';
+
+  @override
+  String get grossProfit => 'Gross Profit';
+
+  @override
+  String get margin => 'Margin';
+
+  @override
+  String get revenue => 'Revenue';
+
+  @override
+  String get expenses => 'Expenses';
+
+  @override
+  String get netMargin => 'Net Margin';
+
+  @override
+  String get year => 'Year';
+
+  @override
+  String get expenseBreakdown => 'Expense Breakdown';
+
+  @override
+  String get moneyWentToday => 'Where the money went today';
+
+  @override
+  String get cogs => 'COGS';
+
+  @override
+  String get operations => 'Operations';
+
+  @override
+  String get salaries => 'Salaries';
+
+  @override
+  String get weeklyProfitSummary => 'Weekly Profit Summary';
+
+  @override
+  String get last7DaysPerformance => 'Last 7 days performance';
+
+  @override
+  String get weekTotal => 'Week Total';
+
+  @override
+  String get lastWeek => 'vs Last Week';
+
+  @override
   String get purchases => 'Purchases';
 
   @override
