@@ -32,7 +32,7 @@ class SkeletonApp extends StatelessWidget {
                       ? ThemeMode.light
                       : ThemeMode.dark,
                   onGenerateRoute: appRouter.generateRoute,
-                  initialRoute: Routes.mainScreen,
+                  initialRoute: Routes.scanQrScreen,
                   localizationsDelegates:
                       AppLocalizations.localizationsDelegates,
                   supportedLocales: AppLocalizations.supportedLocales,
@@ -40,7 +40,7 @@ class SkeletonApp extends StatelessWidget {
                 );
               },
             );
-          },
+          }, 
         );
       },
     );

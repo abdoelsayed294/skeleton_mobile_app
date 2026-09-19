@@ -30,19 +30,32 @@ dependencies:
   shimmer: ^3.0.0
   flutter_localization: ^0.4.1
   cached_network_image: ^3.4.1
-  flutter_launcher_icons: ^0.14.4
   auto_size_text: ^3.0.0
   dio: ^5.11.1
   provider: ^6.1.5+1
+  mobile_scanner: ^7.4.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
   retrofit_generator: ^10.0.1
-  build_runner: ^2.6.0
   json_serializable: ^6.10.0
   injectable_generator: ^3.1.1
+  flutter_launcher_icons: ^0.14.4
+  build_runner: ^2.6.0
+
 
 flutter:
   generate: true 
   uses-material-design: true
+  assets:
+    - assets/images/
+flutter_assets:
+  assets_path: assets/
+  output_path: lib/core/theming/
+  filename: assets.dart
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/app_icon.png"
+  remove_alpha_ios: true

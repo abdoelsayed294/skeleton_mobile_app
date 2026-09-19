@@ -95,6 +95,61 @@
   "@lastWeek": {
     "description": "Weekly comparison label"
   },
+  "connectToDesktop": "Connect to Desktop",
+  "@connectToDesktop": {
+    "description": "Scan QR screen title"
+  },
+  "waitingForScan": "Waiting for scan",
+  "@waitingForScan": {
+    "description": "Scan status label"
+  },
+  "expires": "expires",
+  "@expires": {
+    "description": "QR expiry label"
+  },
+  "scanQrCode": "Scan QR Code",
+  "@scanQrCode": {
+    "description": "QR preview title"
+  },
+  "openDesktopAppToScan": "Open your desktop app to scan",
+  "@openDesktopAppToScan": {
+    "description": "QR preview subtitle"
+  },
+  "desktop": "Desktop",
+  "@desktop": {
+    "description": "Desktop device label"
+  },
+  "howToConnect": "How to connect",
+  "@howToConnect": {
+    "description": "Connection instructions title"
+  },
+  "openSkeletonDesktopApp": "Open Skeleton Desktop App",
+  "@openSkeletonDesktopApp": {
+    "description": "Connection instruction one"
+  },
+  "launchAppOnComputer": "Launch the app on your Windows or Mac computer",
+  "goToConnectMobile": "Go to Connect Mobile",
+  "@goToConnectMobile": {
+    "description": "Connection instruction two"
+  },
+  "findQrCodeOnDesktop": "Find the QR code on your desktop screen",
+  "scanDesktopQrWithApp": "Scan the desktop QR with this app",
+  "@scanDesktopQrWithApp": {
+    "description": "Connection instruction three"
+  },
+  "pointCameraAtDesktop": "Point your phone camera at the desktop screen",
+  "scanDesktopQrCode": "Scan Desktop QR Code",
+  "@scanDesktopQrCode": {
+    "description": "Open QR scanner button"
+  },
+  "scanQr": "Scan QR",
+  "@scanQr": {
+    "description": "QR scanner screen title"
+  },
+  "alignQrInFrame": "Align the QR code inside the frame",
+  "@alignQrInFrame": {
+    "description": "QR scanner helper text"
+  },
 
   "purchases": "Purchases",
   "@purchases": {

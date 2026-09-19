@@ -5,16 +5,18 @@ import 'package:skeleton_mobile_app/core/theming/app_color.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
 
 class CustomElevatedButton extends StatelessWidget {
-  String text;
-  Color? backgroundColor;
-  TextStyle? textStyle;
-  void Function()? onPressed;
-  CustomElevatedButton({
+  final String text;
+  final Color? backgroundColor;
+  final TextStyle? textStyle;
+  final IconData? icon;
+  final void Function()? onPressed;
+  const CustomElevatedButton({
     super.key,
     required this.text,
     required this.onPressed,
     this.backgroundColor,
     this.textStyle,
+    this.icon,
   });
 
   @override
@@ -22,20 +24,31 @@ class CustomElevatedButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.symmetric(horizontal: 1.w),
+        padding: EdgeInsets.zero,
         backgroundColor: backgroundColor ?? AppColorsLight.primary,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(8.r)),
+          borderRadius: BorderRadius.all(Radius.circular(17.r)),
         ),
       ),
       child: SizedBox(
-        height: 52.h,
-        width: 398.w,
+        height: 58.h,
+        width: double.infinity,
         child: Center(
-          child: AutoSizeText(
-            text,
-            style: textStyle ??
-                AppStyles.font16BoldLight.copyWith(color: Colors.white),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              if (icon != null) ...[
+                Icon(icon, size: 20.sp, color: Colors.white),
+                SizedBox(width: 8.w),
+              ],
+              AutoSizeText(
+                text,
+                style:
+                    textStyle ??
+                    AppStyles.font16BoldLight.copyWith(color: Colors.white),
+              ),
+            ],
           ),
         ),
       ),
