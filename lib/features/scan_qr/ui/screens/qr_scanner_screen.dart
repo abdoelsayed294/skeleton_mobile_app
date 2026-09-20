@@ -20,15 +20,25 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
       return;
     }
 
-    final hasValue = capture.barcodes.any(
+    final barcode = capture.barcodes.firstWhere(
       (barcode) => barcode.rawValue?.isNotEmpty ?? false,
+      orElse: () => capture.barcodes.first,
     );
-    if (!hasValue) {
+
+    final token = barcode.rawValue;
+
+    if (token == null || token.isEmpty) {
       return;
     }
 
     isNavigating = true;
-    Navigator.of(context).pushReplacementNamed(Routes.mainScreen);
+
+    debugPrint('QR Token: $token');
+
+    Navigator.of(context).pushReplacementNamed(
+      Routes.mainScreen,
+      arguments: token,
+    );
   }
 
   @override
@@ -45,17 +55,24 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          MobileScanner(onDetect: handleDetection),
+          MobileScanner(
+            onDetect: handleDetection,
+          ),
+
           Center(
             child: Container(
               width: 270.w,
               height: 270.w,
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.white, width: 3.w),
+                border: Border.all(
+                  color: Colors.white,
+                  width: 3.w,
+                ),
                 borderRadius: BorderRadius.circular(24.r),
               ),
             ),
           ),
+
           Positioned(
             left: 24.w,
             right: 24.w,
