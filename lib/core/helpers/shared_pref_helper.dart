@@ -3,6 +3,9 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPrefHelper {
+  static const String languageKey = 'app_language';
+  static const String themeKey = 'app_theme';
+
   // private constructor as I don't want to allow creating an instance of this class itself.
   SharedPrefHelper._();
 

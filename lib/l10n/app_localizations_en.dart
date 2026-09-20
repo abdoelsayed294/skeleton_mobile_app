@@ -75,6 +75,56 @@ class AppLocalizationsEn extends AppLocalizations {
   String get lastWeek => 'vs Last Week';
 
   @override
+  String get connectToDesktop => 'Connect to Desktop';
+
+  @override
+  String get waitingForScan => 'Waiting for scan';
+
+  @override
+  String get expires => 'expires';
+
+  @override
+  String get scanQrCode => 'Scan QR Code';
+
+  @override
+  String get openDesktopAppToScan => 'Open your desktop app to scan';
+
+  @override
+  String get desktop => 'Desktop';
+
+  @override
+  String get howToConnect => 'How to connect';
+
+  @override
+  String get openSkeletonDesktopApp => 'Open Skeleton Desktop App';
+
+  @override
+  String get launchAppOnComputer =>
+      'Launch the app on your Windows or Mac computer';
+
+  @override
+  String get goToConnectMobile => 'Go to Connect Mobile';
+
+  @override
+  String get findQrCodeOnDesktop => 'Find the QR code on your desktop screen';
+
+  @override
+  String get scanDesktopQrWithApp => 'Scan the desktop QR with this app';
+
+  @override
+  String get pointCameraAtDesktop =>
+      'Point your phone camera at the desktop screen';
+
+  @override
+  String get scanDesktopQrCode => 'Scan Desktop QR Code';
+
+  @override
+  String get scanQr => 'Scan QR';
+
+  @override
+  String get alignQrInFrame => 'Align the QR code inside the frame';
+
+  @override
   String get purchases => 'Purchases';
 
   @override

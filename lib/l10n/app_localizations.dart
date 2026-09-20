@@ -230,6 +230,102 @@ abstract class AppLocalizations {
   /// **'vs Last Week'**
   String get lastWeek;
 
+  /// Scan QR screen title
+  ///
+  /// In en, this message translates to:
+  /// **'Connect to Desktop'**
+  String get connectToDesktop;
+
+  /// Scan status label
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for scan'**
+  String get waitingForScan;
+
+  /// QR expiry label
+  ///
+  /// In en, this message translates to:
+  /// **'expires'**
+  String get expires;
+
+  /// QR preview title
+  ///
+  /// In en, this message translates to:
+  /// **'Scan QR Code'**
+  String get scanQrCode;
+
+  /// QR preview subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Open your desktop app to scan'**
+  String get openDesktopAppToScan;
+
+  /// Desktop device label
+  ///
+  /// In en, this message translates to:
+  /// **'Desktop'**
+  String get desktop;
+
+  /// Connection instructions title
+  ///
+  /// In en, this message translates to:
+  /// **'How to connect'**
+  String get howToConnect;
+
+  /// Connection instruction one
+  ///
+  /// In en, this message translates to:
+  /// **'Open Skeleton Desktop App'**
+  String get openSkeletonDesktopApp;
+
+  /// No description provided for @launchAppOnComputer.
+  ///
+  /// In en, this message translates to:
+  /// **'Launch the app on your Windows or Mac computer'**
+  String get launchAppOnComputer;
+
+  /// Connection instruction two
+  ///
+  /// In en, this message translates to:
+  /// **'Go to Connect Mobile'**
+  String get goToConnectMobile;
+
+  /// No description provided for @findQrCodeOnDesktop.
+  ///
+  /// In en, this message translates to:
+  /// **'Find the QR code on your desktop screen'**
+  String get findQrCodeOnDesktop;
+
+  /// Connection instruction three
+  ///
+  /// In en, this message translates to:
+  /// **'Scan the desktop QR with this app'**
+  String get scanDesktopQrWithApp;
+
+  /// No description provided for @pointCameraAtDesktop.
+  ///
+  /// In en, this message translates to:
+  /// **'Point your phone camera at the desktop screen'**
+  String get pointCameraAtDesktop;
+
+  /// Open QR scanner button
+  ///
+  /// In en, this message translates to:
+  /// **'Scan Desktop QR Code'**
+  String get scanDesktopQrCode;
+
+  /// QR scanner screen title
+  ///
+  /// In en, this message translates to:
+  /// **'Scan QR'**
+  String get scanQr;
+
+  /// QR scanner helper text
+  ///
+  /// In en, this message translates to:
+  /// **'Align the QR code inside the frame'**
+  String get alignQrInFrame;
+
   /// Label showing purchases
   ///
   /// In en, this message translates to:

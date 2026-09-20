@@ -95,6 +95,61 @@
   "@lastWeek": {
     "description": "Weekly comparison label"
   },
+  "connectToDesktop": "الاتصال بالكمبيوتر",
+  "@connectToDesktop": {
+    "description": "Scan QR screen title"
+  },
+  "waitingForScan": "في انتظار المسح",
+  "@waitingForScan": {
+    "description": "Scan status label"
+  },
+  "expires": "ينتهي",
+  "@expires": {
+    "description": "QR expiry label"
+  },
+  "scanQrCode": "مسح رمز QR",
+  "@scanQrCode": {
+    "description": "QR preview title"
+  },
+  "openDesktopAppToScan": "افتح تطبيق الكمبيوتر لمسح الرمز",
+  "@openDesktopAppToScan": {
+    "description": "QR preview subtitle"
+  },
+  "desktop": "الكمبيوتر",
+  "@desktop": {
+    "description": "Desktop device label"
+  },
+  "howToConnect": "طريقة الاتصال",
+  "@howToConnect": {
+    "description": "Connection instructions title"
+  },
+  "openSkeletonDesktopApp": "افتح تطبيق Skeleton على الكمبيوتر",
+  "@openSkeletonDesktopApp": {
+    "description": "Connection instruction one"
+  },
+  "launchAppOnComputer": "شغل التطبيق على جهاز Windows أو Mac",
+  "goToConnectMobile": "اذهب إلى الاتصال بالموبايل",
+  "@goToConnectMobile": {
+    "description": "Connection instruction two"
+  },
+  "findQrCodeOnDesktop": "ابحث عن رمز QR على شاشة الكمبيوتر",
+  "scanDesktopQrWithApp": "امسح رمز QR الموجود على الكمبيوتر بهذا التطبيق",
+  "@scanDesktopQrWithApp": {
+    "description": "Connection instruction three"
+  },
+  "pointCameraAtDesktop": "وجه كاميرا الهاتف إلى شاشة الكمبيوتر",
+  "scanDesktopQrCode": "مسح رمز الكمبيوتر QR",
+  "@scanDesktopQrCode": {
+    "description": "Open QR scanner button"
+  },
+  "scanQr": "مسح QR",
+  "@scanQr": {
+    "description": "QR scanner screen title"
+  },
+  "alignQrInFrame": "ضع رمز QR داخل الإطار",
+  "@alignQrInFrame": {
+    "description": "QR scanner helper text"
+  },
 
   "purchases": "المشتريات",
   "@purchases": {
