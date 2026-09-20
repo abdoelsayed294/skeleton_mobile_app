@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:skeleton_mobile_app/core/theming/app_color.dart';
 import 'package:skeleton_mobile_app/core/widgets/animated_navbar/animated_navbar.dart';
 import 'package:skeleton_mobile_app/core/widgets/animated_navbar/navbar_item.dart';
-import 'package:skeleton_mobile_app/features/home/ui/scereens/home_screan.dart';
+import 'package:skeleton_mobile_app/features/home/ui/screens/home_screan.dart';
 import 'package:skeleton_mobile_app/features/inventory/ui/scereens/inventory_screan.dart';
 import 'package:skeleton_mobile_app/features/reports/ui/scereens/reports_screan.dart';
 

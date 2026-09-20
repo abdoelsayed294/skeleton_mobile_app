@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeleton_mobile_app/core/theming/app_color.dart';
-import 'package:skeleton_mobile_app/features/home/ui/scereens/profit_details_screen.dart';
+import 'package:skeleton_mobile_app/features/home/ui/screens/profit_details_screen.dart';
 import 'package:skeleton_mobile_app/features/home/ui/widgets/profit_details_header.dart';
 import 'package:skeleton_mobile_app/features/home/ui/widgets/expense_breakdown_card.dart';
 import 'package:skeleton_mobile_app/features/home/ui/widgets/profit_metric_card.dart';
