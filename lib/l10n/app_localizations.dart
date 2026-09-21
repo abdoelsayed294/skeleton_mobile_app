@@ -104,6 +104,42 @@ abstract class AppLocalizations {
   /// **'Good morning'**
   String get goodMorning;
 
+  /// Default loading dialog message
+  ///
+  /// In en, this message translates to:
+  /// **'Loading...'**
+  String get loadingMessage;
+
+  /// Dialog confirmation action
+  ///
+  /// In en, this message translates to:
+  /// **'OK'**
+  String get ok;
+
+  /// Generic error dialog title
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong'**
+  String get errorTitle;
+
+  /// Generic error dialog message
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong, please try again'**
+  String get genericError;
+
+  /// Language toggle tooltip when Arabic is active
+  ///
+  /// In en, this message translates to:
+  /// **'Switch to English'**
+  String get switchToEnglish;
+
+  /// Language toggle tooltip when English is active
+  ///
+  /// In en, this message translates to:
+  /// **'التبديل للعربية'**
+  String get switchToArabic;
+
   /// Label showing today's sales
   ///
   /// In en, this message translates to:

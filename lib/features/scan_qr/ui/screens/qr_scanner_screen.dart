@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
 import 'package:skeleton_mobile_app/core/routing/routes.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
+import 'package:skeleton_mobile_app/features/scan_qr/domain/entity/qr_response.dart';
+import 'package:skeleton_mobile_app/features/scan_qr/logic/qr_cubit.dart';
+import 'package:skeleton_mobile_app/features/scan_qr/ui/widgets/qr_listener.dart';
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
 
 class QrScannerScreen extends StatefulWidget {
@@ -35,10 +40,33 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
 
     debugPrint('QR Token: $token');
 
-    Navigator.of(context).pushReplacementNamed(
-      Routes.mainScreen,
-      arguments: token,
+     context.read<QrCubit>().getQrStatus(token);
+
+  }
+  Future <void> handleQrSuccess(QrResponse qrResponse) async {
+    if(qrResponse.status?.toLowerCase()!='approved'){
+        isNavigating = false;
+      return;
+      
+    }
+    if (qrResponse.storeId == null || qrResponse.businessId == null) {
+  isNavigating = false;
+  return;
+}
+ await SharedPrefHelper.setData(
+      SharedPrefHelper.storeIdKey,
+      qrResponse.storeId!,
     );
+
+    await SharedPrefHelper.setData(
+      SharedPrefHelper.businessIdKey,
+      qrResponse.businessId!,
+    );
+    if (!mounted) return;
+Navigator.of(context).pushReplacementNamed(
+  Routes.mainScreen,
+);
+   
   }
 
   @override
@@ -83,8 +111,13 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
               style: AppStyles.totalSalesChangeLight,
             ),
           ),
+            QrBlocListener(
+        onSuccess: handleQrSuccess,
+      ),
+
         ],
       ),
+    
     );
   }
 }

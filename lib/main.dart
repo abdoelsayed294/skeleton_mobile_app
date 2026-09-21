@@ -4,6 +4,7 @@ import 'package:skeleton_mobile_app/core/di/injectoin.dart';
 import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
 import 'package:skeleton_mobile_app/core/local/locale_cubit.dart';
 import 'package:skeleton_mobile_app/core/routing/app_router.dart';
+import 'package:skeleton_mobile_app/core/routing/routes.dart';
 import 'package:skeleton_mobile_app/core/theming/app_theme_cubit.dart';
 import 'package:skeleton_mobile_app/core/theming/app_theme_enum.dart';
 import 'package:skeleton_mobile_app/skeleton_app.dart';
@@ -19,6 +20,19 @@ Future<void> main() async {
     SharedPrefHelper.themeKey,
   );
 
+  final storeId = await SharedPrefHelper.getInt(
+    SharedPrefHelper.storeIdKey,
+  );
+
+  final businessId = await SharedPrefHelper.getInt(
+    SharedPrefHelper.businessIdKey,
+  );
+    String initialRoute;
+  if (storeId == null || businessId == null) {
+    initialRoute = Routes.scanQrScreen;
+  } else {
+    initialRoute = Routes.mainScreen;
+  }
   runApp(
     MultiBlocProvider(
       providers: [
@@ -37,7 +51,7 @@ Future<void> main() async {
           ),
         ),
       ],
-      child: SkeletonApp(appRouter: AppRouter()),
+      child: SkeletonApp(appRouter: AppRouter(),initialRoute:initialRoute ,),
     ),
   );
 }
