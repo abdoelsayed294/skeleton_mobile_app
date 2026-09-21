@@ -40,33 +40,19 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
 
     debugPrint('QR Token: $token');
 
-     context.read<QrCubit>().getQrStatus(token);
-
+    context.read<QrCubit>().getQrStatus(token);
   }
-  Future <void> handleQrSuccess(QrResponse qrResponse) async {
-    if(qrResponse.status?.toLowerCase()!='approved'){
-        isNavigating = false;
-      return;
-      
-    }
-    if (qrResponse.storeId == null || qrResponse.businessId == null) {
-  isNavigating = false;
-  return;
-}
- await SharedPrefHelper.setData(
-      SharedPrefHelper.storeIdKey,
-      qrResponse.storeId!,
-    );
 
-    await SharedPrefHelper.setData(
-      SharedPrefHelper.businessIdKey,
-      qrResponse.businessId!,
-    );
+  Future<void> handleQrSuccess(QrResponse qrResponse) async {
+    if (qrResponse.status?.toLowerCase() != 'approved') {
+      isNavigating = false;
+      return;
+    }
     if (!mounted) return;
-Navigator.of(context).pushReplacementNamed(
-  Routes.mainScreen,
-);
-   
+     Navigator.of(context).pushNamedAndRemoveUntil(
+    Routes.mainScreen,
+    (route) => false,
+  );
   }
 
   @override
@@ -83,19 +69,14 @@ Navigator.of(context).pushReplacementNamed(
       body: Stack(
         fit: StackFit.expand,
         children: [
-          MobileScanner(
-            onDetect: handleDetection,
-          ),
+          MobileScanner(onDetect: handleDetection),
 
           Center(
             child: Container(
               width: 270.w,
               height: 270.w,
               decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.white,
-                  width: 3.w,
-                ),
+                border: Border.all(color: Colors.white, width: 3.w),
                 borderRadius: BorderRadius.circular(24.r),
               ),
             ),
@@ -111,13 +92,9 @@ Navigator.of(context).pushReplacementNamed(
               style: AppStyles.totalSalesChangeLight,
             ),
           ),
-            QrBlocListener(
-        onSuccess: handleQrSuccess,
-      ),
-
+          QrBlocListener(onSuccess: handleQrSuccess),
         ],
       ),
-    
     );
   }
 }
