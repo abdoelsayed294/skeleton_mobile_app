@@ -10,16 +10,19 @@ import 'package:skeleton_mobile_app/features/profile/ui/scereens/edit_profile_sc
 import 'package:skeleton_mobile_app/features/purchases/ui/scereens/purchases_screan.dart';
 import 'package:skeleton_mobile_app/features/reports/ui/scereens/reports_screan.dart';
 import 'package:skeleton_mobile_app/features/notifications/ui/screens/notifications_screen.dart';
+import 'package:skeleton_mobile_app/features/scan_qr/ui/screens/scan_qr_screen.dart';
+import 'package:skeleton_mobile_app/features/scan_qr/ui/screens/qr_scanner_screen.dart';
 import 'routes.dart';
 
 class AppRouter {
   Route<dynamic>? generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case Routes.appStartScreen:
-        return MaterialPageRoute(
-          builder: (_) =>
-              const Scaffold(body: Center(child: Text('Hello World!'))),
-        );
+        return MaterialPageRoute(builder: (_) => const ScanQrScreen());
+      case Routes.scanQrScreen:
+        return MaterialPageRoute(builder: (_) => const ScanQrScreen());
+      case Routes.qrScannerScreen:
+        return MaterialPageRoute(builder: (_) => const QrScannerScreen());
       case Routes.mainScreen:
         return MaterialPageRoute(builder: (_) => const MainNavigationScreen());
 

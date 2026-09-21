@@ -1,4 +1,6 @@
 class ApiConstants {
+    static const String baseUrl = 'https://overfull-container-skiing.ngrok-free.dev/';
+
   
 }
 
@@ -18,4 +20,9 @@ class ApiErrors {
   static const String loadingMessage = "loading_message";
   static const String retryAgainMessage = "retry_again_message";
   static const String ok = "Ok";
+}
+
+class EndPoints {
+  static const String qrStatus = '/api/business/qr/status/{qrToken}';
+  
 }

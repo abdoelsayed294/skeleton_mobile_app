@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/theming/app_color.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
 
 class PriceTile extends StatelessWidget {

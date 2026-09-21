@@ -75,6 +75,55 @@ class AppLocalizationsAr extends AppLocalizations {
   String get lastWeek => 'مقارنة بالأسبوع الماضي';
 
   @override
+  String get connectToDesktop => 'الاتصال بالكمبيوتر';
+
+  @override
+  String get waitingForScan => 'في انتظار المسح';
+
+  @override
+  String get expires => 'ينتهي';
+
+  @override
+  String get scanQrCode => 'مسح رمز QR';
+
+  @override
+  String get openDesktopAppToScan => 'افتح تطبيق الكمبيوتر لمسح الرمز';
+
+  @override
+  String get desktop => 'الكمبيوتر';
+
+  @override
+  String get howToConnect => 'طريقة الاتصال';
+
+  @override
+  String get openSkeletonDesktopApp => 'افتح تطبيق Skeleton على الكمبيوتر';
+
+  @override
+  String get launchAppOnComputer => 'شغل التطبيق على جهاز Windows أو Mac';
+
+  @override
+  String get goToConnectMobile => 'اذهب إلى الاتصال بالموبايل';
+
+  @override
+  String get findQrCodeOnDesktop => 'ابحث عن رمز QR على شاشة الكمبيوتر';
+
+  @override
+  String get scanDesktopQrWithApp =>
+      'امسح رمز QR الموجود على الكمبيوتر بهذا التطبيق';
+
+  @override
+  String get pointCameraAtDesktop => 'وجه كاميرا الهاتف إلى شاشة الكمبيوتر';
+
+  @override
+  String get scanDesktopQrCode => 'مسح رمز الكمبيوتر QR';
+
+  @override
+  String get scanQr => 'مسح QR';
+
+  @override
+  String get alignQrInFrame => 'ضع رمز QR داخل الإطار';
+
+  @override
   String get purchases => 'المشتريات';
 
   @override
