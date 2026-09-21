@@ -88,3 +88,7 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
     );
   }
 }
+
+
+
+/// api service<< data source << repository <<use case<<bloc << ui
