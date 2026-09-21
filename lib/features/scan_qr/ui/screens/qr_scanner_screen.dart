@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:skeleton_mobile_app/core/routing/routes.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
+import 'package:skeleton_mobile_app/core/widgets/dilaog_utils.dart';
 import 'package:skeleton_mobile_app/features/scan_qr/domain/entity/qr_response.dart';
 import 'package:skeleton_mobile_app/features/scan_qr/logic/qr_cubit.dart';
 import 'package:skeleton_mobile_app/features/scan_qr/ui/widgets/qr_listener.dart';
@@ -43,15 +44,22 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
   }
 
   Future<void> handleQrSuccess(QrResponse qrResponse) async {
+    final l10n = AppLocalizations.of(context)!;
+
     if (qrResponse.status?.toLowerCase() != 'approved') {
       isNavigating = false;
+      DialogUtils.showMessage(
+        context: context,
+        type: DialogType.error,
+        title: l10n.invalidQrTitle,
+        message: qrResponse.message ?? l10n.invalidQrMessage,
+      );
       return;
     }
     if (!mounted) return;
-     Navigator.of(context).pushNamedAndRemoveUntil(
-    Routes.mainScreen,
-    (route) => false,
-  );
+    Navigator.of(
+      context,
+    ).pushNamedAndRemoveUntil(Routes.mainScreen, (route) => false);
   }
 
   @override
@@ -91,9 +99,12 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
               style: AppStyles.totalSalesChangeLight,
             ),
           ),
-          QrBlocListener(onSuccess: handleQrSuccess, onError: () {
-            isNavigating = false;
-          }),
+          QrBlocListener(
+            onSuccess: handleQrSuccess,
+            onError: () {
+              isNavigating = false;
+            },
+          ),
         ],
       ),
     );

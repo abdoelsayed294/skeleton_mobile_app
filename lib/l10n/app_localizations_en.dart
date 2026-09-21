@@ -24,6 +24,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get genericError => 'Something went wrong, please try again';
 
   @override
+  String get invalidQrTitle => 'Invalid QR code';
+
+  @override
+  String get invalidQrMessage => 'The QR code is not valid';
+
+  @override
   String get switchToEnglish => 'Switch to English';
 
   @override
