@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
 import 'package:skeleton_mobile_app/core/routing/routes.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
 import 'package:skeleton_mobile_app/features/scan_qr/domain/entity/qr_response.dart';
@@ -92,7 +91,9 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
               style: AppStyles.totalSalesChangeLight,
             ),
           ),
-          QrBlocListener(onSuccess: handleQrSuccess),
+          QrBlocListener(onSuccess: handleQrSuccess, onError: () {
+            isNavigating = false;
+          }),
         ],
       ),
     );
