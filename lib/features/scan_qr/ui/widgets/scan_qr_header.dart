@@ -35,7 +35,7 @@ class ScanQrHeader extends StatelessWidget {
         SizedBox(width: 5.w),
         _ScanHeaderAction(
           icon: Icons.language_rounded,
-          tooltip: isArabic ? 'Switch to English' : 'التبديل للعربية',
+          tooltip: isArabic ? l10n.switchToEnglish : l10n.switchToArabic,
           onTap: () => context.read<LocaleCubit>().changeLanguage(
             isArabic ? AppLanguage.english : AppLanguage.arabic,
           ),

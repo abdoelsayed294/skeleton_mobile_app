@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:skeleton_mobile_app/core/di/injectoin.dart';
 import 'package:skeleton_mobile_app/core/widgets/main_navigation_screen.dart';
 import 'package:skeleton_mobile_app/features/home/ui/scereens/home_screan.dart';
 import 'package:skeleton_mobile_app/features/home/ui/scereens/today_sales_screen.dart';
@@ -10,6 +12,7 @@ import 'package:skeleton_mobile_app/features/profile/ui/scereens/edit_profile_sc
 import 'package:skeleton_mobile_app/features/purchases/ui/scereens/purchases_screan.dart';
 import 'package:skeleton_mobile_app/features/reports/ui/scereens/reports_screan.dart';
 import 'package:skeleton_mobile_app/features/notifications/ui/screens/notifications_screen.dart';
+import 'package:skeleton_mobile_app/features/scan_qr/logic/qr_cubit.dart';
 import 'package:skeleton_mobile_app/features/scan_qr/ui/screens/scan_qr_screen.dart';
 import 'package:skeleton_mobile_app/features/scan_qr/ui/screens/qr_scanner_screen.dart';
 import 'routes.dart';
@@ -22,7 +25,12 @@ class AppRouter {
       case Routes.scanQrScreen:
         return MaterialPageRoute(builder: (_) => const ScanQrScreen());
       case Routes.qrScannerScreen:
-        return MaterialPageRoute(builder: (_) => const QrScannerScreen());
+        return MaterialPageRoute(
+          builder: (_) =>  BlocProvider(
+             create: (_) => getIt<QrCubit>(),
+            child :const QrScannerScreen(),
+          ),
+        );
       case Routes.mainScreen:
         return MaterialPageRoute(builder: (_) => const MainNavigationScreen());
 

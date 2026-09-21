@@ -5,6 +5,30 @@
   "@goodMorning": {
     "description": "Greeting shown to the user on the home screen"
   },
+  "loadingMessage": "جاري التحميل...",
+  "@loadingMessage": {
+    "description": "Default loading dialog message"
+  },
+  "ok": "تم",
+  "@ok": {
+    "description": "Dialog confirmation action"
+  },
+  "errorTitle": "حدث خطأ",
+  "@errorTitle": {
+    "description": "Generic error dialog title"
+  },
+  "genericError": "حدث خطأ، حاول مرة أخرى",
+  "@genericError": {
+    "description": "Generic error dialog message"
+  },
+  "switchToEnglish": "التبديل للإنجليزية",
+  "@switchToEnglish": {
+    "description": "Language toggle tooltip when Arabic is active"
+  },
+  "switchToArabic": "التبديل للعربية",
+  "@switchToArabic": {
+    "description": "Language toggle tooltip when English is active"
+  },
 
   "todaySales": "مبيعات اليوم",
   "@todaySales": {

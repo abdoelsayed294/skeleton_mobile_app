@@ -12,6 +12,24 @@ class AppLocalizationsEn extends AppLocalizations {
   String get goodMorning => 'Good morning';
 
   @override
+  String get loadingMessage => 'Loading...';
+
+  @override
+  String get ok => 'OK';
+
+  @override
+  String get errorTitle => 'Something went wrong';
+
+  @override
+  String get genericError => 'Something went wrong, please try again';
+
+  @override
+  String get switchToEnglish => 'Switch to English';
+
+  @override
+  String get switchToArabic => 'التبديل للعربية';
+
+  @override
   String get todaySales => 'Today\'s Sales';
 
   @override

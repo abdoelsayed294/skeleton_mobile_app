@@ -43,6 +43,7 @@ dev_dependencies:
   injectable_generator: ^3.1.1
   flutter_launcher_icons: ^0.14.4
   build_runner: ^2.6.0
+  freezed: ^3.0.0
 
 
 flutter:

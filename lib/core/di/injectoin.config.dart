@@ -15,6 +15,14 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:skeleton_mobile_app/core/networking/api_service.dart' as _i35;
 import 'package:skeleton_mobile_app/core/networking/dio_module.dart' as _i453;
+import 'package:skeleton_mobile_app/features/scan_qr/data/data_sources/remote/qr_remote_data_sources.dart'
+    as _i743;
+import 'package:skeleton_mobile_app/features/scan_qr/data/data_sources/remote/qr_remote_data_sources_impl.dart'
+    as _i598;
+import 'package:skeleton_mobile_app/features/scan_qr/domain/repo/qr_repo.dart'
+    as _i571;
+import 'package:skeleton_mobile_app/features/scan_qr/domain/use_cases/qr_use_case.dart'
+    as _i528;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -28,6 +36,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i35.ApiService>(
       () => dioModule.apiService(gh<_i361.Dio>()),
     );
+    gh.factory<_i743.QrRemoteDataSources>(
+      () => _i598.QrRemoteDataSourcesImpl(gh<_i35.ApiService>()),
+    );
+    gh.factory<_i528.QrUseCase>(() => _i528.QrUseCase(gh<_i571.QrRepo>()));
     return this;
   }
 }
