@@ -11,7 +11,9 @@ import 'l10n/app_localizations.dart';
 
 class SkeletonApp extends StatelessWidget {
   final AppRouter appRouter;
-  const SkeletonApp({super.key, required this.appRouter});
+    final String initialRoute;
+
+   SkeletonApp({super.key, required this.appRouter, required this.initialRoute});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +34,7 @@ class SkeletonApp extends StatelessWidget {
                       ? ThemeMode.light
                       : ThemeMode.dark,
                   onGenerateRoute: appRouter.generateRoute,
-                  initialRoute: Routes.scanQrScreen,
+                  initialRoute: initialRoute,
                   localizationsDelegates:
                       AppLocalizations.localizationsDelegates,
                   supportedLocales: AppLocalizations.supportedLocales,

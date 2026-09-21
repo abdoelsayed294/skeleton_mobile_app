@@ -12,6 +12,24 @@ class AppLocalizationsAr extends AppLocalizations {
   String get goodMorning => 'صباح الخير';
 
   @override
+  String get loadingMessage => 'جاري التحميل...';
+
+  @override
+  String get ok => 'تم';
+
+  @override
+  String get errorTitle => 'حدث خطأ';
+
+  @override
+  String get genericError => 'حدث خطأ، حاول مرة أخرى';
+
+  @override
+  String get switchToEnglish => 'التبديل للإنجليزية';
+
+  @override
+  String get switchToArabic => 'التبديل للعربية';
+
+  @override
   String get todaySales => 'مبيعات اليوم';
 
   @override
