@@ -21,6 +21,14 @@
   "@genericError": {
     "description": "Generic error dialog message"
   },
+  "invalidQrTitle": "رمز QR غير صحيح",
+  "@invalidQrTitle": {
+    "description": "Title shown when the scanned QR code is rejected"
+  },
+  "invalidQrMessage": "رمز QR غير صالح",
+  "@invalidQrMessage": {
+    "description": "Message shown when the scanned QR code is rejected"
+  },
   "switchToEnglish": "التبديل للإنجليزية",
   "@switchToEnglish": {
     "description": "Language toggle tooltip when Arabic is active"

@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeleton_mobile_app/core/local/locale_cubit.dart';
 import 'package:skeleton_mobile_app/core/routing/app_router.dart';
-import 'package:skeleton_mobile_app/core/routing/routes.dart';
 import 'package:skeleton_mobile_app/core/theming/app_theme.dart';
 import 'package:skeleton_mobile_app/core/theming/app_theme_cubit.dart';
 import 'package:skeleton_mobile_app/core/theming/app_theme_enum.dart';
