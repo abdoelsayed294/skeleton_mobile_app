@@ -1,12 +1,13 @@
+import 'package:injectable/injectable.dart';
 import 'package:skeleton_mobile_app/core/networking/api_error_handler.dart';
 import 'package:skeleton_mobile_app/core/networking/api_result.dart';
-import 'package:skeleton_mobile_app/features/scan_qr/data/data_sources/remote/qr_remote_data_sources_impl.dart';
+import 'package:skeleton_mobile_app/features/scan_qr/data/data_sources/remote/qr_remote_data_sources.dart';
 import 'package:skeleton_mobile_app/features/scan_qr/data/mappers/qr_mapper.dart';
 import 'package:skeleton_mobile_app/features/scan_qr/domain/entity/qr_response.dart';
 import 'package:skeleton_mobile_app/features/scan_qr/domain/repo/qr_repo.dart';
-
+@Injectable(as: QrRepo)
 class QrRepoImpl implements QrRepo {
-  final QrRemoteDataSourcesImpl _qrRemoteDataSourcesImpl;
+  final QrRemoteDataSources _qrRemoteDataSourcesImpl;
 
   QrRepoImpl(this._qrRemoteDataSourcesImpl);
 
