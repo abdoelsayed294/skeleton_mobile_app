@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeleton_mobile_app/core/theming/app_color.dart';
-import 'package:skeleton_mobile_app/features/home/ui/widgets/stats_grid.dart';
+import 'package:skeleton_mobile_app/features/home/ui/widgets/statCard.dart';
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
 
 class ReportStatsGrid extends StatelessWidget {
