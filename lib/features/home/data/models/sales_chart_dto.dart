@@ -5,14 +5,14 @@ part 'sales_chart_dto.g.dart';
 
 @JsonSerializable()
 class SalesChartDto {
-  final DateTime? date;
-  final double? total;
-  final int? count;
+  final DateTime date;
+  final double total;
+  final int count;
 
   SalesChartDto({
-    this.date,
-    this.total,
-    this.count,
+    required this.date,
+    required this.total,
+    required this.count,
   });
 
   factory SalesChartDto.fromJson(Map<String, dynamic> json) =>
