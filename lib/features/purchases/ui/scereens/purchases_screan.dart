@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/features/home/ui/widgets/profit_details_header.dart';
+import 'package:skeleton_mobile_app/features/profit_details/ui/widgets/profit_details_header.dart';
 import 'package:skeleton_mobile_app/features/purchases/ui/widgets/add_purchase_button.dart';
 import 'package:skeleton_mobile_app/features/purchases/ui/widgets/purchases_list_section.dart';
 import 'package:skeleton_mobile_app/features/purchases/ui/widgets/purchases_summary_card.dart';

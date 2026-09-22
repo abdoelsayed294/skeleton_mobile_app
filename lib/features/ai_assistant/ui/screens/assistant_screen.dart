@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
-import 'package:skeleton_mobile_app/features/home/ui/widgets/assistant_header.dart';
-import 'package:skeleton_mobile_app/features/home/ui/widgets/assistant_hold_to_speak.dart';
-import 'package:skeleton_mobile_app/features/home/ui/widgets/assistant_input_bar.dart';
-import 'package:skeleton_mobile_app/features/home/ui/widgets/assistant_mode_selector.dart';
-import 'package:skeleton_mobile_app/features/home/ui/widgets/assistant_question_tile.dart';
-import 'package:skeleton_mobile_app/features/home/ui/widgets/assistant_voice_orb.dart';
+import 'package:skeleton_mobile_app/features/ai_assistant/ui/widgets/assistant_header.dart';
+import 'package:skeleton_mobile_app/features/ai_assistant/ui/widgets/assistant_hold_to_speak.dart';
+import 'package:skeleton_mobile_app/features/ai_assistant/ui/widgets/assistant_input_bar.dart';
+import 'package:skeleton_mobile_app/features/ai_assistant/ui/widgets/assistant_mode_selector.dart';
+import 'package:skeleton_mobile_app/features/ai_assistant/ui/widgets/assistant_question_tile.dart';
+import 'package:skeleton_mobile_app/features/ai_assistant/ui/widgets/assistant_voice_orb.dart';
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
 
 class AssistantScreen extends StatelessWidget {

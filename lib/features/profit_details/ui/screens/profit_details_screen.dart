@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeleton_mobile_app/core/theming/app_color.dart';
-import 'package:skeleton_mobile_app/features/home/ui/screens/profit_details_screen.dart';
-import 'package:skeleton_mobile_app/features/home/ui/widgets/profit_details_header.dart';
-import 'package:skeleton_mobile_app/features/home/ui/widgets/expense_breakdown_card.dart';
-import 'package:skeleton_mobile_app/features/home/ui/widgets/profit_metric_card.dart';
-import 'package:skeleton_mobile_app/features/home/ui/widgets/profit_period_chip.dart';
-import 'package:skeleton_mobile_app/features/home/ui/widgets/profit_summary_card.dart';
-import 'package:skeleton_mobile_app/features/home/ui/widgets/weekly_profit_summary_card.dart';
+import 'package:skeleton_mobile_app/features/profit_details/ui/widgets/expense_breakdown_card.dart';
+import 'package:skeleton_mobile_app/features/profit_details/ui/widgets/profit_details_header.dart';
+import 'package:skeleton_mobile_app/features/profit_details/ui/widgets/profit_metric_card.dart';
+import 'package:skeleton_mobile_app/features/profit_details/ui/widgets/profit_period_chip.dart';
+import 'package:skeleton_mobile_app/features/profit_details/ui/widgets/profit_summary_card.dart';
+import 'package:skeleton_mobile_app/features/profit_details/ui/widgets/weekly_profit_summary_card.dart';
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
 
-class ProfitDetailsScreenState extends State<ProfitDetailsScreen> {
+class ProfitDetailsScreen extends StatefulWidget {
+  const ProfitDetailsScreen({super.key});
+
+  @override
+  State<ProfitDetailsScreen> createState() => _ProfitDetailsScreenState();
+}
+
+class _ProfitDetailsScreenState extends State<ProfitDetailsScreen> {
   DateTime selectedDate = DateTime(2025, 1, 15);
+
   int selectedPeriod = 0;
 
   @override
