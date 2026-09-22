@@ -128,6 +128,18 @@ abstract class AppLocalizations {
   /// **'Something went wrong, please try again'**
   String get genericError;
 
+  /// Title shown when the scanned QR code is rejected
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid QR code'**
+  String get invalidQrTitle;
+
+  /// Message shown when the scanned QR code is rejected
+  ///
+  /// In en, this message translates to:
+  /// **'The QR code is not valid'**
+  String get invalidQrMessage;
+
   /// Language toggle tooltip when Arabic is active
   ///
   /// In en, this message translates to:

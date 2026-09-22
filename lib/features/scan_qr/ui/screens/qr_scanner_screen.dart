@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
 import 'package:skeleton_mobile_app/core/routing/routes.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
+import 'package:skeleton_mobile_app/core/widgets/dilaog_utils.dart';
 import 'package:skeleton_mobile_app/features/scan_qr/domain/entity/qr_response.dart';
 import 'package:skeleton_mobile_app/features/scan_qr/logic/qr_cubit.dart';
 import 'package:skeleton_mobile_app/features/scan_qr/ui/widgets/qr_listener.dart';
@@ -40,33 +40,26 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
 
     debugPrint('QR Token: $token');
 
-     context.read<QrCubit>().getQrStatus(token);
-
+    context.read<QrCubit>().getQrStatus(token);
   }
-  Future <void> handleQrSuccess(QrResponse qrResponse) async {
-    if(qrResponse.status?.toLowerCase()!='approved'){
-        isNavigating = false;
-      return;
-      
-    }
-    if (qrResponse.storeId == null || qrResponse.businessId == null) {
-  isNavigating = false;
-  return;
-}
- await SharedPrefHelper.setData(
-      SharedPrefHelper.storeIdKey,
-      qrResponse.storeId!,
-    );
 
-    await SharedPrefHelper.setData(
-      SharedPrefHelper.businessIdKey,
-      qrResponse.businessId!,
-    );
+  Future<void> handleQrSuccess(QrResponse qrResponse) async {
+    final l10n = AppLocalizations.of(context)!;
+
+    if (qrResponse.status?.toLowerCase() != 'approved') {
+      isNavigating = false;
+      DialogUtils.showMessage(
+        context: context,
+        type: DialogType.error,
+        title: l10n.invalidQrTitle,
+        message: qrResponse.message ?? l10n.invalidQrMessage,
+      );
+      return;
+    }
     if (!mounted) return;
-Navigator.of(context).pushReplacementNamed(
-  Routes.mainScreen,
-);
-   
+    Navigator.of(
+      context,
+    ).pushNamedAndRemoveUntil(Routes.mainScreen, (route) => false);
   }
 
   @override
@@ -83,19 +76,14 @@ Navigator.of(context).pushReplacementNamed(
       body: Stack(
         fit: StackFit.expand,
         children: [
-          MobileScanner(
-            onDetect: handleDetection,
-          ),
+          MobileScanner(onDetect: handleDetection),
 
           Center(
             child: Container(
               width: 270.w,
               height: 270.w,
               decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.white,
-                  width: 3.w,
-                ),
+                border: Border.all(color: Colors.white, width: 3.w),
                 borderRadius: BorderRadius.circular(24.r),
               ),
             ),
@@ -111,13 +99,14 @@ Navigator.of(context).pushReplacementNamed(
               style: AppStyles.totalSalesChangeLight,
             ),
           ),
-            QrBlocListener(
-        onSuccess: handleQrSuccess,
-      ),
-
+          QrBlocListener(
+            onSuccess: handleQrSuccess,
+            onError: () {
+              isNavigating = false;
+            },
+          ),
         ],
       ),
-    
     );
   }
 }

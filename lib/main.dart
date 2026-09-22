@@ -20,18 +20,15 @@ Future<void> main() async {
     SharedPrefHelper.themeKey,
   );
 
-  final storeId = await SharedPrefHelper.getInt(
-    SharedPrefHelper.storeIdKey,
-  );
+  final qrStatus = await SharedPrefHelper.getString(
+      SharedPrefHelper.qrStatusKey,
 
-  final businessId = await SharedPrefHelper.getInt(
-    SharedPrefHelper.businessIdKey,
   );
-    String initialRoute;
-  if (storeId == null || businessId == null) {
-    initialRoute = Routes.scanQrScreen;
-  } else {
+  String initialRoute;
+  if (qrStatus?.toLowerCase() == 'approved') {
     initialRoute = Routes.mainScreen;
+  } else {
+    initialRoute = Routes.scanQrScreen;
   }
   runApp(
     MultiBlocProvider(
@@ -51,7 +48,7 @@ Future<void> main() async {
           ),
         ),
       ],
-      child: SkeletonApp(appRouter: AppRouter(),initialRoute:initialRoute ,),
+      child: SkeletonApp(appRouter: AppRouter(), initialRoute: initialRoute),
     ),
   );
 }

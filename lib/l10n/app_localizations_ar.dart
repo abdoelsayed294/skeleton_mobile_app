@@ -24,6 +24,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get genericError => 'حدث خطأ، حاول مرة أخرى';
 
   @override
+  String get invalidQrTitle => 'رمز QR غير صحيح';
+
+  @override
+  String get invalidQrMessage => 'رمز QR غير صالح';
+
+  @override
   String get switchToEnglish => 'التبديل للإنجليزية';
 
   @override

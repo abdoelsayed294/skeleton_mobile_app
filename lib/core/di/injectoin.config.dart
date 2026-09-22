@@ -55,6 +55,8 @@ import 'package:skeleton_mobile_app/features/scan_qr/domain/repo/qr_repo.dart'
     as _i571;
 import 'package:skeleton_mobile_app/features/scan_qr/domain/use_cases/qr_use_case.dart'
     as _i528;
+import 'package:skeleton_mobile_app/features/scan_qr/domain/use_cases/save_qr_data_use_case.dart'
+    as _i295;
 import 'package:skeleton_mobile_app/features/scan_qr/logic/qr_cubit.dart'
     as _i438;
 
@@ -66,6 +68,7 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final dioModule = _$DioModule();
+    gh.factory<_i295.SaveQrDataUseCase>(() => _i295.SaveQrDataUseCase());
     gh.lazySingleton<_i361.Dio>(() => dioModule.dio());
     gh.lazySingleton<_i35.ApiService>(
       () => dioModule.apiService(gh<_i361.Dio>()),
@@ -80,7 +83,6 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i149.QrRepoImpl(gh<_i743.QrRemoteDataSources>()),
     );
     gh.factory<_i528.QrUseCase>(() => _i528.QrUseCase(gh<_i571.QrRepo>()));
-    gh.factory<_i438.QrCubit>(() => _i438.QrCubit(gh<_i528.QrUseCase>()));
     gh.factory<_i737.TopProductsRemoteDataSource>(
       () => _i169.TopProductsRemoteDataSourceImpl(gh<_i35.ApiService>()),
     );
@@ -97,6 +99,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i737.TopProductsRemoteDataSource>(),
         gh<_i948.LowStockRemoteDataSource>(),
       ),
+    );
+    gh.factory<_i438.QrCubit>(
+      () => _i438.QrCubit(gh<_i528.QrUseCase>(), gh<_i295.SaveQrDataUseCase>()),
     );
     gh.factory<_i290.LowStockUseCase>(
       () => _i290.LowStockUseCase(gh<_i281.HomeRepo>()),
