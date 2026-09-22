@@ -1,11 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
 import 'package:skeleton_mobile_app/core/theming/app_color.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
-import 'package:skeleton_mobile_app/features/home/domain/entities/low_stock_response.dart';
 import 'package:skeleton_mobile_app/features/home/logic/home_cubit.dart';
 import 'package:skeleton_mobile_app/features/home/logic/home_state.dart';
 import 'package:skeleton_mobile_app/features/home/ui/widgets/stock_item.dart';
@@ -44,14 +42,8 @@ class _LowStockListState extends State<LowStockList> {
 
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
-        final data = state.maybeWhen(
-          success: (data) {
-            if (data is LowStockResponse) {
-              return data;
-            }
-
-            return null;
-          },
+        final data = state.lowStockState.maybeWhen(
+          success: (data) => data,
           orElse: () => null,
         );
 
@@ -128,4 +120,3 @@ class _LowStockListState extends State<LowStockList> {
     );
   }
 }
-

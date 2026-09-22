@@ -5,14 +5,15 @@ import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
 import 'package:skeleton_mobile_app/core/theming/app_color.dart';
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
-import 'package:skeleton_mobile_app/features/home/domain/entities/sales_chart_entity.dart';
 import 'package:skeleton_mobile_app/features/home/logic/home_cubit.dart';
 import 'package:skeleton_mobile_app/features/home/logic/home_state.dart';
 import 'package:skeleton_mobile_app/features/home/ui/widgets/sales_chart.dart';
 import 'package:skeleton_mobile_app/features/home/ui/widgets/sales_period_selector.dart';
 
 class SalesOverview extends StatefulWidget {
-  const SalesOverview({super.key});
+  final DateTime selectedDate;
+
+  const SalesOverview({super.key, required this.selectedDate});
 
   @override
   State<SalesOverview> createState() => _SalesOverviewState();
@@ -25,6 +26,14 @@ class _SalesOverviewState extends State<SalesOverview> {
   void initState() {
     super.initState();
     _getSalesChart();
+  }
+
+  @override
+  void didUpdateWidget(SalesOverview oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.selectedDate != widget.selectedDate) {
+      _getSalesChart();
+    }
   }
 
   Future<void> _getSalesChart() async {
@@ -82,21 +91,12 @@ class _SalesOverviewState extends State<SalesOverview> {
     return BlocConsumer<HomeCubit, HomeState>(
       listener: (context, state) {},
       builder: (context, state) {
-        final salesData = state.maybeWhen(
-          success: (data) {
-            if (data is List<SalesChartEntity>) {
-              return data;
-            }
-
-            return <SalesChartEntity>[];
-          },
-          orElse: () => <SalesChartEntity>[],
+        final salesResponse = state.salesChartState.maybeWhen(
+          success: (data) => data,
+          orElse: () => null,
         );
 
-        final total = salesData.fold<double>(
-          0,
-          (sum, item) => sum + item.total,
-        );
+        final salesData = salesResponse?.chart ?? [];
 
         return Container(
           padding: EdgeInsets.fromLTRB(16.w, 14.h, 16.w, 14.h),
@@ -166,7 +166,8 @@ class _SalesOverviewState extends State<SalesOverview> {
                               : AppStyles.salesOverviewCurrencyLight,
                         ),
                         TextSpan(
-                          text: total.toStringAsFixed(0),
+                          text: (salesResponse?.total ?? 0)
+                              .toStringAsFixed(0),
                           style: isDark
                               ? AppStyles.salesOverviewAmountDark
                               : AppStyles.salesOverviewAmountLight,
@@ -179,13 +180,13 @@ class _SalesOverviewState extends State<SalesOverview> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
-                        '--',
+                        '${salesResponse?.changePct.toStringAsFixed(0) ?? '0'}%',
                         style: isDark
                             ? AppStyles.salesOverviewPercentDark
                             : AppStyles.salesOverviewPercentLight,
                       ),
                       Text(
-                        l10n.vsYesterday,
+                        salesResponse?.vsLabel ?? l10n.vsYesterday,
                         style: isDark
                             ? AppStyles.salesOverviewMetaDark
                             : AppStyles.salesOverviewMetaLight,
@@ -196,9 +197,7 @@ class _SalesOverviewState extends State<SalesOverview> {
               ),
               SizedBox(height: 10.h),
               SalesChart(
-                timeLabels: salesData.map((item) {
-                  return '${item.date.hour}:00';
-                }).toList(),
+                data: salesData,
               ),
             ],
           ),
@@ -207,4 +206,3 @@ class _SalesOverviewState extends State<SalesOverview> {
     );
   }
 }
-

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
+import 'package:skeleton_mobile_app/features/home/logic/home_cubit.dart';
+import 'package:skeleton_mobile_app/features/home/logic/home_state.dart';
 import 'package:skeleton_mobile_app/features/home/ui/widgets/app_bar.dart';
 import 'package:skeleton_mobile_app/features/home/ui/widgets/assistant_floating_button.dart';
 import 'package:skeleton_mobile_app/features/home/ui/widgets/date_selector.dart';
@@ -17,7 +20,7 @@ class HomeScrean extends StatefulWidget {
 }
 
 class _HomeScreanState extends State<HomeScrean> {
-  DateTime selectedDate = DateTime(2025, 1, 15);
+  DateTime selectedDate = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -41,36 +44,55 @@ class _HomeScreanState extends State<HomeScrean> {
                       thickness: 3.h,
                       endIndent: 300.w,
                     ),
-                    Text(
-                      'El-Masry \nRetail',
-                      style: isDark
-                          ? AppStyles.font24BlackDark
-                          : AppStyles.font24BlackLight,
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            'Cairo Branch · Main Store',
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: isDark
-                                ? AppStyles.font12MediumDark
-                                : AppStyles.font12MediumLight,
-                          ),
-                        ),
-                        DateSelector(
-                          selectedDate: selectedDate,
-                          onDateChanged: (date) {
-                            setState(() => selectedDate = date);
-                          },
-                        ),
-                      ],
+                    BlocBuilder<HomeCubit, HomeState>(
+                      builder: (context, state) {
+                        final summary = state.summaryState.maybeWhen(
+                          success: (data) => data,
+                          orElse: () => null,
+                        );
+
+                        final businessName =
+                            summary?.businessSummary.businessName ?? '';
+                        final storeName =
+                            summary?.storeSummary.storeName ?? '';
+
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              businessName,
+                              style: isDark
+                                  ? AppStyles.font24BlackDark
+                                  : AppStyles.font24BlackLight,
+                            ),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    storeName,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: isDark
+                                        ? AppStyles.font12MediumDark
+                                        : AppStyles.font12MediumLight,
+                                  ),
+                                ),
+                                DateSelector(
+                                  selectedDate: selectedDate,
+                                  onDateChanged: (date) {
+                                    setState(() => selectedDate = date);
+                                  },
+                                ),
+                              ],
+                            ),
+                          ],
+                        );
+                      },
                     ),
                     SizedBox(height: 20.h),
-                    const StatsGrid(),
+                    StatsGrid(selectedDate: selectedDate),
                     SizedBox(height: 20.h),
-                    const SalesOverview(),
+                    SalesOverview(selectedDate: selectedDate),
                     SizedBox(height: 20.h),
                     const TopSellingProducts(),
                     SizedBox(height: 20.h),

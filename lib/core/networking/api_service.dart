@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:skeleton_mobile_app/core/networking/api_constants.dart';
 import 'package:skeleton_mobile_app/features/home/data/models/low_stock_response_dto.dart';
-import 'package:skeleton_mobile_app/features/home/data/models/sales_chart_dto.dart';
+import 'package:skeleton_mobile_app/features/home/data/models/sales_chart_response_dto.dart';
 import 'package:skeleton_mobile_app/features/home/data/models/summary_response_dto.dart';
 import 'package:skeleton_mobile_app/features/home/data/models/top_products_dto.dart';
 import 'package:skeleton_mobile_app/features/scan_qr/data/model/qr_response_dto.dart';
@@ -22,11 +22,11 @@ abstract class ApiService {
   );
 
   @GET(EndPoints.dashboardSalesChart)
-Future<List<SalesChartDto>> getSalesChart(
-  @Query('storeId') int storeId,
-  @Query('period') String period,
-  @Query('days') int days,
-);
+  Future<SalesChartResponseDto> getSalesChart(
+    @Query('storeId') int storeId,
+    @Query('period') String period,
+    @Query('days') int days,
+  );
 
   @GET(EndPoints.dashboardTopProducts)
   Future<List<TopProductDto>> getTopProducts(

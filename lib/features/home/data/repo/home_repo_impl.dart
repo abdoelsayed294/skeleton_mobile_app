@@ -10,7 +10,7 @@ import 'package:skeleton_mobile_app/features/home/data/mappers/sales_chart_mappe
 import 'package:skeleton_mobile_app/features/home/data/mappers/summary_mapper.dart';
 import 'package:skeleton_mobile_app/features/home/data/mappers/top_products_mapper.dart';
 import 'package:skeleton_mobile_app/features/home/domain/entities/low_stock_response.dart';
-import 'package:skeleton_mobile_app/features/home/domain/entities/sales_chart_entity.dart';
+import 'package:skeleton_mobile_app/features/home/domain/entities/sales_chart_response.dart';
 import 'package:skeleton_mobile_app/features/home/domain/entities/summary_response.dart';
 import 'package:skeleton_mobile_app/features/home/domain/entities/top_product_entity.dart';
 import 'package:skeleton_mobile_app/features/home/domain/repo/home_repo.dart';
@@ -34,10 +34,10 @@ class HomeRepoImpl extends HomeRepo {
   }
 
   @override
-  Future<ApiResult<List<SalesChartEntity>>> getSalesChart(int storeId, String period, int days) async {
+  Future<ApiResult<SalesChartResponse>> getSalesChart(int storeId, String period, int days) async {
     final response = await salesChartRemoteDataSource.getSalesChart(storeId, period, days);
     return response.when(
-      success: (data) => ApiResult.success(data.map((e) => e.toEntity()).toList()),
+      success: (data) => ApiResult.success(data.toEntity()),
       failure: (error) => ApiResult.failure(ApiErrorHandler.handle(error)),
     );
   }

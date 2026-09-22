@@ -30,7 +30,7 @@ class LowStockProductDto {
   @JsonKey(name: 'minStockLevel')
   final int? minStockLevel;
   @JsonKey(name: 'barcode')
-  final String barcode;
+  final String? barcode;
   @JsonKey(name: 'sku')
   final String? sku;
   @JsonKey(name: 'left')
@@ -42,7 +42,7 @@ class LowStockProductDto {
     required this.quantity,
     required this.limit,
     this.minStockLevel,
-    required this.barcode,
+    this.barcode,
     this.sku,
     required this.left
   });

@@ -43,14 +43,8 @@ class _TopSellingProductsState extends State<TopSellingProducts> {
 
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
-        final products = state.maybeWhen(
-          success: (data) {
-            if (data is List<TopProductEntity>) {
-              return data;
-            }
-
-            return <TopProductEntity>[];
-          },
+        final products = state.topProductsState.maybeWhen(
+          success: (data) => data,
           orElse: () => <TopProductEntity>[],
         );
 
@@ -84,4 +78,3 @@ class _TopSellingProductsState extends State<TopSellingProducts> {
     );
   }
 }
-
