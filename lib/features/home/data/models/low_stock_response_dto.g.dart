@@ -23,12 +23,24 @@ Map<String, dynamic> _$LowStockResponseDtoToJson(
 
 LowStockProductDto _$LowStockProductDtoFromJson(Map<String, dynamic> json) =>
     LowStockProductDto(
+      id: (json['id'] as num).toInt(),
       productName: json['itemName'] as String,
       quantity: (json['quantity'] as num).toInt(),
+      limit: (json['limit'] as num).toInt(),
+      minStockLevel: (json['minStockLevel'] as num?)?.toInt(),
+      barcode: json['barcode'] as String,
+      sku: json['sku'] as String?,
+      left: (json['left'] as num).toInt(),
     );
 
 Map<String, dynamic> _$LowStockProductDtoToJson(LowStockProductDto instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'itemName': instance.productName,
       'quantity': instance.quantity,
+      'limit': instance.limit,
+      'minStockLevel': instance.minStockLevel,
+      'barcode': instance.barcode,
+      'sku': instance.sku,
+      'left': instance.left,
     };

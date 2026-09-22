@@ -1,6 +1,8 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
 import 'package:skeleton_mobile_app/core/routing/routes.dart';
 import 'package:skeleton_mobile_app/core/widgets/dilaog_utils.dart';
 import 'package:skeleton_mobile_app/features/home/domain/entities/summary_response.dart';
@@ -18,6 +20,24 @@ class StatsGrid extends StatefulWidget {
 
 class _StatsGridState extends State<StatsGrid> {
   int selectedCardIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _getSummary();
+  }
+
+  Future<void> _getSummary() async {
+    final storeId = await SharedPrefHelper.getInt(
+      SharedPrefHelper.storeIdKey,
+    );
+
+    if (!mounted) return;
+
+    context.read<HomeCubit>().getSummary(
+      storeId: storeId,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,8 +68,13 @@ class _StatsGridState extends State<StatsGrid> {
         }
 
         final summary = state.maybeWhen(
-          success: (data) =>
-              data is SummaryResponse ? data : null,
+          success: (data) {
+            if (data is SummaryResponse) {
+              return data;
+            }
+
+            return null;
+          },
           orElse: () => null,
         );
 
@@ -64,13 +89,14 @@ class _StatsGridState extends State<StatsGrid> {
                 Expanded(
                   child: StatCard(
                     title: l10n.todaySales.toUpperCase(),
-                    value: '${summary.todaySales ?? 0}',
+                    value: '${summary.todaySales}',
                     unit: 'EGP',
-                    change: '${summary.salesChangePct ?? 0}%',
+                    change: '${summary.salesChangePct}%',
                     icon: Icons.shopping_bag_outlined,
                     isSelected: selectedCardIndex == 0,
                     onTap: () {
                       setState(() => selectedCardIndex = 0);
+
                       Navigator.of(context).pushNamed(
                         Routes.todaySalesScreen,
                       );
@@ -80,11 +106,13 @@ class _StatsGridState extends State<StatsGrid> {
                 SizedBox(width: 12.w),
                 Expanded(
                   child: StatCard(
-                    title: l10n.todayOrders.toUpperCase(),
-                    value: '0',
-                    unit: l10n.orders,
-                    change: '0%',
-                    icon: Icons.shopping_bag_outlined,
+                    title: l10n.expenses.toUpperCase(),
+                    value: '${summary.todayExpenses}',
+                    unit: 'EGP',
+                    change: '${summary.expensesChangePct}%',
+                    icon: Icons.receipt_long_outlined,
+                    isNegative:
+                        summary.expensesChangePct < 0,
                     isSelected: selectedCardIndex == 1,
                     onTap: () {
                       setState(() => selectedCardIndex = 1);
@@ -99,15 +127,16 @@ class _StatsGridState extends State<StatsGrid> {
                 Expanded(
                   child: StatCard(
                     title: l10n.purchases.toUpperCase(),
-                    value: '${summary.todayPurchases ?? 0}',
+                    value: '${summary.todayPurchases}',
                     unit: 'EGP',
-                    change: '${summary.purchasesChangePct ?? 0}%',
-                    icon: Icons.shopping_bag_outlined,
+                    change: '${summary.purchasesChangePct}%',
+                    icon: Icons.shopping_cart_outlined,
                     isNegative:
-                        (summary.purchasesChangePct ?? 0) < 0,
+                        summary.purchasesChangePct < 0,
                     isSelected: selectedCardIndex == 2,
                     onTap: () {
                       setState(() => selectedCardIndex = 2);
+
                       Navigator.of(context).pushNamed(
                         Routes.purchasesScreen,
                       );
@@ -118,14 +147,15 @@ class _StatsGridState extends State<StatsGrid> {
                 Expanded(
                   child: StatCard(
                     title: l10n.netProfit.toUpperCase(),
-                    value: '${summary.netProfit ?? 0}',
+                    value: '${summary.netProfit}',
                     unit: 'EGP',
-                    change: '${summary.netProfitChangePct ?? 0}%',
+                    change: '${summary.netProfitChangePct}%',
                     icon: Icons.attach_money_rounded,
                     accentColor: const Color(0xFF059669),
                     isSelected: selectedCardIndex == 3,
                     onTap: () {
                       setState(() => selectedCardIndex = 3);
+
                       Navigator.of(context).pushNamed(
                         Routes.profitDetailsScreen,
                       );

@@ -1,9 +1,11 @@
+import 'package:injectable/injectable.dart';
 import 'package:skeleton_mobile_app/core/networking/api_error_handler.dart';
 import 'package:skeleton_mobile_app/core/networking/api_result.dart';
 import 'package:skeleton_mobile_app/core/networking/api_service.dart';
 import 'package:skeleton_mobile_app/features/home/data/data_source/remote/low_stock_remote_data_source.dart';
 import 'package:skeleton_mobile_app/features/home/data/models/low_stock_response_dto.dart';
 
+@Injectable(as: LowStockRemoteDataSource)
 class LowStockRemoteDataSourceImpl extends LowStockRemoteDataSource {
   final ApiService apiService;
 

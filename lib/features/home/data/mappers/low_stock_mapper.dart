@@ -15,6 +15,7 @@ extension LowStockProductMapper on LowStockProductDto {
     return LowStockProduct(
       productName: productName,
       quantity: quantity,
+      limit: limit
     );
   }
 }

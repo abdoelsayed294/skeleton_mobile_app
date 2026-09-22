@@ -17,6 +17,8 @@ import 'package:skeleton_mobile_app/core/networking/api_service.dart' as _i35;
 import 'package:skeleton_mobile_app/core/networking/dio_module.dart' as _i453;
 import 'package:skeleton_mobile_app/features/home/data/data_source/remote/low_stock_remote_data_source.dart'
     as _i948;
+import 'package:skeleton_mobile_app/features/home/data/data_source/remote/low_stock_remote_data_source_impl.dart'
+    as _i215;
 import 'package:skeleton_mobile_app/features/home/data/data_source/remote/sales_chart_remote_data_source.dart'
     as _i878;
 import 'package:skeleton_mobile_app/features/home/data/data_source/remote/sales_chart_remote_data_source_impl.dart'
@@ -74,14 +76,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i743.QrRemoteDataSources>(
       () => _i598.QrRemoteDataSourcesImpl(gh<_i35.ApiService>()),
     );
-    gh.factory<_i1007.HomeCubit>(
-      () => _i1007.HomeCubit(
-        gh<_i267.SummaryUseCase>(),
-        gh<_i1055.SalesChartUseCase>(),
-        gh<_i134.TopProductsUseCase>(),
-        gh<_i290.LowStockUseCase>(),
-      ),
-    );
     gh.factory<_i571.QrRepo>(
       () => _i149.QrRepoImpl(gh<_i743.QrRemoteDataSources>()),
     );
@@ -93,12 +87,35 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i1001.SummaryRemoteDataSource>(
       () => _i460.SummaryRemoteDataSourceImpl(gh<_i35.ApiService>()),
     );
+    gh.factory<_i948.LowStockRemoteDataSource>(
+      () => _i215.LowStockRemoteDataSourceImpl(gh<_i35.ApiService>()),
+    );
     gh.factory<_i281.HomeRepo>(
       () => _i101.HomeRepoImpl(
         gh<_i1001.SummaryRemoteDataSource>(),
         gh<_i878.SalesChartRemoteDataSource>(),
         gh<_i737.TopProductsRemoteDataSource>(),
         gh<_i948.LowStockRemoteDataSource>(),
+      ),
+    );
+    gh.factory<_i290.LowStockUseCase>(
+      () => _i290.LowStockUseCase(gh<_i281.HomeRepo>()),
+    );
+    gh.factory<_i1055.SalesChartUseCase>(
+      () => _i1055.SalesChartUseCase(gh<_i281.HomeRepo>()),
+    );
+    gh.factory<_i267.SummaryUseCase>(
+      () => _i267.SummaryUseCase(gh<_i281.HomeRepo>()),
+    );
+    gh.factory<_i134.TopProductsUseCase>(
+      () => _i134.TopProductsUseCase(gh<_i281.HomeRepo>()),
+    );
+    gh.factory<_i1007.HomeCubit>(
+      () => _i1007.HomeCubit(
+        gh<_i267.SummaryUseCase>(),
+        gh<_i1055.SalesChartUseCase>(),
+        gh<_i134.TopProductsUseCase>(),
+        gh<_i290.LowStockUseCase>(),
       ),
     );
     return this;

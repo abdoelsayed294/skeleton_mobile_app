@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeleton_mobile_app/core/di/injectoin.dart';
 import 'package:skeleton_mobile_app/core/widgets/main_navigation_screen.dart';
+import 'package:skeleton_mobile_app/features/home/logic/home_cubit.dart';
 import 'package:skeleton_mobile_app/features/home/ui/screens/home_screan.dart';
 import 'package:skeleton_mobile_app/features/home/ui/screens/today_sales_screen.dart';
 import 'package:skeleton_mobile_app/features/home/ui/screens/profit_details_screen.dart';
@@ -26,13 +27,18 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const ScanQrScreen());
       case Routes.qrScannerScreen:
         return MaterialPageRoute(
-          builder: (_) =>  BlocProvider(
-             create: (_) => getIt<QrCubit>(),
-            child :const QrScannerScreen(),
+          builder: (_) => BlocProvider(
+            create: (_) => getIt<QrCubit>(),
+            child: const QrScannerScreen(),
           ),
         );
       case Routes.mainScreen:
-        return MaterialPageRoute(builder: (_) => const MainNavigationScreen());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<HomeCubit>(),
+            child: MainNavigationScreen(),
+          ),
+        );
 
       case Routes.inventoryScreen:
         return MaterialPageRoute(builder: (_) => const InventoryScrean());
@@ -47,7 +53,12 @@ class AppRouter {
       case Routes.editProfileScreen:
         return MaterialPageRoute(builder: (_) => const EditProfileScrean());
       case Routes.homeScreen:
-        return MaterialPageRoute(builder: (_) => const HomeScrean());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (_) => getIt<HomeCubit>(),
+            child: const HomeScrean(),
+          ),
+        );
       case Routes.productDetailsScreen:
         return MaterialPageRoute(builder: (_) => const ProductDetailsScrean());
       case Routes.purchasesScreen:

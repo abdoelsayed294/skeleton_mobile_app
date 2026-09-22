@@ -1,7 +1,9 @@
+import 'package:injectable/injectable.dart';
 import 'package:skeleton_mobile_app/core/networking/api_result.dart';
 import 'package:skeleton_mobile_app/features/home/domain/entities/top_product_entity.dart';
 import 'package:skeleton_mobile_app/features/home/domain/repo/home_repo.dart';
 
+@injectable
 class TopProductsUseCase {
   final HomeRepo _homeRepo;
 
