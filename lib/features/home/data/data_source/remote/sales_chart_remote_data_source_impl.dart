@@ -3,7 +3,7 @@ import 'package:skeleton_mobile_app/core/networking/api_error_handler.dart';
 import 'package:skeleton_mobile_app/core/networking/api_result.dart';
 import 'package:skeleton_mobile_app/core/networking/api_service.dart';
 import 'package:skeleton_mobile_app/features/home/data/data_source/remote/sales_chart_remote_data_source.dart';
-import 'package:skeleton_mobile_app/features/home/data/models/sales_chart_dto.dart';
+import 'package:skeleton_mobile_app/features/home/data/models/sales_chart_response_dto.dart';
 
 @Injectable(as: SalesChartRemoteDataSource)
 class SalesChartRemoteDataSourceImpl extends SalesChartRemoteDataSource {
@@ -11,7 +11,7 @@ class SalesChartRemoteDataSourceImpl extends SalesChartRemoteDataSource {
   SalesChartRemoteDataSourceImpl(this.apiService);
 
   @override
-  Future<ApiResult<List<SalesChartDto>>> getSalesChart(
+  Future<ApiResult<SalesChartResponseDto>> getSalesChart(
     int storeId,
     String period,
     int days,

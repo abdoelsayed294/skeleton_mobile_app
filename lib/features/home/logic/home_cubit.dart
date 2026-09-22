@@ -19,24 +19,21 @@ class HomeCubit extends Cubit<HomeState> {
     this.salesChartUseCase,
     this.topProductsUseCase,
     this.lowStockUseCase,
-  ) : super(HomeState.initial());
-
-
-  
+  ) : super(const HomeState());
 
   Future<void> getSummary({required int storeId, DateTime? date}) async {
-    emit(HomeState.loading());
+    emit(state.copyWith(summaryState: const RequestState.loading()));
 
     final formattedDate = (date ?? DateTime.now()).toIso8601String();
 
-    final Result = await summaryUseCase.getSummary(storeId, formattedDate);
+    final result = await summaryUseCase.getSummary(storeId, formattedDate);
 
-    Result.when(
+    result.when(
       success: (data) {
-        emit(HomeState.success(data));
+        emit(state.copyWith(summaryState: RequestState.success(data)));
       },
       failure: (error) {
-        emit(HomeState.error(error));
+        emit(state.copyWith(summaryState: RequestState.error(error)));
       },
     );
   }
@@ -46,46 +43,50 @@ class HomeCubit extends Cubit<HomeState> {
     String period = 'today',
     int days = 1,
   }) async {
-    emit(HomeState.loading());
+    emit(state.copyWith(salesChartState: const RequestState.loading()));
 
-    final Result = await salesChartUseCase.getSalesChart(storeId, period, days);
+    final result = await salesChartUseCase.getSalesChart(
+      storeId,
+      period,
+      days,
+    );
 
-    Result.when(
+    result.when(
       success: (data) {
-        emit(HomeState.success(data));
+        emit(state.copyWith(salesChartState: RequestState.success(data)));
       },
       failure: (error) {
-        emit(HomeState.error(error));
+        emit(state.copyWith(salesChartState: RequestState.error(error)));
       },
     );
   }
 
   Future<void> getTopProducts({required int storeId, int take = 5}) async {
-    emit(HomeState.loading());
+    emit(state.copyWith(topProductsState: const RequestState.loading()));
 
-    final Result = await topProductsUseCase.getTopProducts(storeId, take);
+    final result = await topProductsUseCase.getTopProducts(storeId, take);
 
-    Result.when(
+    result.when(
       success: (data) {
-        emit(HomeState.success(data));
+        emit(state.copyWith(topProductsState: RequestState.success(data)));
       },
       failure: (error) {
-        emit(HomeState.error(error));
+        emit(state.copyWith(topProductsState: RequestState.error(error)));
       },
     );
   }
 
   Future<void> getLowStock({required int storeId}) async {
-    emit(HomeState.loading());
+    emit(state.copyWith(lowStockState: const RequestState.loading()));
 
-    final Result = await lowStockUseCase.getLowStock(storeId);
+    final result = await lowStockUseCase.getLowStock(storeId);
 
-    Result.when(
+    result.when(
       success: (data) {
-        emit(HomeState.success(data));
+        emit(state.copyWith(lowStockState: RequestState.success(data)));
       },
       failure: (error) {
-        emit(HomeState.error(error));
+        emit(state.copyWith(lowStockState: RequestState.error(error)));
       },
     );
   }

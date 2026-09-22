@@ -1,18 +1,18 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
 import 'package:skeleton_mobile_app/core/routing/routes.dart';
 import 'package:skeleton_mobile_app/core/widgets/dilaog_utils.dart';
-import 'package:skeleton_mobile_app/features/home/domain/entities/summary_response.dart';
 import 'package:skeleton_mobile_app/features/home/logic/home_cubit.dart';
 import 'package:skeleton_mobile_app/features/home/logic/home_state.dart';
 import 'package:skeleton_mobile_app/features/home/ui/widgets/statCard.dart';
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
 
 class StatsGrid extends StatefulWidget {
-  const StatsGrid({super.key});
+  final DateTime selectedDate;
+
+  const StatsGrid({super.key, required this.selectedDate});
 
   @override
   State<StatsGrid> createState() => _StatsGridState();
@@ -24,10 +24,18 @@ class _StatsGridState extends State<StatsGrid> {
   @override
   void initState() {
     super.initState();
-    _getSummary();
+    _getSummary(widget.selectedDate);
   }
 
-  Future<void> _getSummary() async {
+  @override
+  void didUpdateWidget(StatsGrid oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.selectedDate != widget.selectedDate) {
+      _getSummary(widget.selectedDate);
+    }
+  }
+
+  Future<void> _getSummary(DateTime date) async {
     final storeId = await SharedPrefHelper.getInt(
       SharedPrefHelper.storeIdKey,
     );
@@ -36,6 +44,7 @@ class _StatsGridState extends State<StatsGrid> {
 
     context.read<HomeCubit>().getSummary(
       storeId: storeId,
+      date: date,
     );
   }
 
@@ -45,9 +54,10 @@ class _StatsGridState extends State<StatsGrid> {
 
     return BlocConsumer<HomeCubit, HomeState>(
       listenWhen: (previous, current) =>
-          current is Error && previous is! Error,
+          current.summaryState is RequestError &&
+          previous.summaryState is! RequestError,
       listener: (context, state) {
-        state.whenOrNull(
+        state.summaryState.whenOrNull(
           error: (apiErrorModel) {
             DialogUtils.showMessage(
               context: context,
@@ -61,20 +71,14 @@ class _StatsGridState extends State<StatsGrid> {
         );
       },
       builder: (context, state) {
-        if (state is Loading) {
+        if (state.summaryState is RequestLoading) {
           return const Center(
             child: CircularProgressIndicator(),
           );
         }
 
-        final summary = state.maybeWhen(
-          success: (data) {
-            if (data is SummaryResponse) {
-              return data;
-            }
-
-            return null;
-          },
+        final summary = state.summaryState.maybeWhen(
+          success: (data) => data,
           orElse: () => null,
         );
 
@@ -170,4 +174,3 @@ class _StatsGridState extends State<StatsGrid> {
     );
   }
 }
-

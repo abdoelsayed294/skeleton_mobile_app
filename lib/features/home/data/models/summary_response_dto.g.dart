@@ -70,7 +70,7 @@ StoreSummaryDto _$StoreSummaryDtoFromJson(Map<String, dynamic> json) =>
       storeName: json['storeName'] as String,
       address: json['address'] as String?,
       phone: json['phone'] as String?,
-      businessId: (json['businessId'] as num).toInt(),
+      businessId: (json['businessID'] as num).toInt(),
     );
 
 Map<String, dynamic> _$StoreSummaryDtoToJson(StoreSummaryDto instance) =>
@@ -79,5 +79,5 @@ Map<String, dynamic> _$StoreSummaryDtoToJson(StoreSummaryDto instance) =>
       'storeName': instance.storeName,
       'address': instance.address,
       'phone': instance.phone,
-      'businessId': instance.businessId,
+      'businessID': instance.businessId,
     };

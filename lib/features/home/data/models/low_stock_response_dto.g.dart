@@ -28,7 +28,7 @@ LowStockProductDto _$LowStockProductDtoFromJson(Map<String, dynamic> json) =>
       quantity: (json['quantity'] as num).toInt(),
       limit: (json['limit'] as num).toInt(),
       minStockLevel: (json['minStockLevel'] as num?)?.toInt(),
-      barcode: json['barcode'] as String,
+      barcode: json['barcode'] as String?,
       sku: json['sku'] as String?,
       left: (json['left'] as num).toInt(),
     );

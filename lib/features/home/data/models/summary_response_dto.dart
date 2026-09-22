@@ -88,7 +88,7 @@ class StoreSummaryDto {
   final String? address;
   @JsonKey(name: 'phone')
   final String? phone;
-  @JsonKey(name: 'businessId')
+  @JsonKey(name: 'businessID')
   final int businessId;
 
   StoreSummaryDto({required this.id, required this.storeName, this.address, this.phone, required this.businessId});
