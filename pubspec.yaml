@@ -27,13 +27,14 @@ dependencies:
   logger: ^2.6.0 
   pretty_dio_logger: ^1.4.0
   flutter_bloc: ^9.1.1
-  shimmer: ^3.0.0
+  shimmer: ^4.0.0
   flutter_localization: ^0.4.1
   cached_network_image: ^3.4.1
   auto_size_text: ^3.0.0
   dio: ^5.11.1
   provider: ^6.1.5+1
   mobile_scanner: ^7.4.2
+  image_picker: ^1.2.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

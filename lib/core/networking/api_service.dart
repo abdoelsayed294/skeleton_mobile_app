@@ -5,6 +5,8 @@ import 'package:skeleton_mobile_app/features/home/data/models/low_stock_response
 import 'package:skeleton_mobile_app/features/home/data/models/sales_chart_response_dto.dart';
 import 'package:skeleton_mobile_app/features/home/data/models/summary_response_dto.dart';
 import 'package:skeleton_mobile_app/features/home/data/models/top_products_dto.dart';
+import 'package:skeleton_mobile_app/features/inventory/data/model/inventory_summary_response_dto.dart';
+import 'package:skeleton_mobile_app/features/inventory/data/model/inventroy_product_response_dto.dart';
 import 'package:skeleton_mobile_app/features/scan_qr/data/model/qr_response_dto.dart';
 
 part 'api_service.g.dart';
@@ -35,7 +37,21 @@ abstract class ApiService {
   );
 
   @GET(EndPoints.dashboardLowStock)
-  Future<LowStockResponseDto> getLowStock(
-    @Query('storeId') int storeId
+  Future<LowStockResponseDto> getLowStock(@Query('storeId') int storeId);
+
+  @GET(EndPoints.inventorySummary)
+  Future<InventorySummaryResponseDto> getInventorySummary(
+    @Query('storeId') int storeId,
+  );
+  @GET(EndPoints.inventoryProducts)
+  @GET(EndPoints.inventoryProducts)
+  Future<InventroyProductResponseDto> getInventoryProducts(
+    @Query('storeId') int storeId,
+    @Query('itemType') String? itemType,
+    @Query('search') String? search,
+    @Query('status') String? status,
+    @Query('page') int page,
+    @Query('pageSize') int pageSize,
+    @Query('sortBy') String? sortBy,
   );
 }

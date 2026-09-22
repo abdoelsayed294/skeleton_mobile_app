@@ -45,6 +45,22 @@ import 'package:skeleton_mobile_app/features/home/domain/use_cases/top_products_
     as _i134;
 import 'package:skeleton_mobile_app/features/home/logic/home_cubit.dart'
     as _i1007;
+import 'package:skeleton_mobile_app/features/inventory/data/data_sources/remote/inventory_summary_remote_data_sources.dart'
+    as _i1051;
+import 'package:skeleton_mobile_app/features/inventory/data/data_sources/remote/inventory_summary_remote_data_sources_impl.dart'
+    as _i344;
+import 'package:skeleton_mobile_app/features/inventory/data/repo/inventory_summary_repo_impl.dart'
+    as _i623;
+import 'package:skeleton_mobile_app/features/inventory/domain/repo/inventory_summary_repo.dart'
+    as _i3;
+import 'package:skeleton_mobile_app/features/inventory/domain/use_cases/Inventory_proudct_use_case.dart'
+    as _i293;
+import 'package:skeleton_mobile_app/features/inventory/domain/use_cases/inventory_summary_use_case.dart'
+    as _i479;
+import 'package:skeleton_mobile_app/features/inventory/logic/inventory_cubit.dart'
+    as _i956;
+import 'package:skeleton_mobile_app/features/inventory/logic/inventory_product_cubit.dart'
+    as _i578;
 import 'package:skeleton_mobile_app/features/scan_qr/data/data_sources/remote/qr_remote_data_sources.dart'
     as _i743;
 import 'package:skeleton_mobile_app/features/scan_qr/data/data_sources/remote/qr_remote_data_sources_impl.dart'
@@ -83,6 +99,9 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i149.QrRepoImpl(gh<_i743.QrRemoteDataSources>()),
     );
     gh.factory<_i528.QrUseCase>(() => _i528.QrUseCase(gh<_i571.QrRepo>()));
+    gh.factory<_i1051.InventorySummaryRemoteDataSource>(
+      () => _i344.InventorySummaryRemoteDataSourcesImpl(gh<_i35.ApiService>()),
+    );
     gh.factory<_i737.TopProductsRemoteDataSource>(
       () => _i169.TopProductsRemoteDataSourceImpl(gh<_i35.ApiService>()),
     );
@@ -100,8 +119,19 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i948.LowStockRemoteDataSource>(),
       ),
     );
+    gh.factory<_i3.InventorySummaryRepo>(
+      () => _i623.InventorySummaryRepoImpl(
+        gh<_i1051.InventorySummaryRemoteDataSource>(),
+      ),
+    );
     gh.factory<_i438.QrCubit>(
       () => _i438.QrCubit(gh<_i528.QrUseCase>(), gh<_i295.SaveQrDataUseCase>()),
+    );
+    gh.factory<_i293.InventoryProudctUseCase>(
+      () => _i293.InventoryProudctUseCase(gh<_i3.InventorySummaryRepo>()),
+    );
+    gh.factory<_i479.InventorySummaryUseCase>(
+      () => _i479.InventorySummaryUseCase(gh<_i3.InventorySummaryRepo>()),
     );
     gh.factory<_i290.LowStockUseCase>(
       () => _i290.LowStockUseCase(gh<_i281.HomeRepo>()),
@@ -114,6 +144,15 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i134.TopProductsUseCase>(
       () => _i134.TopProductsUseCase(gh<_i281.HomeRepo>()),
+    );
+    gh.factory<_i578.InventoryProductCubit>(
+      () => _i578.InventoryProductCubit(gh<_i293.InventoryProudctUseCase>()),
+    );
+    gh.factory<_i956.InventoryCubit>(
+      () => _i956.InventoryCubit(
+        gh<_i479.InventorySummaryUseCase>(),
+        gh<_i293.InventoryProudctUseCase>(),
+      ),
     );
     gh.factory<_i1007.HomeCubit>(
       () => _i1007.HomeCubit(

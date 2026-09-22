@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:skeleton_mobile_app/core/routing/routes.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
@@ -19,6 +20,8 @@ class QrScannerScreen extends StatefulWidget {
 
 class _QrScannerScreenState extends State<QrScannerScreen> {
   bool isNavigating = false;
+  final MobileScannerController _scannerController = MobileScannerController();
+  final ImagePicker _imagePicker = ImagePicker();
 
   void handleDetection(BarcodeCapture capture) {
     if (isNavigating || capture.barcodes.isEmpty) {
@@ -41,6 +44,42 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
     debugPrint('QR Token: $token');
 
     context.read<QrCubit>().getQrStatus(token);
+  }
+
+  Future<void> _scanImageFromGallery() async {
+    if (isNavigating) return;
+
+    final image = await _imagePicker.pickImage(source: ImageSource.gallery);
+    if (image == null || !mounted) return;
+
+    setState(() => isNavigating = true);
+    try {
+      final barcodeCapture = await _scannerController.analyzeImage(image.path);
+
+      if (!mounted) return;
+      if (barcodeCapture == null || barcodeCapture.barcodes.isEmpty) {
+        setState(() => isNavigating = false);
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('No QR code was found in this image.')),
+        );
+        return;
+      }
+
+      setState(() => isNavigating = false);
+      handleDetection(barcodeCapture);
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => isNavigating = false);
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Unable to scan this image.')),
+      );
+    }
+  }
+
+  @override
+  void dispose() {
+    _scannerController.dispose();
+    super.dispose();
   }
 
   Future<void> handleQrSuccess(QrResponse qrResponse) async {
@@ -76,7 +115,10 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          MobileScanner(onDetect: handleDetection),
+          MobileScanner(
+            controller: _scannerController,
+            onDetect: handleDetection,
+          ),
 
           Center(
             child: Container(
@@ -99,6 +141,15 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
               style: AppStyles.totalSalesChangeLight,
             ),
           ),
+          Positioned(
+            right: 24.w,
+            bottom: 24.h,
+            child: FilledButton.icon(
+              onPressed: isNavigating ? null : _scanImageFromGallery,
+              icon: const Icon(Icons.photo_library_outlined),
+              label: const Text('Scan from image'),
+            ),
+          ),
           QrBlocListener(
             onSuccess: handleQrSuccess,
             onError: () {
@@ -110,7 +161,5 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
     );
   }
 }
-
-
 
 /// api service<< data source << repository <<use case<<bloc << ui
