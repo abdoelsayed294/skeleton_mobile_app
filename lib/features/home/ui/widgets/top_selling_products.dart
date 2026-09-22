@@ -1,63 +1,87 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
+import 'package:skeleton_mobile_app/features/home/domain/entities/top_product_entity.dart';
+import 'package:skeleton_mobile_app/features/home/logic/home_cubit.dart';
+import 'package:skeleton_mobile_app/features/home/logic/home_state.dart';
 import 'package:skeleton_mobile_app/features/home/ui/widgets/product_row.dart';
 import 'package:skeleton_mobile_app/features/home/ui/widgets/section_card.dart';
 import 'package:skeleton_mobile_app/features/home/ui/widgets/section_header.dart';
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
 
-class TopSellingProducts extends StatelessWidget {
+class TopSellingProducts extends StatefulWidget {
   const TopSellingProducts({super.key});
+
+  @override
+  State<TopSellingProducts> createState() => _TopSellingProductsState();
+}
+
+class _TopSellingProductsState extends State<TopSellingProducts> {
+  @override
+  void initState() {
+    super.initState();
+    _getTopProducts();
+  }
+
+  Future<void> _getTopProducts() async {
+    final storeId = await SharedPrefHelper.getInt(
+      SharedPrefHelper.storeIdKey,
+    );
+
+    if (!mounted) return;
+
+    context.read<HomeCubit>().getTopProducts(
+      storeId: storeId,
+      take: 5,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final products = [
-      (
-        l10n.pitaBreadBundle,
-        '305 ${l10n.unitsSold}',
-        '1,525',
-        Icons.lunch_dining_outlined,
-        const Color(0xFFF97316),
-      ),
-      (
-        l10n.sunflowerCookingOil,
-        '97 ${l10n.unitsSold}',
-        '1,940',
-        Icons.water_drop_outlined,
-        const Color(0xFF2196F3),
-      ),
-      (
-        l10n.egyptianWhiteRice,
-        '63 ${l10n.unitsSold}',
-        '1,890',
-        Icons.grass_outlined,
-        const Color(0xFF38BDF8),
-      ),
-    ];
 
-    return SectionCard(
-      child: Column(
-        children: [
-          SectionHeader(
-            title: l10n.topSellingProducts,
-            action: l10n.viewAll,
-            isDark: isDark,
+    return BlocBuilder<HomeCubit, HomeState>(
+      builder: (context, state) {
+        final products = state.maybeWhen(
+          success: (data) {
+            if (data is List<TopProductEntity>) {
+              return data;
+            }
+
+            return <TopProductEntity>[];
+          },
+          orElse: () => <TopProductEntity>[],
+        );
+
+        return SectionCard(
+          child: Column(
+            children: [
+              SectionHeader(
+                title: l10n.topSellingProducts,
+                action: l10n.viewAll,
+                isDark: isDark,
+              ),
+              ...List.generate(products.length, (index) {
+                final product = products[index];
+
+                return ProductRow(
+                  rank: index + 1,
+                  title: product.productName,
+                  subtitle:
+                      '${product.quantitySold} ${l10n.unitsSold}',
+                  price: product.totalValue.toStringAsFixed(0),
+                  icon: Icons.shopping_bag_outlined,
+                  accentColor: const Color(0xFF2196F3),
+                  isDark: isDark,
+                  isLast: index == products.length - 1,
+                );
+              }),
+            ],
           ),
-          ...List.generate(products.length, (index) {
-            final product = products[index];
-            return ProductRow(
-              rank: index + 3,
-              title: product.$1,
-              subtitle: product.$2,
-              price: product.$3,
-              icon: product.$4,
-              accentColor: product.$5,
-              isDark: isDark,
-              isLast: index == products.length - 1,
-            );
-          }),
-        ],
-      ),
+        );
+      },
     );
   }
 }
+

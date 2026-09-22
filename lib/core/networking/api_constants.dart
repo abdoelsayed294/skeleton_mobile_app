@@ -1,6 +1,7 @@
 class ApiConstants {
     static const String baseUrl = 'https://overfull-container-skiing.ngrok-free.dev/';
 
+
   
 }
 
@@ -24,5 +25,10 @@ class ApiErrors {
 
 class EndPoints {
   static const String qrStatus = '/api/business/qr/status/{qrToken}';
+  static const String dashboardSummary = '/api/Dashboard/summary/';
+  static const String dashboardSalesChart = '/api/Dashboard/sales-chart/';
+  static const String dashboardTopProducts = '/api/Dashboard/top-products/';
+  static const String dashboardLowStock = '/api/Dashboard/low-stock-detail/';
+
   
 }

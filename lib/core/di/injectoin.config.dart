@@ -15,6 +15,36 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:skeleton_mobile_app/core/networking/api_service.dart' as _i35;
 import 'package:skeleton_mobile_app/core/networking/dio_module.dart' as _i453;
+import 'package:skeleton_mobile_app/features/home/data/data_source/remote/low_stock_remote_data_source.dart'
+    as _i948;
+import 'package:skeleton_mobile_app/features/home/data/data_source/remote/low_stock_remote_data_source_impl.dart'
+    as _i215;
+import 'package:skeleton_mobile_app/features/home/data/data_source/remote/sales_chart_remote_data_source.dart'
+    as _i878;
+import 'package:skeleton_mobile_app/features/home/data/data_source/remote/sales_chart_remote_data_source_impl.dart'
+    as _i500;
+import 'package:skeleton_mobile_app/features/home/data/data_source/remote/summary_remote_data_source.dart'
+    as _i1001;
+import 'package:skeleton_mobile_app/features/home/data/data_source/remote/summary_remote_data_source_impl.dart'
+    as _i460;
+import 'package:skeleton_mobile_app/features/home/data/data_source/remote/top_products_remote_data_source.dart'
+    as _i737;
+import 'package:skeleton_mobile_app/features/home/data/data_source/remote/top_products_remote_data_source_impl.dart'
+    as _i169;
+import 'package:skeleton_mobile_app/features/home/data/repo/home_repo_impl.dart'
+    as _i101;
+import 'package:skeleton_mobile_app/features/home/domain/repo/home_repo.dart'
+    as _i281;
+import 'package:skeleton_mobile_app/features/home/domain/use_cases/low_stock_use_case.dart'
+    as _i290;
+import 'package:skeleton_mobile_app/features/home/domain/use_cases/sales_chart_use_case.dart'
+    as _i1055;
+import 'package:skeleton_mobile_app/features/home/domain/use_cases/summary_use_case.dart'
+    as _i267;
+import 'package:skeleton_mobile_app/features/home/domain/use_cases/top_products_use_case.dart'
+    as _i134;
+import 'package:skeleton_mobile_app/features/home/logic/home_cubit.dart'
+    as _i1007;
 import 'package:skeleton_mobile_app/features/scan_qr/data/data_sources/remote/qr_remote_data_sources.dart'
     as _i743;
 import 'package:skeleton_mobile_app/features/scan_qr/data/data_sources/remote/qr_remote_data_sources_impl.dart'
@@ -43,6 +73,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i35.ApiService>(
       () => dioModule.apiService(gh<_i361.Dio>()),
     );
+    gh.factory<_i878.SalesChartRemoteDataSource>(
+      () => _i500.SalesChartRemoteDataSourceImpl(gh<_i35.ApiService>()),
+    );
     gh.factory<_i743.QrRemoteDataSources>(
       () => _i598.QrRemoteDataSourcesImpl(gh<_i35.ApiService>()),
     );
@@ -50,8 +83,45 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i149.QrRepoImpl(gh<_i743.QrRemoteDataSources>()),
     );
     gh.factory<_i528.QrUseCase>(() => _i528.QrUseCase(gh<_i571.QrRepo>()));
+    gh.factory<_i737.TopProductsRemoteDataSource>(
+      () => _i169.TopProductsRemoteDataSourceImpl(gh<_i35.ApiService>()),
+    );
+    gh.factory<_i1001.SummaryRemoteDataSource>(
+      () => _i460.SummaryRemoteDataSourceImpl(gh<_i35.ApiService>()),
+    );
+    gh.factory<_i948.LowStockRemoteDataSource>(
+      () => _i215.LowStockRemoteDataSourceImpl(gh<_i35.ApiService>()),
+    );
+    gh.factory<_i281.HomeRepo>(
+      () => _i101.HomeRepoImpl(
+        gh<_i1001.SummaryRemoteDataSource>(),
+        gh<_i878.SalesChartRemoteDataSource>(),
+        gh<_i737.TopProductsRemoteDataSource>(),
+        gh<_i948.LowStockRemoteDataSource>(),
+      ),
+    );
     gh.factory<_i438.QrCubit>(
       () => _i438.QrCubit(gh<_i528.QrUseCase>(), gh<_i295.SaveQrDataUseCase>()),
+    );
+    gh.factory<_i290.LowStockUseCase>(
+      () => _i290.LowStockUseCase(gh<_i281.HomeRepo>()),
+    );
+    gh.factory<_i1055.SalesChartUseCase>(
+      () => _i1055.SalesChartUseCase(gh<_i281.HomeRepo>()),
+    );
+    gh.factory<_i267.SummaryUseCase>(
+      () => _i267.SummaryUseCase(gh<_i281.HomeRepo>()),
+    );
+    gh.factory<_i134.TopProductsUseCase>(
+      () => _i134.TopProductsUseCase(gh<_i281.HomeRepo>()),
+    );
+    gh.factory<_i1007.HomeCubit>(
+      () => _i1007.HomeCubit(
+        gh<_i267.SummaryUseCase>(),
+        gh<_i1055.SalesChartUseCase>(),
+        gh<_i134.TopProductsUseCase>(),
+        gh<_i290.LowStockUseCase>(),
+      ),
     );
     return this;
   }

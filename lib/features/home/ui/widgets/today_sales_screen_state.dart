@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/features/home/ui/scereens/today_sales_screen.dart';
+import 'package:skeleton_mobile_app/features/home/ui/screens/today_sales_screen.dart';
 import 'package:skeleton_mobile_app/features/home/ui/widgets/profit_details_header.dart';
 import 'package:skeleton_mobile_app/features/reports/ui/widgets/items_sold_stat_card.dart';
 import 'package:skeleton_mobile_app/features/reports/ui/widgets/recent_transactions_list.dart';

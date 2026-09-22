@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
-import 'package:skeleton_mobile_app/features/home/ui/scereens/assistant_screen.dart';
+import 'package:skeleton_mobile_app/features/home/ui/screens/assistant_screen.dart';
 
 class AssistantFloatingButton extends StatelessWidget {
   const AssistantFloatingButton({super.key});
