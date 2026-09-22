@@ -1,9 +1,35 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:skeleton_mobile_app/features/inventory/logic/inventory_product_cubit.dart';
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
 
-class InventorySearchBar extends StatelessWidget {
+class InventorySearchBar extends StatefulWidget {
   const InventorySearchBar({super.key});
+
+  @override
+  State<InventorySearchBar> createState() => _InventorySearchBarState();
+}
+
+class _InventorySearchBarState extends State<InventorySearchBar> {
+  Timer? _debounce;
+
+  @override
+  void dispose() {
+    _debounce?.cancel();
+    super.dispose();
+  }
+
+  void _search(String query) {
+    _debounce?.cancel();
+    _debounce = Timer(const Duration(milliseconds: 400), () {
+      if (mounted) {
+        context.read<InventoryProductCubit>().searchProducts(query);
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -11,6 +37,11 @@ class InventorySearchBar extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
     return TextFormField(
       textInputAction: TextInputAction.search,
+      onChanged: _search,
+      onFieldSubmitted: (query) {
+        _debounce?.cancel();
+        context.read<InventoryProductCubit>().searchProducts(query);
+      },
       style: TextStyle(
         color: theme.textTheme.bodyMedium?.color,
         fontSize: 12.sp,
