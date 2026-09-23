@@ -10,7 +10,6 @@ part of 'inventory_state.dart';
 // **************************************************************************
 
 // dart format off
-
 T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$InventoryState<T> {
