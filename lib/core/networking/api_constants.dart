@@ -29,6 +29,8 @@ class EndPoints {
   static const String dashboardSalesChart = '/api/Dashboard/sales-chart/';
   static const String dashboardTopProducts = '/api/Dashboard/top-products/';
   static const String dashboardLowStock = '/api/Dashboard/low-stock-detail/';
-
+  static const String reportsTopSelling = '/api/reports/top-selling';
+  static const String reportsSales = '/api/reports/sales';
+  static const String reportsRecentTransactions = '/api/reports/recent-transactions';
   
 }

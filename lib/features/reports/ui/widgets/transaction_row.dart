@@ -5,13 +5,13 @@ import 'package:skeleton_mobile_app/core/theming/app_style.dart';
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
 
 
-enum TxnKind { cash, card, wallet }
+import 'package:skeleton_mobile_app/features/reports/domain/entities/recent_transaction_entity.dart';
 
 class TransactionRow extends StatelessWidget {
   final String orderId;
   final String time;
   final String tag;
-  final TxnKind kind;
+  final TransactionKind kind;
   final String amount;
   final bool isDark;
   final bool isLast;
@@ -28,22 +28,22 @@ class TransactionRow extends StatelessWidget {
 
   Color get _tagColor {
     switch (kind) {
-      case TxnKind.cash:
+      case TransactionKind.cash:
         return isDark ? AppColorsDark.textSecondary : AppColorsLight.textSecondary;
-      case TxnKind.card:
+      case TransactionKind.card:
         return isDark ? AppColorsDark.accentOrange : AppColorsLight.accentOrange;
-      case TxnKind.wallet:
+      case TransactionKind.wallet:
         return isDark ? AppColorsDark.accentGreen : AppColorsLight.accentGreen;
     }
   }
 
   IconData get _icon {
     switch (kind) {
-      case TxnKind.cash:
+      case TransactionKind.cash:
         return Icons.receipt_long_outlined;
-      case TxnKind.card:
+      case TransactionKind.card:
         return Icons.credit_card_rounded;
-      case TxnKind.wallet:
+      case TransactionKind.wallet:
         return Icons.phone_iphone_rounded;
     }
   }

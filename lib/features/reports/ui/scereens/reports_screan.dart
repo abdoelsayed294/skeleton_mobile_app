@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:skeleton_mobile_app/core/helpers/spacing.dart';
-import 'package:skeleton_mobile_app/features/reports/ui/widgets/category_breakdown.dart';
 import 'package:skeleton_mobile_app/features/reports/ui/widgets/export_pdf_button.dart';
 import 'package:skeleton_mobile_app/features/reports/ui/widgets/last_synced_footer.dart';
 import 'package:skeleton_mobile_app/features/reports/ui/widgets/month_navigator.dart';
 import 'package:skeleton_mobile_app/features/reports/ui/widgets/recent_transactions_list.dart';
 import 'package:skeleton_mobile_app/features/reports/ui/widgets/reports_app_bar.dart';
-import 'package:skeleton_mobile_app/features/reports/ui/widgets/revenue_trend_card.dart';
 import 'package:skeleton_mobile_app/features/reports/ui/widgets/top_products_report_list.dart';
 import 'package:skeleton_mobile_app/features/reports/ui/widgets/total_sales_card.dart';
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
@@ -62,10 +60,6 @@ class _ReportsScreanState extends State<ReportsScrean> {
                 ),
                 verticalSpace(16),
                 const TotalSalesCard(),
-                verticalSpace(16),
-                RevenueTrendCard(monthName: monthName),
-                verticalSpace(16),
-                const CategoryBreakdown(),
                 verticalSpace(16),
                 const TopProductsReportList(),
                 verticalSpace(16),
