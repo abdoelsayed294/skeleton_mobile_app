@@ -1,25 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
 import 'package:skeleton_mobile_app/core/theming/app_color.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
+import 'package:skeleton_mobile_app/features/reports/logic/reports_sales_cubit.dart';
+import 'package:skeleton_mobile_app/features/reports/logic/reports_sales_state.dart';
 import 'package:skeleton_mobile_app/features/reports/ui/widgets/stat_column.dart';
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
 
-class TotalSalesCard extends StatelessWidget {
-  final String totalAmount;
-  final String changePercent;
-  final String orders;
-  final String avgOrder;
-  final String customers;
+class TotalSalesCard extends StatefulWidget {
+  const TotalSalesCard({super.key});
 
-  const TotalSalesCard({
-    super.key,
-    this.totalAmount = '84,320',
-    this.changePercent = '+18.4%',
-    this.orders = '1,247',
-    this.avgOrder = '67.6',
-    this.customers = '834',
-  });
+  @override
+  State<TotalSalesCard> createState() => _TotalSalesCardState();
+}
+
+class _TotalSalesCardState extends State<TotalSalesCard> {
+  @override
+  void initState() {
+    super.initState();
+    _fetchReportsSales();
+  }
+
+  Future<void> _fetchReportsSales() async {
+    final storeId = await SharedPrefHelper.getInt(SharedPrefHelper.storeIdKey);
+    if (!mounted) return;
+    context.read<ReportsSalesCubit>().getReportsSales(
+          storeId: storeId,
+          period: 'month',
+        );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,92 +64,110 @@ class TotalSalesCard extends StatelessWidget {
                 : AppStyles.totalSalesLabelLight,
           ),
           SizedBox(height: 8.h),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.baseline,
-            textBaseline: TextBaseline.alphabetic,
-            children: [
-              Text(
-                totalAmount,
-                style: isDark
-                    ? AppStyles.totalSalesAmountDark
-                    : AppStyles.totalSalesAmountLight,
-              ),
-              SizedBox(width: 6.w),
-              Text(
-                l10n.currencyEgp,
-                style: isDark
-                    ? AppStyles.totalSalesUnitDark
-                    : AppStyles.totalSalesUnitLight,
-              ),
-            ],
-          ),
-          SizedBox(height: 10.h),
-          Row(
-            children: [
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
-                decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.14),
-                  borderRadius: BorderRadius.circular(20.r),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(
-                      Icons.trending_up_rounded,
-                      size: 12.sp,
-                      color: Colors.white,
-                    ),
-                    SizedBox(width: 3.w),
-                    Text(
-                      changePercent,
-                      style: isDark
-                          ? AppStyles.totalSalesChangeDark
-                          : AppStyles.totalSalesChangeLight,
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(width: 8.w),
-              Expanded(
-                child: Text(
-                  l10n.comparedToLastMonth,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: isDark
-                      ? AppStyles.totalSalesCompareDark
-                      : AppStyles.totalSalesCompareLight,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: 16.h),
-          Container(height: 1, color: Colors.white.withValues(alpha: 0.1)),
-          SizedBox(height: 14.h),
-          Row(
-            children: [
-              Expanded(
-                child: StatColumn(
-                  label: l10n.ordersLabel,
-                  value: orders,
-                  isDark: isDark,
-                ),
-              ),
-              Expanded(
-                child: StatColumn(
-                  label: l10n.avgOrder,
-                  value: '${l10n.currencyEgp} $avgOrder',
-                  isDark: isDark,
-                ),
-              ),
-              Expanded(
-                child: StatColumn(
-                  label: l10n.customers,
-                  value: customers,
-                  isDark: isDark,
-                ),
-              ),
-            ],
+          BlocBuilder<ReportsSalesCubit, ReportsSalesState>(
+            builder: (context, state) {
+              return state.when(
+                initial: () => const SizedBox.shrink(),
+                loading: () => const Center(child: CircularProgressIndicator(color: Colors.white)),
+                success: (data) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.baseline,
+                        textBaseline: TextBaseline.alphabetic,
+                        children: [
+                          Text(
+                            data.totalSales.toStringAsFixed(0),
+                            style: isDark
+                                ? AppStyles.totalSalesAmountDark
+                                : AppStyles.totalSalesAmountLight,
+                          ),
+                          SizedBox(width: 6.w),
+                          Text(
+                            l10n.currencyEgp,
+                            style: isDark
+                                ? AppStyles.totalSalesUnitDark
+                                : AppStyles.totalSalesUnitLight,
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10.h),
+                      Row(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
+                            decoration: BoxDecoration(
+                              color: Colors.white.withValues(alpha: 0.14),
+                              borderRadius: BorderRadius.circular(20.r),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  data.salesChangePct >= 0
+                                      ? Icons.trending_up_rounded
+                                      : Icons.trending_down_rounded,
+                                  size: 12.sp,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(width: 3.w),
+                                Text(
+                                  '${data.salesChangePct >= 0 ? '+' : ''}${data.salesChangePct.toStringAsFixed(1)}%',
+                                  style: isDark
+                                      ? AppStyles.totalSalesChangeDark
+                                      : AppStyles.totalSalesChangeLight,
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(width: 8.w),
+                          Expanded(
+                            child: Text(
+                              l10n.comparedToLastMonth,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: isDark
+                                  ? AppStyles.totalSalesCompareDark
+                                  : AppStyles.totalSalesCompareLight,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 16.h),
+                      Container(height: 1, color: Colors.white.withValues(alpha: 0.1)),
+                      SizedBox(height: 14.h),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: StatColumn(
+                              label: l10n.ordersLabel,
+                              value: data.orders.toString(),
+                              isDark: isDark,
+                            ),
+                          ),
+                          Expanded(
+                            child: StatColumn(
+                              label: l10n.avgOrder,
+                              value: '${l10n.currencyEgp} ${data.avgOrder.toStringAsFixed(1)}',
+                              isDark: isDark,
+                            ),
+                          ),
+                          Expanded(
+                            child: StatColumn(
+                              label: l10n.customers,
+                              value: data.customers.toString(),
+                              isDark: isDark,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  );
+                },
+                error: (error) => Center(child: Text(error.error?.message ?? 'Error', style: TextStyle(color: Colors.white))),
+              );
+            },
           ),
         ],
       ),

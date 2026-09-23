@@ -4,6 +4,9 @@ import 'package:skeleton_mobile_app/core/di/injectoin.dart';
 import 'package:skeleton_mobile_app/core/widgets/main_navigation_screen.dart';
 import 'package:skeleton_mobile_app/features/home/logic/home_cubit.dart';
 import 'package:skeleton_mobile_app/features/home/ui/screens/home_screan.dart';
+import 'package:skeleton_mobile_app/features/reports/logic/recent_transaction_cubit.dart';
+import 'package:skeleton_mobile_app/features/reports/logic/reports_sales_cubit.dart';
+import 'package:skeleton_mobile_app/features/reports/logic/top_selling_cubit.dart';
 import 'package:skeleton_mobile_app/features/today_sales/ui/screens/today_sales_screen.dart';
 import 'package:skeleton_mobile_app/features/profit_details/ui/screens/profit_details_screen.dart';
 import 'package:skeleton_mobile_app/features/inventory/logic/inventory_cubit.dart';
@@ -36,9 +39,14 @@ class AppRouter {
         );
       case Routes.mainScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => getIt<HomeCubit>(),
-            child: MainNavigationScreen(),
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (context) => getIt<HomeCubit>()),
+              BlocProvider(create: (context) => getIt<ReportsSalesCubit>()),
+              BlocProvider(create: (context) => getIt<TopSellingCubit>()),
+              BlocProvider(create: (context) => getIt<RecentTransactionCubit>()),
+            ],
+            child: const MainNavigationScreen(),
           ),
         );
 
@@ -58,7 +66,16 @@ class AppRouter {
           ),
         );
       case Routes.reportsScreen:
-        return MaterialPageRoute(builder: (_) => const ReportsScrean());
+        return MaterialPageRoute(
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (_) => getIt<ReportsSalesCubit>()),
+              BlocProvider(create: (_) => getIt<TopSellingCubit>()),
+              BlocProvider(create: (_) => getIt<RecentTransactionCubit>()),
+            ],
+            child: const ReportsScrean(),
+          ),
+        );
       case Routes.todaySalesScreen:
         return MaterialPageRoute(builder: (_) => const TodaySalesScreen());
       case Routes.profitDetailsScreen:

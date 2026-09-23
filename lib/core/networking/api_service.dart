@@ -5,6 +5,9 @@ import 'package:skeleton_mobile_app/features/home/data/models/low_stock_response
 import 'package:skeleton_mobile_app/features/home/data/models/sales_chart_response_dto.dart';
 import 'package:skeleton_mobile_app/features/home/data/models/summary_response_dto.dart';
 import 'package:skeleton_mobile_app/features/home/data/models/top_products_dto.dart';
+import 'package:skeleton_mobile_app/features/reports/data/models/recent_transaction_dto.dart';
+import 'package:skeleton_mobile_app/features/reports/data/models/reports_sales_dto.dart';
+import 'package:skeleton_mobile_app/features/reports/data/models/top_selling_dto.dart';
 import 'package:skeleton_mobile_app/features/inventory/data/model/inventory_summary_response_dto.dart';
 import 'package:skeleton_mobile_app/features/inventory/data/model/inventroy_product_response_dto.dart';
 import 'package:skeleton_mobile_app/features/scan_qr/data/model/qr_response_dto.dart';
@@ -43,7 +46,27 @@ abstract class ApiService {
   Future<InventorySummaryResponseDto> getInventorySummary(
     @Query('storeId') int storeId,
   );
-  @GET(EndPoints.inventoryProducts)
+
+  @GET(EndPoints.reportsTopSelling)
+  Future<List<TopSellingDto>> getReportsTopSelling(
+    @Query('take') int take,
+    @Query('period') String period,
+    @Query('storeId') int storeId,
+  );
+
+  @GET(EndPoints.reportsSales)
+  Future<ReportsSalesDto> getReportsSales(
+    @Query('period') String period,
+    @Query('storeId') int storeId,
+  );
+
+  @GET(EndPoints.reportsRecentTransactions)
+  Future<List<RecentTransactionDto>> getRecentTransactions(
+    @Query('take') int take,
+    @Query('period') String period,
+    @Query('storeId') int storeId,
+  );
+  
   @GET(EndPoints.inventoryProducts)
   Future<InventroyProductResponseDto> getInventoryProducts(
     @Query('storeId') int storeId,
