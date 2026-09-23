@@ -174,6 +174,33 @@ class _ApiService implements ApiService {
   }
 
   @override
+  Future<InventorySummaryResponseDto> getInventorySummary(int storeId) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'storeId': storeId};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<InventorySummaryResponseDto>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/api/inventory/summary/',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late InventorySummaryResponseDto _value;
+    try {
+      _value = InventorySummaryResponseDto.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<List<TopSellingDto>> getReportsTopSelling(
     int take,
     String period,
@@ -273,6 +300,50 @@ class _ApiService implements ApiService {
                 RecentTransactionDto.fromJson(i as Map<String, dynamic>),
           )
           .toList();
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<InventroyProductResponseDto> getInventoryProducts(
+    int storeId,
+    String? itemType,
+    String? search,
+    String? status,
+    int page,
+    int pageSize,
+    String? sortBy,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'storeId': storeId,
+      r'itemType': itemType,
+      r'search': search,
+      r'status': status,
+      r'page': page,
+      r'pageSize': pageSize,
+      r'sortBy': sortBy,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<InventroyProductResponseDto>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/api/inventory/products',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late InventroyProductResponseDto _value;
+    try {
+      _value = InventroyProductResponseDto.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;

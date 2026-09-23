@@ -9,6 +9,8 @@ import 'package:skeleton_mobile_app/features/reports/logic/reports_sales_cubit.d
 import 'package:skeleton_mobile_app/features/reports/logic/top_selling_cubit.dart';
 import 'package:skeleton_mobile_app/features/today_sales/ui/screens/today_sales_screen.dart';
 import 'package:skeleton_mobile_app/features/profit_details/ui/screens/profit_details_screen.dart';
+import 'package:skeleton_mobile_app/features/inventory/logic/inventory_cubit.dart';
+import 'package:skeleton_mobile_app/features/inventory/logic/inventory_product_cubit.dart';
 import 'package:skeleton_mobile_app/features/inventory/ui/scereens/inventory_screan.dart';
 import 'package:skeleton_mobile_app/features/product_details/ui/scereens/product_details_screan.dart';
 import 'package:skeleton_mobile_app/features/profile/ui/scereens/profile_screan.dart';
@@ -49,7 +51,20 @@ class AppRouter {
         );
 
       case Routes.inventoryScreen:
-        return MaterialPageRoute(builder: (_) => const InventoryScrean());
+        return MaterialPageRoute(
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (_) => getIt<InventoryCubit>()..getInventorySummary(),
+              ),
+              BlocProvider(
+                create: (_) =>
+                    getIt<InventoryProductCubit>()..getInventoryProducts(),
+              ),
+            ],
+            child: const InventoryScrean(),
+          ),
+        );
       case Routes.reportsScreen:
         return MaterialPageRoute(
           builder: (_) => MultiBlocProvider(
