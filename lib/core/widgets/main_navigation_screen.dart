@@ -19,6 +19,13 @@ class MainNavigationScreen extends StatefulWidget {
 
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
   int _currentIndex = 0;
+  late List<bool> _initializedTabs;
+
+  @override
+  void initState() {
+    super.initState();
+    _initializedTabs = List.generate(_screens.length, (index) => index == 0);
+  }
 
   static final _screens = [
     const HomeScrean(),
@@ -57,11 +64,21 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      body: IndexedStack(index: _currentIndex, children: _screens),
+      body: IndexedStack(
+        index: _currentIndex,
+        children: List.generate(_screens.length, (index) {
+          return _initializedTabs[index] ? _screens[index] : const SizedBox.shrink();
+        }),
+      ),
       bottomNavigationBar: AnimatedSpotlightNavbar(
         items: _navItems,
         currentIndex: _currentIndex,
-        onTap: (index) => setState(() => _currentIndex = index),
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+            _initializedTabs[index] = true;
+          });
+        },
         backgroundColor: isDark
             ? AppColorsDark.surface
             : AppColorsLight.surface,

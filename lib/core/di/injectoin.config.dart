@@ -103,6 +103,22 @@ import 'package:skeleton_mobile_app/features/scan_qr/domain/use_cases/save_qr_da
     as _i295;
 import 'package:skeleton_mobile_app/features/scan_qr/logic/qr_cubit.dart'
     as _i438;
+import 'package:skeleton_mobile_app/features/today_sales/data/data_source/remote/today_sales_remote_data_source.dart'
+    as _i29;
+import 'package:skeleton_mobile_app/features/today_sales/data/data_source/remote/today_sales_remote_data_source_impl.dart'
+    as _i241;
+import 'package:skeleton_mobile_app/features/today_sales/data/repo/today_sales_repo_impl.dart'
+    as _i835;
+import 'package:skeleton_mobile_app/features/today_sales/domain/repo/today_sales_repo.dart'
+    as _i450;
+import 'package:skeleton_mobile_app/features/today_sales/domain/use_cases/get_today_recent_transaction_use_case.dart'
+    as _i911;
+import 'package:skeleton_mobile_app/features/today_sales/domain/use_cases/get_today_sales_use_case.dart'
+    as _i331;
+import 'package:skeleton_mobile_app/features/today_sales/logic/today_recent_transaction_cubit.dart'
+    as _i512;
+import 'package:skeleton_mobile_app/features/today_sales/logic/today_sales_cubit.dart'
+    as _i389;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -130,6 +146,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i1051.InventorySummaryRemoteDataSource>(
       () => _i344.InventorySummaryRemoteDataSourcesImpl(gh<_i35.ApiService>()),
     );
+    gh.factory<_i29.TodaySalesRemoteDataSource>(
+      () => _i241.TodaySalesRemoteDataSourceImpl(gh<_i35.ApiService>()),
+    );
     gh.factory<_i737.TopProductsRemoteDataSource>(
       () => _i169.TopProductsRemoteDataSourceImpl(gh<_i35.ApiService>()),
     );
@@ -148,6 +167,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i231.ReportsSalesRemoteDataSource>(
       () => _i324.ReportsSalesRemoteDataSourceImpl(gh<_i35.ApiService>()),
     );
+    gh.factory<_i450.TodaySalesRepo>(
+      () => _i835.TodaySalesRepoImpl(gh<_i29.TodaySalesRemoteDataSource>()),
+    );
     gh.factory<_i281.HomeRepo>(
       () => _i101.HomeRepoImpl(
         gh<_i1001.SummaryRemoteDataSource>(),
@@ -164,6 +186,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i438.QrCubit>(
       () => _i438.QrCubit(gh<_i528.QrUseCase>(), gh<_i295.SaveQrDataUseCase>()),
     );
+    gh.factory<_i911.GetTodayRecentTransactionUseCase>(
+      () => _i911.GetTodayRecentTransactionUseCase(gh<_i450.TodaySalesRepo>()),
+    );
+    gh.factory<_i331.GetTodaySalesUseCase>(
+      () => _i331.GetTodaySalesUseCase(gh<_i450.TodaySalesRepo>()),
+    );
     gh.factory<_i293.InventoryProudctUseCase>(
       () => _i293.InventoryProudctUseCase(gh<_i3.InventorySummaryRepo>()),
     );
@@ -177,6 +205,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i404.RecentTransactionRemoteDataSource>(),
       ),
     );
+    gh.factory<_i389.TodaySalesCubit>(
+      () => _i389.TodaySalesCubit(gh<_i331.GetTodaySalesUseCase>()),
+    );
     gh.factory<_i290.LowStockUseCase>(
       () => _i290.LowStockUseCase(gh<_i281.HomeRepo>()),
     );
@@ -188,6 +219,11 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i134.TopProductsUseCase>(
       () => _i134.TopProductsUseCase(gh<_i281.HomeRepo>()),
+    );
+    gh.factory<_i512.TodayRecentTransactionCubit>(
+      () => _i512.TodayRecentTransactionCubit(
+        gh<_i911.GetTodayRecentTransactionUseCase>(),
+      ),
     );
     gh.factory<_i578.InventoryProductCubit>(
       () => _i578.InventoryProductCubit(gh<_i293.InventoryProudctUseCase>()),

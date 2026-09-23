@@ -33,7 +33,10 @@ class EndPoints {
   static const String reportsSales = '/api/reports/sales';
   static const String reportsRecentTransactions = '/api/reports/recent-transactions';
   static const String inventorySummary = '/api/inventory/summary/';
-    static const String inventoryProducts= '/api/inventory/products';
+  static const String inventoryProducts = '/api/inventory/products';
+
+  static const String todaySales = '/api/today-sales';
+  static const String todaySalesRecentTransactions = '/api/today-sales/recent-transactions';
 
 
   
