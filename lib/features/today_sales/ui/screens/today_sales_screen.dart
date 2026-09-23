@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeleton_mobile_app/features/profit_details/ui/widgets/profit_details_header.dart';
-import 'package:skeleton_mobile_app/features/reports/ui/widgets/items_sold_stat_card.dart';
-import 'package:skeleton_mobile_app/features/reports/ui/widgets/recent_transactions_list.dart';
-import 'package:skeleton_mobile_app/features/reports/ui/widgets/returns_stat_card.dart';
-import 'package:skeleton_mobile_app/features/reports/ui/widgets/total_sales_card.dart';
+import 'package:skeleton_mobile_app/features/today_sales/ui/widgets/today_items_sold_stat_card.dart';
+import 'package:skeleton_mobile_app/features/today_sales/ui/widgets/today_recent_transactions_list.dart';
+import 'package:skeleton_mobile_app/features/today_sales/ui/widgets/today_returns_stat_card.dart';
+import 'package:skeleton_mobile_app/features/today_sales/ui/widgets/today_total_sales_card.dart';
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
 
 class TodaySalesScreen extends StatefulWidget {
@@ -40,17 +40,17 @@ class _TodaySalesScreenState extends State<TodaySalesScreen> {
                   onBack: () => Navigator.of(context).pop(),
                 ),
                 SizedBox(height: 16.h),
-                const TotalSalesCard(),
+                const TodayTotalSalesCard(),
                 SizedBox(height: 12.h),
                 Row(
                   children: [
-                    const ReturnsStatCard(),
+                    const TodayReturnsStatCard(),
                     SizedBox(width: 12.w),
-                    const ItemsSoldStatCard(),
+                    const TodayItemsSoldStatCard(),
                   ],
                 ),
                 SizedBox(height: 16.h),
-                const RecentTransactionsList(),
+                const TodayRecentTransactionsList(),
                 SizedBox(height: 20.h),
               ],
             ),

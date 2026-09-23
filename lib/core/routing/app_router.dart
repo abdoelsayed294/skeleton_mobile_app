@@ -7,6 +7,8 @@ import 'package:skeleton_mobile_app/features/home/ui/screens/home_screan.dart';
 import 'package:skeleton_mobile_app/features/reports/logic/recent_transaction_cubit.dart';
 import 'package:skeleton_mobile_app/features/reports/logic/reports_sales_cubit.dart';
 import 'package:skeleton_mobile_app/features/reports/logic/top_selling_cubit.dart';
+import 'package:skeleton_mobile_app/features/today_sales/logic/today_recent_transaction_cubit.dart';
+import 'package:skeleton_mobile_app/features/today_sales/logic/today_sales_cubit.dart';
 import 'package:skeleton_mobile_app/features/today_sales/ui/screens/today_sales_screen.dart';
 import 'package:skeleton_mobile_app/features/profit_details/ui/screens/profit_details_screen.dart';
 import 'package:skeleton_mobile_app/features/inventory/logic/inventory_cubit.dart';
@@ -77,7 +79,15 @@ class AppRouter {
           ),
         );
       case Routes.todaySalesScreen:
-        return MaterialPageRoute(builder: (_) => const TodaySalesScreen());
+        return MaterialPageRoute(
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (_) => getIt<TodaySalesCubit>()),
+              BlocProvider(create: (_) => getIt<TodayRecentTransactionCubit>()),
+            ],
+            child: const TodaySalesScreen(),
+          ),
+        );
       case Routes.profitDetailsScreen:
         return MaterialPageRoute(builder: (_) => const ProfitDetailsScreen());
       case Routes.profileScreen:

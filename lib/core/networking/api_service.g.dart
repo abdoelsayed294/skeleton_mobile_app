@@ -308,6 +308,73 @@ class _ApiService implements ApiService {
   }
 
   @override
+  Future<TodaySalesDto> getTodaySales(int storeId) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'storeId': storeId};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<TodaySalesDto>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/api/today-sales',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late TodaySalesDto _value;
+    try {
+      _value = TodaySalesDto.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<List<TodayRecentTransactionDto>> getTodaySalesRecentTransactions(
+    int take,
+    String period,
+    int storeId,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'take': take,
+      r'period': period,
+      r'storeId': storeId,
+    };
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<List<TodayRecentTransactionDto>>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/api/today-sales/recent-transactions',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<List<dynamic>>(_options);
+    late List<TodayRecentTransactionDto> _value;
+    try {
+      _value = _result.data!
+          .map(
+            (dynamic i) =>
+                TodayRecentTransactionDto.fromJson(i as Map<String, dynamic>),
+          )
+          .toList();
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<InventroyProductResponseDto> getInventoryProducts(
     int storeId,
     String? itemType,

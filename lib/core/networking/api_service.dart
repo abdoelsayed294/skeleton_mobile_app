@@ -11,6 +11,8 @@ import 'package:skeleton_mobile_app/features/reports/data/models/top_selling_dto
 import 'package:skeleton_mobile_app/features/inventory/data/model/inventory_summary_response_dto.dart';
 import 'package:skeleton_mobile_app/features/inventory/data/model/inventroy_product_response_dto.dart';
 import 'package:skeleton_mobile_app/features/scan_qr/data/model/qr_response_dto.dart';
+import 'package:skeleton_mobile_app/features/today_sales/data/models/today_recent_transaction_dto.dart';
+import 'package:skeleton_mobile_app/features/today_sales/data/models/today_sales_dto.dart';
 
 part 'api_service.g.dart';
 
@@ -62,6 +64,18 @@ abstract class ApiService {
 
   @GET(EndPoints.reportsRecentTransactions)
   Future<List<RecentTransactionDto>> getRecentTransactions(
+    @Query('take') int take,
+    @Query('period') String period,
+    @Query('storeId') int storeId,
+  );
+
+  @GET(EndPoints.todaySales)
+  Future<TodaySalesDto> getTodaySales(
+    @Query('storeId') int storeId,
+  );
+
+  @GET(EndPoints.todaySalesRecentTransactions)
+  Future<List<TodayRecentTransactionDto>> getTodaySalesRecentTransactions(
     @Query('take') int take,
     @Query('period') String period,
     @Query('storeId') int storeId,
