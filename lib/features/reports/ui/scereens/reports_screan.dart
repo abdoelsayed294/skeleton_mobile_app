@@ -69,11 +69,7 @@ class _ReportsScreanState extends State<ReportsScrean> {
                 verticalSpace(16),
                 RecentTransactionsList(selectedMonth: selectedMonth),
                 verticalSpace(20),
-                ExportPdfButton(
-                  onTap: () {
-                    // TODO: wire up export/share flow (PDF / Excel).
-                  },
-                ),
+                ExportPdfButton(selectedMonth: selectedMonth),
                 verticalSpace(10),
                 const LastSyncedFooter(),
                 verticalSpace(20),

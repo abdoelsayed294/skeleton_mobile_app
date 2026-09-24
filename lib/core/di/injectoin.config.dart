@@ -18,7 +18,7 @@ import 'package:skeleton_mobile_app/core/networking/dio_module.dart' as _i453;
 import 'package:skeleton_mobile_app/features/home/data/data_source/remote/low_stock_remote_data_source.dart'
     as _i948;
 import 'package:skeleton_mobile_app/features/home/data/data_source/remote/low_stock_remote_data_source_impl.dart'
-    as _i215;
+    as _i216;
 import 'package:skeleton_mobile_app/features/home/data/data_source/remote/sales_chart_remote_data_source.dart'
     as _i878;
 import 'package:skeleton_mobile_app/features/home/data/data_source/remote/sales_chart_remote_data_source_impl.dart'
@@ -60,11 +60,75 @@ import 'package:skeleton_mobile_app/features/inventory/domain/use_cases/inventor
 import 'package:skeleton_mobile_app/features/inventory/logic/inventory_cubit.dart'
     as _i956;
 import 'package:skeleton_mobile_app/features/inventory/logic/inventory_product_cubit.dart'
-    as _i578;
+    as _i579;
+import 'package:skeleton_mobile_app/features/product_details/data/data_sources/remote/product_details_remote_data_source.dart'
+    as _i319;
+import 'package:skeleton_mobile_app/features/product_details/data/data_sources/remote/product_details_remote_data_source_impl.dart'
+    as _i302;
+import 'package:skeleton_mobile_app/features/product_details/data/repo/product_details_repo_impl.dart'
+    as _i1024;
+import 'package:skeleton_mobile_app/features/product_details/domain/repo/product_details_repo.dart'
+    as _i385;
+import 'package:skeleton_mobile_app/features/product_details/domain/use_cases/get_product_activity_use_case.dart'
+    as _i987;
+import 'package:skeleton_mobile_app/features/product_details/domain/use_cases/get_product_header_use_case.dart'
+    as _i751;
+import 'package:skeleton_mobile_app/features/product_details/domain/use_cases/get_product_inventory_use_case.dart'
+    as _i286;
+import 'package:skeleton_mobile_app/features/product_details/domain/use_cases/get_product_pricing_use_case.dart'
+    as _i1048;
+import 'package:skeleton_mobile_app/features/product_details/domain/use_cases/get_product_sales_history_use_case.dart'
+    as _i784;
+import 'package:skeleton_mobile_app/features/product_details/logic/product_activity_cubit.dart'
+    as _i996;
+import 'package:skeleton_mobile_app/features/product_details/logic/product_header_cubit.dart'
+    as _i480;
+import 'package:skeleton_mobile_app/features/product_details/logic/product_inventory_cubit.dart'
+    as _i88;
+import 'package:skeleton_mobile_app/features/product_details/logic/product_pricing_cubit.dart'
+    as _i896;
+import 'package:skeleton_mobile_app/features/product_details/logic/product_sales_history_cubit.dart'
+    as _i753;
+import 'package:skeleton_mobile_app/features/profit_details/data/data_sources/remote/profit_remote_data_source.dart'
+    as _i721;
+import 'package:skeleton_mobile_app/features/profit_details/data/data_sources/remote/profit_remote_data_source_impl.dart'
+    as _i970;
+import 'package:skeleton_mobile_app/features/profit_details/data/repo/profit_repo_impl.dart'
+    as _i218;
+import 'package:skeleton_mobile_app/features/profit_details/domain/repo/profit_repo.dart'
+    as _i696;
+import 'package:skeleton_mobile_app/features/profit_details/domain/use_cases/get_profit_summary_use_case.dart'
+    as _i519;
+import 'package:skeleton_mobile_app/features/profit_details/domain/use_cases/get_profit_weekly_chart_use_case.dart'
+    as _i473;
+import 'package:skeleton_mobile_app/features/profit_details/logic/profit_summary_cubit.dart'
+    as _i211;
+import 'package:skeleton_mobile_app/features/profit_details/logic/profit_weekly_chart_cubit.dart'
+    as _i429;
+import 'package:skeleton_mobile_app/features/purchases/data/data_sources/remote/purchases_remote_data_source.dart'
+    as _i215;
+import 'package:skeleton_mobile_app/features/purchases/data/data_sources/remote/purchases_remote_data_source_impl.dart'
+    as _i433;
+import 'package:skeleton_mobile_app/features/purchases/data/repo/purchases_repo_impl.dart'
+    as _i1021;
+import 'package:skeleton_mobile_app/features/purchases/domain/repo/purchases_repo.dart'
+    as _i591;
+import 'package:skeleton_mobile_app/features/purchases/domain/use_cases/get_purchases_recent_use_case.dart'
+    as _i813;
+import 'package:skeleton_mobile_app/features/purchases/domain/use_cases/get_purchases_summary_use_case.dart'
+    as _i1023;
+import 'package:skeleton_mobile_app/features/purchases/logic/purchases_recent_cubit.dart'
+    as _i58;
+import 'package:skeleton_mobile_app/features/purchases/logic/purchases_summary_cubit.dart'
+    as _i401;
 import 'package:skeleton_mobile_app/features/reports/data/data_source/remote/recent_transaction_remote_data_source.dart'
     as _i404;
 import 'package:skeleton_mobile_app/features/reports/data/data_source/remote/recent_transaction_remote_data_source_impl.dart'
     as _i724;
+import 'package:skeleton_mobile_app/features/reports/data/data_source/remote/reports_export_remote_data_source.dart'
+    as _i38;
+import 'package:skeleton_mobile_app/features/reports/data/data_source/remote/reports_export_remote_data_source_impl.dart'
+    as _i57;
 import 'package:skeleton_mobile_app/features/reports/data/data_source/remote/reports_sales_remote_data_source.dart'
     as _i231;
 import 'package:skeleton_mobile_app/features/reports/data/data_source/remote/reports_sales_remote_data_source_impl.dart'
@@ -73,10 +137,16 @@ import 'package:skeleton_mobile_app/features/reports/data/data_source/remote/top
     as _i400;
 import 'package:skeleton_mobile_app/features/reports/data/data_source/remote/top_selling_remote_data_source_impl.dart'
     as _i131;
+import 'package:skeleton_mobile_app/features/reports/data/repo/reports_export_repository_impl.dart'
+    as _i675;
 import 'package:skeleton_mobile_app/features/reports/data/repo/reports_repo_impl.dart'
     as _i298;
+import 'package:skeleton_mobile_app/features/reports/domain/repo/reports_export_repository.dart'
+    as _i578;
 import 'package:skeleton_mobile_app/features/reports/domain/repo/reports_repo.dart'
     as _i795;
+import 'package:skeleton_mobile_app/features/reports/domain/use_cases/export_sales_report_use_case.dart'
+    as _i629;
 import 'package:skeleton_mobile_app/features/reports/domain/use_cases/recent_transaction_use_case.dart'
     as _i489;
 import 'package:skeleton_mobile_app/features/reports/domain/use_cases/reports_sales_use_case.dart'
@@ -85,6 +155,8 @@ import 'package:skeleton_mobile_app/features/reports/domain/use_cases/top_sellin
     as _i203;
 import 'package:skeleton_mobile_app/features/reports/logic/recent_transaction_cubit.dart'
     as _i288;
+import 'package:skeleton_mobile_app/features/reports/logic/reports_export_cubit.dart'
+    as _i714;
 import 'package:skeleton_mobile_app/features/reports/logic/reports_sales_cubit.dart'
     as _i411;
 import 'package:skeleton_mobile_app/features/reports/logic/top_selling_cubit.dart'
@@ -119,66 +191,6 @@ import 'package:skeleton_mobile_app/features/today_sales/logic/today_recent_tran
     as _i512;
 import 'package:skeleton_mobile_app/features/today_sales/logic/today_sales_cubit.dart'
     as _i389;
-import 'package:skeleton_mobile_app/features/profit_details/data/data_sources/remote/profit_remote_data_source.dart'
-    as _profit_ds;
-import 'package:skeleton_mobile_app/features/profit_details/data/data_sources/remote/profit_remote_data_source_impl.dart'
-    as _profit_ds_impl;
-import 'package:skeleton_mobile_app/features/profit_details/data/repo/profit_repo_impl.dart'
-    as _profit_repo_impl;
-import 'package:skeleton_mobile_app/features/profit_details/domain/repo/profit_repo.dart'
-    as _profit_repo;
-import 'package:skeleton_mobile_app/features/profit_details/domain/use_cases/get_profit_summary_use_case.dart'
-    as _profit_summary_uc;
-import 'package:skeleton_mobile_app/features/profit_details/domain/use_cases/get_profit_weekly_chart_use_case.dart'
-    as _profit_weekly_uc;
-import 'package:skeleton_mobile_app/features/profit_details/logic/profit_summary_cubit.dart'
-    as _profit_summary_cubit;
-import 'package:skeleton_mobile_app/features/profit_details/logic/profit_weekly_chart_cubit.dart'
-    as _profit_weekly_cubit;
-import 'package:skeleton_mobile_app/features/purchases/data/data_sources/remote/purchases_remote_data_source.dart'
-    as _purchases_ds;
-import 'package:skeleton_mobile_app/features/purchases/data/data_sources/remote/purchases_remote_data_source_impl.dart'
-    as _purchases_ds_impl;
-import 'package:skeleton_mobile_app/features/purchases/data/repo/purchases_repo_impl.dart'
-    as _purchases_repo_impl;
-import 'package:skeleton_mobile_app/features/purchases/domain/repo/purchases_repo.dart'
-    as _purchases_repo;
-import 'package:skeleton_mobile_app/features/purchases/domain/use_cases/get_purchases_recent_use_case.dart'
-    as _purchases_recent_uc;
-import 'package:skeleton_mobile_app/features/purchases/domain/use_cases/get_purchases_summary_use_case.dart'
-    as _purchases_summary_uc;
-import 'package:skeleton_mobile_app/features/purchases/logic/purchases_recent_cubit.dart'
-    as _purchases_recent_cubit;
-import 'package:skeleton_mobile_app/features/purchases/logic/purchases_summary_cubit.dart'
-    as _purchases_summary_cubit;
-import 'package:skeleton_mobile_app/features/product_details/data/data_sources/remote/product_details_remote_data_source.dart'
-    as _product_details_ds;
-import 'package:skeleton_mobile_app/features/product_details/data/data_sources/remote/product_details_remote_data_source_impl.dart'
-    as _product_details_ds_impl;
-import 'package:skeleton_mobile_app/features/product_details/data/repo/product_details_repo_impl.dart'
-    as _product_details_repo_impl;
-import 'package:skeleton_mobile_app/features/product_details/domain/repo/product_details_repo.dart'
-    as _product_details_repo;
-import 'package:skeleton_mobile_app/features/product_details/domain/use_cases/get_product_activity_use_case.dart'
-    as _product_activity_uc;
-import 'package:skeleton_mobile_app/features/product_details/domain/use_cases/get_product_header_use_case.dart'
-    as _product_header_uc;
-import 'package:skeleton_mobile_app/features/product_details/domain/use_cases/get_product_inventory_use_case.dart'
-    as _product_inventory_uc;
-import 'package:skeleton_mobile_app/features/product_details/domain/use_cases/get_product_pricing_use_case.dart'
-    as _product_pricing_uc;
-import 'package:skeleton_mobile_app/features/product_details/domain/use_cases/get_product_sales_history_use_case.dart'
-    as _product_sales_history_uc;
-import 'package:skeleton_mobile_app/features/product_details/logic/product_activity_cubit.dart'
-    as _product_activity_cubit;
-import 'package:skeleton_mobile_app/features/product_details/logic/product_header_cubit.dart'
-    as _product_header_cubit;
-import 'package:skeleton_mobile_app/features/product_details/logic/product_inventory_cubit.dart'
-    as _product_inventory_cubit;
-import 'package:skeleton_mobile_app/features/product_details/logic/product_pricing_cubit.dart'
-    as _product_pricing_cubit;
-import 'package:skeleton_mobile_app/features/product_details/logic/product_sales_history_cubit.dart'
-    as _product_sales_history_cubit;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -188,144 +200,66 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final dioModule = _$DioModule();
-    gh.factory<_product_details_ds.ProductDetailsRemoteDataSource>(
-      () => _product_details_ds_impl.ProductDetailsRemoteDataSourceImpl(
-        gh<_i35.ApiService>(),
-      ),
-    );
-    gh.factory<_product_details_repo.ProductDetailsRepo>(
-      () => _product_details_repo_impl.ProductDetailsRepoImpl(
-        gh<_product_details_ds.ProductDetailsRemoteDataSource>(),
-      ),
-    );
-    gh.factory<_product_activity_uc.GetProductActivityUseCase>(
-      () => _product_activity_uc.GetProductActivityUseCase(
-        gh<_product_details_repo.ProductDetailsRepo>(),
-      ),
-    );
-    gh.factory<_product_header_uc.GetProductHeaderUseCase>(
-      () => _product_header_uc.GetProductHeaderUseCase(
-        gh<_product_details_repo.ProductDetailsRepo>(),
-      ),
-    );
-    gh.factory<_product_pricing_uc.GetProductPricingUseCase>(
-      () => _product_pricing_uc.GetProductPricingUseCase(
-        gh<_product_details_repo.ProductDetailsRepo>(),
-      ),
-    );
-    gh.factory<_product_inventory_uc.GetProductInventoryUseCase>(
-      () => _product_inventory_uc.GetProductInventoryUseCase(
-        gh<_product_details_repo.ProductDetailsRepo>(),
-      ),
-    );
-    gh.factory<_product_sales_history_uc.GetProductSalesHistoryUseCase>(
-      () => _product_sales_history_uc.GetProductSalesHistoryUseCase(
-        gh<_product_details_repo.ProductDetailsRepo>(),
-      ),
-    );
-    gh.factory<_product_activity_cubit.ProductActivityCubit>(
-      () => _product_activity_cubit.ProductActivityCubit(
-        gh<_product_activity_uc.GetProductActivityUseCase>(),
-      ),
-    );
-    gh.factory<_product_header_cubit.ProductHeaderCubit>(
-      () => _product_header_cubit.ProductHeaderCubit(
-        gh<_product_header_uc.GetProductHeaderUseCase>(),
-      ),
-    );
-    gh.factory<_product_pricing_cubit.ProductPricingCubit>(
-      () => _product_pricing_cubit.ProductPricingCubit(
-        gh<_product_pricing_uc.GetProductPricingUseCase>(),
-      ),
-    );
-    gh.factory<_product_inventory_cubit.ProductInventoryCubit>(
-      () => _product_inventory_cubit.ProductInventoryCubit(
-        gh<_product_inventory_uc.GetProductInventoryUseCase>(),
-      ),
-    );
-    gh.factory<_product_sales_history_cubit.ProductSalesHistoryCubit>(
-      () => _product_sales_history_cubit.ProductSalesHistoryCubit(
-        gh<_product_sales_history_uc.GetProductSalesHistoryUseCase>(),
-      ),
-    );
-    gh.factory<_purchases_ds.PurchasesRemoteDataSource>(
-      () => _purchases_ds_impl.PurchasesRemoteDataSourceImpl(
-        gh<_i35.ApiService>(),
-      ),
-    );
-    gh.factory<_purchases_repo.PurchasesRepo>(
-      () => _purchases_repo_impl.PurchasesRepoImpl(
-        gh<_purchases_ds.PurchasesRemoteDataSource>(),
-      ),
-    );
-    gh.factory<_purchases_summary_uc.GetPurchasesSummaryUseCase>(
-      () => _purchases_summary_uc.GetPurchasesSummaryUseCase(
-        gh<_purchases_repo.PurchasesRepo>(),
-      ),
-    );
-    gh.factory<_purchases_recent_uc.GetPurchasesRecentUseCase>(
-      () => _purchases_recent_uc.GetPurchasesRecentUseCase(
-        gh<_purchases_repo.PurchasesRepo>(),
-      ),
-    );
-    gh.factory<_purchases_summary_cubit.PurchasesSummaryCubit>(
-      () => _purchases_summary_cubit.PurchasesSummaryCubit(
-        gh<_purchases_summary_uc.GetPurchasesSummaryUseCase>(),
-      ),
-    );
-    gh.factory<_purchases_recent_cubit.PurchasesRecentCubit>(
-      () => _purchases_recent_cubit.PurchasesRecentCubit(
-        gh<_purchases_recent_uc.GetPurchasesRecentUseCase>(),
-      ),
-    );
-    gh.factory<_profit_ds.ProfitRemoteDataSource>(
-      () => _profit_ds_impl.ProfitRemoteDataSourceImpl(gh<_i35.ApiService>()),
-    );
-    gh.factory<_profit_repo.ProfitRepo>(
-      () => _profit_repo_impl.ProfitRepoImpl(
-        gh<_profit_ds.ProfitRemoteDataSource>(),
-      ),
-    );
-    gh.factory<_profit_summary_uc.GetProfitSummaryUseCase>(
-      () => _profit_summary_uc.GetProfitSummaryUseCase(
-        gh<_profit_repo.ProfitRepo>(),
-      ),
-    );
-    gh.factory<_profit_weekly_uc.GetProfitWeeklyChartUseCase>(
-      () => _profit_weekly_uc.GetProfitWeeklyChartUseCase(
-        gh<_profit_repo.ProfitRepo>(),
-      ),
-    );
-    gh.factory<_profit_summary_cubit.ProfitSummaryCubit>(
-      () => _profit_summary_cubit.ProfitSummaryCubit(
-        gh<_profit_summary_uc.GetProfitSummaryUseCase>(),
-      ),
-    );
-    gh.factory<_profit_weekly_cubit.ProfitWeeklyChartCubit>(
-      () => _profit_weekly_cubit.ProfitWeeklyChartCubit(
-        gh<_profit_weekly_uc.GetProfitWeeklyChartUseCase>(),
-      ),
-    );
     gh.factory<_i295.SaveQrDataUseCase>(() => _i295.SaveQrDataUseCase());
     gh.lazySingleton<_i361.Dio>(() => dioModule.dio());
+    gh.factory<_i38.ReportsExportRemoteDataSource>(
+      () => _i57.ReportsExportRemoteDataSourceImpl(gh<_i361.Dio>()),
+    );
     gh.lazySingleton<_i35.ApiService>(
       () => dioModule.apiService(gh<_i361.Dio>()),
+    );
+    gh.factory<_i578.ReportsExportRepository>(
+      () => _i675.ReportsExportRepositoryImpl(
+        gh<_i38.ReportsExportRemoteDataSource>(),
+      ),
     );
     gh.factory<_i878.SalesChartRemoteDataSource>(
       () => _i500.SalesChartRemoteDataSourceImpl(gh<_i35.ApiService>()),
     );
+    gh.factory<_i721.ProfitRemoteDataSource>(
+      () => _i970.ProfitRemoteDataSourceImpl(gh<_i35.ApiService>()),
+    );
     gh.factory<_i743.QrRemoteDataSources>(
       () => _i598.QrRemoteDataSourcesImpl(gh<_i35.ApiService>()),
+    );
+    gh.factory<_i319.ProductDetailsRemoteDataSource>(
+      () => _i302.ProductDetailsRemoteDataSourceImpl(gh<_i35.ApiService>()),
+    );
+    gh.factory<_i696.ProfitRepo>(
+      () => _i218.ProfitRepoImpl(gh<_i721.ProfitRemoteDataSource>()),
     );
     gh.factory<_i571.QrRepo>(
       () => _i149.QrRepoImpl(gh<_i743.QrRemoteDataSources>()),
     );
+    gh.factory<_i215.PurchasesRemoteDataSource>(
+      () => _i433.PurchasesRemoteDataSourceImpl(gh<_i35.ApiService>()),
+    );
     gh.factory<_i528.QrUseCase>(() => _i528.QrUseCase(gh<_i571.QrRepo>()));
+    gh.factory<_i385.ProductDetailsRepo>(
+      () => _i1024.ProductDetailsRepoImpl(
+        gh<_i319.ProductDetailsRemoteDataSource>(),
+      ),
+    );
     gh.factory<_i1051.InventorySummaryRemoteDataSource>(
       () => _i344.InventorySummaryRemoteDataSourcesImpl(gh<_i35.ApiService>()),
     );
     gh.factory<_i29.TodaySalesRemoteDataSource>(
       () => _i241.TodaySalesRemoteDataSourceImpl(gh<_i35.ApiService>()),
+    );
+    gh.factory<_i987.GetProductActivityUseCase>(
+      () => _i987.GetProductActivityUseCase(gh<_i385.ProductDetailsRepo>()),
+    );
+    gh.factory<_i751.GetProductHeaderUseCase>(
+      () => _i751.GetProductHeaderUseCase(gh<_i385.ProductDetailsRepo>()),
+    );
+    gh.factory<_i286.GetProductInventoryUseCase>(
+      () => _i286.GetProductInventoryUseCase(gh<_i385.ProductDetailsRepo>()),
+    );
+    gh.factory<_i1048.GetProductPricingUseCase>(
+      () => _i1048.GetProductPricingUseCase(gh<_i385.ProductDetailsRepo>()),
+    );
+    gh.factory<_i784.GetProductSalesHistoryUseCase>(
+      () => _i784.GetProductSalesHistoryUseCase(gh<_i385.ProductDetailsRepo>()),
     );
     gh.factory<_i737.TopProductsRemoteDataSource>(
       () => _i169.TopProductsRemoteDataSourceImpl(gh<_i35.ApiService>()),
@@ -337,7 +271,7 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i724.RecentTransactionRemoteDataSourceImpl(gh<_i35.ApiService>()),
     );
     gh.factory<_i948.LowStockRemoteDataSource>(
-      () => _i215.LowStockRemoteDataSourceImpl(gh<_i35.ApiService>()),
+      () => _i216.LowStockRemoteDataSourceImpl(gh<_i35.ApiService>()),
     );
     gh.factory<_i400.TopSellingRemoteDataSource>(
       () => _i131.TopSellingRemoteDataSourceImpl(gh<_i35.ApiService>()),
@@ -345,8 +279,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i231.ReportsSalesRemoteDataSource>(
       () => _i324.ReportsSalesRemoteDataSourceImpl(gh<_i35.ApiService>()),
     );
+    gh.factory<_i629.ExportSalesReportUseCase>(
+      () => _i629.ExportSalesReportUseCase(gh<_i578.ReportsExportRepository>()),
+    );
     gh.factory<_i450.TodaySalesRepo>(
       () => _i835.TodaySalesRepoImpl(gh<_i29.TodaySalesRemoteDataSource>()),
+    );
+    gh.factory<_i896.ProductPricingCubit>(
+      () => _i896.ProductPricingCubit(gh<_i1048.GetProductPricingUseCase>()),
     );
     gh.factory<_i281.HomeRepo>(
       () => _i101.HomeRepoImpl(
@@ -356,19 +296,45 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i948.LowStockRemoteDataSource>(),
       ),
     );
+    gh.factory<_i480.ProductHeaderCubit>(
+      () => _i480.ProductHeaderCubit(gh<_i751.GetProductHeaderUseCase>()),
+    );
     gh.factory<_i3.InventorySummaryRepo>(
       () => _i623.InventorySummaryRepoImpl(
         gh<_i1051.InventorySummaryRemoteDataSource>(),
       ),
     );
+    gh.factory<_i996.ProductActivityCubit>(
+      () => _i996.ProductActivityCubit(gh<_i987.GetProductActivityUseCase>()),
+    );
     gh.factory<_i438.QrCubit>(
       () => _i438.QrCubit(gh<_i528.QrUseCase>(), gh<_i295.SaveQrDataUseCase>()),
+    );
+    gh.factory<_i519.GetProfitSummaryUseCase>(
+      () => _i519.GetProfitSummaryUseCase(gh<_i696.ProfitRepo>()),
+    );
+    gh.factory<_i473.GetProfitWeeklyChartUseCase>(
+      () => _i473.GetProfitWeeklyChartUseCase(gh<_i696.ProfitRepo>()),
+    );
+    gh.factory<_i591.PurchasesRepo>(
+      () => _i1021.PurchasesRepoImpl(gh<_i215.PurchasesRemoteDataSource>()),
     );
     gh.factory<_i911.GetTodayRecentTransactionUseCase>(
       () => _i911.GetTodayRecentTransactionUseCase(gh<_i450.TodaySalesRepo>()),
     );
     gh.factory<_i331.GetTodaySalesUseCase>(
       () => _i331.GetTodaySalesUseCase(gh<_i450.TodaySalesRepo>()),
+    );
+    gh.factory<_i714.ReportsExportCubit>(
+      () => _i714.ReportsExportCubit(gh<_i629.ExportSalesReportUseCase>()),
+    );
+    gh.factory<_i88.ProductInventoryCubit>(
+      () => _i88.ProductInventoryCubit(gh<_i286.GetProductInventoryUseCase>()),
+    );
+    gh.factory<_i753.ProductSalesHistoryCubit>(
+      () => _i753.ProductSalesHistoryCubit(
+        gh<_i784.GetProductSalesHistoryUseCase>(),
+      ),
     );
     gh.factory<_i293.InventoryProudctUseCase>(
       () => _i293.InventoryProudctUseCase(gh<_i3.InventorySummaryRepo>()),
@@ -382,6 +348,15 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i231.ReportsSalesRemoteDataSource>(),
         gh<_i404.RecentTransactionRemoteDataSource>(),
       ),
+    );
+    gh.factory<_i813.GetPurchasesRecentUseCase>(
+      () => _i813.GetPurchasesRecentUseCase(gh<_i591.PurchasesRepo>()),
+    );
+    gh.factory<_i1023.GetPurchasesSummaryUseCase>(
+      () => _i1023.GetPurchasesSummaryUseCase(gh<_i591.PurchasesRepo>()),
+    );
+    gh.factory<_i211.ProfitSummaryCubit>(
+      () => _i211.ProfitSummaryCubit(gh<_i519.GetProfitSummaryUseCase>()),
     );
     gh.factory<_i389.TodaySalesCubit>(
       () => _i389.TodaySalesCubit(gh<_i331.GetTodaySalesUseCase>()),
@@ -398,13 +373,20 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i134.TopProductsUseCase>(
       () => _i134.TopProductsUseCase(gh<_i281.HomeRepo>()),
     );
+    gh.factory<_i429.ProfitWeeklyChartCubit>(
+      () =>
+          _i429.ProfitWeeklyChartCubit(gh<_i473.GetProfitWeeklyChartUseCase>()),
+    );
     gh.factory<_i512.TodayRecentTransactionCubit>(
       () => _i512.TodayRecentTransactionCubit(
         gh<_i911.GetTodayRecentTransactionUseCase>(),
       ),
     );
-    gh.factory<_i578.InventoryProductCubit>(
-      () => _i578.InventoryProductCubit(gh<_i293.InventoryProudctUseCase>()),
+    gh.factory<_i579.InventoryProductCubit>(
+      () => _i579.InventoryProductCubit(gh<_i293.InventoryProudctUseCase>()),
+    );
+    gh.factory<_i58.PurchasesRecentCubit>(
+      () => _i58.PurchasesRecentCubit(gh<_i813.GetPurchasesRecentUseCase>()),
     );
     gh.factory<_i956.InventoryCubit>(
       () => _i956.InventoryCubit(
@@ -419,6 +401,10 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i134.TopProductsUseCase>(),
         gh<_i290.LowStockUseCase>(),
       ),
+    );
+    gh.factory<_i401.PurchasesSummaryCubit>(
+      () =>
+          _i401.PurchasesSummaryCubit(gh<_i1023.GetPurchasesSummaryUseCase>()),
     );
     gh.factory<_i489.RecentTransactionUseCase>(
       () => _i489.RecentTransactionUseCase(gh<_i795.ReportsRepo>()),

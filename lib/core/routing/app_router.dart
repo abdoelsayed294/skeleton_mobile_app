@@ -5,6 +5,7 @@ import 'package:skeleton_mobile_app/core/widgets/main_navigation_screen.dart';
 import 'package:skeleton_mobile_app/features/home/logic/home_cubit.dart';
 import 'package:skeleton_mobile_app/features/home/ui/screens/home_screan.dart';
 import 'package:skeleton_mobile_app/features/reports/logic/recent_transaction_cubit.dart';
+import 'package:skeleton_mobile_app/features/reports/logic/reports_export_cubit.dart';
 import 'package:skeleton_mobile_app/features/reports/logic/reports_sales_cubit.dart';
 import 'package:skeleton_mobile_app/features/reports/logic/top_selling_cubit.dart';
 import 'package:skeleton_mobile_app/features/today_sales/logic/today_recent_transaction_cubit.dart';
@@ -58,6 +59,7 @@ class AppRouter {
               BlocProvider(
                 create: (context) => getIt<RecentTransactionCubit>(),
               ),
+              BlocProvider(create: (context) => getIt<ReportsExportCubit>()),
             ],
             child: const MainNavigationScreen(),
           ),
@@ -85,6 +87,7 @@ class AppRouter {
               BlocProvider(create: (_) => getIt<ReportsSalesCubit>()),
               BlocProvider(create: (_) => getIt<TopSellingCubit>()),
               BlocProvider(create: (_) => getIt<RecentTransactionCubit>()),
+              BlocProvider(create: (_) => getIt<ReportsExportCubit>()),
             ],
             child: const ReportsScrean(),
           ),
@@ -190,3 +193,5 @@ class AppRouter {
     }
   }
 }
+
+
