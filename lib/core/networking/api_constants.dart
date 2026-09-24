@@ -39,4 +39,6 @@ class EndPoints {
       '/api/today-sales/recent-transactions';
   static const String profitSummary = '/api/dashboard/profit-summary';
   static const String profitWeeklyChart = '/api/dashboard/profit-weekly-chart';
+  static const String purchasesSummary = '/api/Purchases/summary';
+  static const String purchasesRecent = '/api/Purchases/recent';
 }

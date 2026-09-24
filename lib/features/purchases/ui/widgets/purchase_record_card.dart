@@ -5,7 +5,8 @@ import 'package:skeleton_mobile_app/core/theming/app_style.dart';
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
 
 class PurchaseRecord {
-  final String name, date, invoice, items, amount, status, initials;
+  final String name, date, invoice, amount, status, initials;
+  final String? items;
   final Color color;
   final String? remaining, due;
 
@@ -13,7 +14,7 @@ class PurchaseRecord {
     required this.name,
     required this.date,
     required this.invoice,
-    required this.items,
+    this.items,
     required this.amount,
     required this.status,
     required this.initials,
@@ -146,7 +147,7 @@ class PurchaseRecordCard extends StatelessWidget {
                     : AppStyles.font12MediumLight,
               ),
               Text(
-                '  ·  ${record.items}',
+                record.items == null ? '' : ' · ${record.items}',
                 style:
                     (isDark
                             ? AppStyles.font12MediumDark
