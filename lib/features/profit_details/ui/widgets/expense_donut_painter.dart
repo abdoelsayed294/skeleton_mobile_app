@@ -10,6 +10,8 @@ class ExpenseDonutPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
+    if (values.isEmpty || colors.isEmpty) return;
+
     final strokeWidth = size.width * 0.18;
     final radius = size.shortestSide / 2 - strokeWidth / 2;
     final center = size.center(Offset.zero);
@@ -21,8 +23,9 @@ class ExpenseDonutPainter extends CustomPainter {
     var startAngle = -math.pi / 2;
 
     for (var index = 0; index < values.length; index++) {
-      final sweepAngle = math.pi * 2 * values[index];
-      paint.color = colors[index];
+      final sweepAngle = math.pi * 2 * values[index].clamp(0.0, 1.0);
+      paint.color = colors[index % colors.length];
+      if (sweepAngle == 0) continue;
       canvas.drawArc(rect, startAngle, sweepAngle, false, paint);
       startAngle += sweepAngle;
     }

@@ -13,6 +13,8 @@ import 'package:skeleton_mobile_app/features/inventory/data/model/inventroy_prod
 import 'package:skeleton_mobile_app/features/scan_qr/data/model/qr_response_dto.dart';
 import 'package:skeleton_mobile_app/features/today_sales/data/models/today_recent_transaction_dto.dart';
 import 'package:skeleton_mobile_app/features/today_sales/data/models/today_sales_dto.dart';
+import 'package:skeleton_mobile_app/features/profit_details/data/model/profit_summary_dto.dart';
+import 'package:skeleton_mobile_app/features/profit_details/data/model/profit_weekly_chart_dto.dart';
 
 part 'api_service.g.dart';
 
@@ -70,9 +72,7 @@ abstract class ApiService {
   );
 
   @GET(EndPoints.todaySales)
-  Future<TodaySalesDto> getTodaySales(
-    @Query('storeId') int storeId,
-  );
+  Future<TodaySalesDto> getTodaySales(@Query('storeId') int storeId);
 
   @GET(EndPoints.todaySalesRecentTransactions)
   Future<List<TodayRecentTransactionDto>> getTodaySalesRecentTransactions(
@@ -80,7 +80,7 @@ abstract class ApiService {
     @Query('period') String period,
     @Query('storeId') int storeId,
   );
-  
+
   @GET(EndPoints.inventoryProducts)
   Future<InventroyProductResponseDto> getInventoryProducts(
     @Query('storeId') int storeId,
@@ -91,4 +91,18 @@ abstract class ApiService {
     @Query('pageSize') int pageSize,
     @Query('sortBy') String? sortBy,
   );
+
+  @GET(EndPoints.profitSummary)
+  Future<ProfitSummaryDto> getProfitSummary(
+    @Query('period') String period,
+    @Query('storeId') int storeId,
+    @Query('from') String? from,
+    @Query('to') String? to,
+  );
+
+  @GET(EndPoints.profitWeeklyChart)
+  Future<ProfitWeeklyChartDto> getProfitWeeklyChart(
+    @Query('storeId') int storeId,
+  );
 }
+

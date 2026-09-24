@@ -1,8 +1,6 @@
 class ApiConstants {
-    static const String baseUrl = 'https://overfull-container-skiing.ngrok-free.dev/';
-
-
-  
+  static const String baseUrl =
+      'https://overfull-container-skiing.ngrok-free.dev/';
 }
 
 class ApiErrors {
@@ -31,13 +29,14 @@ class EndPoints {
   static const String dashboardLowStock = '/api/Dashboard/low-stock-detail/';
   static const String reportsTopSelling = '/api/reports/top-selling';
   static const String reportsSales = '/api/reports/sales';
-  static const String reportsRecentTransactions = '/api/reports/recent-transactions';
+  static const String reportsRecentTransactions =
+      '/api/reports/recent-transactions';
   static const String inventorySummary = '/api/inventory/summary/';
   static const String inventoryProducts = '/api/inventory/products';
 
   static const String todaySales = '/api/today-sales';
-  static const String todaySalesRecentTransactions = '/api/today-sales/recent-transactions';
-
-
-  
+  static const String todaySalesRecentTransactions =
+      '/api/today-sales/recent-transactions';
+  static const String profitSummary = '/api/dashboard/profit-summary';
+  static const String profitWeeklyChart = '/api/dashboard/profit-weekly-chart';
 }
