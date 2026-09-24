@@ -11,6 +11,8 @@ import 'package:skeleton_mobile_app/features/today_sales/logic/today_recent_tran
 import 'package:skeleton_mobile_app/features/today_sales/logic/today_sales_cubit.dart';
 import 'package:skeleton_mobile_app/features/today_sales/ui/screens/today_sales_screen.dart';
 import 'package:skeleton_mobile_app/features/profit_details/ui/screens/profit_details_screen.dart';
+import 'package:skeleton_mobile_app/features/profit_details/logic/profit_summary_cubit.dart';
+import 'package:skeleton_mobile_app/features/profit_details/logic/profit_weekly_chart_cubit.dart';
 import 'package:skeleton_mobile_app/features/inventory/logic/inventory_cubit.dart';
 import 'package:skeleton_mobile_app/features/inventory/logic/inventory_product_cubit.dart';
 import 'package:skeleton_mobile_app/features/inventory/ui/scereens/inventory_screan.dart';
@@ -46,7 +48,9 @@ class AppRouter {
               BlocProvider(create: (context) => getIt<HomeCubit>()),
               BlocProvider(create: (context) => getIt<ReportsSalesCubit>()),
               BlocProvider(create: (context) => getIt<TopSellingCubit>()),
-              BlocProvider(create: (context) => getIt<RecentTransactionCubit>()),
+              BlocProvider(
+                create: (context) => getIt<RecentTransactionCubit>(),
+              ),
             ],
             child: const MainNavigationScreen(),
           ),
@@ -89,7 +93,21 @@ class AppRouter {
           ),
         );
       case Routes.profitDetailsScreen:
-        return MaterialPageRoute(builder: (_) => const ProfitDetailsScreen());
+        return MaterialPageRoute(
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (_) =>
+                    getIt<ProfitSummaryCubit>()..getProfitSummary('today'),
+              ),
+              BlocProvider(
+                create: (_) =>
+                    getIt<ProfitWeeklyChartCubit>()..getProfitWeeklyChart(),
+              ),
+            ],
+            child: const ProfitDetailsScreen(),
+          ),
+        );
       case Routes.profileScreen:
         return MaterialPageRoute(builder: (_) => const ProfileScrean());
       case Routes.editProfileScreen:

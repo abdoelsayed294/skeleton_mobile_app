@@ -119,6 +119,22 @@ import 'package:skeleton_mobile_app/features/today_sales/logic/today_recent_tran
     as _i512;
 import 'package:skeleton_mobile_app/features/today_sales/logic/today_sales_cubit.dart'
     as _i389;
+import 'package:skeleton_mobile_app/features/profit_details/data/data_sources/remote/profit_remote_data_source.dart'
+    as _profit_ds;
+import 'package:skeleton_mobile_app/features/profit_details/data/data_sources/remote/profit_remote_data_source_impl.dart'
+    as _profit_ds_impl;
+import 'package:skeleton_mobile_app/features/profit_details/data/repo/profit_repo_impl.dart'
+    as _profit_repo_impl;
+import 'package:skeleton_mobile_app/features/profit_details/domain/repo/profit_repo.dart'
+    as _profit_repo;
+import 'package:skeleton_mobile_app/features/profit_details/domain/use_cases/get_profit_summary_use_case.dart'
+    as _profit_summary_uc;
+import 'package:skeleton_mobile_app/features/profit_details/domain/use_cases/get_profit_weekly_chart_use_case.dart'
+    as _profit_weekly_uc;
+import 'package:skeleton_mobile_app/features/profit_details/logic/profit_summary_cubit.dart'
+    as _profit_summary_cubit;
+import 'package:skeleton_mobile_app/features/profit_details/logic/profit_weekly_chart_cubit.dart'
+    as _profit_weekly_cubit;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -128,6 +144,34 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final dioModule = _$DioModule();
+    gh.factory<_profit_ds.ProfitRemoteDataSource>(
+      () => _profit_ds_impl.ProfitRemoteDataSourceImpl(gh<_i35.ApiService>()),
+    );
+    gh.factory<_profit_repo.ProfitRepo>(
+      () => _profit_repo_impl.ProfitRepoImpl(
+        gh<_profit_ds.ProfitRemoteDataSource>(),
+      ),
+    );
+    gh.factory<_profit_summary_uc.GetProfitSummaryUseCase>(
+      () => _profit_summary_uc.GetProfitSummaryUseCase(
+        gh<_profit_repo.ProfitRepo>(),
+      ),
+    );
+    gh.factory<_profit_weekly_uc.GetProfitWeeklyChartUseCase>(
+      () => _profit_weekly_uc.GetProfitWeeklyChartUseCase(
+        gh<_profit_repo.ProfitRepo>(),
+      ),
+    );
+    gh.factory<_profit_summary_cubit.ProfitSummaryCubit>(
+      () => _profit_summary_cubit.ProfitSummaryCubit(
+        gh<_profit_summary_uc.GetProfitSummaryUseCase>(),
+      ),
+    );
+    gh.factory<_profit_weekly_cubit.ProfitWeeklyChartCubit>(
+      () => _profit_weekly_cubit.ProfitWeeklyChartCubit(
+        gh<_profit_weekly_uc.GetProfitWeeklyChartUseCase>(),
+      ),
+    );
     gh.factory<_i295.SaveQrDataUseCase>(() => _i295.SaveQrDataUseCase());
     gh.lazySingleton<_i361.Dio>(() => dioModule.dio());
     gh.lazySingleton<_i35.ApiService>(
