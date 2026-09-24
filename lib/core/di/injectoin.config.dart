@@ -135,6 +135,22 @@ import 'package:skeleton_mobile_app/features/profit_details/logic/profit_summary
     as _profit_summary_cubit;
 import 'package:skeleton_mobile_app/features/profit_details/logic/profit_weekly_chart_cubit.dart'
     as _profit_weekly_cubit;
+import 'package:skeleton_mobile_app/features/purchases/data/data_sources/remote/purchases_remote_data_source.dart'
+    as _purchases_ds;
+import 'package:skeleton_mobile_app/features/purchases/data/data_sources/remote/purchases_remote_data_source_impl.dart'
+    as _purchases_ds_impl;
+import 'package:skeleton_mobile_app/features/purchases/data/repo/purchases_repo_impl.dart'
+    as _purchases_repo_impl;
+import 'package:skeleton_mobile_app/features/purchases/domain/repo/purchases_repo.dart'
+    as _purchases_repo;
+import 'package:skeleton_mobile_app/features/purchases/domain/use_cases/get_purchases_recent_use_case.dart'
+    as _purchases_recent_uc;
+import 'package:skeleton_mobile_app/features/purchases/domain/use_cases/get_purchases_summary_use_case.dart'
+    as _purchases_summary_uc;
+import 'package:skeleton_mobile_app/features/purchases/logic/purchases_recent_cubit.dart'
+    as _purchases_recent_cubit;
+import 'package:skeleton_mobile_app/features/purchases/logic/purchases_summary_cubit.dart'
+    as _purchases_summary_cubit;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -144,6 +160,36 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final dioModule = _$DioModule();
+    gh.factory<_purchases_ds.PurchasesRemoteDataSource>(
+      () => _purchases_ds_impl.PurchasesRemoteDataSourceImpl(
+        gh<_i35.ApiService>(),
+      ),
+    );
+    gh.factory<_purchases_repo.PurchasesRepo>(
+      () => _purchases_repo_impl.PurchasesRepoImpl(
+        gh<_purchases_ds.PurchasesRemoteDataSource>(),
+      ),
+    );
+    gh.factory<_purchases_summary_uc.GetPurchasesSummaryUseCase>(
+      () => _purchases_summary_uc.GetPurchasesSummaryUseCase(
+        gh<_purchases_repo.PurchasesRepo>(),
+      ),
+    );
+    gh.factory<_purchases_recent_uc.GetPurchasesRecentUseCase>(
+      () => _purchases_recent_uc.GetPurchasesRecentUseCase(
+        gh<_purchases_repo.PurchasesRepo>(),
+      ),
+    );
+    gh.factory<_purchases_summary_cubit.PurchasesSummaryCubit>(
+      () => _purchases_summary_cubit.PurchasesSummaryCubit(
+        gh<_purchases_summary_uc.GetPurchasesSummaryUseCase>(),
+      ),
+    );
+    gh.factory<_purchases_recent_cubit.PurchasesRecentCubit>(
+      () => _purchases_recent_cubit.PurchasesRecentCubit(
+        gh<_purchases_recent_uc.GetPurchasesRecentUseCase>(),
+      ),
+    );
     gh.factory<_profit_ds.ProfitRemoteDataSource>(
       () => _profit_ds_impl.ProfitRemoteDataSourceImpl(gh<_i35.ApiService>()),
     );

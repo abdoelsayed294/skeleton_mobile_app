@@ -15,6 +15,7 @@ import 'package:skeleton_mobile_app/features/today_sales/data/models/today_recen
 import 'package:skeleton_mobile_app/features/today_sales/data/models/today_sales_dto.dart';
 import 'package:skeleton_mobile_app/features/profit_details/data/model/profit_summary_dto.dart';
 import 'package:skeleton_mobile_app/features/profit_details/data/model/profit_weekly_chart_dto.dart';
+import 'package:skeleton_mobile_app/features/purchases/data/model/purchases_dto.dart';
 
 part 'api_service.g.dart';
 
@@ -104,5 +105,19 @@ abstract class ApiService {
   Future<ProfitWeeklyChartDto> getProfitWeeklyChart(
     @Query('storeId') int storeId,
   );
-}
 
+  @GET(EndPoints.purchasesSummary)
+  Future<PurchasesSummaryDto> getPurchasesSummary(
+    @Query('storeId') int storeId,
+    @Query('year') int year,
+    @Query('month') int month,
+  );
+
+  @GET(EndPoints.purchasesRecent)
+  Future<PurchasesRecentDto> getPurchasesRecent(
+    @Query('storeId') int storeId,
+    @Query('year') int year,
+    @Query('month') int month,
+    @Query('take') int take,
+  );
+}

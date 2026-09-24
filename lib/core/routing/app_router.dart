@@ -20,6 +20,8 @@ import 'package:skeleton_mobile_app/features/product_details/ui/scereens/product
 import 'package:skeleton_mobile_app/features/profile/ui/scereens/profile_screan.dart';
 import 'package:skeleton_mobile_app/features/profile/ui/scereens/edit_profile_screan.dart';
 import 'package:skeleton_mobile_app/features/purchases/ui/scereens/purchases_screan.dart';
+import 'package:skeleton_mobile_app/features/purchases/logic/purchases_summary_cubit.dart';
+import 'package:skeleton_mobile_app/features/purchases/logic/purchases_recent_cubit.dart';
 import 'package:skeleton_mobile_app/features/reports/ui/scereens/reports_screan.dart';
 import 'package:skeleton_mobile_app/features/notifications/ui/screens/notifications_screen.dart';
 import 'package:skeleton_mobile_app/features/scan_qr/logic/qr_cubit.dart';
@@ -122,7 +124,26 @@ class AppRouter {
       case Routes.productDetailsScreen:
         return MaterialPageRoute(builder: (_) => const ProductDetailsScrean());
       case Routes.purchasesScreen:
-        return MaterialPageRoute(builder: (_) => const PurchasesScrean());
+        return MaterialPageRoute(
+          builder: (_) {
+            final now = DateTime.now();
+            return MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (_) =>
+                      getIt<PurchasesSummaryCubit>()
+                        ..getPurchasesSummary(now.year, now.month),
+                ),
+                BlocProvider(
+                  create: (_) =>
+                      getIt<PurchasesRecentCubit>()
+                        ..getPurchasesRecent(now.year, now.month),
+                ),
+              ],
+              child: const PurchasesScrean(),
+            );
+          },
+        );
       case Routes.notificationsScreen:
         return MaterialPageRoute(builder: (_) => const NotificationsScreen());
       default:

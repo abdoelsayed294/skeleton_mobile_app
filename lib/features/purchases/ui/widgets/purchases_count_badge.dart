@@ -4,7 +4,9 @@ import 'package:skeleton_mobile_app/core/theming/app_color.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
 
 class PurchasesCountBadge extends StatelessWidget {
-  const PurchasesCountBadge({super.key});
+  final int count;
+
+  const PurchasesCountBadge({super.key, required this.count});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class PurchasesCountBadge extends StatelessWidget {
         borderRadius: BorderRadius.circular(12.r),
       ),
       child: Text(
-        '48',
+        count.toString(),
         style: (isDark ? AppStyles.statChangeDark : AppStyles.statChangeLight)
             .copyWith(
               color: isDark ? AppColorsDark.primary : AppColorsLight.primary,
