@@ -21,14 +21,14 @@ class _SplashScreenState extends State<SplashScreen>
   late final AnimationController _controller;
 
   static const double _bgStart = 0.0;
-  static const double _bgEnd = 0.25; 
+  static const double _bgEnd = 0.25;
 
-  static const double _logoStart = 0.30; 
+  static const double _logoStart = 0.30;
   static const double _logoEnd = 0.55;
 
-  static const double _lettersStart = 0.55;   
-static const double _lettersEnd = 0.98;     
-static const double _letterSpan = 0.22;     
+  static const double _lettersStart = 0.55;
+  static const double _lettersEnd = 0.98;
+  static const double _letterSpan = 0.22;
 
   bool _navigated = false;
 
@@ -70,8 +70,11 @@ static const double _letterSpan = 0.22;
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
-      backgroundColor: AppColorsLight.background,
+      backgroundColor: isDark
+          ? AppColorsDark.background
+          : AppColorsLight.background,
       body: AnimatedBuilder(
         animation: _controller,
         builder: (context, _) {
@@ -86,6 +89,13 @@ static const double _letterSpan = 0.22;
             _logoStart + 0.12,
           ).clamp(0.0, 1.0);
 
+          final gradientStart = isDark
+              ? AppColorsDark.primaryGradientStart
+              : AppColorsLight.primaryGradientStart;
+          final gradientEnd = isDark
+              ? AppColorsDark.primaryGradientEnd
+              : AppColorsLight.primaryGradientEnd;
+
           return Stack(
             fit: StackFit.expand,
             children: [
@@ -93,14 +103,11 @@ static const double _letterSpan = 0.22;
                 child: Opacity(
                   opacity: bgT,
                   child: Container(
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       gradient: LinearGradient(
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
-                        colors: [
-                          AppColorsLight.primaryGradientStart,
-                          AppColorsLight.primaryGradientEnd,
-                        ],
+                        colors: [gradientStart, gradientEnd],
                       ),
                     ),
                   ),
@@ -147,7 +154,7 @@ class _WordMark extends StatelessWidget {
   final double Function(int index) letterProgressBuilder;
 
   static const double _fontSize = 52;
-  static const double _logoAspect = 720 / 920; 
+  static const double _logoAspect = 720 / 920;
 
   @override
   Widget build(BuildContext context) {
@@ -177,24 +184,27 @@ class _WordMark extends StatelessWidget {
       );
     }
 
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Opacity(
-          opacity: logoOpacity,
-          child: Transform.scale(
-            scale: logoScale,
-            child: Image.asset(
-              'assets/images/skeleton_logo.png',
-              width: logoWidth,
-              height: logoHeight,
-              fit: BoxFit.contain,
+    return Directionality(
+      textDirection: TextDirection.ltr,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Opacity(
+            opacity: logoOpacity,
+            child: Transform.scale(
+              scale: logoScale,
+              child: Image.asset(
+                'assets/images/skeleton_logo.png',
+                width: logoWidth,
+                height: logoHeight,
+                fit: BoxFit.contain,
+              ),
             ),
           ),
-        ),
-        ...visibleLetters,
-      ],
+          ...visibleLetters,
+        ],
+      ),
     );
   }
 }

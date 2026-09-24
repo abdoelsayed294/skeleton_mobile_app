@@ -78,5 +78,3 @@ class MonthNavigator extends StatelessWidget {
     );
   }
 }
-
-

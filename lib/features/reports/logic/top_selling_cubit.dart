@@ -7,6 +7,7 @@ import 'package:skeleton_mobile_app/features/reports/logic/top_selling_state.dar
 @injectable
 class TopSellingCubit extends Cubit<TopSellingState> {
   final TopSellingUseCase topSellingUseCase;
+  int _requestId = 0;
 
   TopSellingCubit(this.topSellingUseCase)
     : super(const TopSellingState.initial());
@@ -15,9 +16,19 @@ class TopSellingCubit extends Cubit<TopSellingState> {
     required int storeId,
     required String period,
     required int take,
+    required int year,
+    required int month,
   }) async {
+    final requestId = ++_requestId;
     emit(const TopSellingState.loading());
-    final result = await topSellingUseCase.getTopSelling(storeId, period, take);
+    final result = await topSellingUseCase.getTopSelling(
+      storeId,
+      period,
+      take,
+      year,
+      month,
+    );
+    if (requestId != _requestId || isClosed) return;
     result.when(
       success: (data) => emit(TopSellingState.success(data)),
       failure: (error) => emit(TopSellingState.error(error)),

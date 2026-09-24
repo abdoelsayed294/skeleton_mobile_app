@@ -7,15 +7,15 @@ import 'package:skeleton_mobile_app/features/inventory/domain/use_cases/Inventor
 import 'package:skeleton_mobile_app/features/inventory/logic/inventory_product_state.dart';
 
 @injectable
-class InventoryProductCubit
-    extends Cubit<InventoryProductState> {
-  InventoryProductCubit(
-    this._inventoryProductUseCase,
-  ) : super(const InventoryProductState.initial());
+class InventoryProductCubit extends Cubit<InventoryProductState> {
+  InventoryProductCubit(this._inventoryProductUseCase)
+    : super(const InventoryProductState.initial());
 
   final InventoryProudctUseCase _inventoryProductUseCase;
   String? _selectedItemType;
   String? _searchQuery;
+  String? _statusFilter;
+  String? _sortBy;
   final List<Items?> _loadedProducts = [];
   int _currentPage = 0;
   int _pageSize = 20;
@@ -26,16 +26,24 @@ class InventoryProductCubit
 
   bool get hasMore => _hasMore;
   bool get isLoadingMore => _isLoadingMore;
+  String? get selectedItemType => _selectedItemType;
+  String? get searchQuery => _searchQuery;
+  String? get statusFilter => _statusFilter;
+  String? get sortBy => _sortBy;
 
   Future<void> getInventoryProducts({
     String? itemType,
     int pageNumber = 1,
     int pageSize = 20,
     String? search,
+    String? status,
+    String? sortBy,
   }) async {
     final requestId = ++_requestId;
     _selectedItemType = itemType;
     _searchQuery = search;
+    _statusFilter = status;
+    _sortBy = sortBy;
     _currentPage = 0;
     _pageSize = pageSize;
     _totalProducts = null;
@@ -44,9 +52,7 @@ class InventoryProductCubit
     _loadedProducts.clear();
     emit(const InventoryProductState.loading());
 
-    final storeId = await SharedPrefHelper.getInt(
-      SharedPrefHelper.storeIdKey,
-    );
+    final storeId = await SharedPrefHelper.getInt(SharedPrefHelper.storeIdKey);
 
     final result = await _inventoryProductUseCase.invoke(
       storeId,
@@ -54,6 +60,8 @@ class InventoryProductCubit
       pageNumber,
       pageSize,
       search: search,
+      status: status,
+      sortBy: sortBy,
     );
 
     if (requestId != _requestId) return;
@@ -76,6 +84,39 @@ class InventoryProductCubit
     return getInventoryProducts(
       itemType: _selectedItemType,
       search: query.trim().isEmpty ? null : query.trim(),
+      status: _statusFilter,
+      sortBy: _sortBy,
+    );
+  }
+
+  Future<void> filterByStatus(String? status) {
+    return getInventoryProducts(
+      itemType: _selectedItemType,
+      search: _searchQuery,
+      status: status,
+      sortBy: _sortBy,
+      pageSize: _pageSize,
+    );
+  }
+
+  Future<void> selectCategory(String? itemType) {
+    return getInventoryProducts(
+      itemType: itemType,
+      pageNumber: 1,
+      search: _searchQuery,
+      status: _statusFilter,
+      sortBy: _sortBy,
+      pageSize: _pageSize,
+    );
+  }
+
+  Future<void> sortProducts(String? sortBy) {
+    return getInventoryProducts(
+      itemType: _selectedItemType,
+      search: _searchQuery,
+      status: _statusFilter,
+      sortBy: sortBy,
+      pageSize: _pageSize,
     );
   }
 
@@ -92,6 +133,8 @@ class InventoryProductCubit
       nextPage,
       _pageSize,
       search: _searchQuery,
+      status: _statusFilter,
+      sortBy: _sortBy,
     );
 
     if (requestId != _requestId) return false;

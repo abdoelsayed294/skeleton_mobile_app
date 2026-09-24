@@ -151,6 +151,34 @@ import 'package:skeleton_mobile_app/features/purchases/logic/purchases_recent_cu
     as _purchases_recent_cubit;
 import 'package:skeleton_mobile_app/features/purchases/logic/purchases_summary_cubit.dart'
     as _purchases_summary_cubit;
+import 'package:skeleton_mobile_app/features/product_details/data/data_sources/remote/product_details_remote_data_source.dart'
+    as _product_details_ds;
+import 'package:skeleton_mobile_app/features/product_details/data/data_sources/remote/product_details_remote_data_source_impl.dart'
+    as _product_details_ds_impl;
+import 'package:skeleton_mobile_app/features/product_details/data/repo/product_details_repo_impl.dart'
+    as _product_details_repo_impl;
+import 'package:skeleton_mobile_app/features/product_details/domain/repo/product_details_repo.dart'
+    as _product_details_repo;
+import 'package:skeleton_mobile_app/features/product_details/domain/use_cases/get_product_activity_use_case.dart'
+    as _product_activity_uc;
+import 'package:skeleton_mobile_app/features/product_details/domain/use_cases/get_product_header_use_case.dart'
+    as _product_header_uc;
+import 'package:skeleton_mobile_app/features/product_details/domain/use_cases/get_product_inventory_use_case.dart'
+    as _product_inventory_uc;
+import 'package:skeleton_mobile_app/features/product_details/domain/use_cases/get_product_pricing_use_case.dart'
+    as _product_pricing_uc;
+import 'package:skeleton_mobile_app/features/product_details/domain/use_cases/get_product_sales_history_use_case.dart'
+    as _product_sales_history_uc;
+import 'package:skeleton_mobile_app/features/product_details/logic/product_activity_cubit.dart'
+    as _product_activity_cubit;
+import 'package:skeleton_mobile_app/features/product_details/logic/product_header_cubit.dart'
+    as _product_header_cubit;
+import 'package:skeleton_mobile_app/features/product_details/logic/product_inventory_cubit.dart'
+    as _product_inventory_cubit;
+import 'package:skeleton_mobile_app/features/product_details/logic/product_pricing_cubit.dart'
+    as _product_pricing_cubit;
+import 'package:skeleton_mobile_app/features/product_details/logic/product_sales_history_cubit.dart'
+    as _product_sales_history_cubit;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -160,6 +188,66 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final dioModule = _$DioModule();
+    gh.factory<_product_details_ds.ProductDetailsRemoteDataSource>(
+      () => _product_details_ds_impl.ProductDetailsRemoteDataSourceImpl(
+        gh<_i35.ApiService>(),
+      ),
+    );
+    gh.factory<_product_details_repo.ProductDetailsRepo>(
+      () => _product_details_repo_impl.ProductDetailsRepoImpl(
+        gh<_product_details_ds.ProductDetailsRemoteDataSource>(),
+      ),
+    );
+    gh.factory<_product_activity_uc.GetProductActivityUseCase>(
+      () => _product_activity_uc.GetProductActivityUseCase(
+        gh<_product_details_repo.ProductDetailsRepo>(),
+      ),
+    );
+    gh.factory<_product_header_uc.GetProductHeaderUseCase>(
+      () => _product_header_uc.GetProductHeaderUseCase(
+        gh<_product_details_repo.ProductDetailsRepo>(),
+      ),
+    );
+    gh.factory<_product_pricing_uc.GetProductPricingUseCase>(
+      () => _product_pricing_uc.GetProductPricingUseCase(
+        gh<_product_details_repo.ProductDetailsRepo>(),
+      ),
+    );
+    gh.factory<_product_inventory_uc.GetProductInventoryUseCase>(
+      () => _product_inventory_uc.GetProductInventoryUseCase(
+        gh<_product_details_repo.ProductDetailsRepo>(),
+      ),
+    );
+    gh.factory<_product_sales_history_uc.GetProductSalesHistoryUseCase>(
+      () => _product_sales_history_uc.GetProductSalesHistoryUseCase(
+        gh<_product_details_repo.ProductDetailsRepo>(),
+      ),
+    );
+    gh.factory<_product_activity_cubit.ProductActivityCubit>(
+      () => _product_activity_cubit.ProductActivityCubit(
+        gh<_product_activity_uc.GetProductActivityUseCase>(),
+      ),
+    );
+    gh.factory<_product_header_cubit.ProductHeaderCubit>(
+      () => _product_header_cubit.ProductHeaderCubit(
+        gh<_product_header_uc.GetProductHeaderUseCase>(),
+      ),
+    );
+    gh.factory<_product_pricing_cubit.ProductPricingCubit>(
+      () => _product_pricing_cubit.ProductPricingCubit(
+        gh<_product_pricing_uc.GetProductPricingUseCase>(),
+      ),
+    );
+    gh.factory<_product_inventory_cubit.ProductInventoryCubit>(
+      () => _product_inventory_cubit.ProductInventoryCubit(
+        gh<_product_inventory_uc.GetProductInventoryUseCase>(),
+      ),
+    );
+    gh.factory<_product_sales_history_cubit.ProductSalesHistoryCubit>(
+      () => _product_sales_history_cubit.ProductSalesHistoryCubit(
+        gh<_product_sales_history_uc.GetProductSalesHistoryUseCase>(),
+      ),
+    );
     gh.factory<_purchases_ds.PurchasesRemoteDataSource>(
       () => _purchases_ds_impl.PurchasesRemoteDataSourceImpl(
         gh<_i35.ApiService>(),

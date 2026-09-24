@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
 import 'package:skeleton_mobile_app/core/theming/app_color.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
+import 'package:skeleton_mobile_app/core/widgets/shimmer_block.dart';
 import 'package:skeleton_mobile_app/features/reports/ui/widgets/stat_column.dart';
 import 'package:skeleton_mobile_app/features/today_sales/logic/today_sales_cubit.dart';
 import 'package:skeleton_mobile_app/features/today_sales/logic/today_sales_state.dart';
@@ -64,8 +65,64 @@ class _TodayTotalSalesCardState extends State<TodayTotalSalesCard> {
           BlocBuilder<TodaySalesCubit, TodaySalesState>(
             builder: (context, state) {
               return state.when(
-                initial: () => const SizedBox.shrink(),
-                loading: () => const Center(child: CircularProgressIndicator(color: Colors.white)),
+                initial: () => Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ShimmerBlock(width: 155.w, height: 34.h),
+                    SizedBox(height: 12.h),
+                    ShimmerBlock(width: 130.w, height: 22.h, radius: 14),
+                    SizedBox(height: 16.h),
+                    Container(
+                      height: 1,
+                      color: Colors.white.withValues(alpha: 0.1),
+                    ),
+                    SizedBox(height: 14.h),
+                    Row(
+                      children: List.generate(
+                        3,
+                        (index) => Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              ShimmerBlock(width: 45.w, height: 10.h),
+                              SizedBox(height: 8.h),
+                              ShimmerBlock(width: 55.w, height: 15.h),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                loading: () => Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ShimmerBlock(width: 155.w, height: 34.h),
+                    SizedBox(height: 12.h),
+                    ShimmerBlock(width: 130.w, height: 22.h, radius: 14),
+                    SizedBox(height: 16.h),
+                    Container(
+                      height: 1,
+                      color: Colors.white.withValues(alpha: 0.1),
+                    ),
+                    SizedBox(height: 14.h),
+                    Row(
+                      children: List.generate(
+                        3,
+                        (index) => Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              ShimmerBlock(width: 45.w, height: 10.h),
+                              SizedBox(height: 8.h),
+                              ShimmerBlock(width: 55.w, height: 15.h),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
                 success: (data) {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,7 +150,10 @@ class _TodayTotalSalesCardState extends State<TodayTotalSalesCard> {
                       Row(
                         children: [
                           Container(
-                            padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 8.w,
+                              vertical: 4.h,
+                            ),
                             decoration: BoxDecoration(
                               color: Colors.white.withValues(alpha: 0.14),
                               borderRadius: BorderRadius.circular(20.r),
@@ -132,7 +192,10 @@ class _TodayTotalSalesCardState extends State<TodayTotalSalesCard> {
                         ],
                       ),
                       SizedBox(height: 16.h),
-                      Container(height: 1, color: Colors.white.withValues(alpha: 0.1)),
+                      Container(
+                        height: 1,
+                        color: Colors.white.withValues(alpha: 0.1),
+                      ),
                       SizedBox(height: 14.h),
                       Row(
                         children: [
@@ -146,7 +209,8 @@ class _TodayTotalSalesCardState extends State<TodayTotalSalesCard> {
                           Expanded(
                             child: StatColumn(
                               label: l10n.avgOrder,
-                              value: '${l10n.currencyEgp} ${data.avgOrder.toStringAsFixed(1)}',
+                              value:
+                                  '${l10n.currencyEgp} ${data.avgOrder.toStringAsFixed(1)}',
                               isDark: isDark,
                             ),
                           ),
@@ -162,7 +226,12 @@ class _TodayTotalSalesCardState extends State<TodayTotalSalesCard> {
                     ],
                   );
                 },
-                error: (error) => Center(child: Text(error.error?.message ?? 'Error', style: TextStyle(color: Colors.white))),
+                error: (error) => Center(
+                  child: Text(
+                    error.error?.message ?? 'Error',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
               );
             },
           ),
@@ -171,4 +240,3 @@ class _TodayTotalSalesCardState extends State<TodayTotalSalesCard> {
     );
   }
 }
-

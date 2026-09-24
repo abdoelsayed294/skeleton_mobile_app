@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/theming/app_color.dart';
 import 'package:skeleton_mobile_app/features/product_details/ui/widgets/product_activity_section.dart';
 import 'package:skeleton_mobile_app/features/product_details/ui/widgets/product_details_app_bar.dart';
 import 'package:skeleton_mobile_app/features/product_details/ui/widgets/product_edit_button.dart';
@@ -11,18 +10,18 @@ import 'package:skeleton_mobile_app/features/product_details/ui/widgets/product_
 import 'package:skeleton_mobile_app/features/product_details/ui/widgets/product_sales_history_card.dart';
 
 class ProductDetailsScrean extends StatelessWidget {
-  const ProductDetailsScrean({super.key});
+  final int productId;
+
+  const ProductDetailsScrean({super.key, required this.productId});
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: ProductEditButton(
         onPressed: () {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Edit Product — coming soon')),
+            const SnackBar(content: Text('Edit Product - coming soon')),
           );
         },
       ),
@@ -31,10 +30,7 @@ class ProductDetailsScrean extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.fromLTRB(20.w, 12.h, 20.w, 8.h),
-              child: const ProductDetailsAppBar(
-                title: 'Wireless Earbuds Pro',
-                sku: 'WEP-2024-BLK',
-              ),
+              child: const ProductDetailsAppBar(),
             ),
             Expanded(
               child: SingleChildScrollView(
@@ -43,79 +39,17 @@ class ProductDetailsScrean extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const ProductOverviewSection(
-                      name: 'Wireless Earbuds Pro',
-                      subtitle: 'Noise-Cancelling True Wireless — Matte Black',
-                      category: 'Electronics > Audio',
-                      icon: Icons.headphones_rounded,
-                      inStock: true,
-                    ),
+                    const ProductOverviewSection(),
                     SizedBox(height: 16.h),
-                    const ProductInfoCard(
-                      sku: 'WEP-2024-BLK',
-                      category: 'Electronics / Audio',
-                      supplier: 'SoundTech Co., Ltd.',
-                    ),
+                    const ProductInfoCard(),
                     SizedBox(height: 20.h),
-                    const ProductPricingSection(
-                      purchasePrice: r'$42.00',
-                      sellingPrice: r'$79.99',
-                      profitPerUnit: r'$37.99',
-                      profitMargin: '47.5',
-                      marginChange: '8.2%',
-                    ),
+                    const ProductPricingSection(),
                     SizedBox(height: 20.h),
-                    const ProductInventorySection(
-                      currentStock: 148,
-                      minimumStock: 20,
-                      soldToday: 12,
-                      soldThisWeek: 74,
-                      soldThisMonth: 302,
-                    ),
+                    const ProductInventorySection(),
                     SizedBox(height: 20.h),
-                    ProductSalesHistoryCard(
-                      totalUnits: '74',
-                      changePercent: '12.4%',
-                      dayLabels: const ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-                      dayValues: const [0.35, 0.42, 0.24, 0.55, 0.62, 0.78, 0.28],
-                    ),
+                    const ProductSalesHistoryCard(),
                     SizedBox(height: 20.h),
-                    ProductActivitySection(
-                      entries: [
-                        ActivityEntry(
-                          icon: Icons.sync_rounded,
-                          color: isDark ? AppColorsDark.success : AppColorsLight.success,
-                          title: 'Stock Added',
-                          subtitle: '+50 units from SoundTech',
-                          value: '+50',
-                          time: 'Today, 9:14 AM',
-                        ),
-                        ActivityEntry(
-                          icon: Icons.sell_outlined,
-                          color: isDark ? AppColorsDark.warningAlt : AppColorsLight.warning,
-                          title: 'Product Sold',
-                          subtitle: '3 units · POS Terminal #2',
-                          value: r'$239.97',
-                          time: 'Today, 8:45 AM',
-                        ),
-                        ActivityEntry(
-                          icon: Icons.local_shipping_outlined,
-                          color: isDark ? AppColorsDark.primary : AppColorsLight.primary,
-                          title: 'Purchase Received',
-                          subtitle: 'PO#4420 · 100 units',
-                          value: '+100',
-                          time: 'Yesterday',
-                        ),
-                        ActivityEntry(
-                          icon: Icons.tune_rounded,
-                          color: isDark ? AppColorsDark.error : AppColorsLight.error,
-                          title: 'Stock Adjustment',
-                          subtitle: 'Damaged goods write-off',
-                          value: '-2',
-                          time: 'Mon, Dec 11',
-                        ),
-                      ],
-                    ),
+                    const ProductActivitySection(),
                   ],
                 ),
               ),

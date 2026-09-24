@@ -8,6 +8,8 @@ part 'recent_transaction_state.freezed.dart';
 class RecentTransactionState with _$RecentTransactionState {
   const factory RecentTransactionState.initial() = _Initial;
   const factory RecentTransactionState.loading() = _Loading;
-  const factory RecentTransactionState.success(List<RecentTransactionEntity> data) = _Success;
+  const factory RecentTransactionState.success(
+    List<RecentTransactionEntity> data,
+  ) = _Success;
   const factory RecentTransactionState.error(ApiErrorModel error) = _Error;
 }

@@ -45,11 +45,7 @@ class HomeCubit extends Cubit<HomeState> {
   }) async {
     emit(state.copyWith(salesChartState: const RequestState.loading()));
 
-    final result = await salesChartUseCase.getSalesChart(
-      storeId,
-      period,
-      days,
-    );
+    final result = await salesChartUseCase.getSalesChart(storeId, period, days);
 
     result.when(
       success: (data) {
@@ -61,10 +57,14 @@ class HomeCubit extends Cubit<HomeState> {
     );
   }
 
-  Future<void> getTopProducts({required int storeId, int take = 5}) async {
+  Future<void> getTopProducts({
+    required int storeId,
+    int take = 5,
+    bool all = false,
+  }) async {
     emit(state.copyWith(topProductsState: const RequestState.loading()));
 
-    final result = await topProductsUseCase.getTopProducts(storeId, take);
+    final result = await topProductsUseCase.getTopProducts(storeId, take, all);
 
     result.when(
       success: (data) {

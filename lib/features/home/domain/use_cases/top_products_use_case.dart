@@ -9,7 +9,11 @@ class TopProductsUseCase {
 
   TopProductsUseCase(this._homeRepo);
 
-  Future<ApiResult<List<TopProductEntity>>> getTopProducts(int storeId, int take) {
-    return _homeRepo.getTopProducts(storeId, take);
+  Future<ApiResult<List<TopProductEntity>>> getTopProducts(
+    int storeId,
+    int take,
+    bool all,
+  ) {
+    return _homeRepo.getTopProducts(storeId, take, all);
   }
 }

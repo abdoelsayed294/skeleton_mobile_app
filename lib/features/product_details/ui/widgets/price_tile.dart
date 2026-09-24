@@ -36,7 +36,9 @@ class PriceTile extends StatelessWidget {
               Expanded(
                 child: Text(
                   label,
-                  style: isDark ? AppStyles.font12MediumDark : AppStyles.font12MediumLight,
+                  style: isDark
+                      ? AppStyles.font12MediumDark
+                      : AppStyles.font12MediumLight,
                 ),
               ),
               Container(
@@ -53,11 +55,12 @@ class PriceTile extends StatelessWidget {
           SizedBox(height: 8.h),
           Text(
             value,
-            style: isDark ? AppStyles.font18BoldDark : AppStyles.font18BoldLight,
+            style: isDark
+                ? AppStyles.font18BoldDark
+                : AppStyles.font18BoldLight,
           ),
         ],
       ),
     );
   }
 }
-

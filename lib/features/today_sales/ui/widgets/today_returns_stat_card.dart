@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeleton_mobile_app/core/theming/app_color.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
+import 'package:skeleton_mobile_app/core/widgets/shimmer_block.dart';
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeleton_mobile_app/features/reports/ui/widgets/stat_change_badge.dart';
@@ -52,29 +53,47 @@ class TodayReturnsStatCard extends StatelessWidget {
                 Icon(Icons.keyboard_return_rounded, size: 16.sp, color: accent),
               ],
             ),
-            BlocBuilder<TodaySalesCubit, TodaySalesState>(
-              builder: (context, state) {
-                return state.maybeWhen(
-                  success: (data) => Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        data.returnsTotal.toStringAsFixed(0),
-                        style: isDark
-                            ? AppStyles.statValueDark
-                            : AppStyles.statValueLight,
-                      ),
-                      Text(
-                        '${l10n.currencyEgp} · ${data.returnsTotal.toStringAsFixed(0)} ${l10n.orders}',
-                        style: isDark ? AppStyles.statUnitDark : AppStyles.statUnitLight,
-                      ),
-                      const Spacer(),
-                      StatChangeBadge(label: '${data.returnsChangePct >= 0 ? '+' : ''}${data.returnsChangePct.toStringAsFixed(1)}%', color: accent),
-                    ],
-                  ),
-                  orElse: () => const SizedBox.shrink(),
-                );
-              },
+            Expanded(
+              child: BlocBuilder<TodaySalesCubit, TodaySalesState>(
+                builder: (context, state) {
+                  return state.maybeWhen(
+                    success: (data) => Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          data.returnsTotal.toStringAsFixed(0),
+                          style: isDark
+                              ? AppStyles.statValueDark
+                              : AppStyles.statValueLight,
+                        ),
+                        Text(
+                          '${l10n.currencyEgp} · ${data.returnsTotal.toStringAsFixed(0)} ${l10n.orders}',
+                          style: isDark
+                              ? AppStyles.statUnitDark
+                              : AppStyles.statUnitLight,
+                        ),
+                        const Spacer(),
+                        StatChangeBadge(
+                          label:
+                              '${data.returnsChangePct >= 0 ? '+' : ''}${data.returnsChangePct.toStringAsFixed(1)}%',
+                          color: accent,
+                        ),
+                      ],
+                    ),
+                    orElse: () => Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: 12.h),
+                        ShimmerBlock(width: 54.w, height: 22.h),
+                        SizedBox(height: 4.h),
+                        ShimmerBlock(width: 75.w, height: 9.h),
+                        const Spacer(),
+                        ShimmerBlock(width: 45.w, height: 16.h, radius: 12),
+                      ],
+                    ),
+                  );
+                },
+              ),
             ),
           ],
         ),

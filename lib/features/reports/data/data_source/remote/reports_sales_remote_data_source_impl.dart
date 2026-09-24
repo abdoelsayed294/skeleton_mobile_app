@@ -12,9 +12,19 @@ class ReportsSalesRemoteDataSourceImpl extends ReportsSalesRemoteDataSource {
   ReportsSalesRemoteDataSourceImpl(this.apiService);
 
   @override
-  Future<ApiResult<ReportsSalesDto>> getReportsSales(String period, int storeId) async {
+  Future<ApiResult<ReportsSalesDto>> getReportsSales(
+    String period,
+    int storeId,
+    int year,
+    int month,
+  ) async {
     try {
-      final response = await apiService.getReportsSales(period, storeId);
+      final response = await apiService.getReportsSales(
+        period,
+        storeId,
+        year,
+        month,
+      );
       return ApiResult.success(response);
     } catch (e) {
       return ApiResult.failure(ApiErrorHandler.handle(e));

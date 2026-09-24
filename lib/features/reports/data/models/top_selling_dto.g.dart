@@ -11,7 +11,7 @@ TopSellingDto _$TopSellingDtoFromJson(Map<String, dynamic> json) =>
       itemName: json['itemName'] as String,
       unitsSold: (json['unitsSold'] as num).toInt(),
       revenue: (json['revenue'] as num).toDouble(),
-      revenuePct: (json['revenuePct'] as num).toDouble(),
+      revenuePct: (json['revenuePct'] as num?)?.toDouble() ?? 0,
       changePct: (json['changePct'] as num).toDouble(),
     );
 

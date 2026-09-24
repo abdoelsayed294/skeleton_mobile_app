@@ -20,7 +20,7 @@ extension DashboardsammaryResponseMapper on SummaryResponseDto {
 
 extension BusinessSummaryMapper on BusinessSummaryDto {
   BusinessSummary toEntity() {
-    return BusinessSummary(businessName: businessName);
+    return BusinessSummary(businessName: businessName, ownerName: ownerName);
   }
 }
 
@@ -29,5 +29,3 @@ extension StoreSummaryMapper on StoreSummaryDto {
     return StoreSummary(storeName: storeName);
   }
 }
-
-

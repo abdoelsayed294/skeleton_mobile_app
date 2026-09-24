@@ -12,9 +12,15 @@ class ProfitTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final successColor = isDark ? AppColorsDark.success : AppColorsLight.success;
-    final successBg = isDark ? AppColorsDark.successBg : AppColorsLight.successBg;
-    final successBorder = isDark ? AppColorsDark.successBorder : AppColorsLight.successBorder;
+    final successColor = isDark
+        ? AppColorsDark.success
+        : AppColorsLight.success;
+    final successBg = isDark
+        ? AppColorsDark.successBg
+        : AppColorsLight.successBg;
+    final successBorder = isDark
+        ? AppColorsDark.successBorder
+        : AppColorsLight.successBorder;
 
     return Container(
       padding: EdgeInsets.all(12.w),
@@ -28,14 +34,18 @@ class ProfitTile extends StatelessWidget {
         children: [
           Text(
             label,
-            style: (isDark ? AppStyles.font12MediumDark : AppStyles.font12MediumLight)
-                .copyWith(color: successColor),
+            style:
+                (isDark
+                        ? AppStyles.font12MediumDark
+                        : AppStyles.font12MediumLight)
+                    .copyWith(color: successColor),
           ),
           SizedBox(height: 8.h),
           Text(
             value,
-            style: (isDark ? AppStyles.font18BoldDark : AppStyles.font18BoldLight)
-                .copyWith(color: successColor),
+            style:
+                (isDark ? AppStyles.font18BoldDark : AppStyles.font18BoldLight)
+                    .copyWith(color: successColor),
           ),
         ],
       ),

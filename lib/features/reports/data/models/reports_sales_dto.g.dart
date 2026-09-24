@@ -14,9 +14,26 @@ ReportsSalesDto _$ReportsSalesDtoFromJson(Map<String, dynamic> json) =>
       totalSales: (json['totalSales'] as num).toDouble(),
       salesChangePct: (json['salesChangePct'] as num).toDouble(),
       orders: (json['orders'] as num).toInt(),
-      ordersChangePct: (json['ordersChangePct'] as num).toDouble(),
+      ordersChangePct: (json['ordersChangePct'] as num?)?.toDouble() ?? 0,
       avgOrder: (json['avgOrder'] as num).toDouble(),
       customers: (json['customers'] as num).toInt(),
+      daily:
+          (json['daily'] as List<dynamic>?)
+              ?.map((e) => DailySalesDto.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+      breakdown:
+          (json['breakdown'] as List<dynamic>?)
+              ?.map(
+                (e) => PaymentBreakdownDto.fromJson(e as Map<String, dynamic>),
+              )
+              .toList() ??
+          const [],
+      topSelling:
+          (json['topSelling'] as List<dynamic>?)
+              ?.map((e) => TopSellingDto.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$ReportsSalesDtoToJson(ReportsSalesDto instance) =>
@@ -30,4 +47,7 @@ Map<String, dynamic> _$ReportsSalesDtoToJson(ReportsSalesDto instance) =>
       'ordersChangePct': instance.ordersChangePct,
       'avgOrder': instance.avgOrder,
       'customers': instance.customers,
+      'daily': instance.daily,
+      'breakdown': instance.breakdown,
+      'topSelling': instance.topSelling,
     };

@@ -13,10 +13,7 @@ import 'package:skeleton_mobile_app/features/inventory/ui/widgets/stock_status.d
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
 
 class InventoryProductList extends StatefulWidget {
-  const InventoryProductList({
-    super.key,
-    required this.scrollController,
-  });
+  const InventoryProductList({super.key, required this.scrollController});
 
   final ScrollController scrollController;
 
@@ -64,25 +61,25 @@ class _InventoryProductListState extends State<InventoryProductList> {
     final l10n = AppLocalizations.of(context)!;
 
     return BlocConsumer<InventoryProductCubit, InventoryProductState>(
-        listener: (context, state) {
-          state.maybeWhen(
-            success: (_) => WidgetsBinding.instance.addPostFrameCallback((_) {
-              if (mounted) _handleScroll();
-            }),
-            error: (error) => DialogUtils.showMessage(
-              context: context,
-              type: DialogType.error,
-              title: l10n.errorTitle,
-              message: error.error?.message ?? l10n.genericError,
-            ),
-            orElse: () {},
-          );
-        },
-        builder: (context, state) {
-          return state.maybeWhen(
-            loading: () => const InventoryProductListShimmer(),
-            success: (data) {
-              final products = data.items?.whereType<Items>().toList() ?? [];
+      listener: (context, state) {
+        state.maybeWhen(
+          success: (_) => WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (mounted) _handleScroll();
+          }),
+          error: (error) => DialogUtils.showMessage(
+            context: context,
+            type: DialogType.error,
+            title: l10n.errorTitle,
+            message: error.error?.message ?? l10n.genericError,
+          ),
+          orElse: () {},
+        );
+      },
+      builder: (context, state) {
+        return state.maybeWhen(
+          loading: () => const InventoryProductListShimmer(),
+          success: (data) {
+            final products = data.items?.whereType<Items>().toList() ?? [];
 
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,23 +88,76 @@ class _InventoryProductListState extends State<InventoryProductList> {
                   children: [
                     Text(
                       l10n.allProducts.toUpperCase(),
-                      style: (isDark
-                              ? AppStyles.font18BoldDark
-                              : AppStyles.font18BoldLight)
-                          .copyWith(fontSize: 13.sp),
+                      style:
+                          (isDark
+                                  ? AppStyles.font18BoldDark
+                                  : AppStyles.font18BoldLight)
+                              .copyWith(fontSize: 13.sp),
                     ),
                     SizedBox(width: 8.w),
                     Text(
                       '· ${data.total ?? products.length}',
-                      style: (isDark
-                              ? AppStyles.font12MediumDark
-                              : AppStyles.font12MediumLight)
-                          .copyWith(fontWeight: FontWeight.w700),
+                      style:
+                          (isDark
+                                  ? AppStyles.font12MediumDark
+                                  : AppStyles.font12MediumLight)
+                              .copyWith(fontWeight: FontWeight.w700),
                     ),
                     const Spacer(),
-                    InkWell(
-                      onTap: () {},
-                      borderRadius: BorderRadius.circular(8.r),
+                    PopupMenuButton<String>(
+                      tooltip: l10n.sort,
+                      onSelected: (sortBy) => context
+                          .read<InventoryProductCubit>()
+                          .sortProducts(sortBy == 'default' ? null : sortBy),
+                      itemBuilder: (context) {
+                        final isArabic =
+                            Localizations.localeOf(context).languageCode ==
+                            'ar';
+                        return [
+                          PopupMenuItem(
+                            value: 'default',
+                            child: Text(isArabic ? 'الافتراضي' : 'Default'),
+                          ),
+                          PopupMenuItem(
+                            value: 'name_asc',
+                            child: Text(
+                              isArabic ? 'الاسم: أ إلى ي' : 'Name: A to Z',
+                            ),
+                          ),
+                          PopupMenuItem(
+                            value: 'price_asc',
+                            child: Text(
+                              isArabic
+                                  ? 'السعر: الأقل أولاً'
+                                  : 'Price: low to high',
+                            ),
+                          ),
+                          PopupMenuItem(
+                            value: 'price_desc',
+                            child: Text(
+                              isArabic
+                                  ? 'السعر: الأعلى أولاً'
+                                  : 'Price: high to low',
+                            ),
+                          ),
+                          PopupMenuItem(
+                            value: 'quantity_asc',
+                            child: Text(
+                              isArabic
+                                  ? 'الكمية: الأقل أولاً'
+                                  : 'Quantity: low to high',
+                            ),
+                          ),
+                          PopupMenuItem(
+                            value: 'quantity_desc',
+                            child: Text(
+                              isArabic
+                                  ? 'الكمية: الأعلى أولاً'
+                                  : 'Quantity: high to low',
+                            ),
+                          ),
+                        ];
+                      },
                       child: Padding(
                         padding: EdgeInsets.symmetric(
                           vertical: 5.h,
@@ -124,13 +174,14 @@ class _InventoryProductListState extends State<InventoryProductList> {
                             SizedBox(width: 3.w),
                             Text(
                               l10n.sort,
-                              style: (isDark
-                                      ? AppStyles.font12MediumDark
-                                      : AppStyles.font12MediumLight)
-                                  .copyWith(
-                                color: Theme.of(context).primaryColor,
-                                fontWeight: FontWeight.w700,
-                              ),
+                              style:
+                                  (isDark
+                                          ? AppStyles.font12MediumDark
+                                          : AppStyles.font12MediumLight)
+                                      .copyWith(
+                                        color: Theme.of(context).primaryColor,
+                                        fontWeight: FontWeight.w700,
+                                      ),
                             ),
                           ],
                         ),
@@ -143,22 +194,22 @@ class _InventoryProductListState extends State<InventoryProductList> {
                   final product = entry.value;
 
                   return InventoryProductTile(
-                    onTap: () => Navigator.of(context).pushNamed(
-                      Routes.productDetailsScreen,
-                    ),
+                    onTap: product.id == null
+                        ? null
+                        : () => Navigator.of(context).pushNamed(
+                            Routes.productDetailsScreen,
+                            arguments: product.id,
+                          ),
                     name: product.itemName ?? '',
                     category: product.itemType ?? '',
-                    quantity:
-                        (product.quantityValue ?? product.quantity ?? 0)
-                            .toString(),
-                    minimum:
-                        (product.minStock ?? product.minStockLevel ?? 0)
-                            .toString(),
+                    quantity: (product.quantityValue ?? product.quantity ?? 0)
+                        .toString(),
+                    minimum: (product.minStock ?? product.minStockLevel ?? 0)
+                        .toString(),
                     price: (product.price1 ?? 0).toString(),
                     status: _stockStatusFrom(product.stockStatus),
                     icon: Icons.inventory_2_outlined,
-                    isLast:
-                        entry.key == products.length - 1 && !_isLoadingMore,
+                    isLast: entry.key == products.length - 1 && !_isLoadingMore,
                   );
                 }),
                 if (_isLoadingMore)
@@ -170,8 +221,8 @@ class _InventoryProductListState extends State<InventoryProductList> {
             );
           },
           orElse: () => const SizedBox.shrink(),
-          );
-        },
+        );
+      },
     );
   }
 }

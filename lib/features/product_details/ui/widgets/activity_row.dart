@@ -45,12 +45,16 @@ class ActivityRow extends StatelessWidget {
               children: [
                 Text(
                   entry.title,
-                  style: isDark ? AppStyles.stockItemDark : AppStyles.stockItemLight,
+                  style: isDark
+                      ? AppStyles.stockItemDark
+                      : AppStyles.stockItemLight,
                 ),
                 SizedBox(height: 2.h),
                 Text(
                   entry.subtitle,
-                  style: isDark ? AppStyles.font12MediumDark : AppStyles.font12MediumLight,
+                  style: isDark
+                      ? AppStyles.font12MediumDark
+                      : AppStyles.font12MediumLight,
                 ),
               ],
             ),
@@ -60,14 +64,21 @@ class ActivityRow extends StatelessWidget {
             children: [
               Text(
                 entry.value,
-                style: (isDark ? AppStyles.stockItemDark : AppStyles.stockItemLight)
-                    .copyWith(color: entry.color),
+                style:
+                    (isDark
+                            ? AppStyles.stockItemDark
+                            : AppStyles.stockItemLight)
+                        .copyWith(color: entry.color),
               ),
-              SizedBox(height: 2.h),
-              Text(
-                entry.time,
-                style: isDark ? AppStyles.font12MediumDark : AppStyles.font12MediumLight,
-              ),
+              if (entry.time.isNotEmpty) ...[
+                SizedBox(height: 2.h),
+                Text(
+                  entry.time,
+                  style: isDark
+                      ? AppStyles.font12MediumDark
+                      : AppStyles.font12MediumLight,
+                ),
+              ],
             ],
           ),
         ],

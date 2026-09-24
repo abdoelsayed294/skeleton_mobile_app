@@ -25,6 +25,7 @@ class _HomeScreanState extends State<HomeScrean> {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isArabic = Localizations.localeOf(context).languageCode == 'ar';
 
     return Scaffold(
       body: SafeArea(
@@ -51,10 +52,21 @@ class _HomeScreanState extends State<HomeScrean> {
                           orElse: () => null,
                         );
 
-                        final businessName =
+                        final rawBusinessName =
                             summary?.businessSummary.businessName ?? '';
-                        final storeName =
+                        final rawStoreName =
                             summary?.storeSummary.storeName ?? '';
+                        final businessName =
+                            isArabic &&
+                                rawBusinessName.trim().toLowerCase() ==
+                                    'skeleton'
+                            ? '\u0633\u0643\u064a\u0644\u062a\u0648\u0646'
+                            : rawBusinessName;
+                        final storeName =
+                            isArabic &&
+                                rawStoreName.trim().toLowerCase() == 'skeleton'
+                            ? '\u0633\u0643\u064a\u0644\u062a\u0648\u0646'
+                            : rawStoreName;
 
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,

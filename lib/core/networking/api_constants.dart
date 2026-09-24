@@ -1,6 +1,5 @@
 class ApiConstants {
-  static const String baseUrl =
-      'https://overfull-container-skiing.ngrok-free.dev/';
+  static const String baseUrl = 'http://skeleton.runasp.net';
 }
 
 class ApiErrors {
@@ -25,13 +24,13 @@ class EndPoints {
   static const String qrStatus = '/api/business/qr/status/{qrToken}';
   static const String dashboardSummary = '/api/Dashboard/summary/';
   static const String dashboardSalesChart = '/api/Dashboard/sales-chart/';
-  static const String dashboardTopProducts = '/api/Dashboard/top-products/';
+  static const String dashboardTopProducts = '/api/Dashboard/top-products';
   static const String dashboardLowStock = '/api/Dashboard/low-stock-detail/';
   static const String reportsTopSelling = '/api/reports/top-selling';
   static const String reportsSales = '/api/reports/sales';
   static const String reportsRecentTransactions =
       '/api/reports/recent-transactions';
-  static const String inventorySummary = '/api/inventory/summary/';
+  static const String inventorySummary = '/api/inventory/summary';
   static const String inventoryProducts = '/api/inventory/products';
 
   static const String todaySales = '/api/today-sales';
@@ -41,4 +40,9 @@ class EndPoints {
   static const String profitWeeklyChart = '/api/dashboard/profit-weekly-chart';
   static const String purchasesSummary = '/api/Purchases/summary';
   static const String purchasesRecent = '/api/Purchases/recent';
+  static const String productActivity = '/api/Products/{id}/activity';
+  static const String productHeader = '/api/Products/{id}/header';
+  static const String productPricing = '/api/Products/{id}/pricing';
+  static const String productInventory = '/api/Products/{id}/inventory';
+  static const String productSalesHistory = '/api/Products/{id}/sales-history';
 }

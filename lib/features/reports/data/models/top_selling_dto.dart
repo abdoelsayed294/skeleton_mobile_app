@@ -13,7 +13,7 @@ class TopSellingDto {
   @JsonKey(name: 'revenue')
   final double revenue;
 
-  @JsonKey(name: 'revenuePct')
+  @JsonKey(name: 'revenuePct', defaultValue: 0)
   final double revenuePct;
 
   @JsonKey(name: 'changePct')
