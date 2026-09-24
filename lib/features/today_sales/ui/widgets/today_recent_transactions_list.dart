@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
+import 'package:skeleton_mobile_app/core/widgets/shimmer_block.dart';
 import 'package:skeleton_mobile_app/features/home/ui/widgets/section_card.dart';
 import 'package:skeleton_mobile_app/features/today_sales/logic/today_recent_transaction_cubit.dart';
 import 'package:skeleton_mobile_app/features/today_sales/logic/today_recent_transaction_state.dart';
@@ -13,10 +14,12 @@ class TodayRecentTransactionsList extends StatefulWidget {
   const TodayRecentTransactionsList({super.key});
 
   @override
-  State<TodayRecentTransactionsList> createState() => _TodayRecentTransactionsListState();
+  State<TodayRecentTransactionsList> createState() =>
+      _TodayRecentTransactionsListState();
 }
 
-class _TodayRecentTransactionsListState extends State<TodayRecentTransactionsList> {
+class _TodayRecentTransactionsListState
+    extends State<TodayRecentTransactionsList> {
   @override
   void initState() {
     super.initState();
@@ -27,17 +30,16 @@ class _TodayRecentTransactionsListState extends State<TodayRecentTransactionsLis
     final storeId = await SharedPrefHelper.getInt(SharedPrefHelper.storeIdKey);
     if (!mounted) return;
     context.read<TodayRecentTransactionCubit>().getRecentTransactions(
-          storeId: storeId,
-          period: 'today',
-          take: 5,
-        );
+      storeId: storeId,
+      period: 'today',
+      take: 5,
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final isDark = Theme.of(context).brightness == Brightness.dark;
-
 
     return SectionCard(
       child: Padding(
@@ -57,22 +59,76 @@ class _TodayRecentTransactionsListState extends State<TodayRecentTransactionsLis
                 ),
                 Text(
                   l10n.viewAll,
-                  style: (isDark
-                          ? AppStyles.productSubtitleDark
-                          : AppStyles.productSubtitleLight)
-                      .copyWith(color: Theme.of(context).primaryColor),
+                  style:
+                      (isDark
+                              ? AppStyles.productSubtitleDark
+                              : AppStyles.productSubtitleLight)
+                          .copyWith(color: Theme.of(context).primaryColor),
                 ),
               ],
             ),
             SizedBox(height: 6.h),
-            BlocBuilder<TodayRecentTransactionCubit, TodayRecentTransactionState>(
+            BlocBuilder<
+              TodayRecentTransactionCubit,
+              TodayRecentTransactionState
+            >(
               builder: (context, state) {
                 return state.when(
-                  initial: () => const SizedBox.shrink(),
-                  loading: () => const Center(child: CircularProgressIndicator()),
+                  initial: () => Column(
+                    children: List.generate(
+                      4,
+                      (index) => Padding(
+                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                        child: Row(
+                          children: [
+                            ShimmerBlock(width: 38.w, height: 38.h, radius: 20),
+                            SizedBox(width: 10.w),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  ShimmerBlock(width: 110.w, height: 12.h),
+                                  SizedBox(height: 7.h),
+                                  ShimmerBlock(width: 75.w, height: 9.h),
+                                ],
+                              ),
+                            ),
+                            ShimmerBlock(width: 58.w, height: 13.h),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  loading: () => Column(
+                    children: List.generate(
+                      4,
+                      (index) => Padding(
+                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                        child: Row(
+                          children: [
+                            ShimmerBlock(width: 38.w, height: 38.h, radius: 20),
+                            SizedBox(width: 10.w),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  ShimmerBlock(width: 110.w, height: 12.h),
+                                  SizedBox(height: 7.h),
+                                  ShimmerBlock(width: 75.w, height: 9.h),
+                                ],
+                              ),
+                            ),
+                            ShimmerBlock(width: 58.w, height: 13.h),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
                   success: (transactions) {
                     if (transactions.isEmpty) {
-                      return const Center(child: Text('No recent transactions.'));
+                      return const Center(
+                        child: Text('No recent transactions.'),
+                      );
                     }
                     return Column(
                       children: List.generate(transactions.length, (index) {
@@ -89,7 +145,8 @@ class _TodayRecentTransactionsListState extends State<TodayRecentTransactionsLis
                       }),
                     );
                   },
-                  error: (error) => Center(child: Text(error.error?.message ?? 'Error')),
+                  error: (error) =>
+                      Center(child: Text(error.error?.message ?? 'Error')),
                 );
               },
             ),
@@ -99,4 +156,3 @@ class _TodayRecentTransactionsListState extends State<TodayRecentTransactionsLis
     );
   }
 }
-

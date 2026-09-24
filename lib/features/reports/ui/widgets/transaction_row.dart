@@ -4,7 +4,6 @@ import 'package:skeleton_mobile_app/core/theming/app_color.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
 
-
 import 'package:skeleton_mobile_app/features/reports/domain/entities/recent_transaction_entity.dart';
 
 class TransactionRow extends StatelessWidget {
@@ -29,9 +28,13 @@ class TransactionRow extends StatelessWidget {
   Color get _tagColor {
     switch (kind) {
       case TransactionKind.cash:
-        return isDark ? AppColorsDark.textSecondary : AppColorsLight.textSecondary;
+        return isDark
+            ? AppColorsDark.textSecondary
+            : AppColorsLight.textSecondary;
       case TransactionKind.card:
-        return isDark ? AppColorsDark.accentOrange : AppColorsLight.accentOrange;
+        return isDark
+            ? AppColorsDark.accentOrange
+            : AppColorsLight.accentOrange;
       case TransactionKind.wallet:
         return isDark ? AppColorsDark.accentGreen : AppColorsLight.accentGreen;
     }

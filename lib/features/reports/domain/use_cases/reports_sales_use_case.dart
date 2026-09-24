@@ -9,7 +9,12 @@ class ReportsSalesUseCase {
 
   ReportsSalesUseCase(this._reportsRepo);
 
-  Future<ApiResult<ReportsSalesEntity>> getReportsSales(String period, int storeId) {
-    return _reportsRepo.getReportsSales(period, storeId);
+  Future<ApiResult<ReportsSalesEntity>> getReportsSales(
+    String period,
+    int storeId,
+    int year,
+    int month,
+  ) {
+    return _reportsRepo.getReportsSales(period, storeId, year, month);
   }
 }

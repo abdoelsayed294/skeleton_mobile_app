@@ -4,9 +4,16 @@ import 'package:skeleton_mobile_app/features/home/domain/entities/top_product_en
 extension DashboardTopProductsMapper on TopProductDto {
   TopProductEntity toEntity() {
     return TopProductEntity(
-      productName: productName,
-      quantitySold: quantitySold,
-      totalValue: totalValue,
+      id: id ?? 0,
+      productName: itemName ?? '',
+      itemType: itemType ?? '',
+      quantity: quantity ?? 0,
+      purchasePrice: priceBuy ?? 0,
+      sellingPrice: price1 ?? 0,
+      barcode: barcode ?? '',
+      limit: limit ?? 0,
+      sold: sell ?? 0,
+      storeId: storeId ?? 0,
     );
   }
 }

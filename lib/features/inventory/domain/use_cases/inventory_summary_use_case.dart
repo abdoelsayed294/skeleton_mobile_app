@@ -5,11 +5,15 @@ import 'package:skeleton_mobile_app/features/inventory/domain/repo/inventory_sum
 
 @injectable
 class InventorySummaryUseCase {
-  final InventorySummaryRepo  _inventorySummaryRepo;
+  final InventorySummaryRepo _inventorySummaryRepo;
   InventorySummaryUseCase(this._inventorySummaryRepo);
-  Future<ApiResult<InventorySummaryResponse>> invoke(int storeId) async {
-    return _inventorySummaryRepo.getInventorySummary(storeId);
+  Future<ApiResult<InventorySummaryResponse>> invoke(
+    int storeId, {
+    String? itemType,
+  }) async {
+    return _inventorySummaryRepo.getInventorySummary(
+      storeId,
+      itemType: itemType,
+    );
   }
-
-
 }

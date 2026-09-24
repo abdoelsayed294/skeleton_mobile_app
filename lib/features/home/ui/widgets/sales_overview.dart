@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:skeleton_mobile_app/core/widgets/shimmer_block.dart';
 import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
 import 'package:skeleton_mobile_app/core/theming/app_color.dart';
@@ -37,9 +38,7 @@ class _SalesOverviewState extends State<SalesOverview> {
   }
 
   Future<void> _getSalesChart() async {
-    final storeId = await SharedPrefHelper.getInt(
-      SharedPrefHelper.storeIdKey,
-    );
+    final storeId = await SharedPrefHelper.getInt(SharedPrefHelper.storeIdKey);
 
     if (!mounted) return;
 
@@ -55,9 +54,7 @@ class _SalesOverviewState extends State<SalesOverview> {
       selectedPeriod = period;
     });
 
-    final storeId = await SharedPrefHelper.getInt(
-      SharedPrefHelper.storeIdKey,
-    );
+    final storeId = await SharedPrefHelper.getInt(SharedPrefHelper.storeIdKey);
 
     if (!mounted) return;
 
@@ -97,6 +94,11 @@ class _SalesOverviewState extends State<SalesOverview> {
         );
 
         final salesData = salesResponse?.chart ?? [];
+        final isLoading = state.salesChartState.maybeWhen(
+          initial: () => true,
+          loading: () => true,
+          orElse: () => false,
+        );
 
         return Container(
           padding: EdgeInsets.fromLTRB(16.w, 14.h, 16.w, 14.h),
@@ -110,9 +112,7 @@ class _SalesOverviewState extends State<SalesOverview> {
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withValues(
-                  alpha: isDark ? 0.14 : 0.04,
-                ),
+                color: Colors.black.withValues(alpha: isDark ? 0.14 : 0.04),
                 blurRadius: 8.r,
                 offset: Offset(0, 3.h),
               ),
@@ -121,27 +121,34 @@ class _SalesOverviewState extends State<SalesOverview> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      l10n.salesOverview,
-                      style: isDark
-                          ? AppStyles.salesOverviewTitleDark
-                          : AppStyles.salesOverviewTitleLight,
+              if (isLoading)
+                Row(
+                  children: [
+                    Expanded(
+                      child: ShimmerBlock(width: double.infinity, height: 26.h),
                     ),
-                  ),
-                  SalesPeriodSelector(
-                    selectedPeriod: selectedPeriod,
-                    labels: [
-                      l10n.today,
-                      l10n.week,
-                      l10n.month,
-                    ],
-                    onChanged: _changePeriod,
-                  ),
-                ],
-              ),
+                    SizedBox(width: 16.w),
+                    ShimmerBlock(width: 62.w, height: 28.h, radius: 14),
+                  ],
+                )
+              else
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        l10n.salesOverview,
+                        style: isDark
+                            ? AppStyles.salesOverviewTitleDark
+                            : AppStyles.salesOverviewTitleLight,
+                      ),
+                    ),
+                    SalesPeriodSelector(
+                      selectedPeriod: selectedPeriod,
+                      labels: [l10n.today, l10n.week, l10n.month],
+                      onChanged: _changePeriod,
+                    ),
+                  ],
+                ),
               SizedBox(height: 4.h),
               Text(
                 l10n.revenueOverTime,
@@ -166,8 +173,7 @@ class _SalesOverviewState extends State<SalesOverview> {
                               : AppStyles.salesOverviewCurrencyLight,
                         ),
                         TextSpan(
-                          text: (salesResponse?.total ?? 0)
-                              .toStringAsFixed(0),
+                          text: (salesResponse?.total ?? 0).toStringAsFixed(0),
                           style: isDark
                               ? AppStyles.salesOverviewAmountDark
                               : AppStyles.salesOverviewAmountLight,
@@ -196,9 +202,10 @@ class _SalesOverviewState extends State<SalesOverview> {
                 ],
               ),
               SizedBox(height: 10.h),
-              SalesChart(
-                data: salesData,
-              ),
+              if (isLoading)
+                ShimmerBlock(width: double.infinity, height: 128.h, radius: 10)
+              else
+                SalesChart(data: salesData),
             ],
           ),
         );

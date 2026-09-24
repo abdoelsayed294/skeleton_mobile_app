@@ -9,7 +9,13 @@ class TopSellingUseCase {
 
   TopSellingUseCase(this._reportsRepo);
 
-  Future<ApiResult<List<TopSellingEntity>>> getTopSelling(int storeId, String period, int take) {
-    return _reportsRepo.getTopSelling(storeId, period, take);
+  Future<ApiResult<List<TopSellingEntity>>> getTopSelling(
+    int storeId,
+    String period,
+    int take,
+    int year,
+    int month,
+  ) {
+    return _reportsRepo.getTopSelling(storeId, period, take, year, month);
   }
 }

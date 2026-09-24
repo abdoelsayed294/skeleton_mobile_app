@@ -22,10 +22,18 @@ class HomeRepoImpl extends HomeRepo {
   final TopProductsRemoteDataSource topProductsRemoteDataSource;
   final LowStockRemoteDataSource lowStockRemoteDataSource;
 
-  HomeRepoImpl(this.summaryRemoteDataSource, this.salesChartRemoteDataSource, this.topProductsRemoteDataSource, this.lowStockRemoteDataSource);
+  HomeRepoImpl(
+    this.summaryRemoteDataSource,
+    this.salesChartRemoteDataSource,
+    this.topProductsRemoteDataSource,
+    this.lowStockRemoteDataSource,
+  );
 
   @override
-  Future<ApiResult<SummaryResponse>> getSummary(int storeId, String date) async {
+  Future<ApiResult<SummaryResponse>> getSummary(
+    int storeId,
+    String date,
+  ) async {
     final response = await summaryRemoteDataSource.getSummary(storeId, date);
     return response.when(
       success: (data) => ApiResult.success(data.toEntity()),
@@ -34,8 +42,16 @@ class HomeRepoImpl extends HomeRepo {
   }
 
   @override
-  Future<ApiResult<SalesChartResponse>> getSalesChart(int storeId, String period, int days) async {
-    final response = await salesChartRemoteDataSource.getSalesChart(storeId, period, days);
+  Future<ApiResult<SalesChartResponse>> getSalesChart(
+    int storeId,
+    String period,
+    int days,
+  ) async {
+    final response = await salesChartRemoteDataSource.getSalesChart(
+      storeId,
+      period,
+      days,
+    );
     return response.when(
       success: (data) => ApiResult.success(data.toEntity()),
       failure: (error) => ApiResult.failure(ApiErrorHandler.handle(error)),
@@ -43,10 +59,19 @@ class HomeRepoImpl extends HomeRepo {
   }
 
   @override
-  Future<ApiResult<List<TopProductEntity>>> getTopProducts(int storeId, int take) async {
-    final response = await topProductsRemoteDataSource.getTopProducts(storeId, take);
+  Future<ApiResult<List<TopProductEntity>>> getTopProducts(
+    int storeId,
+    int take,
+    bool all,
+  ) async {
+    final response = await topProductsRemoteDataSource.getTopProducts(
+      storeId,
+      take,
+      all,
+    );
     return response.when(
-      success: (data) => ApiResult.success(data.map((e) => e.toEntity()).toList()),
+      success: (data) =>
+          ApiResult.success(data.map((e) => e.toEntity()).toList()),
       failure: (error) => ApiResult.failure(ApiErrorHandler.handle(error)),
     );
   }

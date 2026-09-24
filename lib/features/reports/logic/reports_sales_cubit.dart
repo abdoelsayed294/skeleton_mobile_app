@@ -7,6 +7,7 @@ import 'package:skeleton_mobile_app/features/reports/logic/reports_sales_state.d
 @injectable
 class ReportsSalesCubit extends Cubit<ReportsSalesState> {
   final ReportsSalesUseCase reportsSalesUseCase;
+  int _requestId = 0;
 
   ReportsSalesCubit(this.reportsSalesUseCase)
     : super(const ReportsSalesState.initial());
@@ -14,9 +15,18 @@ class ReportsSalesCubit extends Cubit<ReportsSalesState> {
   Future<void> getReportsSales({
     required int storeId,
     required String period,
+    required int year,
+    required int month,
   }) async {
+    final requestId = ++_requestId;
     emit(const ReportsSalesState.loading());
-    final result = await reportsSalesUseCase.getReportsSales(period, storeId);
+    final result = await reportsSalesUseCase.getReportsSales(
+      period,
+      storeId,
+      year,
+      month,
+    );
+    if (requestId != _requestId || isClosed) return;
     result.when(
       success: (data) => emit(ReportsSalesState.success(data)),
       failure: (error) => emit(ReportsSalesState.error(error)),

@@ -57,17 +57,17 @@ class DetailedReportsList extends StatelessWidget {
             ),
             SizedBox(height: 4.h),
             ...List.generate(reports.length, (index) {
-            final report = reports[index];
-            return ReportListTile(
-              icon: report.$3,
-              accentColor: report.$4,
-              title: report.$1,
-              subtitle: report.$2,
-              isDark: isDark,
-              isLast: index == reports.length - 1,
-              onTap: () => onReportTap?.call(report.$1),
-            );
-          }),
+              final report = reports[index];
+              return ReportListTile(
+                icon: report.$3,
+                accentColor: report.$4,
+                title: report.$1,
+                subtitle: report.$2,
+                isDark: isDark,
+                isLast: index == reports.length - 1,
+                onTap: () => onReportTap?.call(report.$1),
+              );
+            }),
           ],
         ),
       ),

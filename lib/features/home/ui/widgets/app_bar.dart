@@ -7,6 +7,9 @@ import 'package:skeleton_mobile_app/core/local/locale_cubit.dart';
 import 'package:skeleton_mobile_app/core/theming/app_color.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
 import 'package:skeleton_mobile_app/core/theming/app_theme_cubit.dart';
+import 'package:skeleton_mobile_app/core/widgets/shimmer_block.dart';
+import 'package:skeleton_mobile_app/features/home/logic/home_cubit.dart';
+import 'package:skeleton_mobile_app/features/home/logic/home_state.dart';
 import 'package:skeleton_mobile_app/features/home/ui/widgets/app_bar_action.dart';
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
 
@@ -53,11 +56,40 @@ class AppBarHome extends StatelessWidget {
                   ? AppStyles.font12MediumDark.copyWith(fontSize: 10.sp)
                   : AppStyles.font12MediumLight.copyWith(fontSize: 10.sp),
             ),
-            Text(
-              'Medo',
-              style: isDark
-                  ? AppStyles.font18BoldDark.copyWith(fontSize: 14.sp)
-                  : AppStyles.font18BoldLight.copyWith(fontSize: 14.sp),
+            BlocBuilder<HomeCubit, HomeState>(
+              builder: (context, state) {
+                final ownerName = state.summaryState.maybeWhen(
+                  success: (data) {
+                    final name = data.businessSummary.ownerName?.trim();
+                    final businessName = data.businessSummary.businessName
+                        .trim();
+                    final displayName = name?.isNotEmpty == true
+                        ? name!
+                        : businessName;
+                    if (isArabic && displayName.toLowerCase() == 'skeleton') {
+                      return 'سكيلتون';
+                    }
+                    return displayName;
+                  },
+                  orElse: () => null,
+                );
+
+                if (ownerName == null) {
+                  return ShimmerBlock(width: 62.w, height: 15.h);
+                }
+
+                return SizedBox(
+                  width: 115.w,
+                  child: Text(
+                    ownerName,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: isDark
+                        ? AppStyles.font18BoldDark.copyWith(fontSize: 14.sp)
+                        : AppStyles.font18BoldLight.copyWith(fontSize: 14.sp),
+                  ),
+                );
+              },
             ),
           ],
         ),

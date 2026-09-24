@@ -11,7 +11,9 @@ class ProductEditButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final backgroundColor = isDark ? AppColorsDark.primary : AppColorsLight.primary;
+    final backgroundColor = isDark
+        ? AppColorsDark.primary
+        : AppColorsLight.primary;
 
     return ElevatedButton(
       onPressed: onPressed,
@@ -30,9 +32,9 @@ class ProductEditButton extends StatelessWidget {
           SizedBox(width: 8.w),
           Text(
             'Edit Product',
-            style: (isDark ? AppStyles.font16BoldDark : AppStyles.font16BoldLight).copyWith(
-              color: Colors.white,
-            ),
+            style:
+                (isDark ? AppStyles.font16BoldDark : AppStyles.font16BoldLight)
+                    .copyWith(color: Colors.white),
           ),
         ],
       ),

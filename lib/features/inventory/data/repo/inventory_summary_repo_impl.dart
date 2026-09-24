@@ -5,18 +5,26 @@ import 'package:skeleton_mobile_app/features/inventory/data/mappers/Inventroy_ma
 import 'package:skeleton_mobile_app/features/inventory/domain/entity/inventory_summary_response.dart';
 import 'package:skeleton_mobile_app/features/inventory/domain/entity/inventroy_product_response.dart';
 import 'package:skeleton_mobile_app/features/inventory/domain/repo/inventory_summary_repo.dart';
+
 @Injectable(as: InventorySummaryRepo)
 class InventorySummaryRepoImpl implements InventorySummaryRepo {
   final InventorySummaryRemoteDataSource _inventorySummaryRemoteDataSource;
   InventorySummaryRepoImpl(this._inventorySummaryRemoteDataSource);
   @override
-  Future <ApiResult<InventorySummaryResponse>> getInventorySummary(int storeId) async {
-    final result = await _inventorySummaryRemoteDataSource.getInventorySummary(storeId);
+  Future<ApiResult<InventorySummaryResponse>> getInventorySummary(
+    int storeId, {
+    String? itemType,
+  }) async {
+    final result = await _inventorySummaryRemoteDataSource.getInventorySummary(
+      storeId,
+      itemType: itemType,
+    );
     return result.when(
       success: (data) => ApiResult.success(data.toEntity()),
       failure: (error) => ApiResult.failure(error),
     );
   }
+
   @override
   Future<ApiResult<InventroyProductResponse>> getInventoryProducts(
     int storeId,
@@ -24,6 +32,8 @@ class InventorySummaryRepoImpl implements InventorySummaryRepo {
     int pageNumber,
     int pageSize, {
     String? search,
+    String? status,
+    String? sortBy,
   }) async {
     final result = await _inventorySummaryRemoteDataSource.getInventoryProducts(
       storeId,
@@ -31,12 +41,12 @@ class InventorySummaryRepoImpl implements InventorySummaryRepo {
       pageNumber,
       pageSize,
       search: search,
+      status: status,
+      sortBy: sortBy,
     );
     return result.when(
       success: (data) => ApiResult.success(data.toEntity()),
       failure: (error) => ApiResult.failure(error),
     );
   }
-  
-  
 }

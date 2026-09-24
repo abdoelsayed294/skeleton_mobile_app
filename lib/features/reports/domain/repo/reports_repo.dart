@@ -4,7 +4,24 @@ import 'package:skeleton_mobile_app/features/reports/domain/entities/reports_sal
 import 'package:skeleton_mobile_app/features/reports/domain/entities/top_selling_entity.dart';
 
 abstract class ReportsRepo {
-  Future<ApiResult<List<TopSellingEntity>>> getTopSelling(int storeId, String period, int take);
-  Future<ApiResult<ReportsSalesEntity>> getReportsSales(String period, int storeId);
-  Future<ApiResult<List<RecentTransactionEntity>>> getRecentTransactions(int storeId, String period, int take);
+  Future<ApiResult<List<TopSellingEntity>>> getTopSelling(
+    int storeId,
+    String period,
+    int take,
+    int year,
+    int month,
+  );
+  Future<ApiResult<ReportsSalesEntity>> getReportsSales(
+    String period,
+    int storeId,
+    int year,
+    int month,
+  );
+  Future<ApiResult<List<RecentTransactionEntity>>> getRecentTransactions(
+    int storeId,
+    String period,
+    int take,
+    int year,
+    int month,
+  );
 }

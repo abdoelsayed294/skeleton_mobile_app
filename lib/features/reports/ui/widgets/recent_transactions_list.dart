@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
+import 'package:skeleton_mobile_app/core/widgets/shimmer_block.dart';
 import 'package:skeleton_mobile_app/features/home/ui/widgets/section_card.dart';
 import 'package:skeleton_mobile_app/features/reports/logic/recent_transaction_cubit.dart';
 import 'package:skeleton_mobile_app/features/reports/logic/recent_transaction_state.dart';
@@ -10,7 +11,9 @@ import 'package:skeleton_mobile_app/features/reports/ui/widgets/transaction_row.
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
 
 class RecentTransactionsList extends StatefulWidget {
-  const RecentTransactionsList({super.key});
+  final DateTime selectedMonth;
+
+  const RecentTransactionsList({super.key, required this.selectedMonth});
 
   @override
   State<RecentTransactionsList> createState() => _RecentTransactionsListState();
@@ -23,21 +26,31 @@ class _RecentTransactionsListState extends State<RecentTransactionsList> {
     _fetchRecentTransactions();
   }
 
+  @override
+  void didUpdateWidget(covariant RecentTransactionsList oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.selectedMonth.year != widget.selectedMonth.year ||
+        oldWidget.selectedMonth.month != widget.selectedMonth.month) {
+      _fetchRecentTransactions();
+    }
+  }
+
   Future<void> _fetchRecentTransactions() async {
     final storeId = await SharedPrefHelper.getInt(SharedPrefHelper.storeIdKey);
     if (!mounted) return;
     context.read<RecentTransactionCubit>().getRecentTransactions(
-          storeId: storeId,
-          period: 'month',
-          take: 5,
-        );
+      storeId: storeId,
+      period: 'month',
+      take: 5,
+      year: widget.selectedMonth.year,
+      month: widget.selectedMonth.month,
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final isDark = Theme.of(context).brightness == Brightness.dark;
-
 
     return SectionCard(
       child: Padding(
@@ -57,10 +70,11 @@ class _RecentTransactionsListState extends State<RecentTransactionsList> {
                 ),
                 Text(
                   l10n.viewAll,
-                  style: (isDark
-                          ? AppStyles.productSubtitleDark
-                          : AppStyles.productSubtitleLight)
-                      .copyWith(color: Theme.of(context).primaryColor),
+                  style:
+                      (isDark
+                              ? AppStyles.productSubtitleDark
+                              : AppStyles.productSubtitleLight)
+                          .copyWith(color: Theme.of(context).primaryColor),
                 ),
               ],
             ),
@@ -68,11 +82,61 @@ class _RecentTransactionsListState extends State<RecentTransactionsList> {
             BlocBuilder<RecentTransactionCubit, RecentTransactionState>(
               builder: (context, state) {
                 return state.when(
-                  initial: () => const SizedBox.shrink(),
-                  loading: () => const Center(child: CircularProgressIndicator()),
+                  initial: () => Column(
+                    children: List.generate(
+                      4,
+                      (index) => Padding(
+                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                        child: Row(
+                          children: [
+                            ShimmerBlock(width: 38.w, height: 38.h, radius: 20),
+                            SizedBox(width: 10.w),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  ShimmerBlock(width: 110.w, height: 12.h),
+                                  SizedBox(height: 7.h),
+                                  ShimmerBlock(width: 75.w, height: 9.h),
+                                ],
+                              ),
+                            ),
+                            ShimmerBlock(width: 58.w, height: 13.h),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  loading: () => Column(
+                    children: List.generate(
+                      4,
+                      (index) => Padding(
+                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                        child: Row(
+                          children: [
+                            ShimmerBlock(width: 38.w, height: 38.h, radius: 20),
+                            SizedBox(width: 10.w),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  ShimmerBlock(width: 110.w, height: 12.h),
+                                  SizedBox(height: 7.h),
+                                  ShimmerBlock(width: 75.w, height: 9.h),
+                                ],
+                              ),
+                            ),
+                            ShimmerBlock(width: 58.w, height: 13.h),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
                   success: (transactions) {
                     if (transactions.isEmpty) {
-                      return const Center(child: Text('No recent transactions.'));
+                      return const Center(
+                        child: Text('No recent transactions.'),
+                      );
                     }
                     return Column(
                       children: List.generate(transactions.length, (index) {
@@ -89,7 +153,8 @@ class _RecentTransactionsListState extends State<RecentTransactionsList> {
                       }),
                     );
                   },
-                  error: (error) => Center(child: Text(error.error?.message ?? 'Error')),
+                  error: (error) =>
+                      Center(child: Text(error.error?.message ?? 'Error')),
                 );
               },
             ),
@@ -99,4 +164,3 @@ class _RecentTransactionsListState extends State<RecentTransactionsList> {
     );
   }
 }
-

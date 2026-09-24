@@ -57,10 +57,40 @@ class _InventorySearchBarState extends State<InventorySearchBar> {
           size: 21.sp,
           color: theme.primaryColor,
         ),
-        suffixIcon: Icon(
-          Icons.tune_rounded,
-          size: 19.sp,
-          color: theme.primaryColor,
+        suffixIcon: PopupMenuButton<String>(
+          tooltip: Localizations.localeOf(context).languageCode == 'ar'
+              ? 'تصفية'
+              : 'Filter',
+          icon: Icon(
+            Icons.tune_rounded,
+            size: 19.sp,
+            color: theme.primaryColor,
+          ),
+          onSelected: (status) => context
+              .read<InventoryProductCubit>()
+              .filterByStatus(status == 'all' ? null : status),
+          itemBuilder: (context) {
+            final isArabic =
+                Localizations.localeOf(context).languageCode == 'ar';
+            return [
+              PopupMenuItem(
+                value: 'all',
+                child: Text(isArabic ? 'كل الحالات' : 'All statuses'),
+              ),
+              PopupMenuItem(
+                value: 'InStock',
+                child: Text(isArabic ? 'متوفر' : 'In stock'),
+              ),
+              PopupMenuItem(
+                value: 'LowStock',
+                child: Text(isArabic ? 'مخزون منخفض' : 'Low stock'),
+              ),
+              PopupMenuItem(
+                value: 'OutOfStock',
+                child: Text(isArabic ? 'نفد المخزون' : 'Out of stock'),
+              ),
+            ];
+          },
         ),
         filled: true,
         fillColor: theme.cardColor,

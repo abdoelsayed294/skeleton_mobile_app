@@ -27,7 +27,19 @@ class _InventoryCategoryFilterState extends State<InventoryCategoryFilter> {
     final l10n = AppLocalizations.of(context)!;
 
     return BlocConsumer<InventoryCubit, InventoryState>(
-      listener: (context, state) { state.maybeWhen( error: (error) { DialogUtils.showMessage( context: context, type: DialogType.error, title: l10n.errorTitle, message: error.error?.message ?? l10n.genericError, ); }, orElse: () {}, ); },
+      listener: (context, state) {
+        state.maybeWhen(
+          error: (error) {
+            DialogUtils.showMessage(
+              context: context,
+              type: DialogType.error,
+              title: l10n.errorTitle,
+              message: error.error?.message ?? l10n.genericError,
+            );
+          },
+          orElse: () {},
+        );
+      },
 
       builder: (context, state) {
         return state.maybeWhen(
@@ -50,8 +62,12 @@ class _InventoryCategoryFilterState extends State<InventoryCategoryFilter> {
                   return InkWell(
                     onTap: () {
                       setState(() => selectedIndex = index);
-                      context.read<InventoryProductCubit>().getInventoryProducts(
-                        itemType: index == 0 ? null : categories[index],
+                      final itemType = index == 0 ? null : categories[index];
+                      context.read<InventoryCubit>().getInventorySummary(
+                        itemType: itemType,
+                      );
+                      context.read<InventoryProductCubit>().selectCategory(
+                        itemType,
                       );
                     },
                     borderRadius: BorderRadius.circular(22.r),

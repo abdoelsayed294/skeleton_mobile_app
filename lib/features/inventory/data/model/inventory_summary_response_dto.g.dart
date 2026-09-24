@@ -9,6 +9,7 @@ part of 'inventory_summary_response_dto.dart';
 InventorySummaryResponseDto _$InventorySummaryResponseDtoFromJson(
   Map<String, dynamic> json,
 ) => InventorySummaryResponseDto(
+  itemType: json['itemType'] as String?,
   storeId: (json['storeId'] as num?)?.toInt(),
   totalProducts: (json['totalProducts'] as num?)?.toInt(),
   products: (json['products'] as num?)?.toInt(),
@@ -23,6 +24,7 @@ InventorySummaryResponseDto _$InventorySummaryResponseDtoFromJson(
 Map<String, dynamic> _$InventorySummaryResponseDtoToJson(
   InventorySummaryResponseDto instance,
 ) => <String, dynamic>{
+  'itemType': instance.itemType,
   'storeId': instance.storeId,
   'totalProducts': instance.totalProducts,
   'products': instance.products,

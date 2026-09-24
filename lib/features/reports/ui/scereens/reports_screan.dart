@@ -19,7 +19,7 @@ class ReportsScrean extends StatefulWidget {
 }
 
 class _ReportsScreanState extends State<ReportsScrean> {
-  DateTime selectedMonth = DateTime(2024, 11);
+  DateTime selectedMonth = DateTime.now();
 
   void _goToPreviousMonth() {
     setState(() {
@@ -38,7 +38,11 @@ class _ReportsScreanState extends State<ReportsScrean> {
     final l10n = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context).languageCode;
     final monthLabel = DateFormat('MMM yyyy', locale).format(selectedMonth);
-    final monthName = DateFormat('MMMM', locale).format(selectedMonth);
+    final now = DateTime.now();
+    final periodBadgeLabel =
+        selectedMonth.year == now.year && selectedMonth.month == now.month
+        ? l10n.thisMonth
+        : l10n.month;
 
     return Scaffold(
       body: SafeArea(
@@ -54,16 +58,16 @@ class _ReportsScreanState extends State<ReportsScrean> {
                 verticalSpace(16),
                 MonthNavigator(
                   monthLabel: monthLabel,
-                  periodBadgeLabel: l10n.thisMonth,
+                  periodBadgeLabel: periodBadgeLabel,
                   onPrevious: _goToPreviousMonth,
                   onNext: _goToNextMonth,
                 ),
                 verticalSpace(16),
-                const TotalSalesCard(),
+                TotalSalesCard(selectedMonth: selectedMonth),
                 verticalSpace(16),
-                const TopProductsReportList(),
+                TopProductsReportList(selectedMonth: selectedMonth),
                 verticalSpace(16),
-                const RecentTransactionsList(),
+                RecentTransactionsList(selectedMonth: selectedMonth),
                 verticalSpace(20),
                 ExportPdfButton(
                   onTap: () {

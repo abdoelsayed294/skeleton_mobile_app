@@ -12,7 +12,7 @@ part of 'api_service.dart';
 
 class _ApiService implements ApiService {
   _ApiService(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'https://overfull-container-skiing.ngrok-free.dev/';
+    baseUrl ??= 'http://skeleton.runasp.net';
   }
 
   final Dio _dio;
@@ -115,11 +115,16 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<List<TopProductDto>> getTopProducts(int storeId, int days) async {
+  Future<List<TopProductDto>> getTopProducts(
+    int storeId,
+    int take,
+    bool all,
+  ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'storeId': storeId,
-      r'take': days,
+      r'take': take,
+      r'all': all,
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -127,7 +132,7 @@ class _ApiService implements ApiService {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/Dashboard/top-products/',
+            '/api/Dashboard/top-products',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -174,16 +179,23 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<InventorySummaryResponseDto> getInventorySummary(int storeId) async {
+  Future<InventorySummaryResponseDto> getInventorySummary(
+    int storeId,
+    String? itemType,
+  ) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'storeId': storeId};
+    final queryParameters = <String, dynamic>{
+      r'storeId': storeId,
+      r'itemType': itemType,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<InventorySummaryResponseDto>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/inventory/summary/',
+            '/api/inventory/summary',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -205,12 +217,16 @@ class _ApiService implements ApiService {
     int take,
     String period,
     int storeId,
+    int year,
+    int month,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'take': take,
       r'period': period,
       r'storeId': storeId,
+      r'year': year,
+      r'month': month,
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -238,11 +254,18 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<ReportsSalesDto> getReportsSales(String period, int storeId) async {
+  Future<ReportsSalesDto> getReportsSales(
+    String period,
+    int storeId,
+    int year,
+    int month,
+  ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'period': period,
       r'storeId': storeId,
+      r'year': year,
+      r'month': month,
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -272,12 +295,16 @@ class _ApiService implements ApiService {
     int take,
     String period,
     int storeId,
+    int year,
+    int month,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'take': take,
       r'period': period,
       r'storeId': storeId,
+      r'year': year,
+      r'month': month,
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -548,6 +575,148 @@ class _ApiService implements ApiService {
     late PurchasesRecentDto _value;
     try {
       _value = PurchasesRecentDto.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<ProductActivityDto> getProductActivity(int id) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<ProductActivityDto>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/api/Products/${id}/activity',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late ProductActivityDto _value;
+    try {
+      _value = ProductActivityDto.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<ProductHeaderDto> getProductHeader(int id) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<ProductHeaderDto>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/api/Products/${id}/header',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late ProductHeaderDto _value;
+    try {
+      _value = ProductHeaderDto.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<ProductPricingDto> getProductPricing(int id) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<ProductPricingDto>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/api/Products/${id}/pricing',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late ProductPricingDto _value;
+    try {
+      _value = ProductPricingDto.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<ProductInventoryDto> getProductInventory(int id) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<ProductInventoryDto>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/api/Products/${id}/inventory',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late ProductInventoryDto _value;
+    try {
+      _value = ProductInventoryDto.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<ProductSalesHistoryDto> getProductSalesHistory(
+    int id,
+    String period,
+    int storeId,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'period': period,
+      r'storeId': storeId,
+    };
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<ProductSalesHistoryDto>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/api/Products/${id}/sales-history',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late ProductSalesHistoryDto _value;
+    try {
+      _value = ProductSalesHistoryDto.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;

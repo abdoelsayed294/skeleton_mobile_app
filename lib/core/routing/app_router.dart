@@ -17,6 +17,11 @@ import 'package:skeleton_mobile_app/features/inventory/logic/inventory_cubit.dar
 import 'package:skeleton_mobile_app/features/inventory/logic/inventory_product_cubit.dart';
 import 'package:skeleton_mobile_app/features/inventory/ui/scereens/inventory_screan.dart';
 import 'package:skeleton_mobile_app/features/product_details/ui/scereens/product_details_screan.dart';
+import 'package:skeleton_mobile_app/features/product_details/logic/product_activity_cubit.dart';
+import 'package:skeleton_mobile_app/features/product_details/logic/product_header_cubit.dart';
+import 'package:skeleton_mobile_app/features/product_details/logic/product_pricing_cubit.dart';
+import 'package:skeleton_mobile_app/features/product_details/logic/product_inventory_cubit.dart';
+import 'package:skeleton_mobile_app/features/product_details/logic/product_sales_history_cubit.dart';
 import 'package:skeleton_mobile_app/features/profile/ui/scereens/profile_screan.dart';
 import 'package:skeleton_mobile_app/features/profile/ui/scereens/edit_profile_screan.dart';
 import 'package:skeleton_mobile_app/features/purchases/ui/scereens/purchases_screan.dart';
@@ -122,7 +127,37 @@ class AppRouter {
           ),
         );
       case Routes.productDetailsScreen:
-        return MaterialPageRoute(builder: (_) => const ProductDetailsScrean());
+        final productId = settings.arguments as int? ?? 0;
+        return MaterialPageRoute(
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (_) =>
+                    getIt<ProductActivityCubit>()
+                      ..getProductActivity(productId),
+              ),
+              BlocProvider(
+                create: (_) =>
+                    getIt<ProductHeaderCubit>()..getProductHeader(productId),
+              ),
+              BlocProvider(
+                create: (_) =>
+                    getIt<ProductPricingCubit>()..getProductPricing(productId),
+              ),
+              BlocProvider(
+                create: (_) =>
+                    getIt<ProductInventoryCubit>()
+                      ..getProductInventory(productId),
+              ),
+              BlocProvider(
+                create: (_) =>
+                    getIt<ProductSalesHistoryCubit>()
+                      ..getProductSalesHistory(productId),
+              ),
+            ],
+            child: ProductDetailsScrean(productId: productId),
+          ),
+        );
       case Routes.purchasesScreen:
         return MaterialPageRoute(
           builder: (_) {

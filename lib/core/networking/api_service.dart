@@ -16,6 +16,7 @@ import 'package:skeleton_mobile_app/features/today_sales/data/models/today_sales
 import 'package:skeleton_mobile_app/features/profit_details/data/model/profit_summary_dto.dart';
 import 'package:skeleton_mobile_app/features/profit_details/data/model/profit_weekly_chart_dto.dart';
 import 'package:skeleton_mobile_app/features/purchases/data/model/purchases_dto.dart';
+import 'package:skeleton_mobile_app/features/product_details/data/model/product_details_dto.dart';
 
 part 'api_service.g.dart';
 
@@ -41,7 +42,8 @@ abstract class ApiService {
   @GET(EndPoints.dashboardTopProducts)
   Future<List<TopProductDto>> getTopProducts(
     @Query('storeId') int storeId,
-    @Query('take') int days,
+    @Query('take') int take,
+    @Query('all') bool all,
   );
 
   @GET(EndPoints.dashboardLowStock)
@@ -50,6 +52,7 @@ abstract class ApiService {
   @GET(EndPoints.inventorySummary)
   Future<InventorySummaryResponseDto> getInventorySummary(
     @Query('storeId') int storeId,
+    @Query('itemType') String? itemType,
   );
 
   @GET(EndPoints.reportsTopSelling)
@@ -57,12 +60,16 @@ abstract class ApiService {
     @Query('take') int take,
     @Query('period') String period,
     @Query('storeId') int storeId,
+    @Query('year') int year,
+    @Query('month') int month,
   );
 
   @GET(EndPoints.reportsSales)
   Future<ReportsSalesDto> getReportsSales(
     @Query('period') String period,
     @Query('storeId') int storeId,
+    @Query('year') int year,
+    @Query('month') int month,
   );
 
   @GET(EndPoints.reportsRecentTransactions)
@@ -70,6 +77,8 @@ abstract class ApiService {
     @Query('take') int take,
     @Query('period') String period,
     @Query('storeId') int storeId,
+    @Query('year') int year,
+    @Query('month') int month,
   );
 
   @GET(EndPoints.todaySales)
@@ -119,5 +128,24 @@ abstract class ApiService {
     @Query('year') int year,
     @Query('month') int month,
     @Query('take') int take,
+  );
+
+  @GET(EndPoints.productActivity)
+  Future<ProductActivityDto> getProductActivity(@Path('id') int id);
+
+  @GET(EndPoints.productHeader)
+  Future<ProductHeaderDto> getProductHeader(@Path('id') int id);
+
+  @GET(EndPoints.productPricing)
+  Future<ProductPricingDto> getProductPricing(@Path('id') int id);
+
+  @GET(EndPoints.productInventory)
+  Future<ProductInventoryDto> getProductInventory(@Path('id') int id);
+
+  @GET(EndPoints.productSalesHistory)
+  Future<ProductSalesHistoryDto> getProductSalesHistory(
+    @Path('id') int id,
+    @Query('period') String period,
+    @Query('storeId') int storeId,
   );
 }

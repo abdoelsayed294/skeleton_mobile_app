@@ -7,6 +7,7 @@ import 'package:skeleton_mobile_app/features/reports/logic/recent_transaction_st
 @injectable
 class RecentTransactionCubit extends Cubit<RecentTransactionState> {
   final RecentTransactionUseCase recentTransactionUseCase;
+  int _requestId = 0;
 
   RecentTransactionCubit(this.recentTransactionUseCase)
     : super(const RecentTransactionState.initial());
@@ -15,13 +16,19 @@ class RecentTransactionCubit extends Cubit<RecentTransactionState> {
     required int storeId,
     required String period,
     required int take,
+    required int year,
+    required int month,
   }) async {
+    final requestId = ++_requestId;
     emit(const RecentTransactionState.loading());
     final result = await recentTransactionUseCase.getRecentTransactions(
       storeId,
       period,
       take,
+      year,
+      month,
     );
+    if (requestId != _requestId || isClosed) return;
     result.when(
       success: (data) => emit(RecentTransactionState.success(data)),
       failure: (error) => emit(RecentTransactionState.error(error)),

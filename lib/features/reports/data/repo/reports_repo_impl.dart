@@ -25,17 +25,40 @@ class ReportsRepoImpl extends ReportsRepo {
   );
 
   @override
-  Future<ApiResult<List<TopSellingEntity>>> getTopSelling(int storeId, String period, int take) async {
-    final response = await topSellingRemoteDataSource.getTopSelling(storeId, period, take);
+  Future<ApiResult<List<TopSellingEntity>>> getTopSelling(
+    int storeId,
+    String period,
+    int take,
+    int year,
+    int month,
+  ) async {
+    final response = await topSellingRemoteDataSource.getTopSelling(
+      storeId,
+      period,
+      take,
+      year,
+      month,
+    );
     return response.when(
-      success: (data) => ApiResult.success(data.map((e) => e.toEntity()).toList()),
+      success: (data) =>
+          ApiResult.success(data.map((e) => e.toEntity()).toList()),
       failure: (error) => ApiResult.failure(ApiErrorHandler.handle(error)),
     );
   }
 
   @override
-  Future<ApiResult<ReportsSalesEntity>> getReportsSales(String period, int storeId) async {
-    final response = await reportsSalesRemoteDataSource.getReportsSales(period, storeId);
+  Future<ApiResult<ReportsSalesEntity>> getReportsSales(
+    String period,
+    int storeId,
+    int year,
+    int month,
+  ) async {
+    final response = await reportsSalesRemoteDataSource.getReportsSales(
+      period,
+      storeId,
+      year,
+      month,
+    );
     return response.when(
       success: (data) => ApiResult.success(data.toEntity()),
       failure: (error) => ApiResult.failure(ApiErrorHandler.handle(error)),
@@ -43,10 +66,18 @@ class ReportsRepoImpl extends ReportsRepo {
   }
 
   @override
-  Future<ApiResult<List<RecentTransactionEntity>>> getRecentTransactions(int storeId, String period, int take) async {
-    final response = await recentTransactionRemoteDataSource.getRecentTransactions(storeId, period, take);
+  Future<ApiResult<List<RecentTransactionEntity>>> getRecentTransactions(
+    int storeId,
+    String period,
+    int take,
+    int year,
+    int month,
+  ) async {
+    final response = await recentTransactionRemoteDataSource
+        .getRecentTransactions(storeId, period, take, year, month);
     return response.when(
-      success: (data) => ApiResult.success(data.map((e) => e.toEntity()).toList()),
+      success: (data) =>
+          ApiResult.success(data.map((e) => e.toEntity()).toList()),
       failure: (error) => ApiResult.failure(ApiErrorHandler.handle(error)),
     );
   }

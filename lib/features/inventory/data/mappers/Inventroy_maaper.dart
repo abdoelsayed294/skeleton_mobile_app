@@ -6,16 +6,17 @@ import 'package:skeleton_mobile_app/features/inventory/data/model/inventroy_prod
 import 'package:skeleton_mobile_app/features/inventory/domain/entity/inventory_summary_response.dart';
 import 'package:skeleton_mobile_app/features/inventory/domain/entity/inventroy_product_response.dart'
     as domain;
-import 'package:skeleton_mobile_app/features/inventory/domain/entity/inventroy_product_response.dart' show InventroyProductResponse;
+import 'package:skeleton_mobile_app/features/inventory/domain/entity/inventroy_product_response.dart'
+    show InventroyProductResponse;
 
 // =====================================================
 // Inventory Summary Mapper
 // =====================================================
 
-extension InventorySummaryResponseDtoMapper
-    on InventorySummaryResponseDto {
+extension InventorySummaryResponseDtoMapper on InventorySummaryResponseDto {
   InventorySummaryResponse toEntity() {
     return InventorySummaryResponse(
+      itemType: itemType,
       totalProducts: totalProducts,
       lowStock: lowStock,
       outOfStock: outOfStock,
@@ -28,8 +29,7 @@ extension InventorySummaryResponseDtoMapper
 // Inventory Products Response Mapper
 // =====================================================
 
-extension InventroyProductResponseDtoMapper
-    on InventroyProductResponseDto {
+extension InventroyProductResponseDtoMapper on InventroyProductResponseDto {
   InventroyProductResponse toEntity() {
     return InventroyProductResponse(
       items: items
@@ -47,4 +47,20 @@ extension InventroyProductResponseDtoMapper
 // Inventory Product Item Mapper
 // =====================================================
 
-extension ItemsDtoMapper on dto.Items { domain.Items toEntity() { return domain.Items( id: id, itemName: itemName, itemType: itemType, price1: price1, quantity: quantity, minStockLevel: minStockLevel, imageUrl: imageUrl, stockStatus: stockStatus, stockBadge: stockBadge, quantityValue: quantityValue, minStock: minStock, ); } }
+extension ItemsDtoMapper on dto.Items {
+  domain.Items toEntity() {
+    return domain.Items(
+      id: id,
+      itemName: itemName,
+      itemType: itemType,
+      price1: price1,
+      quantity: quantity,
+      minStockLevel: minStockLevel,
+      imageUrl: imageUrl,
+      stockStatus: stockStatus,
+      stockBadge: stockBadge,
+      quantityValue: quantityValue,
+      minStock: minStock,
+    );
+  }
+}

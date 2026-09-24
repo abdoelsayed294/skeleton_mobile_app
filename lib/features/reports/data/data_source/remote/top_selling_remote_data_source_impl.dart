@@ -12,9 +12,21 @@ class TopSellingRemoteDataSourceImpl extends TopSellingRemoteDataSource {
   TopSellingRemoteDataSourceImpl(this.apiService);
 
   @override
-  Future<ApiResult<List<TopSellingDto>>> getTopSelling(int storeId, String period, int take) async {
+  Future<ApiResult<List<TopSellingDto>>> getTopSelling(
+    int storeId,
+    String period,
+    int take,
+    int year,
+    int month,
+  ) async {
     try {
-      final response = await apiService.getReportsTopSelling(take, period, storeId);
+      final response = await apiService.getReportsTopSelling(
+        take,
+        period,
+        storeId,
+        year,
+        month,
+      );
       return ApiResult.success(response);
     } catch (e) {
       return ApiResult.failure(ApiErrorHandler.handle(e));

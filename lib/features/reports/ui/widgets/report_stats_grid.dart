@@ -33,7 +33,9 @@ class ReportStatsGrid extends StatelessWidget {
                 unit: l10n.currencyEgp,
                 change: '+9.6%',
                 icon: Icons.trending_up_rounded,
-                accentColor: isDark ? AppColorsDark.accentGreen : AppColorsLight.accentGreen,
+                accentColor: isDark
+                    ? AppColorsDark.accentGreen
+                    : AppColorsLight.accentGreen,
               ),
             ),
           ],

@@ -26,7 +26,9 @@ class SoldRow extends StatelessWidget {
           ? null
           : BoxDecoration(
               border: Border(
-                bottom: BorderSide(color: theme.dividerColor.withValues(alpha: 0.6)),
+                bottom: BorderSide(
+                  color: theme.dividerColor.withValues(alpha: 0.6),
+                ),
               ),
             ),
       child: Row(
@@ -40,7 +42,9 @@ class SoldRow extends StatelessWidget {
           Expanded(
             child: Text(
               label,
-              style: isDark ? AppStyles.font12MediumDark : AppStyles.font12MediumLight,
+              style: isDark
+                  ? AppStyles.font12MediumDark
+                  : AppStyles.font12MediumLight,
             ),
           ),
           Text(

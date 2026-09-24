@@ -16,11 +16,7 @@ class NavArrow extends StatelessWidget {
       borderRadius: BorderRadius.circular(16.r),
       child: Padding(
         padding: EdgeInsets.all(4.w),
-        child: Icon(
-          icon,
-          size: 20.sp,
-          color: theme.textTheme.bodySmall?.color,
-        ),
+        child: Icon(icon, size: 20.sp, color: theme.textTheme.bodySmall?.color),
       ),
     );
   }

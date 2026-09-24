@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
 import 'package:skeleton_mobile_app/core/routing/routes.dart';
+import 'package:skeleton_mobile_app/core/widgets/shimmer_block.dart';
 import 'package:skeleton_mobile_app/core/widgets/dilaog_utils.dart';
 import 'package:skeleton_mobile_app/features/home/logic/home_cubit.dart';
 import 'package:skeleton_mobile_app/features/home/logic/home_state.dart';
@@ -36,16 +37,11 @@ class _StatsGridState extends State<StatsGrid> {
   }
 
   Future<void> _getSummary(DateTime date) async {
-    final storeId = await SharedPrefHelper.getInt(
-      SharedPrefHelper.storeIdKey,
-    );
+    final storeId = await SharedPrefHelper.getInt(SharedPrefHelper.storeIdKey);
 
     if (!mounted) return;
 
-    context.read<HomeCubit>().getSummary(
-      storeId: storeId,
-      date: date,
-    );
+    context.read<HomeCubit>().getSummary(storeId: storeId, date: date);
   }
 
   @override
@@ -63,17 +59,54 @@ class _StatsGridState extends State<StatsGrid> {
               context: context,
               type: DialogType.error,
               title: 'خطأ',
-              message:
-                  apiErrorModel.error?.message ??
-                  'حصل خطأ، حاول تاني',
+              message: apiErrorModel.error?.message ?? 'حصل خطأ، حاول تاني',
             );
           },
         );
       },
       builder: (context, state) {
         if (state.summaryState is RequestLoading) {
-          return const Center(
-            child: CircularProgressIndicator(),
+          return Column(
+            children: List.generate(
+              2,
+              (rowIndex) => Padding(
+                padding: EdgeInsets.only(bottom: 12.h),
+                child: Row(
+                  children: List.generate(
+                    2,
+                    (cardIndex) => Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          right: cardIndex == 0 ? 6.w : 0,
+                          left: cardIndex == 1 ? 6.w : 0,
+                        ),
+                        child: Container(
+                          height: 128.h,
+                          padding: EdgeInsets.all(13.w),
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).cardColor,
+                            borderRadius: BorderRadius.circular(16.r),
+                            border: Border.all(
+                              color: Theme.of(context).dividerColor,
+                            ),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              ShimmerBlock(width: 75.w, height: 11.h),
+                              SizedBox(height: 12.h),
+                              ShimmerBlock(width: 95.w, height: 21.h),
+                              const Spacer(),
+                              ShimmerBlock(width: 56.w, height: 15.h),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
           );
         }
 
@@ -101,9 +134,7 @@ class _StatsGridState extends State<StatsGrid> {
                     onTap: () {
                       setState(() => selectedCardIndex = 0);
 
-                      Navigator.of(context).pushNamed(
-                        Routes.todaySalesScreen,
-                      );
+                      Navigator.of(context).pushNamed(Routes.todaySalesScreen);
                     },
                   ),
                 ),
@@ -115,8 +146,7 @@ class _StatsGridState extends State<StatsGrid> {
                     unit: 'EGP',
                     change: '${summary.expensesChangePct}%',
                     icon: Icons.receipt_long_outlined,
-                    isNegative:
-                        summary.expensesChangePct < 0,
+                    isNegative: summary.expensesChangePct < 0,
                     isSelected: selectedCardIndex == 1,
                     onTap: () {
                       setState(() => selectedCardIndex = 1);
@@ -135,15 +165,12 @@ class _StatsGridState extends State<StatsGrid> {
                     unit: 'EGP',
                     change: '${summary.purchasesChangePct}%',
                     icon: Icons.shopping_cart_outlined,
-                    isNegative:
-                        summary.purchasesChangePct < 0,
+                    isNegative: summary.purchasesChangePct < 0,
                     isSelected: selectedCardIndex == 2,
                     onTap: () {
                       setState(() => selectedCardIndex = 2);
 
-                      Navigator.of(context).pushNamed(
-                        Routes.purchasesScreen,
-                      );
+                      Navigator.of(context).pushNamed(Routes.purchasesScreen);
                     },
                   ),
                 ),
@@ -160,9 +187,9 @@ class _StatsGridState extends State<StatsGrid> {
                     onTap: () {
                       setState(() => selectedCardIndex = 3);
 
-                      Navigator.of(context).pushNamed(
-                        Routes.profitDetailsScreen,
-                      );
+                      Navigator.of(
+                        context,
+                      ).pushNamed(Routes.profitDetailsScreen);
                     },
                   ),
                 ),
