@@ -40,8 +40,7 @@ class _RecentTransactionsListState extends State<RecentTransactionsList> {
     if (!mounted) return;
     context.read<RecentTransactionCubit>().getRecentTransactions(
       storeId: storeId,
-      period: 'month',
-      take: 5,
+      take: 10,
       year: widget.selectedMonth.year,
       month: widget.selectedMonth.month,
     );

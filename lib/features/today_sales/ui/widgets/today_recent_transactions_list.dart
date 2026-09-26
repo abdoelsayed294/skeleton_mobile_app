@@ -11,7 +11,9 @@ import 'package:skeleton_mobile_app/features/reports/ui/widgets/transaction_row.
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
 
 class TodayRecentTransactionsList extends StatefulWidget {
-  const TodayRecentTransactionsList({super.key});
+  final DateTime selectedDate;
+
+  const TodayRecentTransactionsList({super.key, required this.selectedDate});
 
   @override
   State<TodayRecentTransactionsList> createState() =>
@@ -26,13 +28,22 @@ class _TodayRecentTransactionsListState
     _fetchRecentTransactions();
   }
 
+  @override
+  void didUpdateWidget(covariant TodayRecentTransactionsList oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.selectedDate != widget.selectedDate) {
+      _fetchRecentTransactions();
+    }
+  }
+
   Future<void> _fetchRecentTransactions() async {
     final storeId = await SharedPrefHelper.getInt(SharedPrefHelper.storeIdKey);
     if (!mounted) return;
     context.read<TodayRecentTransactionCubit>().getRecentTransactions(
       storeId: storeId,
-      period: 'today',
-      take: 5,
+      date: widget.selectedDate,
+      take: 10,
+      all: false,
     );
   }
 

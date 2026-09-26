@@ -12,7 +12,7 @@ part of 'api_service.dart';
 
 class _ApiService implements ApiService {
   _ApiService(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'http://skeleton.runasp.net';
+    baseUrl ??= 'https://skeleton1.runasp.net';
   }
 
   final Dio _dio;
@@ -293,7 +293,6 @@ class _ApiService implements ApiService {
   @override
   Future<List<RecentTransactionDto>> getRecentTransactions(
     int take,
-    String period,
     int storeId,
     int year,
     int month,
@@ -301,7 +300,6 @@ class _ApiService implements ApiService {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'take': take,
-      r'period': period,
       r'storeId': storeId,
       r'year': year,
       r'month': month,
@@ -335,9 +333,12 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<TodaySalesDto> getTodaySales(int storeId) async {
+  Future<TodaySalesDto> getTodaySales(int storeId, String date) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'storeId': storeId};
+    final queryParameters = <String, dynamic>{
+      r'storeId': storeId,
+      r'date': date,
+    };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<TodaySalesDto>(
@@ -363,15 +364,17 @@ class _ApiService implements ApiService {
 
   @override
   Future<List<TodayRecentTransactionDto>> getTodaySalesRecentTransactions(
-    int take,
-    String period,
+    String date,
     int storeId,
+    int take,
+    bool all,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
-      r'take': take,
-      r'period': period,
+      r'date': date,
       r'storeId': storeId,
+      r'take': take,
+      r'all': all,
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -449,15 +452,13 @@ class _ApiService implements ApiService {
   Future<ProfitSummaryDto> getProfitSummary(
     String period,
     int storeId,
-    String? from,
-    String? to,
+    String? date,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'period': period,
       r'storeId': storeId,
-      r'from': from,
-      r'to': to,
+      r'date': date,
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};

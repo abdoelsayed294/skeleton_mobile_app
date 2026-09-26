@@ -15,8 +15,11 @@ class TodaySalesRepoImpl extends TodaySalesRepo {
   TodaySalesRepoImpl(this.remoteDataSource);
 
   @override
-  Future<ApiResult<TodaySalesEntity>> getTodaySales(int storeId) async {
-    final response = await remoteDataSource.getTodaySales(storeId);
+  Future<ApiResult<TodaySalesEntity>> getTodaySales(
+    int storeId,
+    DateTime date,
+  ) async {
+    final response = await remoteDataSource.getTodaySales(storeId, date);
     return response.when(
       success: (data) => ApiResult.success(data.toEntity()),
       failure: (error) => ApiResult.failure(ApiErrorHandler.handle(error)),
@@ -24,10 +27,21 @@ class TodaySalesRepoImpl extends TodaySalesRepo {
   }
 
   @override
-  Future<ApiResult<List<TodayRecentTransactionEntity>>> getRecentTransactions(int storeId, String period, int take) async {
-    final response = await remoteDataSource.getRecentTransactions(storeId, period, take);
+  Future<ApiResult<List<TodayRecentTransactionEntity>>> getRecentTransactions(
+    int storeId,
+    DateTime date,
+    int take,
+    bool all,
+  ) async {
+    final response = await remoteDataSource.getRecentTransactions(
+      storeId,
+      date,
+      take,
+      all,
+    );
     return response.when(
-      success: (data) => ApiResult.success(data.map((e) => e.toEntity()).toList()),
+      success: (data) =>
+          ApiResult.success(data.map((e) => e.toEntity()).toList()),
       failure: (error) => ApiResult.failure(ApiErrorHandler.handle(error)),
     );
   }

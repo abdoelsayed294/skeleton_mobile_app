@@ -10,9 +10,9 @@ class RecentTransactionDto {
   final String time;
   final double total;
   final double amount;
-  final String customer;
-  final String paymentMethod;
-  final String method;
+  final String? customer;
+  final String? item;
+  final String? notes;
 
   RecentTransactionDto({
     required this.id,
@@ -21,9 +21,9 @@ class RecentTransactionDto {
     required this.time,
     required this.total,
     required this.amount,
-    required this.customer,
-    required this.paymentMethod,
-    required this.method,
+    this.customer,
+    this.item,
+    this.notes,
   });
 
   factory RecentTransactionDto.fromJson(Map<String, dynamic> json) =>

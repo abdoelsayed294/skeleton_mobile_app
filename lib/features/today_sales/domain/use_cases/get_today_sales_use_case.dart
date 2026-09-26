@@ -9,7 +9,10 @@ class GetTodaySalesUseCase {
 
   GetTodaySalesUseCase(this._todaySalesRepo);
 
-  Future<ApiResult<TodaySalesEntity>> getTodaySales(int storeId) {
-    return _todaySalesRepo.getTodaySales(storeId);
+  Future<ApiResult<TodaySalesEntity>> getTodaySales(
+    int storeId,
+    DateTime date,
+  ) {
+    return _todaySalesRepo.getTodaySales(storeId, date);
   }
 }

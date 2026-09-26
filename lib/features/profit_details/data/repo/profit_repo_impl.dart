@@ -14,15 +14,9 @@ class ProfitRepoImpl implements ProfitRepo {
   Future<ApiResult<ProfitSummary>> getProfitSummary(
     String period,
     int storeId, {
-    String? from,
-    String? to,
+    String? date,
   }) async {
-    final result = await _remote.getProfitSummary(
-      period,
-      storeId,
-      from: from,
-      to: to,
-    );
+    final result = await _remote.getProfitSummary(period, storeId, date: date);
     return result.when(
       success: (data) => ApiResult.success(data.toEntity()),
       failure: (error) => ApiResult.failure(error),

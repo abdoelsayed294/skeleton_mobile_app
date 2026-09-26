@@ -6,8 +6,7 @@ abstract class ProfitRepo {
   Future<ApiResult<ProfitSummary>> getProfitSummary(
     String period,
     int storeId, {
-    String? from,
-    String? to,
+    String? date,
   });
   Future<ApiResult<ProfitWeeklyChart>> getProfitWeeklyChart(int storeId);
 }

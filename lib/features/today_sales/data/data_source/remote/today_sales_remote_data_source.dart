@@ -3,6 +3,12 @@ import 'package:skeleton_mobile_app/features/today_sales/data/models/today_recen
 import 'package:skeleton_mobile_app/features/today_sales/data/models/today_sales_dto.dart';
 
 abstract class TodaySalesRemoteDataSource {
-  Future<ApiResult<TodaySalesDto>> getTodaySales(int storeId);
-  Future<ApiResult<List<TodayRecentTransactionDto>>> getRecentTransactions(int storeId, String period, int take);
+  Future<ApiResult<TodaySalesDto>> getTodaySales(int storeId, DateTime date);
+
+  Future<ApiResult<List<TodayRecentTransactionDto>>> getRecentTransactions(
+    int storeId,
+    DateTime date,
+    int take,
+    bool all,
+  );
 }

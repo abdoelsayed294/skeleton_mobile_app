@@ -8,15 +8,18 @@ import 'package:skeleton_mobile_app/features/today_sales/logic/today_recent_tran
 class TodayRecentTransactionCubit extends Cubit<TodayRecentTransactionState> {
   final GetTodayRecentTransactionUseCase _getTodayRecentTransactionUseCase;
 
-  TodayRecentTransactionCubit(this._getTodayRecentTransactionUseCase) : super(const TodayRecentTransactionState.initial());
+  TodayRecentTransactionCubit(this._getTodayRecentTransactionUseCase)
+    : super(const TodayRecentTransactionState.initial());
 
   Future<void> getRecentTransactions({
     required int storeId,
-    required String period,
+    required DateTime date,
     required int take,
+    required bool all,
   }) async {
     emit(const TodayRecentTransactionState.loading());
-    final result = await _getTodayRecentTransactionUseCase.getRecentTransactions(storeId, period, take);
+    final result = await _getTodayRecentTransactionUseCase
+        .getRecentTransactions(storeId, date, take, all);
     result.when(
       success: (data) => emit(TodayRecentTransactionState.success(data)),
       failure: (error) => emit(TodayRecentTransactionState.error(error)),

@@ -4,7 +4,6 @@ import 'package:skeleton_mobile_app/features/reports/data/models/recent_transact
 abstract class RecentTransactionRemoteDataSource {
   Future<ApiResult<List<RecentTransactionDto>>> getRecentTransactions(
     int storeId,
-    String period,
     int take,
     int year,
     int month,

@@ -19,7 +19,6 @@ abstract class ReportsRepo {
   );
   Future<ApiResult<List<RecentTransactionEntity>>> getRecentTransactions(
     int storeId,
-    String period,
     int take,
     int year,
     int month,

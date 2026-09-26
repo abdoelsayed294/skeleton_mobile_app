@@ -6,8 +6,7 @@ abstract class ProfitRemoteDataSource {
   Future<ApiResult<ProfitSummaryDto>> getProfitSummary(
     String period,
     int storeId, {
-    String? from,
-    String? to,
+    String? date,
   });
   Future<ApiResult<ProfitWeeklyChartDto>> getProfitWeeklyChart(int storeId);
 }

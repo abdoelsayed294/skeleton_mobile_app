@@ -16,6 +16,8 @@ class ProfitSummaryDto {
   final ProfitMetricDto? margin;
   @JsonKey(name: 'revenue')
   final ProfitMetricDto? revenue;
+  @JsonKey(name: 'revenuePaid')
+  final ProfitMetricDto? revenuePaid;
   @JsonKey(name: 'expenses')
   final ProfitMetricDto? expenses;
   @JsonKey(name: 'cogs')
@@ -36,6 +38,7 @@ class ProfitSummaryDto {
     this.grossProfit,
     this.margin,
     this.revenue,
+    this.revenuePaid,
     this.expenses,
     this.cogs,
     this.returnedLoss,

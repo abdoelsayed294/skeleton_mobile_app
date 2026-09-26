@@ -15,7 +15,7 @@ class TodaySalesScreen extends StatefulWidget {
 }
 
 class _TodaySalesScreenState extends State<TodaySalesScreen> {
-  DateTime selectedDate = DateTime(2025, 1, 15);
+  DateTime selectedDate = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class _TodaySalesScreenState extends State<TodaySalesScreen> {
                   onBack: () => Navigator.of(context).pop(),
                 ),
                 SizedBox(height: 16.h),
-                const TodayTotalSalesCard(),
+                TodayTotalSalesCard(selectedDate: selectedDate),
                 SizedBox(height: 12.h),
                 Row(
                   children: [
@@ -50,7 +50,7 @@ class _TodaySalesScreenState extends State<TodaySalesScreen> {
                   ],
                 ),
                 SizedBox(height: 16.h),
-                const TodayRecentTransactionsList(),
+                TodayRecentTransactionsList(selectedDate: selectedDate),
                 SizedBox(height: 20.h),
               ],
             ),

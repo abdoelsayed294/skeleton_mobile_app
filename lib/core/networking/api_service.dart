@@ -75,20 +75,23 @@ abstract class ApiService {
   @GET(EndPoints.reportsRecentTransactions)
   Future<List<RecentTransactionDto>> getRecentTransactions(
     @Query('take') int take,
-    @Query('period') String period,
     @Query('storeId') int storeId,
     @Query('year') int year,
     @Query('month') int month,
   );
 
   @GET(EndPoints.todaySales)
-  Future<TodaySalesDto> getTodaySales(@Query('storeId') int storeId);
+  Future<TodaySalesDto> getTodaySales(
+    @Query('storeId') int storeId,
+    @Query('date') String date,
+  );
 
   @GET(EndPoints.todaySalesRecentTransactions)
   Future<List<TodayRecentTransactionDto>> getTodaySalesRecentTransactions(
-    @Query('take') int take,
-    @Query('period') String period,
+    @Query('date') String date,
     @Query('storeId') int storeId,
+    @Query('take') int take,
+    @Query('all') bool all,
   );
 
   @GET(EndPoints.inventoryProducts)
@@ -106,8 +109,7 @@ abstract class ApiService {
   Future<ProfitSummaryDto> getProfitSummary(
     @Query('period') String period,
     @Query('storeId') int storeId,
-    @Query('from') String? from,
-    @Query('to') String? to,
+    @Query('date') String? date,
   );
 
   @GET(EndPoints.profitWeeklyChart)

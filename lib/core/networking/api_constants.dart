@@ -1,5 +1,5 @@
 class ApiConstants {
-  static const String baseUrl = 'http://skeleton.runasp.net';
+  static const String baseUrl = 'https://skeleton1.runasp.net';
 }
 
 class ApiErrors {

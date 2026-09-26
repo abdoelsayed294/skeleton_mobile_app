@@ -11,17 +11,10 @@ class RecentTransactionUseCase {
 
   Future<ApiResult<List<RecentTransactionEntity>>> getRecentTransactions(
     int storeId,
-    String period,
     int take,
     int year,
     int month,
   ) {
-    return _reportsRepo.getRecentTransactions(
-      storeId,
-      period,
-      take,
-      year,
-      month,
-    );
+    return _reportsRepo.getRecentTransactions(storeId, take, year, month);
   }
 }

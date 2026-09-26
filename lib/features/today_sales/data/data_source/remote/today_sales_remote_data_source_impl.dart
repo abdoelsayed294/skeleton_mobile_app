@@ -12,10 +12,19 @@ class TodaySalesRemoteDataSourceImpl extends TodaySalesRemoteDataSource {
 
   TodaySalesRemoteDataSourceImpl(this.apiService);
 
+  String _dateQuery(DateTime date) =>
+      DateTime(date.year, date.month, date.day).toIso8601String();
+
   @override
-  Future<ApiResult<TodaySalesDto>> getTodaySales(int storeId) async {
+  Future<ApiResult<TodaySalesDto>> getTodaySales(
+    int storeId,
+    DateTime date,
+  ) async {
     try {
-      final response = await apiService.getTodaySales(storeId);
+      final response = await apiService.getTodaySales(
+        storeId,
+        _dateQuery(date),
+      );
       return ApiResult.success(response);
     } catch (e) {
       return ApiResult.failure(ApiErrorHandler.handle(e));
@@ -23,9 +32,19 @@ class TodaySalesRemoteDataSourceImpl extends TodaySalesRemoteDataSource {
   }
 
   @override
-  Future<ApiResult<List<TodayRecentTransactionDto>>> getRecentTransactions(int storeId, String period, int take) async {
+  Future<ApiResult<List<TodayRecentTransactionDto>>> getRecentTransactions(
+    int storeId,
+    DateTime date,
+    int take,
+    bool all,
+  ) async {
     try {
-      final response = await apiService.getTodaySalesRecentTransactions(take, period, storeId);
+      final response = await apiService.getTodaySalesRecentTransactions(
+        _dateQuery(date),
+        storeId,
+        take,
+        all,
+      );
       return ApiResult.success(response);
     } catch (e) {
       return ApiResult.failure(ApiErrorHandler.handle(e));

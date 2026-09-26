@@ -8,11 +8,15 @@ import 'package:skeleton_mobile_app/features/today_sales/logic/today_sales_state
 class TodaySalesCubit extends Cubit<TodaySalesState> {
   final GetTodaySalesUseCase _getTodaySalesUseCase;
 
-  TodaySalesCubit(this._getTodaySalesUseCase) : super(const TodaySalesState.initial());
+  TodaySalesCubit(this._getTodaySalesUseCase)
+    : super(const TodaySalesState.initial());
 
-  Future<void> getTodaySales({required int storeId}) async {
+  Future<void> getTodaySales({
+    required int storeId,
+    required DateTime date,
+  }) async {
     emit(const TodaySalesState.loading());
-    final result = await _getTodaySalesUseCase.getTodaySales(storeId);
+    final result = await _getTodaySalesUseCase.getTodaySales(storeId, date);
     result.when(
       success: (data) => emit(TodaySalesState.success(data)),
       failure: (error) => emit(TodaySalesState.error(error)),

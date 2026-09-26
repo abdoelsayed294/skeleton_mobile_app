@@ -14,7 +14,6 @@ class RecentTransactionCubit extends Cubit<RecentTransactionState> {
 
   Future<void> getRecentTransactions({
     required int storeId,
-    required String period,
     required int take,
     required int year,
     required int month,
@@ -23,7 +22,6 @@ class RecentTransactionCubit extends Cubit<RecentTransactionState> {
     emit(const RecentTransactionState.loading());
     final result = await recentTransactionUseCase.getRecentTransactions(
       storeId,
-      period,
       take,
       year,
       month,

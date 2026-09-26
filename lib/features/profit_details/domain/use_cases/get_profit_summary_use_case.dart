@@ -10,7 +10,6 @@ class GetProfitSummaryUseCase {
   Future<ApiResult<ProfitSummary>> invoke(
     String period,
     int storeId, {
-    String? from,
-    String? to,
-  }) => _repo.getProfitSummary(period, storeId, from: from, to: to);
+    String? date,
+  }) => _repo.getProfitSummary(period, storeId, date: date);
 }

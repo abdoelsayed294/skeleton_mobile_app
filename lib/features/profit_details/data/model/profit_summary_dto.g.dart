@@ -6,44 +6,45 @@ part of 'profit_summary_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ProfitSummaryDto _$ProfitSummaryDtoFromJson(Map<String, dynamic> json) =>
-    ProfitSummaryDto(
-      period: json['period'] as String?,
-      range: json['range'] == null
-          ? null
-          : ProfitRangeDto.fromJson(json['range'] as Map<String, dynamic>),
-      netProfit: json['netProfit'] == null
-          ? null
-          : ProfitMetricDto.fromJson(json['netProfit'] as Map<String, dynamic>),
-      grossProfit: json['grossProfit'] == null
-          ? null
-          : ProfitMetricDto.fromJson(
-              json['grossProfit'] as Map<String, dynamic>,
-            ),
-      margin: json['margin'] == null
-          ? null
-          : ProfitMetricDto.fromJson(json['margin'] as Map<String, dynamic>),
-      revenue: json['revenue'] == null
-          ? null
-          : ProfitMetricDto.fromJson(json['revenue'] as Map<String, dynamic>),
-      expenses: json['expenses'] == null
-          ? null
-          : ProfitMetricDto.fromJson(json['expenses'] as Map<String, dynamic>),
-      cogs: (json['cogs'] as num?)?.toDouble(),
-      returnedLoss: (json['returnedLoss'] as num?)?.toDouble(),
-      damagedPaid: (json['damagedPaid'] as num?)?.toDouble(),
-      profitBreakdownByPayment: json['profitBreakdownByPayment'] == null
-          ? null
-          : ProfitPaymentBreakdownDto.fromJson(
-              json['profitBreakdownByPayment'] as Map<String, dynamic>,
-            ),
-      expenseBreakdown: (json['expenseBreakdown'] as List<dynamic>?)
-          ?.map(
-            (e) =>
-                ProfitExpenseBreakdownDto.fromJson(e as Map<String, dynamic>),
-          )
-          .toList(),
-    );
+ProfitSummaryDto _$ProfitSummaryDtoFromJson(
+  Map<String, dynamic> json,
+) => ProfitSummaryDto(
+  period: json['period'] as String?,
+  range: json['range'] == null
+      ? null
+      : ProfitRangeDto.fromJson(json['range'] as Map<String, dynamic>),
+  netProfit: json['netProfit'] == null
+      ? null
+      : ProfitMetricDto.fromJson(json['netProfit'] as Map<String, dynamic>),
+  grossProfit: json['grossProfit'] == null
+      ? null
+      : ProfitMetricDto.fromJson(json['grossProfit'] as Map<String, dynamic>),
+  margin: json['margin'] == null
+      ? null
+      : ProfitMetricDto.fromJson(json['margin'] as Map<String, dynamic>),
+  revenue: json['revenue'] == null
+      ? null
+      : ProfitMetricDto.fromJson(json['revenue'] as Map<String, dynamic>),
+  revenuePaid: json['revenuePaid'] == null
+      ? null
+      : ProfitMetricDto.fromJson(json['revenuePaid'] as Map<String, dynamic>),
+  expenses: json['expenses'] == null
+      ? null
+      : ProfitMetricDto.fromJson(json['expenses'] as Map<String, dynamic>),
+  cogs: (json['cogs'] as num?)?.toDouble(),
+  returnedLoss: (json['returnedLoss'] as num?)?.toDouble(),
+  damagedPaid: (json['damagedPaid'] as num?)?.toDouble(),
+  profitBreakdownByPayment: json['profitBreakdownByPayment'] == null
+      ? null
+      : ProfitPaymentBreakdownDto.fromJson(
+          json['profitBreakdownByPayment'] as Map<String, dynamic>,
+        ),
+  expenseBreakdown: (json['expenseBreakdown'] as List<dynamic>?)
+      ?.map(
+        (e) => ProfitExpenseBreakdownDto.fromJson(e as Map<String, dynamic>),
+      )
+      .toList(),
+);
 
 Map<String, dynamic> _$ProfitSummaryDtoToJson(ProfitSummaryDto instance) =>
     <String, dynamic>{
@@ -53,6 +54,7 @@ Map<String, dynamic> _$ProfitSummaryDtoToJson(ProfitSummaryDto instance) =>
       'grossProfit': instance.grossProfit,
       'margin': instance.margin,
       'revenue': instance.revenue,
+      'revenuePaid': instance.revenuePaid,
       'expenses': instance.expenses,
       'cogs': instance.cogs,
       'returnedLoss': instance.returnedLoss,
