@@ -45,4 +45,9 @@ class EndPoints {
   static const String productPricing = '/api/Products/{id}/pricing';
   static const String productInventory = '/api/Products/{id}/inventory';
   static const String productSalesHistory = '/api/Products/{id}/sales-history';
+  static const String expensesSummary = '/api/Expenses/summary';
+  static const String expensesMonthlyTrend = '/api/Expenses/monthly-trend';
+  static const String expensesByCategory = '/api/Expenses/by-category';
+  static const String expensesPeakDays = '/api/Expenses/peak-days';
+  static const String expensesTransactions = '/api/Expenses/transactions';
 }

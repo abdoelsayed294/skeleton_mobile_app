@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
 import 'package:skeleton_mobile_app/core/widgets/shimmer_block.dart';
 import 'package:skeleton_mobile_app/features/home/ui/widgets/section_card.dart';
@@ -10,41 +9,8 @@ import 'package:skeleton_mobile_app/features/reports/logic/recent_transaction_st
 import 'package:skeleton_mobile_app/features/reports/ui/widgets/transaction_row.dart';
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
 
-class RecentTransactionsList extends StatefulWidget {
-  final DateTime selectedMonth;
-
-  const RecentTransactionsList({super.key, required this.selectedMonth});
-
-  @override
-  State<RecentTransactionsList> createState() => _RecentTransactionsListState();
-}
-
-class _RecentTransactionsListState extends State<RecentTransactionsList> {
-  @override
-  void initState() {
-    super.initState();
-    _fetchRecentTransactions();
-  }
-
-  @override
-  void didUpdateWidget(covariant RecentTransactionsList oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.selectedMonth.year != widget.selectedMonth.year ||
-        oldWidget.selectedMonth.month != widget.selectedMonth.month) {
-      _fetchRecentTransactions();
-    }
-  }
-
-  Future<void> _fetchRecentTransactions() async {
-    final storeId = await SharedPrefHelper.getInt(SharedPrefHelper.storeIdKey);
-    if (!mounted) return;
-    context.read<RecentTransactionCubit>().getRecentTransactions(
-      storeId: storeId,
-      take: 10,
-      year: widget.selectedMonth.year,
-      month: widget.selectedMonth.month,
-    );
-  }
+class RecentTransactionsList extends StatelessWidget {
+  const RecentTransactionsList({super.key});
 
   @override
   Widget build(BuildContext context) {

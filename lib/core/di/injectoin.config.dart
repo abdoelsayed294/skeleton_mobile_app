@@ -15,6 +15,34 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:skeleton_mobile_app/core/networking/api_service.dart' as _i35;
 import 'package:skeleton_mobile_app/core/networking/dio_module.dart' as _i453;
+import 'package:skeleton_mobile_app/features/expeness/data/data_source/remote/expenses_remote_data_source.dart'
+    as _i558;
+import 'package:skeleton_mobile_app/features/expeness/data/data_source/remote/expenses_remote_data_source_impl.dart'
+    as _i89;
+import 'package:skeleton_mobile_app/features/expeness/data/repository/expenses_repository_impl.dart'
+    as _i718;
+import 'package:skeleton_mobile_app/features/expeness/domain/repository/expenses_repository.dart'
+    as _i911;
+import 'package:skeleton_mobile_app/features/expeness/domain/use_case/get_expenses_by_category_use_case.dart'
+    as _i846;
+import 'package:skeleton_mobile_app/features/expeness/domain/use_case/get_expenses_monthly_trend_use_case.dart'
+    as _i830;
+import 'package:skeleton_mobile_app/features/expeness/domain/use_case/get_expenses_peak_days_use_case.dart'
+    as _i671;
+import 'package:skeleton_mobile_app/features/expeness/domain/use_case/get_expenses_summary_use_case.dart'
+    as _i479;
+import 'package:skeleton_mobile_app/features/expeness/domain/use_case/get_expenses_transactions_use_case.dart'
+    as _i161;
+import 'package:skeleton_mobile_app/features/expeness/logic/expenses_by_category_cubit.dart'
+    as _i936;
+import 'package:skeleton_mobile_app/features/expeness/logic/expenses_monthly_trend_cubit.dart'
+    as _i335;
+import 'package:skeleton_mobile_app/features/expeness/logic/expenses_peak_days_cubit.dart'
+    as _i565;
+import 'package:skeleton_mobile_app/features/expeness/logic/expenses_summary_cubit.dart'
+    as _i679;
+import 'package:skeleton_mobile_app/features/expeness/logic/expenses_transactions_cubit.dart'
+    as _i563;
 import 'package:skeleton_mobile_app/features/home/data/data_source/remote/low_stock_remote_data_source.dart'
     as _i948;
 import 'package:skeleton_mobile_app/features/home/data/data_source/remote/low_stock_remote_data_source_impl.dart'
@@ -56,7 +84,7 @@ import 'package:skeleton_mobile_app/features/inventory/domain/repo/inventory_sum
 import 'package:skeleton_mobile_app/features/inventory/domain/use_cases/Inventory_proudct_use_case.dart'
     as _i293;
 import 'package:skeleton_mobile_app/features/inventory/domain/use_cases/inventory_summary_use_case.dart'
-    as _i479;
+    as _i481;
 import 'package:skeleton_mobile_app/features/inventory/logic/inventory_cubit.dart'
     as _i956;
 import 'package:skeleton_mobile_app/features/inventory/logic/inventory_product_cubit.dart'
@@ -184,7 +212,7 @@ import 'package:skeleton_mobile_app/features/today_sales/data/repo/today_sales_r
 import 'package:skeleton_mobile_app/features/today_sales/domain/repo/today_sales_repo.dart'
     as _i450;
 import 'package:skeleton_mobile_app/features/today_sales/domain/use_cases/get_today_recent_transaction_use_case.dart'
-    as _i911;
+    as _i912;
 import 'package:skeleton_mobile_app/features/today_sales/domain/use_cases/get_today_sales_use_case.dart'
     as _i331;
 import 'package:skeleton_mobile_app/features/today_sales/logic/today_recent_transaction_cubit.dart'
@@ -215,6 +243,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i878.SalesChartRemoteDataSource>(
       () => _i500.SalesChartRemoteDataSourceImpl(gh<_i35.ApiService>()),
+    );
+    gh.factory<_i558.ExpensesRemoteDataSource>(
+      () => _i89.ExpensesRemoteDataSourceImpl(gh<_i35.ApiService>()),
     );
     gh.factory<_i721.ProfitRemoteDataSource>(
       () => _i970.ProfitRemoteDataSourceImpl(gh<_i35.ApiService>()),
@@ -285,6 +316,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i450.TodaySalesRepo>(
       () => _i835.TodaySalesRepoImpl(gh<_i29.TodaySalesRemoteDataSource>()),
     );
+    gh.lazySingleton<_i911.ExpensesRepository>(
+      () => _i718.ExpensesRepositoryImpl(gh<_i558.ExpensesRemoteDataSource>()),
+    );
     gh.factory<_i896.ProductPricingCubit>(
       () => _i896.ProductPricingCubit(gh<_i1048.GetProductPricingUseCase>()),
     );
@@ -304,6 +338,23 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i1051.InventorySummaryRemoteDataSource>(),
       ),
     );
+    gh.factory<_i846.GetExpensesByCategoryUseCase>(
+      () => _i846.GetExpensesByCategoryUseCase(gh<_i911.ExpensesRepository>()),
+    );
+    gh.factory<_i830.GetExpensesMonthlyTrendUseCase>(
+      () =>
+          _i830.GetExpensesMonthlyTrendUseCase(gh<_i911.ExpensesRepository>()),
+    );
+    gh.factory<_i671.GetExpensesPeakDaysUseCase>(
+      () => _i671.GetExpensesPeakDaysUseCase(gh<_i911.ExpensesRepository>()),
+    );
+    gh.factory<_i479.GetExpensesSummaryUseCase>(
+      () => _i479.GetExpensesSummaryUseCase(gh<_i911.ExpensesRepository>()),
+    );
+    gh.factory<_i161.GetExpensesTransactionsUseCase>(
+      () =>
+          _i161.GetExpensesTransactionsUseCase(gh<_i911.ExpensesRepository>()),
+    );
     gh.factory<_i996.ProductActivityCubit>(
       () => _i996.ProductActivityCubit(gh<_i987.GetProductActivityUseCase>()),
     );
@@ -316,11 +367,16 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i473.GetProfitWeeklyChartUseCase>(
       () => _i473.GetProfitWeeklyChartUseCase(gh<_i696.ProfitRepo>()),
     );
+    gh.factory<_i563.ExpensesTransactionsCubit>(
+      () => _i563.ExpensesTransactionsCubit(
+        gh<_i161.GetExpensesTransactionsUseCase>(),
+      ),
+    );
     gh.factory<_i591.PurchasesRepo>(
       () => _i1021.PurchasesRepoImpl(gh<_i215.PurchasesRemoteDataSource>()),
     );
-    gh.factory<_i911.GetTodayRecentTransactionUseCase>(
-      () => _i911.GetTodayRecentTransactionUseCase(gh<_i450.TodaySalesRepo>()),
+    gh.factory<_i912.GetTodayRecentTransactionUseCase>(
+      () => _i912.GetTodayRecentTransactionUseCase(gh<_i450.TodaySalesRepo>()),
     );
     gh.factory<_i331.GetTodaySalesUseCase>(
       () => _i331.GetTodaySalesUseCase(gh<_i450.TodaySalesRepo>()),
@@ -339,8 +395,13 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i293.InventoryProudctUseCase>(
       () => _i293.InventoryProudctUseCase(gh<_i3.InventorySummaryRepo>()),
     );
-    gh.factory<_i479.InventorySummaryUseCase>(
-      () => _i479.InventorySummaryUseCase(gh<_i3.InventorySummaryRepo>()),
+    gh.factory<_i481.InventorySummaryUseCase>(
+      () => _i481.InventorySummaryUseCase(gh<_i3.InventorySummaryRepo>()),
+    );
+    gh.factory<_i936.ExpensesByCategoryCubit>(
+      () => _i936.ExpensesByCategoryCubit(
+        gh<_i846.GetExpensesByCategoryUseCase>(),
+      ),
     );
     gh.factory<_i795.ReportsRepo>(
       () => _i298.ReportsRepoImpl(
@@ -355,8 +416,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i1023.GetPurchasesSummaryUseCase>(
       () => _i1023.GetPurchasesSummaryUseCase(gh<_i591.PurchasesRepo>()),
     );
+    gh.factory<_i679.ExpensesSummaryCubit>(
+      () => _i679.ExpensesSummaryCubit(gh<_i479.GetExpensesSummaryUseCase>()),
+    );
     gh.factory<_i211.ProfitSummaryCubit>(
       () => _i211.ProfitSummaryCubit(gh<_i519.GetProfitSummaryUseCase>()),
+    );
+    gh.factory<_i565.ExpensesPeakDaysCubit>(
+      () => _i565.ExpensesPeakDaysCubit(gh<_i671.GetExpensesPeakDaysUseCase>()),
     );
     gh.factory<_i389.TodaySalesCubit>(
       () => _i389.TodaySalesCubit(gh<_i331.GetTodaySalesUseCase>()),
@@ -379,18 +446,23 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i512.TodayRecentTransactionCubit>(
       () => _i512.TodayRecentTransactionCubit(
-        gh<_i911.GetTodayRecentTransactionUseCase>(),
+        gh<_i912.GetTodayRecentTransactionUseCase>(),
       ),
     );
     gh.factory<_i579.InventoryProductCubit>(
       () => _i579.InventoryProductCubit(gh<_i293.InventoryProudctUseCase>()),
+    );
+    gh.factory<_i335.ExpensesMonthlyTrendCubit>(
+      () => _i335.ExpensesMonthlyTrendCubit(
+        gh<_i830.GetExpensesMonthlyTrendUseCase>(),
+      ),
     );
     gh.factory<_i58.PurchasesRecentCubit>(
       () => _i58.PurchasesRecentCubit(gh<_i813.GetPurchasesRecentUseCase>()),
     );
     gh.factory<_i956.InventoryCubit>(
       () => _i956.InventoryCubit(
-        gh<_i479.InventorySummaryUseCase>(),
+        gh<_i481.InventorySummaryUseCase>(),
         gh<_i293.InventoryProudctUseCase>(),
       ),
     );

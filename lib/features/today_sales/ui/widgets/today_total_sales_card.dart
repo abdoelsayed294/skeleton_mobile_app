@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
 import 'package:skeleton_mobile_app/core/theming/app_color.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
 import 'package:skeleton_mobile_app/core/widgets/shimmer_block.dart';
@@ -10,38 +9,8 @@ import 'package:skeleton_mobile_app/features/today_sales/logic/today_sales_cubit
 import 'package:skeleton_mobile_app/features/today_sales/logic/today_sales_state.dart';
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
 
-class TodayTotalSalesCard extends StatefulWidget {
-  final DateTime selectedDate;
-
-  const TodayTotalSalesCard({super.key, required this.selectedDate});
-
-  @override
-  State<TodayTotalSalesCard> createState() => _TodayTotalSalesCardState();
-}
-
-class _TodayTotalSalesCardState extends State<TodayTotalSalesCard> {
-  @override
-  void initState() {
-    super.initState();
-    _fetchTodaySales();
-  }
-
-  @override
-  void didUpdateWidget(covariant TodayTotalSalesCard oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.selectedDate != widget.selectedDate) {
-      _fetchTodaySales();
-    }
-  }
-
-  Future<void> _fetchTodaySales() async {
-    final storeId = await SharedPrefHelper.getInt(SharedPrefHelper.storeIdKey);
-    if (!mounted) return;
-    context.read<TodaySalesCubit>().getTodaySales(
-      storeId: storeId,
-      date: widget.selectedDate,
-    );
-  }
+class TodayTotalSalesCard extends StatelessWidget {
+  const TodayTotalSalesCard({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -16,4 +16,5 @@ class Routes {
   static const String purchasesScreen = '/purchases';
   static const String editProfileScreen = '/edit-profile';
   static const String notificationsScreen = '/notifications';
+  static const String expensesScreen = '/expenses';
 }

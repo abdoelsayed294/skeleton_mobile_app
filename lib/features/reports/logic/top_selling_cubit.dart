@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
 import 'package:skeleton_mobile_app/core/networking/api_result.dart';
 import 'package:skeleton_mobile_app/features/reports/domain/use_cases/top_selling_use_case.dart';
 import 'package:skeleton_mobile_app/features/reports/logic/top_selling_state.dart';
@@ -13,7 +14,6 @@ class TopSellingCubit extends Cubit<TopSellingState> {
     : super(const TopSellingState.initial());
 
   Future<void> getTopSelling({
-    required int storeId,
     required String period,
     required int take,
     required int year,
@@ -21,6 +21,8 @@ class TopSellingCubit extends Cubit<TopSellingState> {
   }) async {
     final requestId = ++_requestId;
     emit(const TopSellingState.loading());
+    final storeId = await SharedPrefHelper.getInt(SharedPrefHelper.storeIdKey);
+    if (isClosed) return;
     final result = await topSellingUseCase.getTopSelling(
       storeId,
       period,

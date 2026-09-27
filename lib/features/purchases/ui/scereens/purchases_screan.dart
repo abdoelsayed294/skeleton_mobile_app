@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:skeleton_mobile_app/features/purchases/logic/purchases_date_cubit.dart';
 import 'package:skeleton_mobile_app/features/purchases/ui/widgets/add_purchase_button.dart';
 import 'package:skeleton_mobile_app/features/purchases/ui/widgets/purchases_header.dart';
 import 'package:skeleton_mobile_app/features/purchases/ui/widgets/purchases_list_section.dart';
@@ -34,7 +36,12 @@ class _PurchasesScreanState extends State<PurchasesScrean> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const PurchasesHeader(),
+              BlocBuilder<PurchasesDateCubit, DateTime>(
+                builder: (context, selectedDate) => PurchasesHeader(
+                  selectedDate: selectedDate,
+                  onDateChanged: context.read<PurchasesDateCubit>().selectDate,
+                ),
+              ),
               SizedBox(height: 16.h),
               const PurchasesSummaryCard(),
               SizedBox(height: 24.h),

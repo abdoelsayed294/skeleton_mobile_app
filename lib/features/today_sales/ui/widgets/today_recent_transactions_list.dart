@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
 import 'package:skeleton_mobile_app/core/widgets/shimmer_block.dart';
 import 'package:skeleton_mobile_app/features/home/ui/widgets/section_card.dart';
@@ -10,42 +9,8 @@ import 'package:skeleton_mobile_app/features/today_sales/logic/today_recent_tran
 import 'package:skeleton_mobile_app/features/reports/ui/widgets/transaction_row.dart';
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
 
-class TodayRecentTransactionsList extends StatefulWidget {
-  final DateTime selectedDate;
-
-  const TodayRecentTransactionsList({super.key, required this.selectedDate});
-
-  @override
-  State<TodayRecentTransactionsList> createState() =>
-      _TodayRecentTransactionsListState();
-}
-
-class _TodayRecentTransactionsListState
-    extends State<TodayRecentTransactionsList> {
-  @override
-  void initState() {
-    super.initState();
-    _fetchRecentTransactions();
-  }
-
-  @override
-  void didUpdateWidget(covariant TodayRecentTransactionsList oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.selectedDate != widget.selectedDate) {
-      _fetchRecentTransactions();
-    }
-  }
-
-  Future<void> _fetchRecentTransactions() async {
-    final storeId = await SharedPrefHelper.getInt(SharedPrefHelper.storeIdKey);
-    if (!mounted) return;
-    context.read<TodayRecentTransactionCubit>().getRecentTransactions(
-      storeId: storeId,
-      date: widget.selectedDate,
-      take: 10,
-      all: false,
-    );
-  }
+class TodayRecentTransactionsList extends StatelessWidget {
+  const TodayRecentTransactionsList({super.key});
 
   @override
   Widget build(BuildContext context) {

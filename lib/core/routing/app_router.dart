@@ -6,9 +6,11 @@ import 'package:skeleton_mobile_app/features/home/logic/home_cubit.dart';
 import 'package:skeleton_mobile_app/features/home/ui/screens/home_screan.dart';
 import 'package:skeleton_mobile_app/features/reports/logic/recent_transaction_cubit.dart';
 import 'package:skeleton_mobile_app/features/reports/logic/reports_export_cubit.dart';
+import 'package:skeleton_mobile_app/features/reports/logic/reports_month_cubit.dart';
 import 'package:skeleton_mobile_app/features/reports/logic/reports_sales_cubit.dart';
 import 'package:skeleton_mobile_app/features/reports/logic/top_selling_cubit.dart';
 import 'package:skeleton_mobile_app/features/today_sales/logic/today_recent_transaction_cubit.dart';
+import 'package:skeleton_mobile_app/features/today_sales/logic/today_sales_date_cubit.dart';
 import 'package:skeleton_mobile_app/features/today_sales/logic/today_sales_cubit.dart';
 import 'package:skeleton_mobile_app/features/today_sales/ui/screens/today_sales_screen.dart';
 import 'package:skeleton_mobile_app/features/profit_details/ui/screens/profit_details_screen.dart';
@@ -28,8 +30,16 @@ import 'package:skeleton_mobile_app/features/profile/ui/scereens/edit_profile_sc
 import 'package:skeleton_mobile_app/features/purchases/ui/scereens/purchases_screan.dart';
 import 'package:skeleton_mobile_app/features/purchases/logic/purchases_summary_cubit.dart';
 import 'package:skeleton_mobile_app/features/purchases/logic/purchases_recent_cubit.dart';
+import 'package:skeleton_mobile_app/features/purchases/logic/purchases_date_cubit.dart';
 import 'package:skeleton_mobile_app/features/reports/ui/scereens/reports_screan.dart';
 import 'package:skeleton_mobile_app/features/notifications/ui/screens/notifications_screen.dart';
+import 'package:skeleton_mobile_app/features/expeness/ui/screens/expenses_screen.dart';
+import 'package:skeleton_mobile_app/features/expeness/logic/expenses_by_category_cubit.dart';
+import 'package:skeleton_mobile_app/features/expeness/logic/expenses_date_cubit.dart';
+import 'package:skeleton_mobile_app/features/expeness/logic/expenses_monthly_trend_cubit.dart';
+import 'package:skeleton_mobile_app/features/expeness/logic/expenses_peak_days_cubit.dart';
+import 'package:skeleton_mobile_app/features/expeness/logic/expenses_summary_cubit.dart';
+import 'package:skeleton_mobile_app/features/expeness/logic/expenses_transactions_cubit.dart';
 import 'package:skeleton_mobile_app/features/scan_qr/logic/qr_cubit.dart';
 import 'package:skeleton_mobile_app/features/scan_qr/ui/screens/scan_qr_screen.dart';
 import 'package:skeleton_mobile_app/features/scan_qr/ui/screens/qr_scanner_screen.dart';
@@ -54,17 +64,22 @@ class AppRouter {
           builder: (_) => MultiBlocProvider(
             providers: [
               BlocProvider(create: (context) => getIt<HomeCubit>()),
-              BlocProvider(create: (context) => getIt<ReportsSalesCubit>()),
-              BlocProvider(create: (context) => getIt<TopSellingCubit>()),
+              BlocProvider(create: (_) => getIt<ReportsSalesCubit>()),
+              BlocProvider(create: (_) => getIt<TopSellingCubit>()),
+              BlocProvider(create: (_) => getIt<RecentTransactionCubit>()),
               BlocProvider(
-                create: (context) => getIt<RecentTransactionCubit>(),
+                create: (context) => ReportsMonthCubit(
+                  context.read<ReportsSalesCubit>(),
+                  context.read<TopSellingCubit>(),
+                  context.read<RecentTransactionCubit>(),
+                  DateTime.now(),
+                ),
               ),
               BlocProvider(create: (context) => getIt<ReportsExportCubit>()),
             ],
             child: const MainNavigationScreen(),
           ),
         );
-
       case Routes.inventoryScreen:
         return MaterialPageRoute(
           builder: (_) => MultiBlocProvider(
@@ -87,6 +102,14 @@ class AppRouter {
               BlocProvider(create: (_) => getIt<ReportsSalesCubit>()),
               BlocProvider(create: (_) => getIt<TopSellingCubit>()),
               BlocProvider(create: (_) => getIt<RecentTransactionCubit>()),
+              BlocProvider(
+                create: (context) => ReportsMonthCubit(
+                  context.read<ReportsSalesCubit>(),
+                  context.read<TopSellingCubit>(),
+                  context.read<RecentTransactionCubit>(),
+                  DateTime.now(),
+                ),
+              ),
               BlocProvider(create: (_) => getIt<ReportsExportCubit>()),
             ],
             child: const ReportsScrean(),
@@ -94,13 +117,25 @@ class AppRouter {
         );
       case Routes.todaySalesScreen:
         return MaterialPageRoute(
-          builder: (_) => MultiBlocProvider(
-            providers: [
-              BlocProvider(create: (_) => getIt<TodaySalesCubit>()),
-              BlocProvider(create: (_) => getIt<TodayRecentTransactionCubit>()),
-            ],
-            child: const TodaySalesScreen(),
-          ),
+          builder: (_) {
+            final date = DateTime.now();
+            return MultiBlocProvider(
+              providers: [
+                BlocProvider(create: (_) => getIt<TodaySalesCubit>()),
+                BlocProvider(
+                  create: (_) => getIt<TodayRecentTransactionCubit>(),
+                ),
+                BlocProvider(
+                  create: (context) => TodaySalesDateCubit(
+                    context.read<TodaySalesCubit>(),
+                    context.read<TodayRecentTransactionCubit>(),
+                    date,
+                  ),
+                ),
+              ],
+              child: const TodaySalesScreen(),
+            );
+          },
         );
       case Routes.profitDetailsScreen:
         return MaterialPageRoute(
@@ -167,15 +202,14 @@ class AppRouter {
             final now = DateTime.now();
             return MultiBlocProvider(
               providers: [
+                BlocProvider(create: (_) => getIt<PurchasesSummaryCubit>()),
+                BlocProvider(create: (_) => getIt<PurchasesRecentCubit>()),
                 BlocProvider(
-                  create: (_) =>
-                      getIt<PurchasesSummaryCubit>()
-                        ..getPurchasesSummary(now.year, now.month),
-                ),
-                BlocProvider(
-                  create: (_) =>
-                      getIt<PurchasesRecentCubit>()
-                        ..getPurchasesRecent(now.year, now.month),
+                  create: (context) => PurchasesDateCubit(
+                    context.read<PurchasesSummaryCubit>(),
+                    context.read<PurchasesRecentCubit>(),
+                    now,
+                  ),
                 ),
               ],
               child: const PurchasesScrean(),
@@ -184,6 +218,29 @@ class AppRouter {
         );
       case Routes.notificationsScreen:
         return MaterialPageRoute(builder: (_) => const NotificationsScreen());
+      case Routes.expensesScreen:
+        return MaterialPageRoute(
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (_) => getIt<ExpensesSummaryCubit>()),
+              BlocProvider(create: (_) => getIt<ExpensesMonthlyTrendCubit>()),
+              BlocProvider(create: (_) => getIt<ExpensesByCategoryCubit>()),
+              BlocProvider(create: (_) => getIt<ExpensesPeakDaysCubit>()),
+              BlocProvider(create: (_) => getIt<ExpensesTransactionsCubit>()),
+              BlocProvider(
+                create: (context) => ExpensesDateCubit(
+                  context.read<ExpensesSummaryCubit>(),
+                  context.read<ExpensesMonthlyTrendCubit>(),
+                  context.read<ExpensesByCategoryCubit>(),
+                  context.read<ExpensesPeakDaysCubit>(),
+                  context.read<ExpensesTransactionsCubit>(),
+                  initialDate: DateTime.now(),
+                )..loadInitial(),
+              ),
+            ],
+            child: const ExpensesScreen(),
+          ),
+        );
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
@@ -193,5 +250,3 @@ class AppRouter {
     }
   }
 }
-
-

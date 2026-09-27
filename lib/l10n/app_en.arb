@@ -515,4 +515,35 @@
   "verified": "Verified",
   "storeOwner": "STORE OWNER",
   "taxRegistrationNumber": "CR-904812-EGY"
+  ,"highestSingle": "Highest expense"
+  ,"employeesShortDate": "Employees"
+  ,"lowestSingle": "Lowest expense"
+  ,"servicesShortDate": "Services"
+  ,"categoryEmployees": "Employees"
+  ,"categoryEmployeesEn": "Payroll"
+  ,"categoryServices": "Services"
+  ,"categoryServicesEn": "Utilities & services"
+  ,"sampleTxnElectricity": "Electricity bill"
+  ,"sampleTxnEmployeePayment": "Employee payment"
+  ,"allTransactions": "All Transactions"
+  ,"recordsCount": "{count} records"
+  ,"@recordsCount": {"placeholders": {"count": {"type": "int"}}}
+  ,"latest": "Latest"
+  ,"byCategory": "By Category"
+  ,"byCategorySubtitle": "Expense distribution by category"
+  ,"categoriesShort": "categories"
+  ,"day": "Day"
+  ,"quarter": "Quarter"
+  ,"monthlyTrend": "Monthly Trend"
+  ,"monthlyTrendSubtitle": "Expenses over the past months"
+  ,"totalExpensesFor": "Total expenses for {period}"
+  ,"@totalExpensesFor": {"placeholders": {"period": {"type": "String"}}}
+  ,"expensesComparedToPreviousPeriod": "Compared with previous period: {amount} EGP"
+  ,"@expensesComparedToPreviousPeriod": {"placeholders": {"amount": {"type": "String"}}}
+  ,"transactions": "Transactions"
+  ,"avgPerTransaction": "Avg. per transaction"
+  ,"dailyAverage": "Daily average"
+  ,"peakSpendingDays": "Peak Spending Days"
+  ,"loadMore": "Load more"
+  ,"oldest": "Oldest"
 }

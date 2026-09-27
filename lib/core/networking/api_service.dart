@@ -17,6 +17,11 @@ import 'package:skeleton_mobile_app/features/profit_details/data/model/profit_su
 import 'package:skeleton_mobile_app/features/profit_details/data/model/profit_weekly_chart_dto.dart';
 import 'package:skeleton_mobile_app/features/purchases/data/model/purchases_dto.dart';
 import 'package:skeleton_mobile_app/features/product_details/data/model/product_details_dto.dart';
+import 'package:skeleton_mobile_app/features/expeness/data/model/expenses_summary_dto.dart';
+import 'package:skeleton_mobile_app/features/expeness/data/model/expenses_monthly_trend_dto.dart';
+import 'package:skeleton_mobile_app/features/expeness/data/model/expenses_by_category_dto.dart';
+import 'package:skeleton_mobile_app/features/expeness/data/model/expenses_peak_days_dto.dart';
+import 'package:skeleton_mobile_app/features/expeness/data/model/expenses_transactions_dto.dart';
 
 part 'api_service.g.dart';
 
@@ -130,6 +135,40 @@ abstract class ApiService {
     @Query('year') int year,
     @Query('month') int month,
     @Query('take') int take,
+  );
+
+  @GET(EndPoints.expensesSummary)
+  Future<ExpensesSummaryDto> getExpensesSummary(
+    @Query('storeId') int storeId,
+    @Query('period') String period,
+    @Query('date') String date,
+  );
+
+  @GET(EndPoints.expensesMonthlyTrend)
+  Future<ExpensesMonthlyTrendDto> getExpensesMonthlyTrend(
+    @Query('storeId') int storeId,
+    @Query('date') String date,
+  );
+
+  @GET(EndPoints.expensesByCategory)
+  Future<ExpensesByCategoryDto> getExpensesByCategory(
+    @Query('storeId') int storeId,
+    @Query('period') String period,
+    @Query('date') String date,
+  );
+
+  @GET(EndPoints.expensesPeakDays)
+  Future<ExpensesPeakDaysDto> getExpensesPeakDays(
+    @Query('storeId') int storeId,
+    @Query('take') int take,
+  );
+
+  @GET(EndPoints.expensesTransactions)
+  Future<ExpensesTransactionsDto> getExpensesTransactions(
+    @Query('storeId') int storeId,
+    @Query('sort') String sort,
+    @Query('take') int take,
+    @Query('skip') int skip,
   );
 
   @GET(EndPoints.productActivity)

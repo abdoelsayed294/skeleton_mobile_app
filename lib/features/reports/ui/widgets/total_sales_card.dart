@@ -1,51 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
 import 'package:skeleton_mobile_app/core/theming/app_color.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
-import 'package:skeleton_mobile_app/core/widgets/shimmer_block.dart';
 import 'package:skeleton_mobile_app/features/reports/logic/reports_sales_cubit.dart';
 import 'package:skeleton_mobile_app/features/reports/logic/reports_sales_state.dart';
 import 'package:skeleton_mobile_app/features/reports/ui/widgets/stat_column.dart';
 import 'package:skeleton_mobile_app/features/reports/ui/widgets/total_sales_loading_content.dart';
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
 
-class TotalSalesCard extends StatefulWidget {
-  final DateTime selectedMonth;
-
-  const TotalSalesCard({super.key, required this.selectedMonth});
-
-  @override
-  State<TotalSalesCard> createState() => _TotalSalesCardState();
-}
-
-class _TotalSalesCardState extends State<TotalSalesCard> {
-  @override
-  void initState() {
-    super.initState();
-    _fetchReportsSales();
-  }
-
-  @override
-  void didUpdateWidget(covariant TotalSalesCard oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.selectedMonth.year != widget.selectedMonth.year ||
-        oldWidget.selectedMonth.month != widget.selectedMonth.month) {
-      _fetchReportsSales();
-    }
-  }
-
-  Future<void> _fetchReportsSales() async {
-    final storeId = await SharedPrefHelper.getInt(SharedPrefHelper.storeIdKey);
-    if (!mounted) return;
-    context.read<ReportsSalesCubit>().getReportsSales(
-      storeId: storeId,
-      period: 'month',
-      year: widget.selectedMonth.year,
-      month: widget.selectedMonth.month,
-    );
-  }
+class TotalSalesCard extends StatelessWidget {
+  const TotalSalesCard({super.key});
 
   @override
   Widget build(BuildContext context) {
