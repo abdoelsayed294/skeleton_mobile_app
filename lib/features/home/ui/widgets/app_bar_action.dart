@@ -19,6 +19,9 @@ class AppBarAction extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final accent = theme.primaryColor;
+    final isLandscape =
+        MediaQuery.sizeOf(context).width > MediaQuery.sizeOf(context).height;
+    final size = isLandscape ? 34.0 : 34.w;
 
     return Tooltip(
       message: tooltip,
@@ -26,8 +29,8 @@ class AppBarAction extends StatelessWidget {
         onTap: onTap,
         borderRadius: BorderRadius.circular(11.r),
         child: Container(
-          width: 34.w,
-          height: 34.w,
+          width: size,
+          height: size,
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topLeft,
@@ -41,19 +44,19 @@ class AppBarAction extends StatelessWidget {
               color: isAccent
                   ? accent.withValues(alpha: 0.35)
                   : theme.dividerColor.withValues(alpha: 0.9),
-              width: 1.w,
+              width: isLandscape ? 1 : 1.w,
             ),
             boxShadow: [
               BoxShadow(
                 color: accent.withValues(alpha: isAccent ? 0.12 : 0.06),
                 blurRadius: 5.r,
-                offset: Offset(0, 2.h),
+                offset: Offset(0, isLandscape ? 2 : 2.h),
               ),
             ],
           ),
           child: Icon(
             icon,
-            size: 15.sp,
+            size: isLandscape ? 15 : 15.sp,
             color: isAccent ? accent : theme.canvasColor,
           ),
         ),

@@ -1,4 +1,4 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeleton_mobile_app/core/theming/app_color.dart';
@@ -33,6 +33,11 @@ class ProfitSummaryCard extends StatelessWidget {
         success: (data) {
           final summary = data;
           final isDark = Theme.of(context).brightness == Brightness.dark;
+          final isLandscape =
+              MediaQuery.orientationOf(context) == Orientation.landscape;
+          double w(double value) => isLandscape ? value : value.w;
+          double h(double value) => isLandscape ? value : value.h;
+          double r(double value) => isLandscape ? value : value.r;
           final isRtl = Directionality.of(context) == TextDirection.rtl;
           final gradientColors = isDark
               ? [
@@ -45,7 +50,7 @@ class ProfitSummaryCard extends StatelessWidget {
           );
 
           return Container(
-            height: 198.h,
+            height: h(198),
             width: double.infinity,
             clipBehavior: Clip.hardEdge,
             decoration: BoxDecoration(
@@ -54,23 +59,23 @@ class ProfitSummaryCard extends StatelessWidget {
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
-              borderRadius: BorderRadius.circular(20.r),
+              borderRadius: BorderRadius.circular(r(20)),
               boxShadow: [
                 BoxShadow(
                   color: gradientColors.last.withValues(alpha: 0.3),
-                  blurRadius: 14.r,
-                  offset: Offset(0, 7.h),
+                  blurRadius: r(14),
+                  offset: Offset(0, h(7)),
                 ),
               ],
             ),
             child: Stack(
               children: [
                 PositionedDirectional(
-                  end: -38.w,
-                  bottom: -48.h,
+                  end: -w(38),
+                  bottom: -h(48),
                   child: Container(
-                    width: 148.w,
-                    height: 148.w,
+                    width: w(148),
+                    height: w(148),
                     decoration: BoxDecoration(
                       color: Colors.white.withValues(alpha: 0.08),
                       shape: BoxShape.circle,
@@ -79,10 +84,10 @@ class ProfitSummaryCard extends StatelessWidget {
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(
-                    18.w,
-                    18.h,
-                    16.w,
-                    16.h,
+                    w(18),
+                    h(18),
+                    w(16),
+                    h(16),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,9 +96,9 @@ class ProfitSummaryCard extends StatelessWidget {
                         l10n.netProfit.toUpperCase(),
                         style: AppStyles.totalSalesLabelLight,
                       ),
-                      SizedBox(height: 5.h),
+                      SizedBox(height: h(5)),
                       Padding(
-                        padding: EdgeInsetsDirectional.only(end: 76.w),
+                        padding: EdgeInsetsDirectional.only(end: w(76)),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
@@ -115,7 +120,7 @@ class ProfitSummaryCard extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(width: 5.w),
+                            SizedBox(width: w(5)),
                             Text(
                               l10n.currencyEgp,
                               style: AppStyles.totalSalesUnitLight,
@@ -133,7 +138,7 @@ class ProfitSummaryCard extends StatelessWidget {
                         height: 1,
                         color: Colors.white.withValues(alpha: 0.16),
                       ),
-                      SizedBox(height: 14.h),
+                      SizedBox(height: h(14)),
                       Row(
                         children: [
                           Text(
@@ -166,15 +171,15 @@ class ProfitSummaryCard extends StatelessWidget {
                   ),
                 ),
                 PositionedDirectional(
-                  top: 22.h,
-                  end: 20.w,
+                  top: h(22),
+                  end: w(20),
                   child: Container(
-                    width: 52.w,
-                    height: 52.w,
+                    width: w(52),
+                    height: w(52),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       color: Colors.white.withValues(alpha: 0.12),
-                      borderRadius: BorderRadius.circular(16.r),
+                      borderRadius: BorderRadius.circular(r(16)),
                       border: Border.all(
                         color: Colors.white.withValues(alpha: 0.24),
                       ),
@@ -188,16 +193,16 @@ class ProfitSummaryCard extends StatelessWidget {
                   ),
                 ),
                 PositionedDirectional(
-                  top: 88.h,
-                  end: 20.w,
+                  top: h(88),
+                  end: w(20),
                   child: Container(
                     padding: EdgeInsets.symmetric(
-                      horizontal: 10.w,
-                      vertical: 6.h,
+                      horizontal: w(10),
+                      vertical: h(6),
                     ),
                     decoration: BoxDecoration(
                       color: Colors.white.withValues(alpha: 0.14),
-                      borderRadius: BorderRadius.circular(18.r),
+                      borderRadius: BorderRadius.circular(r(18)),
                       border: Border.all(
                         color: Colors.white.withValues(alpha: 0.2),
                       ),

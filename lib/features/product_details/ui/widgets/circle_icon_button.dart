@@ -5,24 +5,32 @@ class CircleIconButton extends StatelessWidget {
   final IconData icon;
   final VoidCallback? onTap;
 
-  const CircleIconButton({required this.icon, this.onTap});
+  const CircleIconButton({super.key, required this.icon, this.onTap});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final isLandscape =
+        MediaQuery.orientationOf(context) == Orientation.landscape;
+    final buttonSize = isLandscape ? 32.0 : 32.w;
+    final iconSize = isLandscape ? 15.0 : 15.sp;
 
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(11.r),
+      borderRadius: BorderRadius.circular(10.r),
       child: Container(
-        width: 36.w,
-        height: 36.w,
+        width: buttonSize,
+        height: buttonSize,
         decoration: BoxDecoration(
           color: theme.cardColor,
-          borderRadius: BorderRadius.circular(11.r),
+          borderRadius: BorderRadius.circular(10.r),
           border: Border.all(color: theme.dividerColor.withValues(alpha: 0.9)),
         ),
-        child: Icon(icon, size: 16.sp, color: theme.textTheme.bodyLarge?.color),
+        child: Icon(
+          icon,
+          size: iconSize,
+          color: theme.textTheme.bodyLarge?.color,
+        ),
       ),
     );
   }

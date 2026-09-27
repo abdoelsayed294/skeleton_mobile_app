@@ -14,13 +14,23 @@ class AssistantHeader extends StatelessWidget {
     final bodyStyle = isDark
         ? AppStyles.assistantBodyDark
         : AppStyles.assistantBodyLight;
+    final isLandscape =
+        MediaQuery.orientationOf(context) == Orientation.landscape;
     return Padding(
       padding: EdgeInsets.fromLTRB(18.w, 12.h, 18.w, 8.h),
       child: Row(
         children: [
           IconButton(
             onPressed: onBack,
-            icon: Icon(Icons.chevron_left_rounded, size: 22.sp),
+            padding: EdgeInsets.zero,
+            constraints: BoxConstraints.tightFor(
+              width: isLandscape ? 32 : 32.w,
+              height: isLandscape ? 32 : 32.h,
+            ),
+            icon: Icon(
+              Icons.chevron_left_rounded,
+              size: isLandscape ? 18 : 18.sp,
+            ),
           ),
           Expanded(
             child: Column(

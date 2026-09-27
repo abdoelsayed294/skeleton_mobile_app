@@ -48,20 +48,25 @@ class ProfitMetricCard extends StatelessWidget {
           final change = metric?.percentChange ?? 0;
           final theme = Theme.of(context);
           final isDark = theme.brightness == Brightness.dark;
+          final isLandscape =
+              MediaQuery.orientationOf(context) == Orientation.landscape;
+          double w(double size) => isLandscape ? size : size.w;
+          double h(double size) => isLandscape ? size : size.h;
+          double r(double size) => isLandscape ? size : size.r;
 
           return Expanded(
             child: Container(
-              height: 112.h,
-              padding: EdgeInsets.fromLTRB(12.w, 11.h, 12.w, 9.h),
+              height: h(112),
+              padding: EdgeInsets.fromLTRB(w(12), h(11), w(12), h(9)),
               decoration: BoxDecoration(
                 color: theme.cardColor,
-                borderRadius: BorderRadius.circular(14.r),
+                borderRadius: BorderRadius.circular(r(14)),
                 border: Border.all(color: theme.dividerColor),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withValues(alpha: 0.04),
-                    blurRadius: 7.r,
-                    offset: Offset(0, 3.h),
+                    blurRadius: r(7),
+                    offset: Offset(0, h(3)),
                   ),
                 ],
               ),
@@ -80,13 +85,17 @@ class ProfitMetricCard extends StatelessWidget {
                               : AppStyles.statTitleLight,
                         ),
                       ),
-                      Icon(icon, size: 15.sp, color: accentColor),
+                      Icon(
+                        icon,
+                        size: isLandscape ? 15 : 15.sp,
+                        color: accentColor,
+                      ),
                     ],
                   ),
-                  SizedBox(height: 8.h),
+                  SizedBox(height: h(8)),
                   SizedBox(
                     width: double.infinity,
-                    height: 27.h,
+                    height: h(27),
                     child: FittedBox(
                       fit: BoxFit.scaleDown,
                       alignment: Directionality.of(context) == TextDirection.rtl
@@ -113,12 +122,12 @@ class ProfitMetricCard extends StatelessWidget {
                   const Spacer(),
                   Container(
                     padding: EdgeInsets.symmetric(
-                      horizontal: 6.w,
-                      vertical: 2.h,
+                      horizontal: w(6),
+                      vertical: h(2),
                     ),
                     decoration: BoxDecoration(
                       color: accentColor.withValues(alpha: 0.1),
-                      borderRadius: BorderRadius.circular(7.r),
+                      borderRadius: BorderRadius.circular(r(7)),
                     ),
                     child: Text(
                       '${change >= 0 ? '+' : ''}${change.toStringAsFixed(1)}%',

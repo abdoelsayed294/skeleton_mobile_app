@@ -17,20 +17,20 @@ class Indicator extends StatelessWidget {
     required this.color,
   });
 
-  static final double _width = 51.w;
-  static const double _height = 6;
-  static const double _topOffset = 0;
-
   @override
   Widget build(BuildContext context) {
     final currentX = lerpDouble(startX, endX, progress)!;
+    final isLandscape =
+        MediaQuery.sizeOf(context).width > MediaQuery.sizeOf(context).height;
+    final width = isLandscape ? 51.0 : 51.r;
+    final height = isLandscape ? 6.0 : 6.r;
 
     return Positioned(
-      left: currentX - _width / 2,
-      top: _topOffset,
+      left: currentX - width / 2,
+      top: 0,
       child: Container(
-        width: _width,
-        height: _height,
+        width: width,
+        height: height,
         decoration: BoxDecoration(
           color: color,
           borderRadius: const BorderRadius.vertical(bottom: Radius.circular(4)),

@@ -26,6 +26,8 @@ class _HomeScreanState extends State<HomeScrean> {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final isArabic = Localizations.localeOf(context).languageCode == 'ar';
+    final isLandscape =
+        MediaQuery.sizeOf(context).width > MediaQuery.sizeOf(context).height;
 
     return Scaffold(
       body: SafeArea(
@@ -34,16 +36,18 @@ class _HomeScreanState extends State<HomeScrean> {
             SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
               child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 20.w),
+                margin: EdgeInsets.symmetric(
+                  horizontal: isLandscape ? 20 : 20.w,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AppBarHome(),
                     Divider(
                       color: Theme.of(context).primaryColor,
-                      height: 31.h,
-                      thickness: 3.h,
-                      endIndent: 300.w,
+                      height: isLandscape ? 31 : 31.h,
+                      thickness: isLandscape ? 3 : 3.h,
+                      endIndent: isLandscape ? 150 : 300.w,
                     ),
                     BlocBuilder<HomeCubit, HomeState>(
                       builder: (context, state) {

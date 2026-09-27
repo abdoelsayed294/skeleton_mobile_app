@@ -5,21 +5,27 @@ import 'package:skeleton_mobile_app/features/home/ui/widgets/date_selector.dart'
 
 class ProfitDetailsHeader extends StatelessWidget {
   final String title;
-  final DateTime selectedDate;
-  final ValueChanged<DateTime> onDateChanged;
+  final DateTime? selectedDate;
+  final ValueChanged<DateTime>? onDateChanged;
   final VoidCallback onBack;
+  final bool showDateSelector;
 
   const ProfitDetailsHeader({
     super.key,
     required this.title,
-    required this.selectedDate,
-    required this.onDateChanged,
+    this.selectedDate,
+    this.onDateChanged,
     required this.onBack,
+    this.showDateSelector = true,
   });
 
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isLandscape =
+        MediaQuery.orientationOf(context) == Orientation.landscape;
+    final buttonSize = isLandscape ? 38.0 : 38.w;
+    final iconSize = isLandscape ? 18.0 : 18.sp;
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -28,8 +34,8 @@ class ProfitDetailsHeader extends StatelessWidget {
           onTap: onBack,
           borderRadius: BorderRadius.circular(16.r),
           child: Container(
-            width: 50.w,
-            height: 50.w,
+            width: buttonSize,
+            height: buttonSize,
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: Theme.of(context).cardColor,
@@ -43,10 +49,10 @@ class ProfitDetailsHeader extends StatelessWidget {
                 ),
               ],
             ),
-            child: Icon(Icons.swap_horiz_rounded, size: 21.sp),
+            child: Icon(Icons.swap_horiz_rounded, size: iconSize),
           ),
         ),
-        SizedBox(width: 14.w),
+        SizedBox(width: 10.w),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,7 +72,11 @@ class ProfitDetailsHeader extends StatelessWidget {
             ],
           ),
         ),
-        DateSelector(selectedDate: selectedDate, onDateChanged: onDateChanged),
+        if (showDateSelector && selectedDate != null && onDateChanged != null)
+          DateSelector(
+            selectedDate: selectedDate!,
+            onDateChanged: onDateChanged!,
+          ),
       ],
     );
   }

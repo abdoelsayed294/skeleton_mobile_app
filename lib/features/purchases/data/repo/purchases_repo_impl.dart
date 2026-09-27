@@ -28,11 +28,10 @@ class PurchasesRepoImpl implements PurchasesRepo {
   @override
   Future<ApiResult<PurchasesRecentEntity>> getPurchasesRecent(
     int storeId,
-    int year,
-    int month,
+    String date,
     int take,
   ) async {
-    final result = await _remote.getPurchasesRecent(storeId, year, month, take);
+    final result = await _remote.getPurchasesRecent(storeId, date, take);
     return result.when(
       success: (data) => ApiResult.success(data.toEntity()),
       failure: (error) => ApiResult.failure(error),

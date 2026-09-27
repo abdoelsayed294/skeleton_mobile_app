@@ -9,6 +9,9 @@ class AssistantFloatingButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final isLandscape =
+        MediaQuery.sizeOf(context).width > MediaQuery.sizeOf(context).height;
+    final buttonSize = isLandscape ? 50.0 : 58.w;
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -20,8 +23,8 @@ class AssistantFloatingButton extends StatelessWidget {
             ).push(MaterialPageRoute(builder: (_) => const AssistantScreen())),
             borderRadius: BorderRadius.circular(40.r),
             child: Container(
-              width: 58.w,
-              height: 58.w,
+              width: buttonSize,
+              height: buttonSize,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 gradient: LinearGradient(
@@ -33,28 +36,28 @@ class AssistantFloatingButton extends StatelessWidget {
                   BoxShadow(
                     color: theme.primaryColor.withValues(alpha: 0.32),
                     blurRadius: 14.r,
-                    offset: Offset(0, 6.h),
+                    offset: Offset(0, 6.r),
                   ),
                 ],
               ),
               child: Icon(
                 Icons.mic_none_rounded,
                 color: Colors.white,
-                size: 30.sp,
+                size: isLandscape ? 25 : 30.sp,
               ),
             ),
           ),
         ),
         Transform.translate(
-          offset: Offset(0, -7.h),
+          offset: Offset(0, -7.r),
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 7.w, vertical: 2.h),
+            padding: EdgeInsets.symmetric(horizontal: 7.r, vertical: 2.r),
             decoration: BoxDecoration(
               color: theme.brightness == Brightness.dark
                   ? Colors.white
                   : const Color(0xFF0F2942),
               borderRadius: BorderRadius.circular(9.r),
-              border: Border.all(color: theme.cardColor, width: 1.2.w),
+              border: Border.all(color: theme.cardColor, width: 1.2.r),
             ),
             child: Text(
               'ASK',
@@ -62,7 +65,7 @@ class AssistantFloatingButton extends StatelessWidget {
                 color: theme.brightness == Brightness.dark
                     ? const Color(0xFF0F2942)
                     : Colors.white,
-                fontSize: 8.sp,
+                fontSize: 8.r,
                 fontWeight: FontWeight.w800,
               ),
             ),

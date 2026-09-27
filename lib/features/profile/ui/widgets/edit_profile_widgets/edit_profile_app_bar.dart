@@ -14,13 +14,22 @@ class EditProfileAppBar extends StatelessWidget {
     final color = isDark
         ? AppColorsDark.textPrimary
         : AppColorsLight.textPrimary;
+    final isLandscape =
+        MediaQuery.orientationOf(context) == Orientation.landscape;
     return Row(
       children: [
         IconButton(
           onPressed: () => Navigator.of(context).maybePop(),
-          icon: Icon(Icons.arrow_back_rounded, color: color, size: 23.sp),
+          icon: Icon(
+            Icons.arrow_back_rounded,
+            color: color,
+            size: isLandscape ? 18 : 20.sp,
+          ),
           padding: EdgeInsets.zero,
-          constraints: BoxConstraints(minWidth: 32.w, minHeight: 32.w),
+          constraints: BoxConstraints.tightFor(
+            width: isLandscape ? 32 : 32.w,
+            height: isLandscape ? 32 : 32.w,
+          ),
         ),
         SizedBox(width: 12.w),
         Expanded(

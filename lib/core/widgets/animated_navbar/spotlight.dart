@@ -2,7 +2,6 @@ import 'package:skeleton_mobile_app/core/widgets/animated_navbar/arc_path.dart';
 import 'package:skeleton_mobile_app/core/widgets/animated_navbar/spotlight_painter.dart';
 import 'package:flutter/material.dart';
 
-
 class Spotlight extends StatelessWidget {
   final double progress;
   final double startX;
@@ -28,10 +27,7 @@ class Spotlight extends StatelessWidget {
     return IgnorePointer(
       child: SizedBox.expand(
         child: CustomPaint(
-          painter: SpotlightPainter(
-            centerX: offset.dx,
-            color: color,
-          ),
+          painter: SpotlightPainter(centerX: offset.dx, color: color),
         ),
       ),
     );

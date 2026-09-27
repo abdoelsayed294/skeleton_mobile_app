@@ -73,20 +73,24 @@ class DateSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isLandscape =
+        MediaQuery.sizeOf(context).width > MediaQuery.sizeOf(context).height;
+    final width = isLandscape ? 112.0 : 112.w;
+    final height = isLandscape ? 42.0 : 42.h;
 
     return InkWell(
       onTap: () => _selectDate(context),
       borderRadius: BorderRadius.circular(14.r),
       child: Container(
-        width: 102.w,
-        height: 39.h,
-        padding: EdgeInsets.symmetric(horizontal: 5.w),
+        width: width,
+        height: height,
+        padding: EdgeInsets.symmetric(horizontal: isLandscape ? 5 : 5.w),
         decoration: BoxDecoration(
           color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.circular(14.r),
           border: Border.all(
             color: Theme.of(context).primaryColor.withOpacity(0.12),
-            width: 1.w,
+            width: isLandscape ? 1 : 1.w,
           ),
           boxShadow: [
             BoxShadow(
@@ -100,10 +104,10 @@ class DateSelector extends StatelessWidget {
           children: [
             Icon(
               Icons.calendar_today_outlined,
-              size: 14.sp,
+              size: isLandscape ? 14 : 14.sp,
               color: Theme.of(context).primaryColor,
             ),
-            SizedBox(width: 4.w),
+            SizedBox(width: isLandscape ? 4 : 4.w),
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -135,7 +139,7 @@ class DateSelector extends StatelessWidget {
             ),
             Icon(
               Icons.keyboard_arrow_down_rounded,
-              size: 14.sp,
+              size: isLandscape ? 14 : 14.sp,
               color: Theme.of(context).hintColor,
             ),
           ],

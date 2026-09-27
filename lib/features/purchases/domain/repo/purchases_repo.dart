@@ -11,8 +11,7 @@ abstract class PurchasesRepo {
 
   Future<ApiResult<PurchasesRecentEntity>> getPurchasesRecent(
     int storeId,
-    int year,
-    int month,
+    String date,
     int take,
   );
 }

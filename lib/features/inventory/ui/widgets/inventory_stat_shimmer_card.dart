@@ -6,9 +6,11 @@ class InventoryStatShimmerCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final landscape =
+        MediaQuery.sizeOf(context).width > MediaQuery.sizeOf(context).height;
     return Container(
-      height: 108.h,
-      padding: EdgeInsets.symmetric(vertical: 13.h),
+      height: landscape ? 108 : 108.h,
+      padding: EdgeInsets.symmetric(vertical: landscape ? 13 : 13.h),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16.r),
@@ -17,8 +19,8 @@ class InventoryStatShimmerCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            width: 33.w,
-            height: 33.w,
+            width: landscape ? 33 : 33.w,
+            height: landscape ? 33 : 33.w,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(9.r),
@@ -26,8 +28,8 @@ class InventoryStatShimmerCard extends StatelessWidget {
           ),
 
           Container(
-            width: 40.w,
-            height: 18.h,
+            width: landscape ? 40 : 40.w,
+            height: landscape ? 18 : 18.h,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(5.r),
@@ -35,8 +37,8 @@ class InventoryStatShimmerCard extends StatelessWidget {
           ),
 
           Container(
-            width: 55.w,
-            height: 10.h,
+            width: landscape ? 55 : 55.w,
+            height: landscape ? 10 : 10.h,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(4.r),
