@@ -546,4 +546,6 @@
   ,"peakSpendingDays": "Peak Spending Days"
   ,"loadMore": "Load more"
   ,"oldest": "Oldest"
+  ,"noRecentTransactions": "No recent transactions found."
+  ,"noPurchasesFound": "No purchases found."
 }

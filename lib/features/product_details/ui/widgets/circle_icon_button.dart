@@ -12,19 +12,26 @@ class CircleIconButton extends StatelessWidget {
     final theme = Theme.of(context);
     final isLandscape =
         MediaQuery.orientationOf(context) == Orientation.landscape;
-    final buttonSize = isLandscape ? 32.0 : 32.w;
-    final iconSize = isLandscape ? 15.0 : 15.sp;
+    final buttonSize = isLandscape ? 38.0 : 38.w;
+    final iconSize = isLandscape ? 18.0 : 18.sp;
 
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(10.r),
+      borderRadius: BorderRadius.circular(16.r),
       child: Container(
         width: buttonSize,
         height: buttonSize,
         decoration: BoxDecoration(
           color: theme.cardColor,
-          borderRadius: BorderRadius.circular(10.r),
+          borderRadius: BorderRadius.circular(16.r),
           border: Border.all(color: theme.dividerColor.withValues(alpha: 0.9)),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.06),
+              blurRadius: 7.r,
+              offset: Offset(0, 3.h),
+            ),
+          ],
         ),
         child: Icon(
           icon,

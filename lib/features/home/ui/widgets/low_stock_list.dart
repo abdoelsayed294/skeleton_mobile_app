@@ -81,15 +81,6 @@ class _LowStockListState extends State<LowStockList> {
                         : AppStyles.stockBadgeLight,
                   ),
                 ),
-                const Spacer(),
-                Text(
-                  l10n.manage,
-                  style:
-                      (isDark
-                              ? AppStyles.stockStatusDark
-                              : AppStyles.stockStatusLight)
-                          .copyWith(color: Theme.of(context).primaryColor),
-                ),
               ],
             ),
             SizedBox(height: 10.h),

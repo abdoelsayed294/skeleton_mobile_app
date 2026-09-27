@@ -35,7 +35,7 @@ class ProductDetailsAppBar extends StatelessWidget {
         success: (data) => Row(
           children: [
             CircleIconButton(
-              icon: Icons.arrow_back_ios_new_rounded,
+              icon: Icons.arrow_back_rounded,
               onTap: () => Navigator.of(context).maybePop(),
             ),
             Expanded(
@@ -60,7 +60,7 @@ class ProductDetailsAppBar extends StatelessWidget {
                 ],
               ),
             ),
-            CircleIconButton(icon: Icons.more_vert_rounded, onTap: null),
+            SizedBox(width: 38.w),
           ],
         ),
         orElse: () => const SizedBox.shrink(),

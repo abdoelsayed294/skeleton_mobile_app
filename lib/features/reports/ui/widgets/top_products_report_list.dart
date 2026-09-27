@@ -33,14 +33,6 @@ class TopProductsReportList extends StatelessWidget {
                         : AppStyles.productTitleLight,
                   ),
                 ),
-                Text(
-                  l10n.seeAll,
-                  style:
-                      (isDark
-                              ? AppStyles.productSubtitleDark
-                              : AppStyles.productSubtitleLight)
-                          .copyWith(color: Theme.of(context).primaryColor),
-                ),
               ],
             ),
             SizedBox(height: 6.h),

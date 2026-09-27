@@ -13,6 +13,7 @@ import 'package:skeleton_mobile_app/features/today_sales/logic/today_recent_tran
 import 'package:skeleton_mobile_app/features/today_sales/logic/today_sales_date_cubit.dart';
 import 'package:skeleton_mobile_app/features/today_sales/logic/today_sales_cubit.dart';
 import 'package:skeleton_mobile_app/features/today_sales/ui/screens/today_sales_screen.dart';
+import 'package:skeleton_mobile_app/features/today_sales/ui/screens/today_recent_transactions_screen.dart';
 import 'package:skeleton_mobile_app/features/profit_details/ui/screens/profit_details_screen.dart';
 import 'package:skeleton_mobile_app/features/profit_details/logic/profit_summary_cubit.dart';
 import 'package:skeleton_mobile_app/features/profit_details/logic/profit_weekly_chart_cubit.dart';
@@ -28,10 +29,12 @@ import 'package:skeleton_mobile_app/features/product_details/logic/product_sales
 import 'package:skeleton_mobile_app/features/profile/ui/scereens/profile_screan.dart';
 import 'package:skeleton_mobile_app/features/profile/ui/scereens/edit_profile_screan.dart';
 import 'package:skeleton_mobile_app/features/purchases/ui/scereens/purchases_screan.dart';
+import 'package:skeleton_mobile_app/features/purchases/ui/scereens/purchases_recent_transactions_screen.dart';
 import 'package:skeleton_mobile_app/features/purchases/logic/purchases_summary_cubit.dart';
 import 'package:skeleton_mobile_app/features/purchases/logic/purchases_recent_cubit.dart';
 import 'package:skeleton_mobile_app/features/purchases/logic/purchases_date_cubit.dart';
-import 'package:skeleton_mobile_app/features/reports/ui/scereens/reports_screan.dart';
+import 'package:skeleton_mobile_app/features/reports/ui/screens/reports_screan.dart';
+import 'package:skeleton_mobile_app/features/reports/ui/screens/reports_recent_transactions_screen.dart';
 import 'package:skeleton_mobile_app/features/notifications/ui/screens/notifications_screen.dart';
 import 'package:skeleton_mobile_app/features/expeness/ui/screens/expenses_screen.dart';
 import 'package:skeleton_mobile_app/features/expeness/logic/expenses_by_category_cubit.dart';
@@ -137,6 +140,29 @@ class AppRouter {
             );
           },
         );
+      case Routes.todayRecentTransactionsScreen:
+        final date = settings.arguments as DateTime? ?? DateTime.now();
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (_) =>
+                getIt<TodayRecentTransactionCubit>()
+                  ..getRecentTransactions(date: date, take: 20, all: false),
+            child: const TodayRecentTransactionsScreen(),
+          ),
+        );
+      case Routes.reportsRecentTransactionsScreen:
+        final month = settings.arguments as DateTime? ?? DateTime.now();
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (_) => getIt<RecentTransactionCubit>()
+              ..getRecentTransactions(
+                take: 20,
+                year: month.year,
+                month: month.month,
+              ),
+            child: const ReportsRecentTransactionsScreen(),
+          ),
+        );
       case Routes.profitDetailsScreen:
         return MaterialPageRoute(
           builder: (_) => MultiBlocProvider(
@@ -215,6 +241,15 @@ class AppRouter {
               child: const PurchasesScrean(),
             );
           },
+        );
+      case Routes.purchasesRecentTransactionsScreen:
+        final date = settings.arguments as DateTime? ?? DateTime.now();
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (_) =>
+                getIt<PurchasesRecentCubit>()..getPurchasesRecent(date),
+            child: const PurchasesRecentTransactionsScreen(),
+          ),
         );
       case Routes.notificationsScreen:
         return MaterialPageRoute(builder: (_) => const NotificationsScreen());

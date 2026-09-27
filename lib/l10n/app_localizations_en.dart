@@ -942,4 +942,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get oldest => 'Oldest';
+
+  @override
+  String get noRecentTransactions => 'No recent transactions found.';
+
+  @override
+  String get noPurchasesFound => 'No purchases found.';
 }

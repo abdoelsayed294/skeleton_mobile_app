@@ -57,11 +57,7 @@ class _TopSellingProductsState extends State<TopSellingProducts> {
         return SectionCard(
           child: Column(
             children: [
-              SectionHeader(
-                title: l10n.topSellingProducts,
-                action: l10n.viewAll,
-                isDark: isDark,
-              ),
+              SectionHeader(title: l10n.topSellingProducts, isDark: isDark),
               if (isLoading)
                 ...List.generate(
                   5,

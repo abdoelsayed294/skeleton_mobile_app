@@ -16,7 +16,6 @@ class PurchasesRecentCubit extends Cubit<PurchasesRecentState> {
   String _date = _formatDate(DateTime.now());
   int _take = _pageSize;
   int _requestId = 0;
-  int _queryVersion = 0;
   bool _hasMore = true;
   bool _isLoadingMore = false;
   Future<void>? _loadMoreFuture;
@@ -25,7 +24,6 @@ class PurchasesRecentCubit extends Cubit<PurchasesRecentState> {
   bool get isLoadingMore => _isLoadingMore;
 
   Future<void> getPurchasesRecent(DateTime date, {int take = 20}) async {
-    final queryVersion = ++_queryVersion;
     final requestId = ++_requestId;
     _date = _formatDate(date);
     _take = take;
@@ -49,9 +47,6 @@ class PurchasesRecentCubit extends Cubit<PurchasesRecentState> {
         emit(PurchasesRecentState.error(error));
       },
     );
-    while (queryVersion == _queryVersion && _hasMore && !isClosed) {
-      await loadMore();
-    }
   }
 
   Future<void> loadMore() {
