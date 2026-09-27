@@ -19,36 +19,39 @@ class TodaySalesScreen extends StatelessWidget {
     return BlocBuilder<TodaySalesDateCubit, DateTime>(
       builder: (context, selectedDate) => Scaffold(
         body: SafeArea(
-          child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 20.w),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 18.h),
-                  ProfitDetailsHeader(
-                    title: l10n.todaySales,
-                    selectedDate: selectedDate,
-                    onDateChanged: context
-                        .read<TodaySalesDateCubit>()
-                        .selectDate,
-                    onBack: () => Navigator.of(context).pop(),
-                  ),
-                  SizedBox(height: 16.h),
-                  const TodayTotalSalesCard(),
-                  SizedBox(height: 12.h),
-                  Row(
-                    children: [
-                      const TodayReturnsStatCard(),
-                      SizedBox(width: 12.w),
-                      const TodayItemsSoldStatCard(),
-                    ],
-                  ),
-                  SizedBox(height: 16.h),
-                  const TodayRecentTransactionsList(),
-                  SizedBox(height: 20.h),
-                ],
+          child: RefreshIndicator(
+            onRefresh: context.read<TodaySalesDateCubit>().refresh,
+            child: SingleChildScrollView(
+              physics: const AlwaysScrollableScrollPhysics(),
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: 20.w),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 18.h),
+                    ProfitDetailsHeader(
+                      title: l10n.todaySales,
+                      selectedDate: selectedDate,
+                      onDateChanged: context
+                          .read<TodaySalesDateCubit>()
+                          .selectDate,
+                      onBack: () => Navigator.of(context).pop(),
+                    ),
+                    SizedBox(height: 16.h),
+                    const TodayTotalSalesCard(),
+                    SizedBox(height: 12.h),
+                    Row(
+                      children: [
+                        const TodayReturnsStatCard(),
+                        SizedBox(width: 12.w),
+                        const TodayItemsSoldStatCard(),
+                      ],
+                    ),
+                    SizedBox(height: 16.h),
+                    const TodayRecentTransactionsList(),
+                    SizedBox(height: 20.h),
+                  ],
+                ),
               ),
             ),
           ),

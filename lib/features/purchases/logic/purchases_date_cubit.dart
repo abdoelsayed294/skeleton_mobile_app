@@ -19,8 +19,10 @@ class PurchasesDateCubit extends Cubit<DateTime> {
     _loadDate(date);
   }
 
-  void _loadDate(DateTime date) {
-    _summaryCubit.selectDate(date);
-    _recentCubit.getPurchasesRecent(date);
-  }
+  Future<void> refresh() => _loadDate(state);
+
+  Future<void> _loadDate(DateTime date) => Future.wait<void>([
+    _summaryCubit.getPurchasesSummary(date.year, date.month),
+    _recentCubit.getPurchasesRecent(date),
+  ]);
 }

@@ -33,88 +33,92 @@ class _HomeScreanState extends State<HomeScrean> {
       body: SafeArea(
         child: Stack(
           children: [
-            SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Container(
-                margin: EdgeInsets.symmetric(
-                  horizontal: isLandscape ? 20 : 20.w,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    AppBarHome(),
-                    Divider(
-                      color: Theme.of(context).primaryColor,
-                      height: isLandscape ? 31 : 31.h,
-                      thickness: isLandscape ? 3 : 3.h,
-                      endIndent: isLandscape ? 150 : 300.w,
-                    ),
-                    BlocBuilder<HomeCubit, HomeState>(
-                      builder: (context, state) {
-                        final summary = state.summaryState.maybeWhen(
-                          success: (data) => data,
-                          orElse: () => null,
-                        );
+            RefreshIndicator(
+              onRefresh: () => context.read<HomeCubit>().refresh(selectedDate),
+              child: SingleChildScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
+                child: Container(
+                  margin: EdgeInsets.symmetric(
+                    horizontal: isLandscape ? 20 : 20.w,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      AppBarHome(),
+                      Divider(
+                        color: Theme.of(context).primaryColor,
+                        height: isLandscape ? 31 : 31.h,
+                        thickness: isLandscape ? 3 : 3.h,
+                        endIndent: isLandscape ? 150 : 300.w,
+                      ),
+                      BlocBuilder<HomeCubit, HomeState>(
+                        builder: (context, state) {
+                          final summary = state.summaryState.maybeWhen(
+                            success: (data) => data,
+                            orElse: () => null,
+                          );
 
-                        final rawBusinessName =
-                            summary?.businessSummary.businessName ?? '';
-                        final rawStoreName =
-                            summary?.storeSummary.storeName ?? '';
-                        final businessName =
-                            isArabic &&
-                                rawBusinessName.trim().toLowerCase() ==
-                                    'skeleton'
-                            ? '\u0633\u0643\u064a\u0644\u062a\u0648\u0646'
-                            : rawBusinessName;
-                        final storeName =
-                            isArabic &&
-                                rawStoreName.trim().toLowerCase() == 'skeleton'
-                            ? '\u0633\u0643\u064a\u0644\u062a\u0648\u0646'
-                            : rawStoreName;
+                          final rawBusinessName =
+                              summary?.businessSummary.businessName ?? '';
+                          final rawStoreName =
+                              summary?.storeSummary.storeName ?? '';
+                          final businessName =
+                              isArabic &&
+                                  rawBusinessName.trim().toLowerCase() ==
+                                      'skeleton'
+                              ? '\u0633\u0643\u064a\u0644\u062a\u0648\u0646'
+                              : rawBusinessName;
+                          final storeName =
+                              isArabic &&
+                                  rawStoreName.trim().toLowerCase() ==
+                                      'skeleton'
+                              ? '\u0633\u0643\u064a\u0644\u062a\u0648\u0646'
+                              : rawStoreName;
 
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              businessName,
-                              style: isDark
-                                  ? AppStyles.font24BlackDark
-                                  : AppStyles.font24BlackLight,
-                            ),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    storeName,
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: isDark
-                                        ? AppStyles.font12MediumDark
-                                        : AppStyles.font12MediumLight,
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                businessName,
+                                style: isDark
+                                    ? AppStyles.font24BlackDark
+                                    : AppStyles.font24BlackLight,
+                              ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      storeName,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: isDark
+                                          ? AppStyles.font12MediumDark
+                                          : AppStyles.font12MediumLight,
+                                    ),
                                   ),
-                                ),
-                                DateSelector(
-                                  selectedDate: selectedDate,
-                                  onDateChanged: (date) {
-                                    setState(() => selectedDate = date);
-                                  },
-                                ),
-                              ],
-                            ),
-                          ],
-                        );
-                      },
-                    ),
-                    SizedBox(height: 20.h),
-                    StatsGrid(selectedDate: selectedDate),
-                    SizedBox(height: 20.h),
-                    SalesOverview(selectedDate: selectedDate),
-                    SizedBox(height: 20.h),
-                    const TopSellingProducts(),
-                    SizedBox(height: 20.h),
-                    const LowStockList(),
-                    SizedBox(height: 24.h),
-                  ],
+                                  DateSelector(
+                                    selectedDate: selectedDate,
+                                    onDateChanged: (date) {
+                                      setState(() => selectedDate = date);
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ],
+                          );
+                        },
+                      ),
+                      SizedBox(height: 20.h),
+                      StatsGrid(selectedDate: selectedDate),
+                      SizedBox(height: 20.h),
+                      SalesOverview(selectedDate: selectedDate),
+                      SizedBox(height: 20.h),
+                      const TopSellingProducts(),
+                      SizedBox(height: 20.h),
+                      const LowStockList(),
+                      SizedBox(height: 24.h),
+                    ],
+                  ),
                 ),
               ),
             ),

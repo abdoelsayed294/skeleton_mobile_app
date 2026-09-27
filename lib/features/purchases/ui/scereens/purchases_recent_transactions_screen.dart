@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeleton_mobile_app/features/profit_details/ui/widgets/profit_details_header.dart';
 import 'package:skeleton_mobile_app/features/purchases/ui/widgets/purchases_list_section.dart';
+import 'package:skeleton_mobile_app/features/purchases/logic/purchases_recent_cubit.dart';
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
 
 class PurchasesRecentTransactionsScreen extends StatefulWidget {
@@ -38,13 +40,16 @@ class _PurchasesRecentTransactionsScreenState
               ),
             ),
             Expanded(
-              child: SingleChildScrollView(
-                controller: _scrollController,
-                physics: const BouncingScrollPhysics(),
-                padding: EdgeInsets.fromLTRB(20.w, 8.h, 20.w, 24.h),
-                child: PurchasesListSection(
-                  scrollController: _scrollController,
-                  showSeeAll: false,
+              child: RefreshIndicator(
+                onRefresh: context.read<PurchasesRecentCubit>().refresh,
+                child: SingleChildScrollView(
+                  controller: _scrollController,
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  padding: EdgeInsets.fromLTRB(20.w, 8.h, 20.w, 24.h),
+                  child: PurchasesListSection(
+                    scrollController: _scrollController,
+                    showSeeAll: false,
+                  ),
                 ),
               ),
             ),

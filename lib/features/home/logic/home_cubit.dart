@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
 import 'package:skeleton_mobile_app/core/networking/api_result.dart';
 import 'package:skeleton_mobile_app/features/home/domain/use_cases/low_stock_use_case.dart';
 import 'package:skeleton_mobile_app/features/home/domain/use_cases/sales_chart_use_case.dart';
@@ -20,6 +21,16 @@ class HomeCubit extends Cubit<HomeState> {
     this.topProductsUseCase,
     this.lowStockUseCase,
   ) : super(const HomeState());
+
+  Future<void> refresh(DateTime date) async {
+    final storeId = await SharedPrefHelper.getInt(SharedPrefHelper.storeIdKey);
+    await Future.wait([
+      getSummary(storeId: storeId, date: date),
+      getSalesChart(storeId: storeId),
+      getTopProducts(storeId: storeId, take: 5, all: false),
+      getLowStock(storeId: storeId),
+    ]);
+  }
 
   Future<void> getSummary({required int storeId, DateTime? date}) async {
     emit(state.copyWith(summaryState: const RequestState.loading()));

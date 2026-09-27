@@ -19,6 +19,12 @@ class TodayRecentTransactionCubit extends Cubit<TodayRecentTransactionState> {
   bool get hasMore => _hasMore;
   bool get isLoadingMore => _isLoadingMore;
 
+  Future<void> refresh() => getRecentTransactions(
+    date: _date,
+    take: _all ? _take : 10,
+    all: _all,
+  );
+
   TodayRecentTransactionCubit(this._getTodayRecentTransactionUseCase)
     : super(const TodayRecentTransactionState.initial());
 

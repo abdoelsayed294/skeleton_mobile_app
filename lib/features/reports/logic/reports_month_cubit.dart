@@ -31,22 +31,24 @@ class ReportsMonthCubit extends Cubit<DateTime> {
     _loadMonth(selectedMonth);
   }
 
-  void _loadMonth(DateTime month) {
+  Future<void> refresh() => _loadMonth(state);
+
+  Future<void> _loadMonth(DateTime month) => Future.wait<void>([
     _reportsSalesCubit.getReportsSales(
       period: 'month',
       year: month.year,
       month: month.month,
-    );
+    ),
     _topSellingCubit.getTopSelling(
       period: 'month',
       take: 5,
       year: month.year,
       month: month.month,
-    );
+    ),
     _recentTransactionCubit.getRecentTransactions(
       take: 10,
       year: month.year,
       month: month.month,
-    );
-  }
+    ),
+  ]);
 }

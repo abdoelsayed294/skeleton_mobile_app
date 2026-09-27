@@ -26,40 +26,43 @@ class ExpensesScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: background,
       body: SafeArea(
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 18.h),
-              ProfitDetailsHeader(
-                title: l10n.expenses,
-                onBack: () => Navigator.of(context).maybePop(),
-                showDateSelector: false,
-              ),
-              SizedBox(height: 16.h),
-              BlocBuilder<ExpensesDateCubit, ExpensesDateState>(
-                builder: (context, state) => SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: ExpensesPeriodSelector(
-                    selected: state.selectedPeriod,
-                    onChanged: context.read<ExpensesDateCubit>().selectPeriod,
+        child: RefreshIndicator(
+          onRefresh: context.read<ExpensesDateCubit>().loadInitial,
+          child: SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            padding: EdgeInsets.symmetric(horizontal: 16.w),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 18.h),
+                ProfitDetailsHeader(
+                  title: l10n.expenses,
+                  onBack: () => Navigator.of(context).maybePop(),
+                  showDateSelector: false,
+                ),
+                SizedBox(height: 16.h),
+                BlocBuilder<ExpensesDateCubit, ExpensesDateState>(
+                  builder: (context, state) => SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: ExpensesPeriodSelector(
+                      selected: state.selectedPeriod,
+                      onChanged: context.read<ExpensesDateCubit>().selectPeriod,
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(height: 16.h),
-              const ExpensesSummarySection(),
-              SizedBox(height: 16.h),
-              const ExpensesTrendSection(),
-              SizedBox(height: 16.h),
-              const ExpensesCategoriesSection(),
-              SizedBox(height: 16.h),
-              const ExpensesPeakDaysSection(),
-              SizedBox(height: 16.h),
-              const ExpensesTransactionsSection(),
-              SizedBox(height: 24.h),
-            ],
+                SizedBox(height: 16.h),
+                const ExpensesSummarySection(),
+                SizedBox(height: 16.h),
+                const ExpensesTrendSection(),
+                SizedBox(height: 16.h),
+                const ExpensesCategoriesSection(),
+                SizedBox(height: 16.h),
+                const ExpensesPeakDaysSection(),
+                SizedBox(height: 16.h),
+                const ExpensesTransactionsSection(),
+                SizedBox(height: 24.h),
+              ],
+            ),
           ),
         ),
       ),

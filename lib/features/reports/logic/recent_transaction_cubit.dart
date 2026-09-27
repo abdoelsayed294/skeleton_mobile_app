@@ -19,6 +19,9 @@ class RecentTransactionCubit extends Cubit<RecentTransactionState> {
   bool get hasMore => _hasMore;
   bool get isLoadingMore => _isLoadingMore;
 
+  Future<void> refresh() =>
+      getRecentTransactions(take: 10, year: _year, month: _month);
+
   RecentTransactionCubit(this.recentTransactionUseCase)
     : super(const RecentTransactionState.initial());
 

@@ -29,24 +29,29 @@ class _PurchasesScreanState extends State<PurchasesScrean> {
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: const AddPurchaseButton(),
       body: SafeArea(
-        child: SingleChildScrollView(
-          controller: _scrollController,
-          physics: const BouncingScrollPhysics(),
-          padding: EdgeInsets.fromLTRB(20.w, 12.h, 20.w, 88.h),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              BlocBuilder<PurchasesDateCubit, DateTime>(
-                builder: (context, selectedDate) => PurchasesHeader(
-                  selectedDate: selectedDate,
-                  onDateChanged: context.read<PurchasesDateCubit>().selectDate,
+        child: RefreshIndicator(
+          onRefresh: context.read<PurchasesDateCubit>().refresh,
+          child: SingleChildScrollView(
+            controller: _scrollController,
+            physics: const AlwaysScrollableScrollPhysics(),
+            padding: EdgeInsets.fromLTRB(20.w, 12.h, 20.w, 88.h),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                BlocBuilder<PurchasesDateCubit, DateTime>(
+                  builder: (context, selectedDate) => PurchasesHeader(
+                    selectedDate: selectedDate,
+                    onDateChanged: context
+                        .read<PurchasesDateCubit>()
+                        .selectDate,
+                  ),
                 ),
-              ),
-              SizedBox(height: 16.h),
-              const PurchasesSummaryCard(),
-              SizedBox(height: 24.h),
-              PurchasesListSection(scrollController: _scrollController),
-            ],
+                SizedBox(height: 16.h),
+                const PurchasesSummaryCard(),
+                SizedBox(height: 24.h),
+                PurchasesListSection(scrollController: _scrollController),
+              ],
+            ),
           ),
         ),
       ),

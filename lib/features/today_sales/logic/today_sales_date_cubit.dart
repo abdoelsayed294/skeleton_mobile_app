@@ -19,12 +19,14 @@ class TodaySalesDateCubit extends Cubit<DateTime> {
     _loadDate(date);
   }
 
-  void _loadDate(DateTime date) {
-    _salesCubit.getTodaySales(date: date);
+  Future<void> refresh() => _loadDate(state);
+
+  Future<void> _loadDate(DateTime date) => Future.wait<void>([
+    _salesCubit.getTodaySales(date: date),
     _recentTransactionsCubit.getRecentTransactions(
       date: date,
       take: 10,
       all: false,
-    );
-  }
+    ),
+  ]);
 }

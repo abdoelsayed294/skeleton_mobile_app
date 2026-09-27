@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeleton_mobile_app/core/widgets/empty_state_message.dart';
-import 'package:skeleton_mobile_app/core/widgets/shimmer_block.dart';
+import 'package:skeleton_mobile_app/core/widgets/recent_transactions_shimmer_list.dart';
 import 'package:skeleton_mobile_app/features/profit_details/ui/widgets/profit_details_header.dart';
 import 'package:skeleton_mobile_app/features/reports/logic/recent_transaction_cubit.dart';
 import 'package:skeleton_mobile_app/features/reports/logic/recent_transaction_state.dart';
@@ -64,77 +64,80 @@ class _ReportsRecentTransactionsScreenState
               ),
             ),
             Expanded(
-              child:
-                  BlocBuilder<RecentTransactionCubit, RecentTransactionState>(
-                    builder: (context, state) => state.when(
-                      initial: () => _buildShimmerList(),
-                      loading: () => _buildShimmerList(),
-                      success: (transactions) {
-                        if (transactions.isEmpty) {
-                          return EmptyStateMessage(
-                            message: l10n.noRecentTransactions,
-                          );
-                        }
-                        return ListView.builder(
-                          controller: _scrollController,
-                          padding: EdgeInsets.all(16.w),
-                          itemCount:
-                              transactions.length + (_isLoadingMore ? 1 : 0),
-                          itemBuilder: (context, index) {
-                            if (index == transactions.length) {
-                              return Padding(
-                                padding: EdgeInsets.all(16.w),
-                                child: const Center(
-                                  child: CircularProgressIndicator(),
+              child: RefreshIndicator(
+                onRefresh: context.read<RecentTransactionCubit>().refresh,
+                child:
+                    BlocBuilder<RecentTransactionCubit, RecentTransactionState>(
+                      builder: (context, state) => state.when(
+                        initial: () => RecentTransactionsShimmerList(
+                          scrollController: _scrollController,
+                        ),
+                        loading: () => RecentTransactionsShimmerList(
+                          scrollController: _scrollController,
+                        ),
+                        success: (transactions) {
+                          if (transactions.isEmpty) {
+                            return ListView(
+                              physics: const AlwaysScrollableScrollPhysics(),
+                              children: [
+                                SizedBox(
+                                  height:
+                                      MediaQuery.sizeOf(context).height * .7,
+                                  child: EmptyStateMessage(
+                                    message: l10n.noRecentTransactions,
+                                  ),
                                 ),
-                              );
-                            }
-                            final txn = transactions[index];
-                            return TransactionRow(
-                              orderId: txn.orderId,
-                              time: txn.time,
-                              tag: txn.paymentMethod,
-                              kind: txn.kind,
-                              amount: txn.amount.toStringAsFixed(2),
-                              isDark: isDark,
-                              isLast: index == transactions.length - 1,
+                              ],
                             );
-                          },
-                        );
-                      },
-                      error: (error) => Center(
-                        child: Text(error.error?.message ?? l10n.genericError),
+                          }
+                          return ListView.builder(
+                            controller: _scrollController,
+                            physics: const AlwaysScrollableScrollPhysics(),
+                            padding: EdgeInsets.all(16.w),
+                            itemCount:
+                                transactions.length + (_isLoadingMore ? 1 : 0),
+                            itemBuilder: (context, index) {
+                              if (index == transactions.length) {
+                                return Padding(
+                                  padding: EdgeInsets.all(16.w),
+                                  child: const Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                );
+                              }
+                              final txn = transactions[index];
+                              return TransactionRow(
+                                orderId: txn.orderId,
+                                time: txn.time,
+                                tag: txn.paymentMethod,
+                                kind: txn.kind,
+                                amount: txn.amount.toStringAsFixed(2),
+                                isDark: isDark,
+                                isLast: index == transactions.length - 1,
+                              );
+                            },
+                          );
+                        },
+                        error: (error) => ListView(
+                          physics: const AlwaysScrollableScrollPhysics(),
+                          children: [
+                            SizedBox(
+                              height: MediaQuery.sizeOf(context).height * .7,
+                              child: Center(
+                                child: Text(
+                                  error.error?.message ?? l10n.genericError,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
+              ),
             ),
           ],
         ),
       ),
     );
   }
-
-  Widget _buildShimmerList() => ListView.separated(
-    controller: _scrollController,
-    padding: EdgeInsets.all(16.w),
-    itemCount: 10,
-    separatorBuilder: (context, index) => SizedBox(height: 14.h),
-    itemBuilder: (context, index) => Row(
-      children: [
-        ShimmerBlock(width: 38.w, height: 38.h, radius: 20),
-        SizedBox(width: 10.w),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ShimmerBlock(width: 110.w, height: 12.h),
-              SizedBox(height: 7.h),
-              ShimmerBlock(width: 75.w, height: 9.h),
-            ],
-          ),
-        ),
-        ShimmerBlock(width: 58.w, height: 13.h),
-      ],
-    ),
-  );
 }
