@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
 import 'package:skeleton_mobile_app/core/widgets/shimmer_block.dart';
 import 'package:skeleton_mobile_app/features/home/ui/widgets/section_card.dart';
@@ -10,42 +9,8 @@ import 'package:skeleton_mobile_app/features/reports/logic/top_selling_state.dar
 import 'package:skeleton_mobile_app/features/reports/ui/widgets/top_product_row.dart';
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
 
-class TopProductsReportList extends StatefulWidget {
-  final DateTime selectedMonth;
-
-  const TopProductsReportList({super.key, required this.selectedMonth});
-
-  @override
-  State<TopProductsReportList> createState() => _TopProductsReportListState();
-}
-
-class _TopProductsReportListState extends State<TopProductsReportList> {
-  @override
-  void initState() {
-    super.initState();
-    _fetchTopSelling();
-  }
-
-  @override
-  void didUpdateWidget(covariant TopProductsReportList oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.selectedMonth.year != widget.selectedMonth.year ||
-        oldWidget.selectedMonth.month != widget.selectedMonth.month) {
-      _fetchTopSelling();
-    }
-  }
-
-  Future<void> _fetchTopSelling() async {
-    final storeId = await SharedPrefHelper.getInt(SharedPrefHelper.storeIdKey);
-    if (!mounted) return;
-    context.read<TopSellingCubit>().getTopSelling(
-      storeId: storeId,
-      period: 'month',
-      take: 5,
-      year: widget.selectedMonth.year,
-      month: widget.selectedMonth.month,
-    );
-  }
+class TopProductsReportList extends StatelessWidget {
+  const TopProductsReportList({super.key});
 
   @override
   Widget build(BuildContext context) {

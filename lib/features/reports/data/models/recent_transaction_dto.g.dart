@@ -15,9 +15,9 @@ RecentTransactionDto _$RecentTransactionDtoFromJson(
   time: json['time'] as String,
   total: (json['total'] as num).toDouble(),
   amount: (json['amount'] as num).toDouble(),
-  customer: json['customer'] as String,
-  paymentMethod: json['paymentMethod'] as String,
-  method: json['method'] as String,
+  customer: json['customer'] as String?,
+  item: json['item'] as String?,
+  notes: json['notes'] as String?,
 );
 
 Map<String, dynamic> _$RecentTransactionDtoToJson(
@@ -30,6 +30,6 @@ Map<String, dynamic> _$RecentTransactionDtoToJson(
   'total': instance.total,
   'amount': instance.amount,
   'customer': instance.customer,
-  'paymentMethod': instance.paymentMethod,
-  'method': instance.method,
+  'item': instance.item,
+  'notes': instance.notes,
 };

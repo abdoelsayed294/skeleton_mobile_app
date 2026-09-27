@@ -5,6 +5,7 @@ class ProfitSummary {
   final ProfitMetric? grossProfit;
   final ProfitMetric? margin;
   final ProfitMetric? revenue;
+  final ProfitMetric? revenuePaid;
   final ProfitMetric? expenses;
   final double cogs;
   final double returnedLoss;
@@ -18,6 +19,7 @@ class ProfitSummary {
     this.grossProfit,
     this.margin,
     this.revenue,
+    this.revenuePaid,
     this.expenses,
     this.cogs = 0,
     this.returnedLoss = 0,

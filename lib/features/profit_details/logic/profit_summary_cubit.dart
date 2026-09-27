@@ -17,33 +17,24 @@ class ProfitSummaryCubit extends Cubit<ProfitSummaryState> {
 
   void selectDate(DateTime date) {
     selectedDate = date;
-    getProfitSummary(
-      selectedPeriod,
-      from: DateTime(date.year, date.month, date.day).toIso8601String(),
-      to: DateTime(
-        date.year,
-        date.month,
-        date.day,
-        23,
-        59,
-        59,
-      ).toIso8601String(),
-    );
+    getProfitSummary(selectedPeriod, date: date);
   }
 
-  Future<void> getProfitSummary(
-    String period, {
-    String? from,
-    String? to,
-  }) async {
+  Future<void> getProfitSummary(String period, {DateTime? date}) async {
     selectedPeriod = period;
+    final dateForRequest = date ?? selectedDate;
+    final dateQuery = DateTime(
+      dateForRequest.year,
+      dateForRequest.month,
+      dateForRequest.day,
+    ).toIso8601String();
+
     emit(const ProfitSummaryState.loading());
     final storeId = await SharedPrefHelper.getInt(SharedPrefHelper.storeIdKey);
     final result = await _getProfitSummaryUseCase.invoke(
       period,
       storeId,
-      from: from,
-      to: to,
+      date: dateQuery,
     );
     result.when(
       success: (data) => emit(ProfitSummaryState.success(data)),

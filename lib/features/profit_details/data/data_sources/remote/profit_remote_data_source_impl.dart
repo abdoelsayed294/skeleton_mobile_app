@@ -14,12 +14,11 @@ class ProfitRemoteDataSourceImpl implements ProfitRemoteDataSource {
   Future<ApiResult<ProfitSummaryDto>> getProfitSummary(
     String period,
     int storeId, {
-    String? from,
-    String? to,
+    String? date,
   }) async {
     try {
       return ApiResult.success(
-        await _apiService.getProfitSummary(period, storeId, from, to),
+        await _apiService.getProfitSummary(period, storeId, date),
       );
     } catch (e) {
       return ApiResult.failure(ApiErrorHandler.handle(e));

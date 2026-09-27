@@ -9,7 +9,12 @@ class GetTodayRecentTransactionUseCase {
 
   GetTodayRecentTransactionUseCase(this._todaySalesRepo);
 
-  Future<ApiResult<List<TodayRecentTransactionEntity>>> getRecentTransactions(int storeId, String period, int take) {
-    return _todaySalesRepo.getRecentTransactions(storeId, period, take);
+  Future<ApiResult<List<TodayRecentTransactionEntity>>> getRecentTransactions(
+    int storeId,
+    DateTime date,
+    int take,
+    bool all,
+  ) {
+    return _todaySalesRepo.getRecentTransactions(storeId, date, take, all);
   }
 }

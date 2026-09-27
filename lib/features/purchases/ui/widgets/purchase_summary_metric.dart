@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/theming/app_color.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
 
 class PurchaseSummaryMetric extends StatelessWidget {
@@ -8,7 +7,6 @@ class PurchaseSummaryMetric extends StatelessWidget {
   final String value;
   final String subtitle;
   final IconData icon;
-  final Color color;
 
   const PurchaseSummaryMetric({
     super.key,
@@ -16,29 +14,25 @@ class PurchaseSummaryMetric extends StatelessWidget {
     required this.value,
     required this.subtitle,
     required this.icon,
-    required this.color,
   });
 
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Container(
       padding: EdgeInsets.fromLTRB(12.w, 12.h, 12.w, 10.h),
       decoration: BoxDecoration(
-        color: isDark
-            ? AppColorsDark.background
-            : Colors.white.withValues(alpha: .72),
+        color: Colors.white.withValues(alpha: .14),
         borderRadius: BorderRadius.circular(16.r),
-        border: Border.all(
-          color: isDark ? AppColorsDark.border : AppColorsLight.border,
-        ),
+        border: Border.all(color: Colors.white.withValues(alpha: .22)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
-              Icon(icon, size: 15.sp, color: color),
+              Icon(icon, size: 15.sp, color: Colors.white),
               SizedBox(width: 6.w),
               Text(
                 title,
@@ -46,7 +40,10 @@ class PurchaseSummaryMetric extends StatelessWidget {
                     (isDark
                             ? AppStyles.statTitleDark
                             : AppStyles.statTitleLight)
-                        .copyWith(fontSize: 10),
+                        .copyWith(
+                          color: Colors.white.withValues(alpha: .82),
+                          fontSize: 10,
+                        ),
               ),
             ],
           ),
@@ -54,7 +51,7 @@ class PurchaseSummaryMetric extends StatelessWidget {
           Text(
             value,
             style: (isDark ? AppStyles.statValueDark : AppStyles.statValueLight)
-                .copyWith(fontSize: 22),
+                .copyWith(color: Colors.white, fontSize: 22),
           ),
           Text(
             subtitle,
@@ -63,9 +60,7 @@ class PurchaseSummaryMetric extends StatelessWidget {
                         ? AppStyles.font12MediumDark
                         : AppStyles.font12MediumLight)
                     .copyWith(
-                      color: isDark
-                          ? AppColorsDark.textMuted
-                          : AppColorsLight.textMuted,
+                      color: Colors.white.withValues(alpha: .68),
                       fontSize: 10,
                     ),
           ),

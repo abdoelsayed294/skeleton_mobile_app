@@ -11,6 +11,7 @@ extension ProfitSummaryDtoMapper on ProfitSummaryDto {
     grossProfit: grossProfit?.toEntity(),
     margin: margin?.toEntity(),
     revenue: revenue?.toEntity(),
+    revenuePaid: revenuePaid?.toEntity(),
     expenses: expenses?.toEntity(),
     cogs: cogs ?? 0,
     returnedLoss: returnedLoss ?? 0,

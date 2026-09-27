@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
 import 'package:skeleton_mobile_app/core/theming/app_color.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
 import 'package:skeleton_mobile_app/core/widgets/shimmer_block.dart';
@@ -10,39 +9,26 @@ import 'package:skeleton_mobile_app/features/today_sales/logic/today_sales_cubit
 import 'package:skeleton_mobile_app/features/today_sales/logic/today_sales_state.dart';
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
 
-class TodayTotalSalesCard extends StatefulWidget {
+class TodayTotalSalesCard extends StatelessWidget {
   const TodayTotalSalesCard({super.key});
-
-  @override
-  State<TodayTotalSalesCard> createState() => _TodayTotalSalesCardState();
-}
-
-class _TodayTotalSalesCardState extends State<TodayTotalSalesCard> {
-  @override
-  void initState() {
-    super.initState();
-    _fetchTodaySales();
-  }
-
-  Future<void> _fetchTodaySales() async {
-    final storeId = await SharedPrefHelper.getInt(SharedPrefHelper.storeIdKey);
-    if (!mounted) return;
-    context.read<TodaySalesCubit>().getTodaySales(storeId: storeId);
-  }
 
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final l10n = AppLocalizations.of(context)!;
-    final cardColor = isDark
-        ? AppColorsDark.heroCardBackground
-        : AppColorsLight.heroCardBackground;
+    final cardColors = isDark
+        ? [AppColorsDark.primaryGradientStart, AppColorsDark.primaryGradientEnd]
+        : [AppColorsLight.primaryGradientStart, AppColorsLight.primary];
 
     return Container(
       width: double.infinity,
       padding: EdgeInsets.fromLTRB(18.w, 18.h, 18.w, 16.h),
       decoration: BoxDecoration(
-        color: cardColor,
+        gradient: LinearGradient(
+          colors: cardColors,
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
         borderRadius: BorderRadius.circular(20.r),
         boxShadow: [
           BoxShadow(
@@ -181,7 +167,10 @@ class _TodayTotalSalesCardState extends State<TodayTotalSalesCard> {
                           SizedBox(width: 8.w),
                           Expanded(
                             child: Text(
-                              l10n.comparedToLastMonth,
+                              (Localizations.localeOf(context).languageCode ==
+                                      'ar'
+                                  ? l10n.vsYesterday
+                                  : data.vsLabel),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: isDark

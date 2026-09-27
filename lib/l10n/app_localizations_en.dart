@@ -852,4 +852,94 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get taxRegistrationNumber => 'CR-904812-EGY';
+
+  @override
+  String get highestSingle => 'Highest expense';
+
+  @override
+  String get employeesShortDate => 'Employees';
+
+  @override
+  String get lowestSingle => 'Lowest expense';
+
+  @override
+  String get servicesShortDate => 'Services';
+
+  @override
+  String get categoryEmployees => 'Employees';
+
+  @override
+  String get categoryEmployeesEn => 'Payroll';
+
+  @override
+  String get categoryServices => 'Services';
+
+  @override
+  String get categoryServicesEn => 'Utilities & services';
+
+  @override
+  String get sampleTxnElectricity => 'Electricity bill';
+
+  @override
+  String get sampleTxnEmployeePayment => 'Employee payment';
+
+  @override
+  String get allTransactions => 'All Transactions';
+
+  @override
+  String recordsCount(int count) {
+    return '$count records';
+  }
+
+  @override
+  String get latest => 'Latest';
+
+  @override
+  String get byCategory => 'By Category';
+
+  @override
+  String get byCategorySubtitle => 'Expense distribution by category';
+
+  @override
+  String get categoriesShort => 'categories';
+
+  @override
+  String get day => 'Day';
+
+  @override
+  String get quarter => 'Quarter';
+
+  @override
+  String get monthlyTrend => 'Monthly Trend';
+
+  @override
+  String get monthlyTrendSubtitle => 'Expenses over the past months';
+
+  @override
+  String totalExpensesFor(String period) {
+    return 'Total expenses for $period';
+  }
+
+  @override
+  String expensesComparedToPreviousPeriod(String amount) {
+    return 'Compared with previous period: $amount EGP';
+  }
+
+  @override
+  String get transactions => 'Transactions';
+
+  @override
+  String get avgPerTransaction => 'Avg. per transaction';
+
+  @override
+  String get dailyAverage => 'Daily average';
+
+  @override
+  String get peakSpendingDays => 'Peak Spending Days';
+
+  @override
+  String get loadMore => 'Load more';
+
+  @override
+  String get oldest => 'Oldest';
 }

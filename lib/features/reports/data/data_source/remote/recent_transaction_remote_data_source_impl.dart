@@ -15,7 +15,6 @@ class RecentTransactionRemoteDataSourceImpl
   @override
   Future<ApiResult<List<RecentTransactionDto>>> getRecentTransactions(
     int storeId,
-    String period,
     int take,
     int year,
     int month,
@@ -23,7 +22,6 @@ class RecentTransactionRemoteDataSourceImpl
     try {
       final response = await apiService.getRecentTransactions(
         take,
-        period,
         storeId,
         year,
         month,

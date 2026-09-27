@@ -851,4 +851,94 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get taxRegistrationNumber => 'CR-904812-EGY';
+
+  @override
+  String get highestSingle => 'أعلى مصروف';
+
+  @override
+  String get employeesShortDate => 'الموظفون';
+
+  @override
+  String get lowestSingle => 'أقل مصروف';
+
+  @override
+  String get servicesShortDate => 'الخدمات';
+
+  @override
+  String get categoryEmployees => 'الموظفون';
+
+  @override
+  String get categoryEmployeesEn => 'الرواتب';
+
+  @override
+  String get categoryServices => 'الخدمات';
+
+  @override
+  String get categoryServicesEn => 'المرافق والخدمات';
+
+  @override
+  String get sampleTxnElectricity => 'فاتورة الكهرباء';
+
+  @override
+  String get sampleTxnEmployeePayment => 'مستحقات موظف';
+
+  @override
+  String get allTransactions => 'كل المعاملات';
+
+  @override
+  String recordsCount(int count) {
+    return '$count معاملات';
+  }
+
+  @override
+  String get latest => 'الأحدث';
+
+  @override
+  String get byCategory => 'حسب الفئة';
+
+  @override
+  String get byCategorySubtitle => 'توزيع المصروفات حسب الفئة';
+
+  @override
+  String get categoriesShort => 'فئات';
+
+  @override
+  String get day => 'يوم';
+
+  @override
+  String get quarter => 'ربع سنوي';
+
+  @override
+  String get monthlyTrend => 'الاتجاه الشهري';
+
+  @override
+  String get monthlyTrendSubtitle => 'المصروفات خلال الأشهر الماضية';
+
+  @override
+  String totalExpensesFor(String period) {
+    return 'إجمالي مصروفات $period';
+  }
+
+  @override
+  String expensesComparedToPreviousPeriod(String amount) {
+    return 'مقارنة بالفترة السابقة: $amount جنيه';
+  }
+
+  @override
+  String get transactions => 'المعاملات';
+
+  @override
+  String get avgPerTransaction => 'متوسط المعاملة';
+
+  @override
+  String get dailyAverage => 'المتوسط اليومي';
+
+  @override
+  String get peakSpendingDays => 'أعلى أيام الإنفاق';
+
+  @override
+  String get loadMore => 'تحميل المزيد';
+
+  @override
+  String get oldest => 'الأقدم';
 }

@@ -3,6 +3,12 @@ import 'package:skeleton_mobile_app/features/today_sales/domain/entities/today_r
 import 'package:skeleton_mobile_app/features/today_sales/domain/entities/today_sales_entity.dart';
 
 abstract class TodaySalesRepo {
-  Future<ApiResult<TodaySalesEntity>> getTodaySales(int storeId);
-  Future<ApiResult<List<TodayRecentTransactionEntity>>> getRecentTransactions(int storeId, String period, int take);
+  Future<ApiResult<TodaySalesEntity>> getTodaySales(int storeId, DateTime date);
+
+  Future<ApiResult<List<TodayRecentTransactionEntity>>> getRecentTransactions(
+    int storeId,
+    DateTime date,
+    int take,
+    bool all,
+  );
 }

@@ -19,8 +19,7 @@ class PurchasesSummaryCard extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final l10n = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context).toLanguageTag();
-    final primary = isDark ? AppColorsDark.primary : AppColorsLight.primary;
-    final muted = isDark ? AppColorsDark.textMuted : AppColorsLight.textMuted;
+
     return BlocConsumer<PurchasesSummaryCubit, PurchasesSummaryState>(
       listener: (context, state) {
         state.maybeWhen(
@@ -40,13 +39,19 @@ class PurchasesSummaryCard extends StatelessWidget {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: isDark
-                  ? const [Color(0xFF102638), Color(0xFF14202C)]
-                  : const [Colors.white, Color(0xFFE7F2FF)],
+                  ? [
+                      AppColorsDark.primaryGradientStart,
+                      AppColorsDark.primaryGradientEnd,
+                    ]
+                  : [
+                      AppColorsLight.primaryGradientStart,
+                      AppColorsLight.primary,
+                    ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
             ),
             borderRadius: BorderRadius.circular(22.r),
-            border: Border.all(
-              color: isDark ? AppColorsDark.border : const Color(0xFFD7E9FF),
-            ),
+            border: Border.all(color: Colors.white.withValues(alpha: .22)),
             boxShadow: const [
               BoxShadow(
                 color: Color(0x121E88E5),
@@ -62,22 +67,26 @@ class PurchasesSummaryCard extends StatelessWidget {
                 children: [
                   Text(
                     l10n.totalPurchases,
-                    style: isDark
-                        ? AppStyles.statTitleDark
-                        : AppStyles.statTitleLight,
+                    style:
+                        (isDark
+                                ? AppStyles.statTitleDark
+                                : AppStyles.statTitleLight)
+                            .copyWith(
+                              color: Colors.white.withValues(alpha: .82),
+                            ),
                   ),
                   const Spacer(),
                   Container(
                     width: 34.w,
                     height: 34.w,
                     decoration: BoxDecoration(
-                      color: primary.withValues(alpha: .12),
+                      color: Colors.white.withValues(alpha: .14),
                       borderRadius: BorderRadius.circular(18.r),
                     ),
                     child: Icon(
                       Icons.shopping_bag_outlined,
                       size: 18.sp,
-                      color: primary,
+                      color: Colors.white,
                     ),
                   ),
                 ],
@@ -88,9 +97,13 @@ class PurchasesSummaryCard extends StatelessWidget {
                 children: [
                   Text(
                     'EGP',
-                    style: isDark
-                        ? AppStyles.font12MediumDark
-                        : AppStyles.font12MediumLight,
+                    style:
+                        (isDark
+                                ? AppStyles.font12MediumDark
+                                : AppStyles.font12MediumLight)
+                            .copyWith(
+                              color: Colors.white.withValues(alpha: .78),
+                            ),
                   ),
                   SizedBox(width: 8.w),
                   Text(
@@ -98,9 +111,11 @@ class PurchasesSummaryCard extends StatelessWidget {
                       '#,##0.##',
                       locale,
                     ).format(data.totalPurchases),
-                    style: isDark
-                        ? AppStyles.font24BlackDark
-                        : AppStyles.font24BlackLight,
+                    style:
+                        (isDark
+                                ? AppStyles.font24BlackDark
+                                : AppStyles.font24BlackLight)
+                            .copyWith(color: Colors.white),
                   ),
                 ],
               ),
@@ -110,7 +125,7 @@ class PurchasesSummaryCard extends StatelessWidget {
                   Icon(
                     Icons.calendar_today_outlined,
                     size: 14.sp,
-                    color: muted,
+                    color: Colors.white.withValues(alpha: .72),
                   ),
                   SizedBox(width: 6.w),
                   Text(
@@ -120,9 +135,13 @@ class PurchasesSummaryCard extends StatelessWidget {
                             'MMM yyyy',
                             locale,
                           ).format(DateTime(data.year!, data.month!)),
-                    style: isDark
-                        ? AppStyles.font12MediumDark
-                        : AppStyles.font12MediumLight,
+                    style:
+                        (isDark
+                                ? AppStyles.font12MediumDark
+                                : AppStyles.font12MediumLight)
+                            .copyWith(
+                              color: Colors.white.withValues(alpha: .78),
+                            ),
                   ),
                   SizedBox(width: 12.w),
                   Container(
@@ -131,21 +150,19 @@ class PurchasesSummaryCard extends StatelessWidget {
                       vertical: 3.h,
                     ),
                     decoration: BoxDecoration(
-                      color: isDark
-                          ? AppColorsDark.successBg
-                          : AppColorsLight.successBg,
+                      color: Colors.white.withValues(alpha: .14),
                       border: Border.all(
-                        color: isDark
-                            ? AppColorsDark.successBorder
-                            : AppColorsLight.successBorder,
+                        color: Colors.white.withValues(alpha: .22),
                       ),
                       borderRadius: BorderRadius.circular(14.r),
                     ),
                     child: Text(
                       '${data.vsLastMonthPct >= 0 ? '+' : ''}${NumberFormat('#,##0.##', locale).format(data.vsLastMonthPct)}% ${l10n.vsLastMonth.replaceAll(RegExp(r'^[+\-\s\d.,]+%?\s*'), '')}',
-                      style: isDark
-                          ? AppStyles.statChangeDark
-                          : AppStyles.statChangeLight,
+                      style:
+                          (isDark
+                                  ? AppStyles.statChangeDark
+                                  : AppStyles.statChangeLight)
+                              .copyWith(color: Colors.white),
                     ),
                   ),
                 ],
@@ -159,17 +176,15 @@ class PurchasesSummaryCard extends StatelessWidget {
                       value: data.orders.toString(),
                       subtitle: l10n.purchaseCount,
                       icon: Icons.receipt_long_outlined,
-                      color: AppColorsLight.warning,
                     ),
                   ),
-                  SizedBox(width: 12),
+                  SizedBox(width: 12.w),
                   Expanded(
                     child: PurchaseSummaryMetric(
                       title: l10n.sourcesUpper,
                       value: data.suppliers.toString(),
                       subtitle: l10n.suppliers,
                       icon: Icons.inventory_2_outlined,
-                      color: AppColorsLight.primary,
                     ),
                   ),
                 ],

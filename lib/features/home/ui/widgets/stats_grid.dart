@@ -150,6 +150,7 @@ class _StatsGridState extends State<StatsGrid> {
                     isSelected: selectedCardIndex == 1,
                     onTap: () {
                       setState(() => selectedCardIndex = 1);
+                      Navigator.of(context).pushNamed(Routes.expensesScreen);
                     },
                   ),
                 ),

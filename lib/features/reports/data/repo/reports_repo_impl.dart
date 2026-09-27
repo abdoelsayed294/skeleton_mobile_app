@@ -68,13 +68,12 @@ class ReportsRepoImpl extends ReportsRepo {
   @override
   Future<ApiResult<List<RecentTransactionEntity>>> getRecentTransactions(
     int storeId,
-    String period,
     int take,
     int year,
     int month,
   ) async {
     final response = await recentTransactionRemoteDataSource
-        .getRecentTransactions(storeId, period, take, year, month);
+        .getRecentTransactions(storeId, take, year, month);
     return response.when(
       success: (data) =>
           ApiResult.success(data.map((e) => e.toEntity()).toList()),

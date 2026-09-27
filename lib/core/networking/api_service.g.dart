@@ -12,7 +12,7 @@ part of 'api_service.dart';
 
 class _ApiService implements ApiService {
   _ApiService(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'http://skeleton.runasp.net';
+    baseUrl ??= 'https://skeleton1.runasp.net';
   }
 
   final Dio _dio;
@@ -293,7 +293,6 @@ class _ApiService implements ApiService {
   @override
   Future<List<RecentTransactionDto>> getRecentTransactions(
     int take,
-    String period,
     int storeId,
     int year,
     int month,
@@ -301,7 +300,6 @@ class _ApiService implements ApiService {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'take': take,
-      r'period': period,
       r'storeId': storeId,
       r'year': year,
       r'month': month,
@@ -335,9 +333,12 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<TodaySalesDto> getTodaySales(int storeId) async {
+  Future<TodaySalesDto> getTodaySales(int storeId, String date) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'storeId': storeId};
+    final queryParameters = <String, dynamic>{
+      r'storeId': storeId,
+      r'date': date,
+    };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<TodaySalesDto>(
@@ -363,15 +364,17 @@ class _ApiService implements ApiService {
 
   @override
   Future<List<TodayRecentTransactionDto>> getTodaySalesRecentTransactions(
-    int take,
-    String period,
+    String date,
     int storeId,
+    int take,
+    bool all,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
-      r'take': take,
-      r'period': period,
+      r'date': date,
       r'storeId': storeId,
+      r'take': take,
+      r'all': all,
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -449,15 +452,13 @@ class _ApiService implements ApiService {
   Future<ProfitSummaryDto> getProfitSummary(
     String period,
     int storeId,
-    String? from,
-    String? to,
+    String? date,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'period': period,
       r'storeId': storeId,
-      r'from': from,
-      r'to': to,
+      r'date': date,
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
@@ -575,6 +576,176 @@ class _ApiService implements ApiService {
     late PurchasesRecentDto _value;
     try {
       _value = PurchasesRecentDto.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<ExpensesSummaryDto> getExpensesSummary(
+    int storeId,
+    String period,
+    String date,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'storeId': storeId,
+      r'period': period,
+      r'date': date,
+    };
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<ExpensesSummaryDto>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/api/Expenses/summary',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late ExpensesSummaryDto _value;
+    try {
+      _value = ExpensesSummaryDto.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<ExpensesMonthlyTrendDto> getExpensesMonthlyTrend(
+    int storeId,
+    String date,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'storeId': storeId,
+      r'date': date,
+    };
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<ExpensesMonthlyTrendDto>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/api/Expenses/monthly-trend',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late ExpensesMonthlyTrendDto _value;
+    try {
+      _value = ExpensesMonthlyTrendDto.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<ExpensesByCategoryDto> getExpensesByCategory(
+    int storeId,
+    String period,
+    String date,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'storeId': storeId,
+      r'period': period,
+      r'date': date,
+    };
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<ExpensesByCategoryDto>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/api/Expenses/by-category',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late ExpensesByCategoryDto _value;
+    try {
+      _value = ExpensesByCategoryDto.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<ExpensesPeakDaysDto> getExpensesPeakDays(int storeId, int take) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'storeId': storeId,
+      r'take': take,
+    };
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<ExpensesPeakDaysDto>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/api/Expenses/peak-days',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late ExpensesPeakDaysDto _value;
+    try {
+      _value = ExpensesPeakDaysDto.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<ExpensesTransactionsDto> getExpensesTransactions(
+    int storeId,
+    String sort,
+    int take,
+    int skip,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'storeId': storeId,
+      r'sort': sort,
+      r'take': take,
+      r'skip': skip,
+    };
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<ExpensesTransactionsDto>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/api/Expenses/transactions',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late ExpensesTransactionsDto _value;
+    try {
+      _value = ExpensesTransactionsDto.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;

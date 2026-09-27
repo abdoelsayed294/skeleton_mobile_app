@@ -9,23 +9,31 @@ part of 'today_recent_transaction_dto.dart';
 TodayRecentTransactionDto _$TodayRecentTransactionDtoFromJson(
   Map<String, dynamic> json,
 ) => TodayRecentTransactionDto(
-  id: (json['id'] as num).toInt(),
-  orderNumber: json['orderNumber'] as String,
-  date: json['date'] as String,
-  time: json['time'] as String,
-  total: (json['total'] as num).toDouble(),
-  customer: json['customer'] as String,
-  paymentMethod: json['paymentMethod'] as String,
+  id: (json['id'] as num?)?.toInt() ?? 0,
+  itemName: json['itemName'] as String?,
+  name: json['name'] as String?,
+  notes: json['notes'] as String?,
+  quantity: (json['quantity'] as num?)?.toInt() ?? 0,
+  price: (json['price'] as num?)?.toDouble() ?? 0.0,
+  total: (json['total'] as num?)?.toDouble() ?? 0.0,
+  date: json['date'] as String? ?? '',
+  time: json['time'] as String? ?? '',
+  displayTime: json['displayTime'] as String?,
+  customer: json['customer'] as String?,
 );
 
 Map<String, dynamic> _$TodayRecentTransactionDtoToJson(
   TodayRecentTransactionDto instance,
 ) => <String, dynamic>{
   'id': instance.id,
-  'orderNumber': instance.orderNumber,
+  'itemName': instance.itemName,
+  'name': instance.name,
+  'notes': instance.notes,
+  'quantity': instance.quantity,
+  'price': instance.price,
+  'total': instance.total,
   'date': instance.date,
   'time': instance.time,
-  'total': instance.total,
+  'displayTime': instance.displayTime,
   'customer': instance.customer,
-  'paymentMethod': instance.paymentMethod,
 };

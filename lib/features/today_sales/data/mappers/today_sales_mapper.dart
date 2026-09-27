@@ -4,13 +4,15 @@ import 'package:skeleton_mobile_app/features/today_sales/domain/entities/today_s
 extension TodaySalesMapper on TodaySalesDto {
   TodaySalesEntity toEntity() {
     return TodaySalesEntity(
-      totalSales: totalSales,
+      totalSales: totalRevenue,
       changePct: changePct,
+      vsLabel: vsLabel,
       orders: orders,
       avgOrder: avgOrder,
       itemsSold: itemsSold,
       itemsSoldChangePct: itemsSoldChangePct,
       returnsTotal: returnsTotal,
+      returnsOrders: returnsOrders,
       returnsChangePct: returnsChangePct,
     );
   }

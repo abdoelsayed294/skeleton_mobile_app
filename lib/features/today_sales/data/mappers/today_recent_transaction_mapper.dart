@@ -4,19 +4,25 @@ import 'package:skeleton_mobile_app/features/today_sales/domain/entities/today_r
 
 extension TodayRecentTransactionMapper on TodayRecentTransactionDto {
   TodayRecentTransactionEntity toEntity() {
-    TransactionKind parsedKind = TransactionKind.cash;
-    final lowercaseMethod = paymentMethod.toLowerCase();
-    
-    if (lowercaseMethod.contains('card') || lowercaseMethod.contains('visa') || lowercaseMethod.contains('mastercard')) {
+    final note = notes ?? '';
+    final normalizedNote = note.toLowerCase();
+    var parsedKind = TransactionKind.cash;
+
+    if (normalizedNote.contains('card') ||
+        normalizedNote.contains('visa') ||
+        normalizedNote.contains('mastercard')) {
       parsedKind = TransactionKind.card;
-    } else if (lowercaseMethod.contains('wallet') || lowercaseMethod.contains('instapay') || lowercaseMethod.contains('vodafone') || lowercaseMethod.contains('fawry')) {
+    } else if (normalizedNote.contains('wallet') ||
+        normalizedNote.contains('instapay') ||
+        normalizedNote.contains('vodafone') ||
+        normalizedNote.contains('fawry')) {
       parsedKind = TransactionKind.wallet;
     }
 
     return TodayRecentTransactionEntity(
-      orderId: orderNumber,
-      time: time,
-      paymentMethod: paymentMethod,
+      orderId: name ?? itemName ?? '#$id',
+      time: displayTime?.isNotEmpty == true ? displayTime! : time,
+      paymentMethod: note,
       kind: parsedKind,
       amount: total,
     );

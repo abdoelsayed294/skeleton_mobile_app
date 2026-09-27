@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
 import 'package:skeleton_mobile_app/core/networking/api_result.dart';
 import 'package:skeleton_mobile_app/features/reports/domain/use_cases/reports_sales_use_case.dart';
 import 'package:skeleton_mobile_app/features/reports/logic/reports_sales_state.dart';
@@ -13,13 +14,14 @@ class ReportsSalesCubit extends Cubit<ReportsSalesState> {
     : super(const ReportsSalesState.initial());
 
   Future<void> getReportsSales({
-    required int storeId,
     required String period,
     required int year,
     required int month,
   }) async {
     final requestId = ++_requestId;
     emit(const ReportsSalesState.loading());
+    final storeId = await SharedPrefHelper.getInt(SharedPrefHelper.storeIdKey);
+    if (isClosed) return;
     final result = await reportsSalesUseCase.getReportsSales(
       period,
       storeId,

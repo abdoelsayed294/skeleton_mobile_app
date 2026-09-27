@@ -1747,6 +1747,174 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'CR-904812-EGY'**
   String get taxRegistrationNumber;
+
+  /// No description provided for @highestSingle.
+  ///
+  /// In en, this message translates to:
+  /// **'Highest expense'**
+  String get highestSingle;
+
+  /// No description provided for @employeesShortDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Employees'**
+  String get employeesShortDate;
+
+  /// No description provided for @lowestSingle.
+  ///
+  /// In en, this message translates to:
+  /// **'Lowest expense'**
+  String get lowestSingle;
+
+  /// No description provided for @servicesShortDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Services'**
+  String get servicesShortDate;
+
+  /// No description provided for @categoryEmployees.
+  ///
+  /// In en, this message translates to:
+  /// **'Employees'**
+  String get categoryEmployees;
+
+  /// No description provided for @categoryEmployeesEn.
+  ///
+  /// In en, this message translates to:
+  /// **'Payroll'**
+  String get categoryEmployeesEn;
+
+  /// No description provided for @categoryServices.
+  ///
+  /// In en, this message translates to:
+  /// **'Services'**
+  String get categoryServices;
+
+  /// No description provided for @categoryServicesEn.
+  ///
+  /// In en, this message translates to:
+  /// **'Utilities & services'**
+  String get categoryServicesEn;
+
+  /// No description provided for @sampleTxnElectricity.
+  ///
+  /// In en, this message translates to:
+  /// **'Electricity bill'**
+  String get sampleTxnElectricity;
+
+  /// No description provided for @sampleTxnEmployeePayment.
+  ///
+  /// In en, this message translates to:
+  /// **'Employee payment'**
+  String get sampleTxnEmployeePayment;
+
+  /// No description provided for @allTransactions.
+  ///
+  /// In en, this message translates to:
+  /// **'All Transactions'**
+  String get allTransactions;
+
+  /// No description provided for @recordsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} records'**
+  String recordsCount(int count);
+
+  /// No description provided for @latest.
+  ///
+  /// In en, this message translates to:
+  /// **'Latest'**
+  String get latest;
+
+  /// No description provided for @byCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'By Category'**
+  String get byCategory;
+
+  /// No description provided for @byCategorySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Expense distribution by category'**
+  String get byCategorySubtitle;
+
+  /// No description provided for @categoriesShort.
+  ///
+  /// In en, this message translates to:
+  /// **'categories'**
+  String get categoriesShort;
+
+  /// No description provided for @day.
+  ///
+  /// In en, this message translates to:
+  /// **'Day'**
+  String get day;
+
+  /// No description provided for @quarter.
+  ///
+  /// In en, this message translates to:
+  /// **'Quarter'**
+  String get quarter;
+
+  /// No description provided for @monthlyTrend.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly Trend'**
+  String get monthlyTrend;
+
+  /// No description provided for @monthlyTrendSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Expenses over the past months'**
+  String get monthlyTrendSubtitle;
+
+  /// No description provided for @totalExpensesFor.
+  ///
+  /// In en, this message translates to:
+  /// **'Total expenses for {period}'**
+  String totalExpensesFor(String period);
+
+  /// No description provided for @expensesComparedToPreviousPeriod.
+  ///
+  /// In en, this message translates to:
+  /// **'Compared with previous period: {amount} EGP'**
+  String expensesComparedToPreviousPeriod(String amount);
+
+  /// No description provided for @transactions.
+  ///
+  /// In en, this message translates to:
+  /// **'Transactions'**
+  String get transactions;
+
+  /// No description provided for @avgPerTransaction.
+  ///
+  /// In en, this message translates to:
+  /// **'Avg. per transaction'**
+  String get avgPerTransaction;
+
+  /// No description provided for @dailyAverage.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily average'**
+  String get dailyAverage;
+
+  /// No description provided for @peakSpendingDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Peak Spending Days'**
+  String get peakSpendingDays;
+
+  /// No description provided for @loadMore.
+  ///
+  /// In en, this message translates to:
+  /// **'Load more'**
+  String get loadMore;
+
+  /// No description provided for @oldest.
+  ///
+  /// In en, this message translates to:
+  /// **'Oldest'**
+  String get oldest;
 }
 
 class _AppLocalizationsDelegate

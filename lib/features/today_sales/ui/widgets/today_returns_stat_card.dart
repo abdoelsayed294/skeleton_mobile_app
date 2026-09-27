@@ -67,7 +67,7 @@ class TodayReturnsStatCard extends StatelessWidget {
                               : AppStyles.statValueLight,
                         ),
                         Text(
-                          '${l10n.currencyEgp} · ${data.returnsTotal.toStringAsFixed(0)} ${l10n.orders}',
+                          '${l10n.currencyEgp} · ${data.returnsOrders} ${l10n.orders}',
                           style: isDark
                               ? AppStyles.statUnitDark
                               : AppStyles.statUnitLight,
