@@ -31,36 +31,39 @@ class ReportsScrean extends StatelessWidget {
 
         return Scaffold(
           body: SafeArea(
-            child: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 20.w),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    verticalSpace(6),
-                    ReportsAppBar(),
-                    verticalSpace(16),
-                    MonthNavigator(
-                      monthLabel: monthLabel,
-                      periodBadgeLabel: periodBadgeLabel,
-                      onPrevious: context
-                          .read<ReportsMonthCubit>()
-                          .previousMonth,
-                      onNext: context.read<ReportsMonthCubit>().nextMonth,
-                    ),
-                    verticalSpace(16),
-                    const TotalSalesCard(),
-                    verticalSpace(16),
-                    const TopProductsReportList(),
-                    verticalSpace(16),
-                    const RecentTransactionsList(),
-                    verticalSpace(20),
-                    ExportPdfButton(selectedMonth: selectedMonth),
-                    verticalSpace(10),
-                    const LastSyncedFooter(),
-                    verticalSpace(20),
-                  ],
+            child: RefreshIndicator(
+              onRefresh: context.read<ReportsMonthCubit>().refresh,
+              child: SingleChildScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 20.w),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      verticalSpace(6),
+                      ReportsAppBar(),
+                      verticalSpace(16),
+                      MonthNavigator(
+                        monthLabel: monthLabel,
+                        periodBadgeLabel: periodBadgeLabel,
+                        onPrevious: context
+                            .read<ReportsMonthCubit>()
+                            .previousMonth,
+                        onNext: context.read<ReportsMonthCubit>().nextMonth,
+                      ),
+                      verticalSpace(16),
+                      const TotalSalesCard(),
+                      verticalSpace(16),
+                      const TopProductsReportList(),
+                      verticalSpace(16),
+                      const RecentTransactionsList(),
+                      verticalSpace(20),
+                      ExportPdfButton(selectedMonth: selectedMonth),
+                      verticalSpace(10),
+                      const LastSyncedFooter(),
+                      verticalSpace(20),
+                    ],
+                  ),
                 ),
               ),
             ),

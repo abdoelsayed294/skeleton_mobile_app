@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-
 class SpotlightPainter extends CustomPainter {
   final double centerX;
   final Color color;
@@ -11,7 +10,6 @@ class SpotlightPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    
     final path = Path()
       ..moveTo(centerX - 25, 0)
       ..lineTo(centerX + 25, 0)

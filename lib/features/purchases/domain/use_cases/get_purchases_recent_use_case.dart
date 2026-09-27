@@ -11,8 +11,7 @@ class GetPurchasesRecentUseCase {
 
   Future<ApiResult<PurchasesRecentEntity>> invoke(
     int storeId,
-    int year,
-    int month,
+    String date,
     int take,
-  ) => _repo.getPurchasesRecent(storeId, year, month, take);
+  ) => _repo.getPurchasesRecent(storeId, date, take);
 }

@@ -21,12 +21,16 @@ class AppBarHome extends StatelessWidget {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
     final isArabic = Localizations.localeOf(context).languageCode == 'ar';
+    final isLandscape =
+        MediaQuery.sizeOf(context).width > MediaQuery.sizeOf(context).height;
+    double side(double value) => isLandscape ? value : value.w;
+    double textSize(double value) => isLandscape ? value : value.sp;
 
     return Row(
       children: [
         Container(
-          height: 36.h,
-          width: 36.w,
+          height: side(36),
+          width: side(36),
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: isDark
@@ -42,19 +46,24 @@ class AppBarHome extends StatelessWidget {
             shape: BoxShape.circle,
           ),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 2.h),
+            padding: EdgeInsets.symmetric(
+              horizontal: side(2),
+              vertical: side(2),
+            ),
             child: const CircleAvatar(backgroundColor: Colors.white),
           ),
         ),
-        horizontalSpace(8.w),
+        horizontalSpace(side(8)),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               AppLocalizations.of(context)!.goodMorning,
               style: isDark
-                  ? AppStyles.font12MediumDark.copyWith(fontSize: 10.sp)
-                  : AppStyles.font12MediumLight.copyWith(fontSize: 10.sp),
+                  ? AppStyles.font12MediumDark.copyWith(fontSize: textSize(10))
+                  : AppStyles.font12MediumLight.copyWith(
+                      fontSize: textSize(10),
+                    ),
             ),
             BlocBuilder<HomeCubit, HomeState>(
               builder: (context, state) {
@@ -75,18 +84,22 @@ class AppBarHome extends StatelessWidget {
                 );
 
                 if (ownerName == null) {
-                  return ShimmerBlock(width: 62.w, height: 15.h);
+                  return ShimmerBlock(width: side(62), height: side(15));
                 }
 
                 return SizedBox(
-                  width: 115.w,
+                  width: side(150),
                   child: Text(
                     ownerName,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: isDark
-                        ? AppStyles.font18BoldDark.copyWith(fontSize: 14.sp)
-                        : AppStyles.font18BoldLight.copyWith(fontSize: 14.sp),
+                        ? AppStyles.font18BoldDark.copyWith(
+                            fontSize: textSize(14),
+                          )
+                        : AppStyles.font18BoldLight.copyWith(
+                            fontSize: textSize(14),
+                          ),
                   ),
                 );
               },
@@ -99,7 +112,7 @@ class AppBarHome extends StatelessWidget {
           tooltip: isDark ? 'Light theme' : 'Dark theme',
           onTap: context.read<AppThemeCubit>().toggleTheme,
         ),
-        SizedBox(width: 5.w),
+        SizedBox(width: side(5)),
         AppBarAction(
           icon: Icons.language_rounded,
           tooltip: isArabic ? 'Switch to English' : 'التبديل للعربية',

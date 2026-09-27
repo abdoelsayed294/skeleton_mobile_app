@@ -1915,6 +1915,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Oldest'**
   String get oldest;
+
+  /// No description provided for @noRecentTransactions.
+  ///
+  /// In en, this message translates to:
+  /// **'No recent transactions found.'**
+  String get noRecentTransactions;
+
+  /// No description provided for @noPurchasesFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No purchases found.'**
+  String get noPurchasesFound;
 }
 
 class _AppLocalizationsDelegate

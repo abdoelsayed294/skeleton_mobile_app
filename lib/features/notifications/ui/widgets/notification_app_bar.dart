@@ -19,14 +19,23 @@ class NotificationAppBar extends StatelessWidget {
         ? AppColorsDark.textPrimary
         : AppColorsLight.textPrimary;
     final primary = isDark ? AppColorsDark.primary : AppColorsLight.primary;
+    final isLandscape =
+        MediaQuery.orientationOf(context) == Orientation.landscape;
 
     return Row(
       children: [
         IconButton(
           onPressed: () => Navigator.of(context).pop(),
           padding: EdgeInsets.zero,
-          constraints: BoxConstraints.tightFor(width: 32.w, height: 38.h),
-          icon: Icon(Icons.arrow_back_rounded, color: iconColor, size: 22.sp),
+          constraints: BoxConstraints.tightFor(
+            width: isLandscape ? 32 : 32.w,
+            height: isLandscape ? 32 : 32.h,
+          ),
+          icon: Icon(
+            Icons.arrow_back_rounded,
+            color: iconColor,
+            size: isLandscape ? 18 : 19.sp,
+          ),
         ),
         SizedBox(width: 8.w),
         Text(l10n.notificationsTitle, style: titleStyle),

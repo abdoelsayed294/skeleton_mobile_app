@@ -545,5 +545,7 @@
   "dailyAverage": "المتوسط اليومي",
   "peakSpendingDays": "أعلى أيام الإنفاق",
   "loadMore": "تحميل المزيد",
-  "oldest": "الأقدم"
+  "oldest": "الأقدم",
+  "noRecentTransactions": "لا توجد معاملات حديثة.",
+  "noPurchasesFound": "لا توجد مشتريات."
 }

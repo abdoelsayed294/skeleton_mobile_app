@@ -13,7 +13,7 @@ class ExpensesTransactionsCubit extends Cubit<ExpensesTransactionsState> {
   final GetExpensesTransactionsUseCase _useCase;
   String _sort = 'latest';
   int _take = 50;
-  int _skip = 0;
+  DateTime _date = DateTime.now();
   bool _hasMore = true;
   bool _isLoadingMore = false;
   String get currentSort => _sort;
@@ -23,11 +23,11 @@ class ExpensesTransactionsCubit extends Cubit<ExpensesTransactionsState> {
   Future<void> getExpensesTransactions({
     String sort = 'latest',
     int take = 50,
-    int skip = 0,
+    required DateTime date,
   }) async {
     _sort = sort;
     _take = take;
-    _skip = skip;
+    _date = date;
     _hasMore = true;
     _isLoadingMore = false;
     emit(const ExpensesTransactionsState.loading());
@@ -36,11 +36,11 @@ class ExpensesTransactionsCubit extends Cubit<ExpensesTransactionsState> {
       storeId,
       sort: sort,
       take: take,
-      skip: skip,
+      date: _formatDate(_date),
     );
     result.when(
       success: (data) {
-        _hasMore = _skip + data.items.length < data.totalCount;
+        _hasMore = data.items.length < data.totalCount;
         emit(ExpensesTransactionsState.success(data));
       },
       failure: (error) => emit(ExpensesTransactionsState.error(error)),
@@ -48,7 +48,7 @@ class ExpensesTransactionsCubit extends Cubit<ExpensesTransactionsState> {
   }
 
   Future<void> changeSort(String sort) =>
-      getExpensesTransactions(sort: sort, take: _take, skip: 0);
+      getExpensesTransactions(sort: sort, take: 50, date: _date);
 
   Future<void> loadNextPage() async {
     if (_isLoadingMore || !_hasMore) return;
@@ -71,20 +71,19 @@ class ExpensesTransactionsCubit extends Cubit<ExpensesTransactionsState> {
         ),
       ),
     );
-    final nextSkip = _skip + _take;
+    final nextTake = _take + 50;
     final storeId = await SharedPrefHelper.getInt(SharedPrefHelper.storeIdKey);
     final result = await _useCase.invoke(
       storeId,
       sort: _sort,
-      take: _take,
-      skip: nextSkip,
+      take: nextTake,
+      date: _formatDate(_date),
     );
     _isLoadingMore = false;
     result.when(
       success: (page) {
-        _skip = nextSkip;
-        final allItems = [...current.items, ...page.items];
-        _hasMore = allItems.length < page.totalCount;
+        _take = nextTake;
+        _hasMore = page.items.length < page.totalCount;
         emit(
           ExpensesTransactionsState.success(
             ExpensesTransactions(
@@ -92,8 +91,8 @@ class ExpensesTransactionsCubit extends Cubit<ExpensesTransactionsState> {
               sort: page.sort,
               currency: page.currency,
               totalCount: page.totalCount,
-              count: allItems.length,
-              items: allItems,
+              count: page.count,
+              items: page.items,
               isLoadingMore: false,
             ),
           ),
@@ -102,4 +101,6 @@ class ExpensesTransactionsCubit extends Cubit<ExpensesTransactionsState> {
       failure: (error) => emit(ExpensesTransactionsState.error(error)),
     );
   }
+
+  String _formatDate(DateTime date) => date.toIso8601String().split('T').first;
 }

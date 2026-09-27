@@ -4,9 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:skeleton_mobile_app/core/theming/app_color.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
+import 'package:skeleton_mobile_app/core/routing/routes.dart';
+import 'package:skeleton_mobile_app/core/widgets/empty_state_message.dart';
 import 'package:skeleton_mobile_app/core/widgets/dilaog_utils.dart';
 import 'package:skeleton_mobile_app/features/purchases/logic/purchases_recent_cubit.dart';
 import 'package:skeleton_mobile_app/features/purchases/logic/purchases_recent_state.dart';
+import 'package:skeleton_mobile_app/features/purchases/logic/purchases_date_cubit.dart';
 import 'package:skeleton_mobile_app/features/purchases/ui/widgets/purchase_record_card.dart';
 import 'package:skeleton_mobile_app/features/purchases/ui/widgets/purchases_count_badge.dart';
 import 'package:skeleton_mobile_app/features/purchases/ui/widgets/purchases_list_shimmer.dart';
@@ -14,8 +17,13 @@ import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
 
 class PurchasesListSection extends StatefulWidget {
   final ScrollController scrollController;
+  final bool showSeeAll;
 
-  const PurchasesListSection({super.key, required this.scrollController});
+  const PurchasesListSection({
+    super.key,
+    required this.scrollController,
+    this.showSeeAll = true,
+  });
 
   @override
   State<PurchasesListSection> createState() => _PurchasesListSectionState();
@@ -109,71 +117,88 @@ class _PurchasesListSectionState extends State<PurchasesListSection> {
                 ),
                 SizedBox(width: 8.w),
                 PurchasesCountBadge(count: data.count),
-                const Spacer(),
-                Text(
-                  l10n.seeAll,
-                  style:
-                      (isDark
-                              ? AppStyles.font12MediumDark
-                              : AppStyles.font12MediumLight)
-                          .copyWith(
-                            color: isDark
-                                ? AppColorsDark.primary
-                                : AppColorsLight.primary,
-                            fontWeight: FontWeight.w700,
-                          ),
-                ),
+                if (widget.showSeeAll) ...[
+                  const Spacer(),
+                  InkWell(
+                    onTap: () => Navigator.of(context).pushNamed(
+                      Routes.purchasesRecentTransactionsScreen,
+                      arguments: context.read<PurchasesDateCubit>().state,
+                    ),
+                    child: Text(
+                      l10n.seeAll,
+                      style:
+                          (isDark
+                                  ? AppStyles.font12MediumDark
+                                  : AppStyles.font12MediumLight)
+                              .copyWith(
+                                color: isDark
+                                    ? AppColorsDark.primary
+                                    : AppColorsLight.primary,
+                                fontWeight: FontWeight.w700,
+                              ),
+                    ),
+                  ),
+                ],
               ],
             ),
             SizedBox(height: 12.h),
-            ...data.items.map((item) {
-              final date = item.date;
-              final dueDate = item.dueDate;
-              final supplier = item.supplier ?? '-';
-              final initials = supplier
-                  .trim()
-                  .split(RegExp(r'\s+'))
-                  .where((part) => part.isNotEmpty)
-                  .take(2)
-                  .map((part) => part.substring(0, 1).toUpperCase())
-                  .join();
-              final status = switch (item.status?.toUpperCase()) {
-                'PAID' => l10n.paid,
-                'PARTIAL' => l10n.partial,
-                'PENDING' => l10n.pending,
-                _ => item.status ?? '-',
-              };
-              return Padding(
-                padding: EdgeInsets.only(bottom: 12.h),
-                child: PurchaseRecordCard(
-                  record: PurchaseRecord(
-                    name: supplier,
-                    date: date == null
-                        ? '-'
-                        : DateFormat.yMMMd(locale).format(date),
-                    invoice: item.invoiceNumber ?? '-',
-                    amount: NumberFormat('#,##0.##', locale).format(item.total),
-                    status: status,
-                    initials: initials.isEmpty ? '-' : initials,
-                    color: item.status?.toUpperCase() == 'PAID'
-                        ? const Color(0xFF2DD4BF)
-                        : item.status?.toUpperCase() == 'PARTIAL'
-                        ? AppColorsLight.warningAlt
-                        : AppColorsLight.primary,
-                    remaining: item.remaining > 0
-                        ? l10n.remainingAmount(
-                            'EGP ${NumberFormat('#,##0.##', locale).format(item.remaining)}',
-                          )
-                        : null,
-                    due: dueDate == null
-                        ? null
-                        : l10n.dueDate(
-                            DateFormat.yMMMd(locale).format(dueDate),
-                          ),
+            if (data.items.isEmpty)
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 24.h),
+                child: EmptyStateMessage(message: l10n.noPurchasesFound),
+              )
+            else
+              ...data.items.map((item) {
+                final date = item.date;
+                final dueDate = item.dueDate;
+                final supplier = item.supplier ?? '-';
+                final initials = supplier
+                    .trim()
+                    .split(RegExp(r'\s+'))
+                    .where((part) => part.isNotEmpty)
+                    .take(2)
+                    .map((part) => part.substring(0, 1).toUpperCase())
+                    .join();
+                final status = switch (item.status?.toUpperCase()) {
+                  'PAID' => l10n.paid,
+                  'PARTIAL' => l10n.partial,
+                  'PENDING' => l10n.pending,
+                  _ => item.status ?? '-',
+                };
+                return Padding(
+                  padding: EdgeInsets.only(bottom: 12.h),
+                  child: PurchaseRecordCard(
+                    record: PurchaseRecord(
+                      name: supplier,
+                      date: date == null
+                          ? '-'
+                          : DateFormat.yMMMd(locale).format(date),
+                      invoice: item.invoiceNumber ?? '-',
+                      amount: NumberFormat(
+                        '#,##0.##',
+                        locale,
+                      ).format(item.total),
+                      status: status,
+                      initials: initials.isEmpty ? '-' : initials,
+                      color: item.status?.toUpperCase() == 'PAID'
+                          ? const Color(0xFF2DD4BF)
+                          : item.status?.toUpperCase() == 'PARTIAL'
+                          ? AppColorsLight.warningAlt
+                          : AppColorsLight.primary,
+                      remaining: item.remaining > 0
+                          ? l10n.remainingAmount(
+                              'EGP ${NumberFormat('#,##0.##', locale).format(item.remaining)}',
+                            )
+                          : null,
+                      due: dueDate == null
+                          ? null
+                          : l10n.dueDate(
+                              DateFormat.yMMMd(locale).format(dueDate),
+                            ),
+                    ),
                   ),
-                ),
-              );
-            }),
+                );
+              }),
             if (isLoadingMore)
               Padding(
                 padding: EdgeInsets.only(top: 12.h),

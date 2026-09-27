@@ -941,4 +941,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get oldest => 'الأقدم';
+
+  @override
+  String get noRecentTransactions => 'لا توجد معاملات حديثة.';
+
+  @override
+  String get noPurchasesFound => 'لا توجد مشتريات.';
 }

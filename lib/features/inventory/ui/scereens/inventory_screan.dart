@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeleton_mobile_app/core/helpers/spacing.dart';
 import 'package:skeleton_mobile_app/features/inventory/ui/widgets/inventory_header.dart';
@@ -6,6 +7,8 @@ import 'package:skeleton_mobile_app/features/inventory/ui/widgets/inventory_prod
 import 'package:skeleton_mobile_app/features/inventory/ui/widgets/inventory_search_bar.dart';
 import 'package:skeleton_mobile_app/features/inventory/ui/widgets/inventory_category_filter.dart';
 import 'package:skeleton_mobile_app/features/inventory/ui/widgets/inventory_stats.dart';
+import 'package:skeleton_mobile_app/features/inventory/logic/inventory_cubit.dart';
+import 'package:skeleton_mobile_app/features/inventory/logic/inventory_product_cubit.dart';
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
 
 class InventoryScrean extends StatefulWidget {
@@ -26,27 +29,33 @@ class _InventoryScreanState extends State<InventoryScrean> {
 
   @override
   Widget build(BuildContext context) {
-        final l10n = AppLocalizations.of(context)!;
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
-          controller: _scrollController,
-          physics: const BouncingScrollPhysics(),
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(20.w, 16.h, 20.w, 24.h),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                InventoryHeader(),
-                InventorySearchBar(),
-                verticalSpace(16.h),
-                InventoryCategoryFilter(),
-                verticalSpace(16.h),
+        child: RefreshIndicator(
+          onRefresh: () => Future.wait([
+            context.read<InventoryCubit>().getInventorySummary(),
+            context.read<InventoryProductCubit>().getInventoryProducts(),
+          ]),
+          child: SingleChildScrollView(
+            controller: _scrollController,
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(20.w, 16.h, 20.w, 24.h),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  InventoryHeader(),
+                  InventorySearchBar(),
+                  verticalSpace(16.h),
+                  InventoryCategoryFilter(),
+                  verticalSpace(16.h),
                   InventoryStats(l10n: l10n),
                   verticalSpace(22.h),
-                InventoryProductList(scrollController: _scrollController),
-              ],
+                  InventoryProductList(scrollController: _scrollController),
+                ],
+              ),
             ),
           ),
         ),

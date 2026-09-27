@@ -1,5 +1,7 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeleton_mobile_app/core/widgets/animated_navbar/navbar_item.dart';
 import 'package:flutter/material.dart';
+
 class AnimatedNavbarIcon extends StatelessWidget {
   final AnimatedNavbarItem item;
   final bool selected;
@@ -21,12 +23,11 @@ class AnimatedNavbarIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isLandscape =
+        MediaQuery.sizeOf(context).width > MediaQuery.sizeOf(context).height;
     return Center(
       child: TweenAnimationBuilder<double>(
-        tween: Tween(
-          begin: selected ? 0 : 1,
-          end: selected ? 1 : 0,
-        ),
+        tween: Tween(begin: selected ? 0 : 1, end: selected ? 1 : 0),
         duration: _tweenDuration,
         curve: Curves.easeOutBack,
         builder: (context, value, _) {
@@ -34,11 +35,17 @@ class AnimatedNavbarIcon extends StatelessWidget {
             scale: 1 + (_scaleBoost * value),
             child: IconTheme(
               data: IconThemeData(
-                color: Color.lerp(inactiveColor, activeColor, value.clamp(0.0, 1.0)),
-                size: _iconSize,
+                color: Color.lerp(
+                  inactiveColor,
+                  activeColor,
+                  value.clamp(0.0, 1.0),
+                ),
+                size: isLandscape ? 22 : _iconSize.r,
                 shadows: [
                   Shadow(
-                    color: activeColor.withValues(alpha: (0.6 * value).clamp(0.0, 1.0)),
+                    color: activeColor.withValues(
+                      alpha: (0.6 * value).clamp(0.0, 1.0),
+                    ),
                     blurRadius: (12 * value).clamp(0.0, 50.0),
                   ),
                 ],
@@ -59,10 +66,7 @@ class AnimatedNavbarIcon extends StatelessWidget {
       transitionBuilder: (child, animation) {
         return ScaleTransition(
           scale: animation,
-          child: FadeTransition(
-            opacity: animation,
-            child: child,
-          ),
+          child: FadeTransition(opacity: animation, child: child),
         );
       },
       child: selected
@@ -70,10 +74,7 @@ class AnimatedNavbarIcon extends StatelessWidget {
               key: const ValueKey('active'),
               child: item.activeIcon ?? item.icon,
             )
-          : KeyedSubtree(
-              key: const ValueKey('inactive'),
-              child: item.icon,
-            ),
+          : KeyedSubtree(key: const ValueKey('inactive'), child: item.icon),
     );
   }
 }

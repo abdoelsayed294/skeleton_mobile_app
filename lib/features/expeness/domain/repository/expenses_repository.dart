@@ -25,6 +25,6 @@ abstract class ExpensesRepository {
     int storeId,
     String sort,
     int take,
-    int skip,
+    String date,
   );
 }

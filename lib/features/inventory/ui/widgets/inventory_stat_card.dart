@@ -20,9 +20,15 @@ class InventoryStatCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
+    final landscape =
+        MediaQuery.sizeOf(context).width > MediaQuery.sizeOf(context).height;
+    final height = landscape ? 108.0 : 108.h;
+    final spacing = landscape ? 13.0 : 13.h;
+    final iconPadding = landscape ? 8.0 : 8.w;
+    final iconSize = landscape ? 17.0 : 17.sp;
     return Container(
-      height: 108.h,
-      padding: EdgeInsets.symmetric(vertical: 13.h),
+      height: height,
+      padding: EdgeInsets.symmetric(vertical: spacing),
       decoration: BoxDecoration(
         color: theme.cardColor,
         borderRadius: BorderRadius.circular(16.r),
@@ -32,12 +38,12 @@ class InventoryStatCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            padding: EdgeInsets.all(8.w),
+            padding: EdgeInsets.all(iconPadding),
             decoration: BoxDecoration(
               color: color.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(9.r),
             ),
-            child: Icon(icon, size: 17.sp, color: color),
+            child: Icon(icon, size: iconSize, color: color),
           ),
           Text(
             value,
@@ -47,7 +53,7 @@ class InventoryStatCard extends StatelessWidget {
           Text(
             label,
             style: (isDark ? AppStyles.statTitleDark : AppStyles.statTitleLight)
-                .copyWith(fontSize: 9.sp),
+                .copyWith(fontSize: landscape ? 9 : 9.sp),
           ),
         ],
       ),

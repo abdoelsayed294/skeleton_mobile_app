@@ -8,7 +8,7 @@ import 'package:skeleton_mobile_app/features/home/ui/screens/home_screan.dart';
 import 'package:skeleton_mobile_app/features/inventory/logic/inventory_cubit.dart';
 import 'package:skeleton_mobile_app/features/inventory/logic/inventory_product_cubit.dart';
 import 'package:skeleton_mobile_app/features/inventory/ui/scereens/inventory_screan.dart';
-import 'package:skeleton_mobile_app/features/reports/ui/scereens/reports_screan.dart';
+import 'package:skeleton_mobile_app/features/reports/ui/screens/reports_screan.dart';
 
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});

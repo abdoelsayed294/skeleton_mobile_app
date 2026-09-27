@@ -132,8 +132,7 @@ abstract class ApiService {
   @GET(EndPoints.purchasesRecent)
   Future<PurchasesRecentDto> getPurchasesRecent(
     @Query('storeId') int storeId,
-    @Query('year') int year,
-    @Query('month') int month,
+    @Query('date') String date,
     @Query('take') int take,
   );
 
@@ -168,7 +167,7 @@ abstract class ApiService {
     @Query('storeId') int storeId,
     @Query('sort') String sort,
     @Query('take') int take,
-    @Query('skip') int skip,
+    @Query('date') String date,
   );
 
   @GET(EndPoints.productActivity)

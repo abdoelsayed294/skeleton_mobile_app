@@ -18,11 +18,20 @@ class TodayReturnsStatCard extends StatelessWidget {
     final isDark = theme.brightness == Brightness.dark;
     final l10n = AppLocalizations.of(context)!;
     final accent = isDark ? AppColorsDark.error : AppColorsLight.error;
+    final landscape =
+        MediaQuery.sizeOf(context).width > MediaQuery.sizeOf(context).height;
+    double horizontal(double value) => landscape ? value : value.w;
+    double vertical(double value) => landscape ? value : value.h;
 
     return Expanded(
       child: Container(
-        height: 116.h,
-        padding: EdgeInsets.fromLTRB(13.w, 12.h, 13.w, 10.h),
+        height: vertical(116),
+        padding: EdgeInsets.fromLTRB(
+          horizontal(13),
+          vertical(12),
+          horizontal(13),
+          vertical(10),
+        ),
         decoration: BoxDecoration(
           color: theme.cardColor,
           borderRadius: BorderRadius.circular(16.r),
@@ -31,7 +40,7 @@ class TodayReturnsStatCard extends StatelessWidget {
             BoxShadow(
               color: Colors.black.withValues(alpha: 0.04),
               blurRadius: 8.r,
-              offset: Offset(0, 3.h),
+              offset: Offset(0, vertical(3)),
             ),
           ],
         ),
@@ -50,7 +59,11 @@ class TodayReturnsStatCard extends StatelessWidget {
                         : AppStyles.statTitleLight,
                   ),
                 ),
-                Icon(Icons.keyboard_return_rounded, size: 16.sp, color: accent),
+                Icon(
+                  Icons.keyboard_return_rounded,
+                  size: landscape ? 16 : 16.sp,
+                  color: accent,
+                ),
               ],
             ),
             Expanded(
@@ -83,12 +96,22 @@ class TodayReturnsStatCard extends StatelessWidget {
                     orElse: () => Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: 12.h),
-                        ShimmerBlock(width: 54.w, height: 22.h),
-                        SizedBox(height: 4.h),
-                        ShimmerBlock(width: 75.w, height: 9.h),
+                        SizedBox(height: vertical(12)),
+                        ShimmerBlock(
+                          width: horizontal(54),
+                          height: vertical(22),
+                        ),
+                        SizedBox(height: vertical(4)),
+                        ShimmerBlock(
+                          width: horizontal(75),
+                          height: vertical(9),
+                        ),
                         const Spacer(),
-                        ShimmerBlock(width: 45.w, height: 16.h, radius: 12),
+                        ShimmerBlock(
+                          width: horizontal(45),
+                          height: vertical(16),
+                          radius: 12,
+                        ),
                       ],
                     ),
                   );

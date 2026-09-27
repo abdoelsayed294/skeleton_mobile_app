@@ -9,27 +9,32 @@ class ProfitSummaryShimmer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isLandscape =
+        MediaQuery.orientationOf(context) == Orientation.landscape;
+    double w(double value) => isLandscape ? value : value.w;
+    double h(double value) => isLandscape ? value : value.h;
+    double r(double value) => isLandscape ? value : value.r;
     return Shimmer.fromColors(
       baseColor: isDark ? Colors.grey.shade800 : Colors.grey.shade300,
       highlightColor: isDark ? Colors.grey.shade700 : Colors.grey.shade100,
       child: Container(
-        height: 198.h,
+        height: h(198),
         width: double.infinity,
-        padding: EdgeInsets.all(18.w),
+        padding: EdgeInsets.all(w(18)),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(20.r),
+          borderRadius: BorderRadius.circular(r(20)),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ProfitShimmerBlock(width: 100.w, height: 12.h),
-            SizedBox(height: 16.h),
-            ProfitShimmerBlock(width: 150.w, height: 32.h),
+            ProfitShimmerBlock(width: w(100), height: h(12)),
+            SizedBox(height: h(16)),
+            ProfitShimmerBlock(width: w(150), height: h(32)),
             const Spacer(),
-            ProfitShimmerBlock(width: double.infinity, height: 1.h),
-            SizedBox(height: 16.h),
-            ProfitShimmerBlock(width: 180.w, height: 13.h),
+            ProfitShimmerBlock(width: double.infinity, height: h(1)),
+            SizedBox(height: h(16)),
+            ProfitShimmerBlock(width: w(180), height: h(13)),
           ],
         ),
       ),

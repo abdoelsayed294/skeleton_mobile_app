@@ -549,15 +549,13 @@ class _ApiService implements ApiService {
   @override
   Future<PurchasesRecentDto> getPurchasesRecent(
     int storeId,
-    int year,
-    int month,
+    String date,
     int take,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'storeId': storeId,
-      r'year': year,
-      r'month': month,
+      r'date': date,
       r'take': take,
     };
     final _headers = <String, dynamic>{};
@@ -721,14 +719,14 @@ class _ApiService implements ApiService {
     int storeId,
     String sort,
     int take,
-    int skip,
+    String date,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'storeId': storeId,
       r'sort': sort,
       r'take': take,
-      r'skip': skip,
+      r'date': date,
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;

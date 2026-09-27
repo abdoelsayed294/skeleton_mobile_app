@@ -30,6 +30,11 @@ class StatCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final isLandscape =
+        MediaQuery.sizeOf(context).width > MediaQuery.sizeOf(context).height;
+    double horizontal(double value) => isLandscape ? value : value.w;
+    double vertical(double value) => isLandscape ? value : value.h;
+    double compact(double value) => isLandscape ? value : value.r;
     final isDark = theme.brightness == Brightness.dark;
     final accent = isSelected
         ? theme.primaryColor
@@ -42,8 +47,13 @@ class StatCard extends StatelessWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(16.r),
       child: Container(
-        height: 128.h,
-        padding: EdgeInsets.fromLTRB(13.w, 12.h, 13.w, 10.h),
+        height: vertical(128),
+        padding: EdgeInsets.fromLTRB(
+          horizontal(13),
+          vertical(12),
+          horizontal(13),
+          vertical(10),
+        ),
         decoration: BoxDecoration(
           color: theme.cardColor,
           borderRadius: BorderRadius.circular(16.r),
@@ -53,13 +63,13 @@ class StatCard extends StatelessWidget {
                 : accentColor == null
                 ? theme.dividerColor
                 : accent!.withOpacity(0.25),
-            width: isSelected ? 1.5.w : 1.w,
+            width: compact(isSelected ? 1.5 : 1),
           ),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.04),
               blurRadius: 8.r,
-              offset: Offset(0, 3.h),
+              offset: Offset(0, compact(3)),
             ),
           ],
         ),
@@ -83,8 +93,8 @@ class StatCard extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  width: 28.w,
-                  height: 28.w,
+                  width: compact(28),
+                  height: compact(28),
                   decoration: BoxDecoration(
                     color: (accent ?? theme.primaryColor).withOpacity(0.08),
                     borderRadius: BorderRadius.circular(8.r),
@@ -94,13 +104,13 @@ class StatCard extends StatelessWidget {
                   ),
                   child: Icon(
                     icon,
-                    size: 15.sp,
+                    size: compact(15),
                     color: accent ?? theme.primaryColor,
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 8.h),
+            SizedBox(height: vertical(8)),
             Text(
               value,
               style:
@@ -113,7 +123,10 @@ class StatCard extends StatelessWidget {
             ),
             const Spacer(),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 7.w, vertical: 3.h),
+              padding: EdgeInsets.symmetric(
+                horizontal: horizontal(7),
+                vertical: vertical(3),
+              ),
               decoration: BoxDecoration(
                 color: changeColor.withOpacity(0.08),
                 borderRadius: BorderRadius.circular(8.r),

@@ -66,9 +66,9 @@ class ExpensesRepositoryImpl implements ExpensesRepository {
     int storeId,
     String sort,
     int take,
-    int skip,
+    String date,
   ) async {
-    final result = await _remote.getTransactions(storeId, sort, take, skip);
+    final result = await _remote.getTransactions(storeId, sort, take, date);
     return result.when(
       success: (data) => ApiResult.success(data.toEntity()),
       failure: ApiResult.failure,

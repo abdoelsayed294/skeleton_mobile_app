@@ -10,18 +10,19 @@ class PurchasesDateCubit extends Cubit<DateTime> {
     this._summaryCubit,
     this._recentCubit,
     DateTime initialDate,
-  ) : super(DateTime(initialDate.year, initialDate.month)) {
+  ) : super(initialDate) {
     _loadDate(state);
   }
 
   void selectDate(DateTime date) {
-    final selectedDate = DateTime(date.year, date.month, date.day);
-    emit(selectedDate);
-    _loadDate(selectedDate);
+    emit(date);
+    _loadDate(date);
   }
 
-  void _loadDate(DateTime date) {
-    _summaryCubit.selectDate(date);
-    _recentCubit.getPurchasesRecent(date.year, date.month);
-  }
+  Future<void> refresh() => _loadDate(state);
+
+  Future<void> _loadDate(DateTime date) => Future.wait<void>([
+    _summaryCubit.getPurchasesSummary(date.year, date.month),
+    _recentCubit.getPurchasesRecent(date),
+  ]);
 }

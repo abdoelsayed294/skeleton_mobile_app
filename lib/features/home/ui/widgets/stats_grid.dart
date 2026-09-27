@@ -47,6 +47,10 @@ class _StatsGridState extends State<StatsGrid> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final isLandscape =
+        MediaQuery.sizeOf(context).width > MediaQuery.sizeOf(context).height;
+    double horizontal(double value) => isLandscape ? value : value.w;
+    double vertical(double value) => isLandscape ? value : value.h;
 
     return BlocConsumer<HomeCubit, HomeState>(
       listenWhen: (previous, current) =>
@@ -70,19 +74,19 @@ class _StatsGridState extends State<StatsGrid> {
             children: List.generate(
               2,
               (rowIndex) => Padding(
-                padding: EdgeInsets.only(bottom: 12.h),
+                padding: EdgeInsets.only(bottom: vertical(12)),
                 child: Row(
                   children: List.generate(
                     2,
                     (cardIndex) => Expanded(
                       child: Padding(
                         padding: EdgeInsets.only(
-                          right: cardIndex == 0 ? 6.w : 0,
-                          left: cardIndex == 1 ? 6.w : 0,
+                          right: cardIndex == 0 ? horizontal(6) : 0,
+                          left: cardIndex == 1 ? horizontal(6) : 0,
                         ),
                         child: Container(
-                          height: 128.h,
-                          padding: EdgeInsets.all(13.w),
+                          height: vertical(128),
+                          padding: EdgeInsets.all(horizontal(13)),
                           decoration: BoxDecoration(
                             color: Theme.of(context).cardColor,
                             borderRadius: BorderRadius.circular(16.r),
@@ -93,11 +97,20 @@ class _StatsGridState extends State<StatsGrid> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              ShimmerBlock(width: 75.w, height: 11.h),
-                              SizedBox(height: 12.h),
-                              ShimmerBlock(width: 95.w, height: 21.h),
+                              ShimmerBlock(
+                                width: horizontal(75),
+                                height: vertical(11),
+                              ),
+                              SizedBox(height: vertical(12)),
+                              ShimmerBlock(
+                                width: horizontal(95),
+                                height: vertical(21),
+                              ),
                               const Spacer(),
-                              ShimmerBlock(width: 56.w, height: 15.h),
+                              ShimmerBlock(
+                                width: horizontal(56),
+                                height: vertical(15),
+                              ),
                             ],
                           ),
                         ),

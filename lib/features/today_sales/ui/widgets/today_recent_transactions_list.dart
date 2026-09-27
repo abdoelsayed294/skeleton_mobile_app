@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:skeleton_mobile_app/core/routing/routes.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
 import 'package:skeleton_mobile_app/core/widgets/shimmer_block.dart';
 import 'package:skeleton_mobile_app/features/home/ui/widgets/section_card.dart';
 import 'package:skeleton_mobile_app/features/today_sales/logic/today_recent_transaction_cubit.dart';
 import 'package:skeleton_mobile_app/features/today_sales/logic/today_recent_transaction_state.dart';
+import 'package:skeleton_mobile_app/features/today_sales/logic/today_sales_date_cubit.dart';
 import 'package:skeleton_mobile_app/features/reports/ui/widgets/transaction_row.dart';
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
 
@@ -33,13 +35,19 @@ class TodayRecentTransactionsList extends StatelessWidget {
                         : AppStyles.productTitleLight,
                   ),
                 ),
-                Text(
-                  l10n.viewAll,
-                  style:
-                      (isDark
-                              ? AppStyles.productSubtitleDark
-                              : AppStyles.productSubtitleLight)
-                          .copyWith(color: Theme.of(context).primaryColor),
+                InkWell(
+                  onTap: () => Navigator.of(context).pushNamed(
+                    Routes.todayRecentTransactionsScreen,
+                    arguments: context.read<TodaySalesDateCubit>().state,
+                  ),
+                  child: Text(
+                    l10n.viewAll,
+                    style:
+                        (isDark
+                                ? AppStyles.productSubtitleDark
+                                : AppStyles.productSubtitleLight)
+                            .copyWith(color: Theme.of(context).primaryColor),
+                  ),
                 ),
               ],
             ),

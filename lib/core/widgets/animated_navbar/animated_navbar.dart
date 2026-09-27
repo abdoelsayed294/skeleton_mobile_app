@@ -42,6 +42,7 @@ class _AnimatedSpotlightNavbarState extends State<AnimatedSpotlightNavbar>
   double _startX = 0;
   double _endX = 0;
   TextDirection? _lastTextDirection;
+  Size? _lastSize;
 
   @override
   void initState() {
@@ -83,6 +84,14 @@ class _AnimatedSpotlightNavbarState extends State<AnimatedSpotlightNavbar>
   void didChangeDependencies() {
     super.didChangeDependencies();
 
+    final size = MediaQuery.sizeOf(context);
+    if (_lastSize != size) {
+      _lastSize = size;
+      final center = _calculateCenterX(widget.currentIndex);
+      _startX = center;
+      _endX = center;
+    }
+
     final textDirection = Directionality.of(context);
     if (_lastTextDirection == null) {
       _lastTextDirection = textDirection;
@@ -117,9 +126,12 @@ class _AnimatedSpotlightNavbarState extends State<AnimatedSpotlightNavbar>
   Widget build(BuildContext context) {
     final bottomPadding = MediaQuery.of(context).padding.bottom;
     final textDirection = Directionality.of(context);
+    final isLandscape =
+        MediaQuery.sizeOf(context).width > MediaQuery.sizeOf(context).height;
+    final navHeight = isLandscape ? widget.height * 0.78 : widget.height;
 
     return Container(
-      height: widget.height + bottomPadding,
+      height: navHeight + bottomPadding,
       decoration: BoxDecoration(
         color: widget.backgroundColor,
         borderRadius: BorderRadius.vertical(

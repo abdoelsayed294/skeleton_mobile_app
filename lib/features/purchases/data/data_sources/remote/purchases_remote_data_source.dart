@@ -10,8 +10,7 @@ abstract class PurchasesRemoteDataSource {
 
   Future<ApiResult<PurchasesRecentDto>> getPurchasesRecent(
     int storeId,
-    int year,
-    int month,
+    String date,
     int take,
   );
 }

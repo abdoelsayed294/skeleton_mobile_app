@@ -13,11 +13,9 @@ class PurchasesRecentCubit extends Cubit<PurchasesRecentState> {
     : super(const PurchasesRecentState.initial());
 
   static const int _pageSize = 20;
-  int _year = DateTime.now().year;
-  int _month = DateTime.now().month;
+  String _date = _formatDate(DateTime.now());
   int _take = _pageSize;
   int _requestId = 0;
-  int _queryVersion = 0;
   bool _hasMore = true;
   bool _isLoadingMore = false;
   Future<void>? _loadMoreFuture;
@@ -25,11 +23,12 @@ class PurchasesRecentCubit extends Cubit<PurchasesRecentState> {
   bool get hasMore => _hasMore;
   bool get isLoadingMore => _isLoadingMore;
 
-  Future<void> getPurchasesRecent(int year, int month, {int take = 20}) async {
-    final queryVersion = ++_queryVersion;
+  Future<void> refresh() =>
+      getPurchasesRecent(DateTime.parse(_date), take: _pageSize);
+
+  Future<void> getPurchasesRecent(DateTime date, {int take = 20}) async {
     final requestId = ++_requestId;
-    _year = year;
-    _month = month;
+    _date = _formatDate(date);
     _take = take;
     _hasMore = true;
     _isLoadingMore = false;
@@ -37,8 +36,7 @@ class PurchasesRecentCubit extends Cubit<PurchasesRecentState> {
     final storeId = await SharedPrefHelper.getInt(SharedPrefHelper.storeIdKey);
     final result = await _getPurchasesRecentUseCase.invoke(
       storeId,
-      year,
-      month,
+      _date,
       take,
     );
     if (requestId != _requestId) return;
@@ -52,9 +50,6 @@ class PurchasesRecentCubit extends Cubit<PurchasesRecentState> {
         emit(PurchasesRecentState.error(error));
       },
     );
-    while (queryVersion == _queryVersion && _hasMore && !isClosed) {
-      await loadMore();
-    }
   }
 
   Future<void> loadMore() {
@@ -85,8 +80,7 @@ class PurchasesRecentCubit extends Cubit<PurchasesRecentState> {
     final storeId = await SharedPrefHelper.getInt(SharedPrefHelper.storeIdKey);
     final result = await _getPurchasesRecentUseCase.invoke(
       storeId,
-      _year,
-      _month,
+      _date,
       _take,
     );
     if (requestId != _requestId) return;
@@ -103,4 +97,7 @@ class PurchasesRecentCubit extends Cubit<PurchasesRecentState> {
       },
     );
   }
+
+  static String _formatDate(DateTime date) =>
+      date.toIso8601String().split('T').first;
 }
