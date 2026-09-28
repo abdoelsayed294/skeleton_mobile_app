@@ -147,7 +147,10 @@ class _StatsGridState extends State<StatsGrid> {
                     onTap: () {
                       setState(() => selectedCardIndex = 0);
 
-                      Navigator.of(context).pushNamed(Routes.todaySalesScreen);
+                      Navigator.of(context).pushNamed(
+                        Routes.todaySalesScreen,
+                        arguments: widget.selectedDate,
+                      );
                     },
                   ),
                 ),
@@ -163,7 +166,10 @@ class _StatsGridState extends State<StatsGrid> {
                     isSelected: selectedCardIndex == 1,
                     onTap: () {
                       setState(() => selectedCardIndex = 1);
-                      Navigator.of(context).pushNamed(Routes.expensesScreen);
+                      Navigator.of(context).pushNamed(
+                        Routes.expensesScreen,
+                        arguments: widget.selectedDate,
+                      );
                     },
                   ),
                 ),
@@ -184,7 +190,10 @@ class _StatsGridState extends State<StatsGrid> {
                     onTap: () {
                       setState(() => selectedCardIndex = 2);
 
-                      Navigator.of(context).pushNamed(Routes.purchasesScreen);
+                      Navigator.of(context).pushNamed(
+                        Routes.purchasesScreen,
+                        arguments: widget.selectedDate,
+                      );
                     },
                   ),
                 ),
@@ -201,9 +210,10 @@ class _StatsGridState extends State<StatsGrid> {
                     onTap: () {
                       setState(() => selectedCardIndex = 3);
 
-                      Navigator.of(
-                        context,
-                      ).pushNamed(Routes.profitDetailsScreen);
+                      Navigator.of(context).pushNamed(
+                        Routes.profitDetailsScreen,
+                        arguments: widget.selectedDate,
+                      );
                     },
                   ),
                 ),

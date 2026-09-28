@@ -57,11 +57,22 @@ class _ReportsRecentTransactionsScreenState
           children: [
             Padding(
               padding: EdgeInsets.fromLTRB(20.w, 12.h, 20.w, 8.h),
-              child: ProfitDetailsHeader(
-                title: l10n.recentTransactions,
-                onBack: () => Navigator.of(context).maybePop(),
-                showDateSelector: false,
-              ),
+              child:
+                  BlocBuilder<RecentTransactionCubit, RecentTransactionState>(
+                    builder: (context, state) {
+                      final count = state.maybeWhen(
+                        success: (transactions) => transactions.length,
+                        orElse: () => null,
+                      );
+                      return ProfitDetailsHeader(
+                        title: count == null
+                            ? l10n.recentTransactions
+                            : '${l10n.recentTransactions} · $count',
+                        onBack: () => Navigator.of(context).maybePop(),
+                        showDateSelector: false,
+                      );
+                    },
+                  ),
             ),
             Expanded(
               child: RefreshIndicator(

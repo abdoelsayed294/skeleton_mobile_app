@@ -21,19 +21,19 @@ ReportsSalesDto _$ReportsSalesDtoFromJson(Map<String, dynamic> json) =>
           (json['daily'] as List<dynamic>?)
               ?.map((e) => DailySalesDto.fromJson(e as Map<String, dynamic>))
               .toList() ??
-          const [],
+          [],
       breakdown:
           (json['breakdown'] as List<dynamic>?)
               ?.map(
                 (e) => PaymentBreakdownDto.fromJson(e as Map<String, dynamic>),
               )
               .toList() ??
-          const [],
+          [],
       topSelling:
           (json['topSelling'] as List<dynamic>?)
               ?.map((e) => TopSellingDto.fromJson(e as Map<String, dynamic>))
               .toList() ??
-          const [],
+          [],
     );
 
 Map<String, dynamic> _$ReportsSalesDtoToJson(ReportsSalesDto instance) =>

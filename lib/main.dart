@@ -21,12 +21,11 @@ Future<void> main() async {
   );
 
   final qrStatus = await SharedPrefHelper.getString(
-      SharedPrefHelper.qrStatusKey,
-
+    SharedPrefHelper.qrStatusKey,
   );
   String initialRoute;
   if (qrStatus?.toLowerCase() == 'approved') {
-    initialRoute = Routes.mainScreen;
+    initialRoute = Routes.branchSelectionScreen;
   } else {
     initialRoute = Routes.scanQrScreen;
   }

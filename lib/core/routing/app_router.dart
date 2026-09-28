@@ -46,6 +46,9 @@ import 'package:skeleton_mobile_app/features/expeness/logic/expenses_transaction
 import 'package:skeleton_mobile_app/features/scan_qr/logic/qr_cubit.dart';
 import 'package:skeleton_mobile_app/features/scan_qr/ui/screens/scan_qr_screen.dart';
 import 'package:skeleton_mobile_app/features/scan_qr/ui/screens/qr_scanner_screen.dart';
+import 'package:skeleton_mobile_app/features/branch_selection/logic/branches_cubit.dart';
+import 'package:skeleton_mobile_app/features/branch_selection/logic/branch_selection_cubit.dart';
+import 'package:skeleton_mobile_app/features/branch_selection/ui/screens/branch_selection_screen.dart';
 import 'routes.dart';
 
 class AppRouter {
@@ -60,6 +63,18 @@ class AppRouter {
           builder: (_) => BlocProvider(
             create: (_) => getIt<QrCubit>(),
             child: const QrScannerScreen(),
+          ),
+        );
+      case Routes.branchSelectionScreen:
+        return MaterialPageRoute(
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (_) => getIt<BranchesCubit>()..getBranches(),
+              ),
+              BlocProvider(create: (_) => getIt<BranchSelectionCubit>()),
+            ],
+            child: const BranchSelectionScreen(),
           ),
         );
       case Routes.mainScreen:
@@ -119,9 +134,9 @@ class AppRouter {
           ),
         );
       case Routes.todaySalesScreen:
+        final date = settings.arguments as DateTime? ?? DateTime.now();
         return MaterialPageRoute(
           builder: (_) {
-            final date = DateTime.now();
             return MultiBlocProvider(
               providers: [
                 BlocProvider(create: (_) => getIt<TodaySalesCubit>()),
@@ -164,12 +179,12 @@ class AppRouter {
           ),
         );
       case Routes.profitDetailsScreen:
+        final date = settings.arguments as DateTime? ?? DateTime.now();
         return MaterialPageRoute(
           builder: (_) => MultiBlocProvider(
             providers: [
               BlocProvider(
-                create: (_) =>
-                    getIt<ProfitSummaryCubit>()..getProfitSummary('today'),
+                create: (_) => getIt<ProfitSummaryCubit>()..selectDate(date),
               ),
               BlocProvider(
                 create: (_) =>
@@ -223,9 +238,9 @@ class AppRouter {
           ),
         );
       case Routes.purchasesScreen:
+        final selectedDate = settings.arguments as DateTime? ?? DateTime.now();
         return MaterialPageRoute(
           builder: (_) {
-            final now = DateTime.now();
             return MultiBlocProvider(
               providers: [
                 BlocProvider(create: (_) => getIt<PurchasesSummaryCubit>()),
@@ -234,7 +249,7 @@ class AppRouter {
                   create: (context) => PurchasesDateCubit(
                     context.read<PurchasesSummaryCubit>(),
                     context.read<PurchasesRecentCubit>(),
-                    now,
+                    selectedDate,
                   ),
                 ),
               ],
@@ -254,6 +269,7 @@ class AppRouter {
       case Routes.notificationsScreen:
         return MaterialPageRoute(builder: (_) => const NotificationsScreen());
       case Routes.expensesScreen:
+        final selectedDate = settings.arguments as DateTime? ?? DateTime.now();
         return MaterialPageRoute(
           builder: (_) => MultiBlocProvider(
             providers: [
@@ -269,7 +285,7 @@ class AppRouter {
                   context.read<ExpensesByCategoryCubit>(),
                   context.read<ExpensesPeakDaysCubit>(),
                   context.read<ExpensesTransactionsCubit>(),
-                  initialDate: DateTime.now(),
+                  initialDate: selectedDate,
                 )..loadInitial(),
               ),
             ],

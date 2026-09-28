@@ -13,20 +13,22 @@ class PurchasesSummaryCubit extends Cubit<PurchasesSummaryState> {
     : super(const PurchasesSummaryState.initial());
 
   DateTime selectedDate = DateTime.now();
+  int _requestId = 0;
 
   void selectDate(DateTime date) {
     selectedDate = date;
-    getPurchasesSummary(date.year, date.month);
+    getPurchasesSummary(date);
   }
 
-  Future<void> getPurchasesSummary(int year, int month) async {
+  Future<void> getPurchasesSummary(DateTime date) async {
+    selectedDate = date;
+    final requestId = ++_requestId;
     emit(const PurchasesSummaryState.loading());
     final storeId = await SharedPrefHelper.getInt(SharedPrefHelper.storeIdKey);
-    final result = await _getPurchasesSummaryUseCase.invoke(
-      storeId,
-      year,
-      month,
-    );
+    if (isClosed || requestId != _requestId) return;
+    final dateParam = date.toIso8601String().split('T').first;
+    final result = await _getPurchasesSummaryUseCase.invoke(storeId, dateParam);
+    if (isClosed || requestId != _requestId) return;
     result.when(
       success: (data) => emit(PurchasesSummaryState.success(data)),
       failure: (error) => emit(PurchasesSummaryState.error(error)),

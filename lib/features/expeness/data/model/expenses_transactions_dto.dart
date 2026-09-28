@@ -6,6 +6,9 @@ part 'expenses_transactions_dto.g.dart';
 class ExpensesTransactionsDto {
   final int? storeId;
   final String? sort;
+  final String? date;
+  final String? period;
+  final ExpenseTransactionsRangeDto? range;
   final String? currency;
   final int? totalCount;
   final int? count;
@@ -13,6 +16,9 @@ class ExpensesTransactionsDto {
   const ExpensesTransactionsDto({
     this.storeId,
     this.sort,
+    this.date,
+    this.period,
+    this.range,
     this.currency,
     this.totalCount,
     this.count,
@@ -21,6 +27,19 @@ class ExpensesTransactionsDto {
   factory ExpensesTransactionsDto.fromJson(Map<String, dynamic> json) =>
       _$ExpensesTransactionsDtoFromJson(json);
   Map<String, dynamic> toJson() => _$ExpensesTransactionsDtoToJson(this);
+}
+
+@JsonSerializable()
+class ExpenseTransactionsRangeDto {
+  final String? from;
+  final String? to;
+
+  const ExpenseTransactionsRangeDto({this.from, this.to});
+
+  factory ExpenseTransactionsRangeDto.fromJson(Map<String, dynamic> json) =>
+      _$ExpenseTransactionsRangeDtoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ExpenseTransactionsRangeDtoToJson(this);
 }
 
 @JsonSerializable()

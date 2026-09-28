@@ -11,6 +11,7 @@ class GetExpensesTransactionsUseCase {
     int storeId, {
     String sort = 'latest',
     int take = 50,
-    required String date,
-  }) => _repository.getTransactions(storeId, sort, take, date);
+    String? date,
+    String? period,
+  }) => _repository.getTransactions(storeId, sort, take, date, period);
 }

@@ -35,10 +35,14 @@ class ExpensesScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 18.h),
-                ProfitDetailsHeader(
-                  title: l10n.expenses,
-                  onBack: () => Navigator.of(context).maybePop(),
-                  showDateSelector: false,
+                BlocBuilder<ExpensesDateCubit, ExpensesDateState>(
+                  builder: (context, state) => ProfitDetailsHeader(
+                    title: l10n.expenses,
+                    selectedDate: state.selectedDate,
+                    onDateChanged: context.read<ExpensesDateCubit>().selectDate,
+                    onBack: () => Navigator.of(context).maybePop(),
+                    showDateSelector: true,
+                  ),
                 ),
                 SizedBox(height: 16.h),
                 BlocBuilder<ExpensesDateCubit, ExpensesDateState>(

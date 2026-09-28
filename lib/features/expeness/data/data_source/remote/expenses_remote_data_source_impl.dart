@@ -75,11 +75,12 @@ class ExpensesRemoteDataSourceImpl implements ExpensesRemoteDataSource {
     int storeId,
     String sort,
     int take,
-    String date,
+    String? date,
+    String? period,
   ) async {
     try {
       return ApiResult.success(
-        await _api.getExpensesTransactions(storeId, sort, take, date),
+        await _api.getExpensesTransactions(storeId, sort, take, date, period),
       );
     } catch (e) {
       return ApiResult.failure(ApiErrorHandler.handle(e));

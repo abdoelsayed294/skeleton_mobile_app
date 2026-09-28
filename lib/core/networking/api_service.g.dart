@@ -179,6 +179,33 @@ class _ApiService implements ApiService {
   }
 
   @override
+  Future<BranchesResponseDto> getBranches(int businessId) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'businessId': businessId};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<BranchesResponseDto>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/api/Dashboard/branches',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late BranchesResponseDto _value;
+    try {
+      _value = BranchesResponseDto.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<InventorySummaryResponseDto> getInventorySummary(
     int storeId,
     String? itemType,
@@ -514,14 +541,12 @@ class _ApiService implements ApiService {
   @override
   Future<PurchasesSummaryDto> getPurchasesSummary(
     int storeId,
-    int year,
-    int month,
+    String date,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'storeId': storeId,
-      r'year': year,
-      r'month': month,
+      r'date': date,
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -719,7 +744,8 @@ class _ApiService implements ApiService {
     int storeId,
     String sort,
     int take,
-    String date,
+    String? date,
+    String? period,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -727,7 +753,9 @@ class _ApiService implements ApiService {
       r'sort': sort,
       r'take': take,
       r'date': date,
+      r'period': period,
     };
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<ExpensesTransactionsDto>(

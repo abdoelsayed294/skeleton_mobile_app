@@ -12,6 +12,7 @@ class ExpensesTransactionsCubit extends Cubit<ExpensesTransactionsState> {
     : super(const ExpensesTransactionsState.initial());
   final GetExpensesTransactionsUseCase _useCase;
   String _sort = 'latest';
+  String? _period = 'month';
   int _take = 50;
   DateTime _date = DateTime.now();
   bool _hasMore = true;
@@ -24,10 +25,12 @@ class ExpensesTransactionsCubit extends Cubit<ExpensesTransactionsState> {
     String sort = 'latest',
     int take = 50,
     required DateTime date,
+    String? period = 'month',
   }) async {
     _sort = sort;
     _take = take;
     _date = date;
+    _period = period;
     _hasMore = true;
     _isLoadingMore = false;
     emit(const ExpensesTransactionsState.loading());
@@ -37,6 +40,7 @@ class ExpensesTransactionsCubit extends Cubit<ExpensesTransactionsState> {
       sort: sort,
       take: take,
       date: _formatDate(_date),
+      period: _period,
     );
     result.when(
       success: (data) {
@@ -47,8 +51,12 @@ class ExpensesTransactionsCubit extends Cubit<ExpensesTransactionsState> {
     );
   }
 
-  Future<void> changeSort(String sort) =>
-      getExpensesTransactions(sort: sort, take: 50, date: _date);
+  Future<void> changeSort(String sort) => getExpensesTransactions(
+    sort: sort,
+    take: 50,
+    date: _date,
+    period: _period,
+  );
 
   Future<void> loadNextPage() async {
     if (_isLoadingMore || !_hasMore) return;
@@ -63,6 +71,9 @@ class ExpensesTransactionsCubit extends Cubit<ExpensesTransactionsState> {
         ExpensesTransactions(
           storeId: current.storeId,
           sort: current.sort,
+          date: current.date,
+          period: current.period,
+          range: current.range,
           currency: current.currency,
           totalCount: current.totalCount,
           count: current.count,
@@ -78,6 +89,7 @@ class ExpensesTransactionsCubit extends Cubit<ExpensesTransactionsState> {
       sort: _sort,
       take: nextTake,
       date: _formatDate(_date),
+      period: _period,
     );
     _isLoadingMore = false;
     result.when(
@@ -89,6 +101,9 @@ class ExpensesTransactionsCubit extends Cubit<ExpensesTransactionsState> {
             ExpensesTransactions(
               storeId: page.storeId,
               sort: page.sort,
+              date: page.date,
+              period: page.period,
+              range: page.range,
               currency: page.currency,
               totalCount: page.totalCount,
               count: page.count,

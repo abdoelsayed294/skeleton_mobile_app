@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
 import 'package:skeleton_mobile_app/features/home/ui/widgets/date_selector.dart';
 
@@ -57,11 +58,23 @@ class ProfitDetailsHeader extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'El-Masry Retail',
-                style: isDark
-                    ? AppStyles.font12MediumDark
-                    : AppStyles.font12MediumLight,
+              FutureBuilder<String>(
+                future: SharedPrefHelper.getString(
+                  SharedPrefHelper.businessNameKey,
+                ),
+                builder: (context, snapshot) {
+                  final businessName = snapshot.data?.trim();
+                  return Text(
+                    businessName == null || businessName.isEmpty
+                        ? 'Skeleton'
+                        : businessName,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: isDark
+                        ? AppStyles.font12MediumDark
+                        : AppStyles.font12MediumLight,
+                  );
+                },
               ),
               Text(
                 title,

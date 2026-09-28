@@ -2,6 +2,9 @@ class ExpensesTransactions {
   const ExpensesTransactions({
     this.storeId,
     this.sort,
+    this.date,
+    this.period,
+    this.range,
     this.currency,
     this.totalCount = 0,
     this.count = 0,
@@ -10,11 +13,21 @@ class ExpensesTransactions {
   });
   final int? storeId;
   final String? sort;
+  final String? date;
+  final String? period;
+  final ExpenseTransactionsRange? range;
   final String? currency;
   final int totalCount;
   final int count;
   final List<ExpensesTransactionItem> items;
   final bool isLoadingMore;
+}
+
+class ExpenseTransactionsRange {
+  const ExpenseTransactionsRange({this.from, this.to});
+
+  final String? from;
+  final String? to;
 }
 
 class ExpensesTransactionItem {

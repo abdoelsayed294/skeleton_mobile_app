@@ -107,6 +107,11 @@ extension ExpensesTransactionsMapper on ExpensesTransactionsDto {
   ExpensesTransactions toEntity() => ExpensesTransactions(
     storeId: storeId,
     sort: sort,
+    date: date,
+    period: period,
+    range: range == null
+        ? null
+        : ExpenseTransactionsRange(from: range!.from, to: range!.to),
     currency: currency,
     totalCount: totalCount ?? 0,
     count: count ?? 0,

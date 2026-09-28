@@ -2,6 +2,10 @@
 
 part of 'payment_breakdown_dto.dart';
 
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
 PaymentBreakdownDto _$PaymentBreakdownDtoFromJson(Map<String, dynamic> json) =>
     PaymentBreakdownDto(
       method: json['method'] as String,

@@ -25,6 +25,7 @@ abstract class ExpensesRemoteDataSource {
     int storeId,
     String sort,
     int take,
-    String date,
+    String? date,
+    String? period,
   );
 }

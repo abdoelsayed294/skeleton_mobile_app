@@ -9,6 +9,7 @@ import 'package:skeleton_mobile_app/features/reports/logic/recent_transaction_st
 class RecentTransactionCubit extends Cubit<RecentTransactionState> {
   final RecentTransactionUseCase recentTransactionUseCase;
   int _requestId = 0;
+  int _pageSize = 10;
   int _take = 10;
   int _year = DateTime.now().year;
   int _month = DateTime.now().month;
@@ -20,7 +21,7 @@ class RecentTransactionCubit extends Cubit<RecentTransactionState> {
   bool get isLoadingMore => _isLoadingMore;
 
   Future<void> refresh() =>
-      getRecentTransactions(take: 10, year: _year, month: _month);
+      getRecentTransactions(take: _pageSize, year: _year, month: _month);
 
   RecentTransactionCubit(this.recentTransactionUseCase)
     : super(const RecentTransactionState.initial());
@@ -31,6 +32,7 @@ class RecentTransactionCubit extends Cubit<RecentTransactionState> {
     required int month,
   }) async {
     final requestId = ++_requestId;
+    _pageSize = take;
     _take = take;
     _year = year;
     _month = month;

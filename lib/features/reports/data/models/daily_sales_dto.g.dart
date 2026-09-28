@@ -2,6 +2,10 @@
 
 part of 'daily_sales_dto.dart';
 
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
 DailySalesDto _$DailySalesDtoFromJson(Map<String, dynamic> json) =>
     DailySalesDto(
       date: json['date'] as String,

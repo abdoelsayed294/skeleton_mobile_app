@@ -5,8 +5,7 @@ import 'package:skeleton_mobile_app/features/purchases/domain/entity/purchases_s
 abstract class PurchasesRepo {
   Future<ApiResult<PurchasesSummaryEntity>> getPurchasesSummary(
     int storeId,
-    int year,
-    int month,
+    String date,
   );
 
   Future<ApiResult<PurchasesRecentEntity>> getPurchasesRecent(

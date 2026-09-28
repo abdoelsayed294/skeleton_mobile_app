@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeleton_mobile_app/features/purchases/logic/purchases_date_cubit.dart';
-import 'package:skeleton_mobile_app/features/purchases/ui/widgets/add_purchase_button.dart';
 import 'package:skeleton_mobile_app/features/purchases/ui/widgets/purchases_header.dart';
 import 'package:skeleton_mobile_app/features/purchases/ui/widgets/purchases_list_section.dart';
 import 'package:skeleton_mobile_app/features/purchases/ui/widgets/purchases_summary_card.dart';
@@ -26,15 +25,13 @@ class _PurchasesScreanState extends State<PurchasesScrean> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      floatingActionButton: const AddPurchaseButton(),
       body: SafeArea(
         child: RefreshIndicator(
           onRefresh: context.read<PurchasesDateCubit>().refresh,
           child: SingleChildScrollView(
             controller: _scrollController,
             physics: const AlwaysScrollableScrollPhysics(),
-            padding: EdgeInsets.fromLTRB(20.w, 12.h, 20.w, 88.h),
+            padding: EdgeInsets.fromLTRB(20.w, 12.h, 20.w, 24.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

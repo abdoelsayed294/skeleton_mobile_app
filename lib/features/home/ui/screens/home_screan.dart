@@ -5,7 +5,6 @@ import 'package:skeleton_mobile_app/core/theming/app_style.dart';
 import 'package:skeleton_mobile_app/features/home/logic/home_cubit.dart';
 import 'package:skeleton_mobile_app/features/home/logic/home_state.dart';
 import 'package:skeleton_mobile_app/features/home/ui/widgets/app_bar.dart';
-import 'package:skeleton_mobile_app/features/home/ui/widgets/assistant_floating_button.dart';
 import 'package:skeleton_mobile_app/features/home/ui/widgets/date_selector.dart';
 import 'package:skeleton_mobile_app/features/home/ui/widgets/sales_overview.dart';
 import 'package:skeleton_mobile_app/features/home/ui/widgets/stats_grid.dart';
@@ -121,11 +120,6 @@ class _HomeScreanState extends State<HomeScrean> {
                   ),
                 ),
               ),
-            ),
-            const PositionedDirectional(
-              end: 16,
-              bottom: 8,
-              child: AssistantFloatingButton(),
             ),
           ],
         ),
