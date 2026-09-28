@@ -1927,6 +1927,90 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No purchases found.'**
   String get noPurchasesFound;
+
+  /// No description provided for @appName.
+  ///
+  /// In en, this message translates to:
+  /// **'Skeleton'**
+  String get appName;
+
+  /// No description provided for @branchSelectionStep.
+  ///
+  /// In en, this message translates to:
+  /// **'Branch selection'**
+  String get branchSelectionStep;
+
+  /// No description provided for @selectYourBranch.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Your Branch'**
+  String get selectYourBranch;
+
+  /// No description provided for @chooseBranchToContinue.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a branch to continue'**
+  String get chooseBranchToContinue;
+
+  /// No description provided for @availableBranches.
+  ///
+  /// In en, this message translates to:
+  /// **'Available branches'**
+  String get availableBranches;
+
+  /// No description provided for @branchCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} Branches'**
+  String branchCount(int count);
+
+  /// No description provided for @activeBranch.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get activeBranch;
+
+  /// No description provided for @branchFallbackName.
+  ///
+  /// In en, this message translates to:
+  /// **'Branch'**
+  String get branchFallbackName;
+
+  /// No description provided for @noBranchesAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'No branches available.'**
+  String get noBranchesAvailable;
+
+  /// No description provided for @continueToDashboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue to Dashboard'**
+  String get continueToDashboard;
+
+  /// No description provided for @selectedBranch.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected branch'**
+  String get selectedBranch;
+
+  /// No description provided for @noneSelected.
+  ///
+  /// In en, this message translates to:
+  /// **'None'**
+  String get noneSelected;
+
+  /// No description provided for @changeBranch.
+  ///
+  /// In en, this message translates to:
+  /// **'Change branch'**
+  String get changeBranch;
+
+  /// No description provided for @logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Log out'**
+  String get logout;
 }
 
 class _AppLocalizationsDelegate

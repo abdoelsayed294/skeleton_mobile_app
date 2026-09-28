@@ -14,12 +14,11 @@ class PurchasesRemoteDataSourceImpl implements PurchasesRemoteDataSource {
   @override
   Future<ApiResult<PurchasesSummaryDto>> getPurchasesSummary(
     int storeId,
-    int year,
-    int month,
+    String date,
   ) async {
     try {
       return ApiResult.success(
-        await _apiService.getPurchasesSummary(storeId, year, month),
+        await _apiService.getPurchasesSummary(storeId, date),
       );
     } catch (error) {
       return ApiResult.failure(ApiErrorHandler.handle(error));

@@ -15,10 +15,9 @@ class PurchasesRepoImpl implements PurchasesRepo {
   @override
   Future<ApiResult<PurchasesSummaryEntity>> getPurchasesSummary(
     int storeId,
-    int year,
-    int month,
+    String date,
   ) async {
-    final result = await _remote.getPurchasesSummary(storeId, year, month);
+    final result = await _remote.getPurchasesSummary(storeId, date);
     return result.when(
       success: (data) => ApiResult.success(data.toEntity()),
       failure: (error) => ApiResult.failure(error),

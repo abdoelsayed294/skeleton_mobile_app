@@ -22,7 +22,7 @@ class PurchasesDateCubit extends Cubit<DateTime> {
   Future<void> refresh() => _loadDate(state);
 
   Future<void> _loadDate(DateTime date) => Future.wait<void>([
-    _summaryCubit.getPurchasesSummary(date.year, date.month),
+    _summaryCubit.getPurchasesSummary(date),
     _recentCubit.getPurchasesRecent(date),
   ]);
 }

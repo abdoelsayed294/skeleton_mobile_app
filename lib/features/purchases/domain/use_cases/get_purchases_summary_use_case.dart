@@ -9,9 +9,6 @@ class GetPurchasesSummaryUseCase {
 
   GetPurchasesSummaryUseCase(this._repo);
 
-  Future<ApiResult<PurchasesSummaryEntity>> invoke(
-    int storeId,
-    int year,
-    int month,
-  ) => _repo.getPurchasesSummary(storeId, year, month);
+  Future<ApiResult<PurchasesSummaryEntity>> invoke(int storeId, String date) =>
+      _repo.getPurchasesSummary(storeId, date);
 }

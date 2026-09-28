@@ -98,7 +98,7 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
     if (!mounted) return;
     Navigator.of(
       context,
-    ).pushNamedAndRemoveUntil(Routes.mainScreen, (route) => false);
+    ).pushNamedAndRemoveUntil(Routes.branchSelectionScreen, (route) => false);
   }
 
   @override

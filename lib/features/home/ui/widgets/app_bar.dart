@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeleton_mobile_app/core/helpers/spacing.dart';
 import 'package:skeleton_mobile_app/core/local/app_language.dart';
 import 'package:skeleton_mobile_app/core/local/locale_cubit.dart';
+import 'package:skeleton_mobile_app/core/routing/routes.dart';
 import 'package:skeleton_mobile_app/core/theming/app_color.dart';
 import 'package:skeleton_mobile_app/core/theming/app_style.dart';
 import 'package:skeleton_mobile_app/core/theming/app_theme_cubit.dart';
@@ -50,7 +51,14 @@ class AppBarHome extends StatelessWidget {
               horizontal: side(2),
               vertical: side(2),
             ),
-            child: const CircleAvatar(backgroundColor: Colors.white),
+            child: ClipOval(
+              child: Image.asset(
+                'assets/images/avater.png',
+                width: side(32),
+                height: side(32),
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
         ),
         horizontalSpace(side(8)),
@@ -108,8 +116,19 @@ class AppBarHome extends StatelessWidget {
         ),
         const Spacer(),
         AppBarAction(
+          icon: Icons.storefront_outlined,
+          tooltip: AppLocalizations.of(context)!.changeBranch,
+          isAccent: true,
+          onTap: () => Navigator.of(context).pushNamedAndRemoveUntil(
+            Routes.branchSelectionScreen,
+            (route) => false,
+          ),
+        ),
+        SizedBox(width: side(5)),
+        AppBarAction(
           icon: isDark ? Icons.light_mode_outlined : Icons.dark_mode_outlined,
           tooltip: isDark ? 'Light theme' : 'Dark theme',
+          isAccent: true,
           onTap: context.read<AppThemeCubit>().toggleTheme,
         ),
         SizedBox(width: side(5)),

@@ -5,16 +5,19 @@ import 'package:skeleton_mobile_app/features/scan_qr/domain/entity/qr_response.d
 @injectable
 class SaveQrDataUseCase {
   Future<void> invoke(QrResponse qrResponse) async {
-    await SharedPrefHelper.setData(
-      SharedPrefHelper.storeIdKey,
-      qrResponse.storeId!,
-    );
+    final storeId = qrResponse.storeId;
+    if (storeId != null) {
+      await SharedPrefHelper.setData(SharedPrefHelper.storeIdKey, storeId);
+    }
 
+    final businessId = qrResponse.businessId;
+    if (businessId != null) {
+      await SharedPrefHelper.setData(
+        SharedPrefHelper.businessIdKey,
+        businessId,
+      );
+    }
     await SharedPrefHelper.setData(
-      SharedPrefHelper.businessIdKey,
-      qrResponse.businessId!,
-    );
-       await SharedPrefHelper.setData(
       SharedPrefHelper.qrStatusKey,
       qrResponse.status!,
     );

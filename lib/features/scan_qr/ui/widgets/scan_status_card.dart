@@ -5,9 +5,7 @@ import 'package:skeleton_mobile_app/core/theming/app_style.dart';
 import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
 
 class ScanStatusCard extends StatelessWidget {
-  final Duration remaining;
-
-  const ScanStatusCard({super.key, required this.remaining});
+  const ScanStatusCard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,34 +32,6 @@ class ScanStatusCard extends StatelessWidget {
               l10n.waitingForScan,
               style: (isDark ? AppStyles.txnIdDark : AppStyles.txnIdLight)
                   .copyWith(fontSize: 14.sp),
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 9.w, vertical: 6.h),
-            decoration: BoxDecoration(
-              color: isDark
-                  ? AppColorsDark.primary.withValues(alpha: 0.12)
-                  : AppColorsLight.infoBg,
-              borderRadius: BorderRadius.circular(9.r),
-            ),
-            child: Row(
-              children: [
-                Icon(Icons.qr_code_scanner_rounded, size: 14.sp, color: green),
-                SizedBox(width: 4.w),
-                Text(
-                  '${remaining.inMinutes.remainder(60).toString().padLeft(2, '0')}:${remaining.inSeconds.remainder(60).toString().padLeft(2, '0')}',
-                  style: isDark
-                      ? AppStyles.txnAmountDark.copyWith(fontSize: 14.sp)
-                      : AppStyles.txnAmountLight.copyWith(fontSize: 14.sp),
-                ),
-                SizedBox(width: 4.w),
-                Text(
-                  l10n.expires,
-                  style: isDark
-                      ? AppStyles.txnMetaDark.copyWith(fontSize: 12.sp)
-                      : AppStyles.txnMetaLight.copyWith(fontSize: 12.sp),
-                ),
-              ],
             ),
           ),
         ],

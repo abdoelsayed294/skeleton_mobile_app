@@ -947,4 +947,48 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get noPurchasesFound => 'لا توجد مشتريات.';
+
+  @override
+  String get appName => 'Skeleton';
+
+  @override
+  String get branchSelectionStep => 'اختيار الفرع';
+
+  @override
+  String get selectYourBranch => 'اختر فرعك';
+
+  @override
+  String get chooseBranchToContinue => 'اختر فرعًا للمتابعة';
+
+  @override
+  String get availableBranches => 'الفروع المتاحة';
+
+  @override
+  String branchCount(int count) {
+    return '$count فروع';
+  }
+
+  @override
+  String get activeBranch => 'نشط';
+
+  @override
+  String get branchFallbackName => 'فرع';
+
+  @override
+  String get noBranchesAvailable => 'لا توجد فروع متاحة.';
+
+  @override
+  String get continueToDashboard => 'المتابعة إلى لوحة التحكم';
+
+  @override
+  String get selectedBranch => 'الفرع المختار';
+
+  @override
+  String get noneSelected => 'لا شيء';
+
+  @override
+  String get changeBranch => 'تغيير الفرع';
+
+  @override
+  String get logout => 'تسجيل الخروج';
 }

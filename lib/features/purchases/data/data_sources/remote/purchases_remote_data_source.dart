@@ -4,8 +4,7 @@ import 'package:skeleton_mobile_app/features/purchases/data/model/purchases_dto.
 abstract class PurchasesRemoteDataSource {
   Future<ApiResult<PurchasesSummaryDto>> getPurchasesSummary(
     int storeId,
-    int year,
-    int month,
+    String date,
   );
 
   Future<ApiResult<PurchasesRecentDto>> getPurchasesRecent(

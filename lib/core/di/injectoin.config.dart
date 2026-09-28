@@ -15,6 +15,22 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:skeleton_mobile_app/core/networking/api_service.dart' as _i35;
 import 'package:skeleton_mobile_app/core/networking/dio_module.dart' as _i453;
+import 'package:skeleton_mobile_app/features/branch_selection/data/data_sources/remote/branches_remote_data_source.dart'
+    as _i547;
+import 'package:skeleton_mobile_app/features/branch_selection/data/data_sources/remote/branches_remote_data_source_impl.dart'
+    as _i610;
+import 'package:skeleton_mobile_app/features/branch_selection/data/repo/branches_repo_impl.dart'
+    as _i378;
+import 'package:skeleton_mobile_app/features/branch_selection/domain/repo/branches_repo.dart'
+    as _i991;
+import 'package:skeleton_mobile_app/features/branch_selection/domain/use_cases/get_branches_use_case.dart'
+    as _i1041;
+import 'package:skeleton_mobile_app/features/branch_selection/domain/use_cases/save_selected_branch_use_case.dart'
+    as _i638;
+import 'package:skeleton_mobile_app/features/branch_selection/logic/branch_selection_cubit.dart'
+    as _i733;
+import 'package:skeleton_mobile_app/features/branch_selection/logic/branches_cubit.dart'
+    as _i699;
 import 'package:skeleton_mobile_app/features/expeness/data/data_source/remote/expenses_remote_data_source.dart'
     as _i558;
 import 'package:skeleton_mobile_app/features/expeness/data/data_source/remote/expenses_remote_data_source_impl.dart'
@@ -228,6 +244,9 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final dioModule = _$DioModule();
+    gh.factory<_i638.SaveSelectedBranchUseCase>(
+      () => _i638.SaveSelectedBranchUseCase(),
+    );
     gh.factory<_i295.SaveQrDataUseCase>(() => _i295.SaveQrDataUseCase());
     gh.lazySingleton<_i361.Dio>(() => dioModule.dio());
     gh.factory<_i38.ReportsExportRemoteDataSource>(
@@ -255,6 +274,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i319.ProductDetailsRemoteDataSource>(
       () => _i302.ProductDetailsRemoteDataSourceImpl(gh<_i35.ApiService>()),
+    );
+    gh.factory<_i547.BranchesRemoteDataSource>(
+      () => _i610.BranchesRemoteDataSourceImpl(gh<_i35.ApiService>()),
+    );
+    gh.factory<_i733.BranchSelectionCubit>(
+      () => _i733.BranchSelectionCubit(gh<_i638.SaveSelectedBranchUseCase>()),
     );
     gh.factory<_i696.ProfitRepo>(
       () => _i218.ProfitRepoImpl(gh<_i721.ProfitRemoteDataSource>()),
@@ -337,6 +362,9 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i623.InventorySummaryRepoImpl(
         gh<_i1051.InventorySummaryRemoteDataSource>(),
       ),
+    );
+    gh.factory<_i991.BranchesRepo>(
+      () => _i378.BranchesRepoImpl(gh<_i547.BranchesRemoteDataSource>()),
     );
     gh.factory<_i846.GetExpensesByCategoryUseCase>(
       () => _i846.GetExpensesByCategoryUseCase(gh<_i911.ExpensesRepository>()),
@@ -425,6 +453,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i565.ExpensesPeakDaysCubit>(
       () => _i565.ExpensesPeakDaysCubit(gh<_i671.GetExpensesPeakDaysUseCase>()),
     );
+    gh.factory<_i1041.GetBranchesUseCase>(
+      () => _i1041.GetBranchesUseCase(gh<_i991.BranchesRepo>()),
+    );
     gh.factory<_i389.TodaySalesCubit>(
       () => _i389.TodaySalesCubit(gh<_i331.GetTodaySalesUseCase>()),
     );
@@ -443,6 +474,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i429.ProfitWeeklyChartCubit>(
       () =>
           _i429.ProfitWeeklyChartCubit(gh<_i473.GetProfitWeeklyChartUseCase>()),
+    );
+    gh.factory<_i699.BranchesCubit>(
+      () => _i699.BranchesCubit(gh<_i1041.GetBranchesUseCase>()),
     );
     gh.factory<_i512.TodayRecentTransactionCubit>(
       () => _i512.TodayRecentTransactionCubit(

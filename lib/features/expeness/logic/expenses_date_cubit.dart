@@ -67,7 +67,10 @@ class ExpensesDateCubit extends Cubit<ExpensesDateState> {
         date: value.selectedDate,
       ),
       _peakDaysCubit.getExpensesPeakDays(take: 5),
-      _transactionsCubit.getExpensesTransactions(date: value.selectedDate),
+      _transactionsCubit.getExpensesTransactions(
+        date: value.selectedDate,
+        period: period,
+      ),
     ]);
   }
 }

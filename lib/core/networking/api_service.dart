@@ -5,6 +5,7 @@ import 'package:skeleton_mobile_app/features/home/data/models/low_stock_response
 import 'package:skeleton_mobile_app/features/home/data/models/sales_chart_response_dto.dart';
 import 'package:skeleton_mobile_app/features/home/data/models/summary_response_dto.dart';
 import 'package:skeleton_mobile_app/features/home/data/models/top_products_dto.dart';
+import 'package:skeleton_mobile_app/features/branch_selection/data/model/branches_response_dto.dart';
 import 'package:skeleton_mobile_app/features/reports/data/models/recent_transaction_dto.dart';
 import 'package:skeleton_mobile_app/features/reports/data/models/reports_sales_dto.dart';
 import 'package:skeleton_mobile_app/features/reports/data/models/top_selling_dto.dart';
@@ -53,6 +54,9 @@ abstract class ApiService {
 
   @GET(EndPoints.dashboardLowStock)
   Future<LowStockResponseDto> getLowStock(@Query('storeId') int storeId);
+
+  @GET(EndPoints.dashboardBranches)
+  Future<BranchesResponseDto> getBranches(@Query('businessId') int businessId);
 
   @GET(EndPoints.inventorySummary)
   Future<InventorySummaryResponseDto> getInventorySummary(
@@ -125,8 +129,7 @@ abstract class ApiService {
   @GET(EndPoints.purchasesSummary)
   Future<PurchasesSummaryDto> getPurchasesSummary(
     @Query('storeId') int storeId,
-    @Query('year') int year,
-    @Query('month') int month,
+    @Query('date') String date,
   );
 
   @GET(EndPoints.purchasesRecent)
@@ -167,7 +170,8 @@ abstract class ApiService {
     @Query('storeId') int storeId,
     @Query('sort') String sort,
     @Query('take') int take,
-    @Query('date') String date,
+    @Query('date') String? date,
+    @Query('period') String? period,
   );
 
   @GET(EndPoints.productActivity)

@@ -38,7 +38,7 @@ class ProfitMetricCard extends StatelessWidget {
           final metric = switch (metricType) {
             ProfitMetricType.grossProfit => summary.grossProfit,
             ProfitMetricType.margin => summary.margin,
-            ProfitMetricType.revenue => summary.revenue,
+            ProfitMetricType.revenue => summary.revenuePaid,
             ProfitMetricType.expenses => summary.expenses,
           };
           final value = metric?.value ?? 0;

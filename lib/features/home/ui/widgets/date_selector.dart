@@ -14,11 +14,19 @@ class DateSelector extends StatelessWidget {
   });
 
   Future<void> _selectDate(BuildContext context) async {
+    final today = DateUtils.dateOnly(DateTime.now());
+    final firstDate = DateTime(2000);
+    final selectedDay = DateUtils.dateOnly(selectedDate);
+    final initialDate = selectedDay.isAfter(today)
+        ? today
+        : selectedDay.isBefore(firstDate)
+        ? firstDate
+        : selectedDay;
     final date = await showDatePicker(
       context: context,
-      initialDate: selectedDate,
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2100),
+      initialDate: initialDate,
+      firstDate: firstDate,
+      lastDate: today,
       builder: (context, child) {
         final theme = Theme.of(context);
 
@@ -38,6 +46,9 @@ class DateSelector extends StatelessWidget {
               todayForegroundColor: WidgetStatePropertyAll(theme.primaryColor),
               todayBorder: BorderSide(color: theme.primaryColor, width: 1.2.w),
               dayForegroundColor: WidgetStateProperty.resolveWith((states) {
+                if (states.contains(WidgetState.disabled)) {
+                  return theme.disabledColor;
+                }
                 if (states.contains(WidgetState.selected)) {
                   return Colors.white;
                 }

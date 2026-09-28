@@ -948,4 +948,48 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get noPurchasesFound => 'No purchases found.';
+
+  @override
+  String get appName => 'Skeleton';
+
+  @override
+  String get branchSelectionStep => 'Branch selection';
+
+  @override
+  String get selectYourBranch => 'Select Your Branch';
+
+  @override
+  String get chooseBranchToContinue => 'Choose a branch to continue';
+
+  @override
+  String get availableBranches => 'Available branches';
+
+  @override
+  String branchCount(int count) {
+    return '$count Branches';
+  }
+
+  @override
+  String get activeBranch => 'Active';
+
+  @override
+  String get branchFallbackName => 'Branch';
+
+  @override
+  String get noBranchesAvailable => 'No branches available.';
+
+  @override
+  String get continueToDashboard => 'Continue to Dashboard';
+
+  @override
+  String get selectedBranch => 'Selected branch';
+
+  @override
+  String get noneSelected => 'None';
+
+  @override
+  String get changeBranch => 'Change branch';
+
+  @override
+  String get logout => 'Log out';
 }

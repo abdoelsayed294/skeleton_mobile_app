@@ -8,7 +8,7 @@ class RecentTransactionDto {
   final String orderNumber;
   final String date;
   final String time;
-  final double total;
+  final double? total;
   final double amount;
   final String? customer;
   final String? item;
@@ -19,7 +19,7 @@ class RecentTransactionDto {
     required this.orderNumber,
     required this.date,
     required this.time,
-    required this.total,
+    this.total,
     required this.amount,
     this.customer,
     this.item,

@@ -28,12 +28,37 @@ class RecentTransactionsList extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  child: Text(
-                    l10n.recentTransactions,
-                    style: isDark
-                        ? AppStyles.productTitleDark
-                        : AppStyles.productTitleLight,
-                  ),
+                  child:
+                      BlocBuilder<
+                        RecentTransactionCubit,
+                        RecentTransactionState
+                      >(
+                        builder: (context, state) {
+                          final count = state.maybeWhen(
+                            success: (transactions) => transactions.length,
+                            orElse: () => null,
+                          );
+                          return Text.rich(
+                            TextSpan(
+                              children: [
+                                TextSpan(text: l10n.recentTransactions),
+                                if (count != null)
+                                  TextSpan(
+                                    text: ' · $count',
+                                    style: TextStyle(
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                  ),
+                              ],
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: isDark
+                                ? AppStyles.productTitleDark
+                                : AppStyles.productTitleLight,
+                          );
+                        },
+                      ),
                 ),
                 InkWell(
                   onTap: () => Navigator.of(context).pushNamed(

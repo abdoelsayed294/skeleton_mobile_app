@@ -5,6 +5,7 @@ class Routes {
   static const String splashScreen = '/splash';
   static const String scanQrScreen = '/scan-qr';
   static const String qrScannerScreen = '/qr-scanner';
+  static const String branchSelectionScreen = '/branch-selection';
   static const String mainScreen = '/main';
   static const String inventoryScreen = '/inventory';
   static const String reportsScreen = '/reports';

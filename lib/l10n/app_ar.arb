@@ -547,5 +547,20 @@
   "loadMore": "تحميل المزيد",
   "oldest": "الأقدم",
   "noRecentTransactions": "لا توجد معاملات حديثة.",
-  "noPurchasesFound": "لا توجد مشتريات."
+  "noPurchasesFound": "لا توجد مشتريات.",
+  "appName": "Skeleton",
+  "branchSelectionStep": "اختيار الفرع",
+  "selectYourBranch": "اختر فرعك",
+  "chooseBranchToContinue": "اختر فرعًا للمتابعة",
+  "availableBranches": "الفروع المتاحة",
+  "branchCount": "{count} فروع",
+  "@branchCount": {"placeholders": {"count": {"type": "int"}}},
+  "activeBranch": "نشط",
+  "branchFallbackName": "فرع",
+  "noBranchesAvailable": "لا توجد فروع متاحة.",
+  "continueToDashboard": "المتابعة إلى لوحة التحكم",
+  "selectedBranch": "الفرع المختار",
+  "noneSelected": "لا شيء",
+  "changeBranch": "تغيير الفرع",
+  "logout": "تسجيل الخروج"
 }

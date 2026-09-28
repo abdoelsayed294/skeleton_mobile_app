@@ -11,6 +11,13 @@ ExpensesTransactionsDto _$ExpensesTransactionsDtoFromJson(
 ) => ExpensesTransactionsDto(
   storeId: (json['storeId'] as num?)?.toInt(),
   sort: json['sort'] as String?,
+  date: json['date'] as String?,
+  period: json['period'] as String?,
+  range: json['range'] == null
+      ? null
+      : ExpenseTransactionsRangeDto.fromJson(
+          json['range'] as Map<String, dynamic>,
+        ),
   currency: json['currency'] as String?,
   totalCount: (json['totalCount'] as num?)?.toInt(),
   count: (json['count'] as num?)?.toInt(),
@@ -26,11 +33,25 @@ Map<String, dynamic> _$ExpensesTransactionsDtoToJson(
 ) => <String, dynamic>{
   'storeId': instance.storeId,
   'sort': instance.sort,
+  'date': instance.date,
+  'period': instance.period,
+  'range': instance.range,
   'currency': instance.currency,
   'totalCount': instance.totalCount,
   'count': instance.count,
   'items': instance.items,
 };
+
+ExpenseTransactionsRangeDto _$ExpenseTransactionsRangeDtoFromJson(
+  Map<String, dynamic> json,
+) => ExpenseTransactionsRangeDto(
+  from: json['from'] as String?,
+  to: json['to'] as String?,
+);
+
+Map<String, dynamic> _$ExpenseTransactionsRangeDtoToJson(
+  ExpenseTransactionsRangeDto instance,
+) => <String, dynamic>{'from': instance.from, 'to': instance.to};
 
 ExpensesTransactionItemDto _$ExpensesTransactionItemDtoFromJson(
   Map<String, dynamic> json,

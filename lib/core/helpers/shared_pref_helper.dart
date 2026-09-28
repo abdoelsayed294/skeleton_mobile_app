@@ -6,8 +6,9 @@ class SharedPrefHelper {
   static const String languageKey = 'app_language';
   static const String themeKey = 'app_theme';
   static const String storeIdKey = 'store_id';
-static const String businessIdKey = 'business_id';
-static const String qrStatusKey = 'qr_status';
+  static const String businessIdKey = 'business_id';
+  static const String businessNameKey = 'business_name';
+  static const String qrStatusKey = 'qr_status';
 
   // private constructor as I don't want to allow creating an instance of this class itself.
   SharedPrefHelper._();
@@ -70,7 +71,7 @@ static const String qrStatusKey = 'qr_status';
   }
 
   /// Gets an String value from SharedPreferences with given [key].
-  static getString(String key) async {
+  static Future<String> getString(String key) async {
     debugPrint('SharedPrefHelper : getString with key : $key');
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     return sharedPreferences.getString(key) ?? '';
