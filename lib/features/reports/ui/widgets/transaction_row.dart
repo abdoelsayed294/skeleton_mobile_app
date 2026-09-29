@@ -12,6 +12,7 @@ class TransactionRow extends StatelessWidget {
   final String tag;
   final TransactionKind kind;
   final String amount;
+  final int? quantity;
   final bool isDark;
   final bool isLast;
 
@@ -21,6 +22,7 @@ class TransactionRow extends StatelessWidget {
     required this.tag,
     required this.kind,
     required this.amount,
+    this.quantity,
     required this.isDark,
     required this.isLast,
   });
@@ -84,8 +86,22 @@ class TransactionRow extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  orderId,
+                Text.rich(
+                  TextSpan(
+                    children: [
+                      TextSpan(text: orderId),
+                      if (quantity != null && quantity! > 0)
+                        TextSpan(
+                          text: ' · $quantity',
+                          style: TextStyle(
+                            color: Theme.of(context).primaryColor,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                    ],
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: isDark ? AppStyles.txnIdDark : AppStyles.txnIdLight,
                 ),
                 SizedBox(height: 3.h),

@@ -25,6 +25,7 @@ extension TodayRecentTransactionMapper on TodayRecentTransactionDto {
       paymentMethod: note,
       kind: parsedKind,
       amount: total,
+      quantity: quantity,
     );
   }
 }
