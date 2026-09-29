@@ -112,7 +112,6 @@ class _BranchSelectionScreenState extends State<BranchSelectionScreen> {
                                 },
                               ),
                               SizedBox(height: 32.h),
-                              const Spacer(),
                               BranchSelectionFooter(
                                 selectedBranch: selectedBranch,
                                 isLoading: isSaving,
