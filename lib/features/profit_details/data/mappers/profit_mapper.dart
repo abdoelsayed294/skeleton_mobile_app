@@ -1,7 +1,7 @@
-import 'package:skeleton_mobile_app/features/profit_details/data/model/profit_summary_dto.dart';
-import 'package:skeleton_mobile_app/features/profit_details/data/model/profit_weekly_chart_dto.dart';
-import 'package:skeleton_mobile_app/features/profit_details/domain/entity/profit_summary.dart';
-import 'package:skeleton_mobile_app/features/profit_details/domain/entity/profit_weekly_chart.dart';
+import 'package:skeleton/features/profit_details/data/model/profit_summary_dto.dart';
+import 'package:skeleton/features/profit_details/data/model/profit_weekly_chart_dto.dart';
+import 'package:skeleton/features/profit_details/domain/entity/profit_summary.dart';
+import 'package:skeleton/features/profit_details/domain/entity/profit_weekly_chart.dart';
 
 extension ProfitSummaryDtoMapper on ProfitSummaryDto {
   ProfitSummary toEntity() => ProfitSummary(

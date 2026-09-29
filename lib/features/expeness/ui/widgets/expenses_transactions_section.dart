@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:skeleton_mobile_app/core/widgets/dilaog_utils.dart';
-import 'package:skeleton_mobile_app/features/expeness/logic/expenses_transactions_cubit.dart';
-import 'package:skeleton_mobile_app/features/expeness/logic/expenses_transactions_state.dart';
-import 'package:skeleton_mobile_app/features/expeness/ui/widgets/all_transactions_card.dart';
-import 'package:skeleton_mobile_app/features/expeness/ui/widgets/expense_transaction.dart';
-import 'package:skeleton_mobile_app/features/expeness/ui/widgets/expenses_transactions_shimmer.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/core/widgets/dilaog_utils.dart';
+import 'package:skeleton/features/expeness/logic/expenses_transactions_cubit.dart';
+import 'package:skeleton/features/expeness/logic/expenses_transactions_state.dart';
+import 'package:skeleton/features/expeness/ui/widgets/all_transactions_card.dart';
+import 'package:skeleton/features/expeness/ui/widgets/expense_transaction.dart';
+import 'package:skeleton/features/expeness/ui/widgets/expenses_transactions_shimmer.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 class ExpensesTransactionsSection extends StatelessWidget {
   const ExpensesTransactionsSection({super.key});

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/theming/app_color.dart';
-import 'package:skeleton_mobile_app/core/widgets/dilaog_utils.dart';
-import 'package:skeleton_mobile_app/features/branch_selection/domain/entity/branches_response.dart';
-import 'package:skeleton_mobile_app/features/branch_selection/logic/branches_cubit.dart';
-import 'package:skeleton_mobile_app/features/branch_selection/logic/branches_state.dart';
-import 'package:skeleton_mobile_app/features/branch_selection/ui/widgets/branch_selection_card.dart';
-import 'package:skeleton_mobile_app/features/branch_selection/ui/widgets/branch_selection_shimmer.dart';
-import 'package:skeleton_mobile_app/features/branch_selection/ui/widgets/branches_empty_state.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/core/theming/app_color.dart';
+import 'package:skeleton/core/widgets/dilaog_utils.dart';
+import 'package:skeleton/features/branch_selection/domain/entity/branches_response.dart';
+import 'package:skeleton/features/branch_selection/logic/branches_cubit.dart';
+import 'package:skeleton/features/branch_selection/logic/branches_state.dart';
+import 'package:skeleton/features/branch_selection/ui/widgets/branch_selection_card.dart';
+import 'package:skeleton/features/branch_selection/ui/widgets/branch_selection_shimmer.dart';
+import 'package:skeleton/features/branch_selection/ui/widgets/branches_empty_state.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 class BranchesSection extends StatelessWidget {
   final int? selectedBranchId;

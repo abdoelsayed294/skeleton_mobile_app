@@ -992,4 +992,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get logout => 'Log out';
+
+  @override
+  String get noInternetTitle => 'No internet connection';
+
+  @override
+  String get noInternetMessage =>
+      'Check your internet connection and try again.';
 }

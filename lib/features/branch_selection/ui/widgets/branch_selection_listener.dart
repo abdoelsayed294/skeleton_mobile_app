@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:skeleton_mobile_app/core/routing/routes.dart';
-import 'package:skeleton_mobile_app/core/widgets/dilaog_utils.dart';
-import 'package:skeleton_mobile_app/features/branch_selection/logic/branch_selection_cubit.dart';
-import 'package:skeleton_mobile_app/features/branch_selection/logic/branch_selection_state.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/core/routing/routes.dart';
+import 'package:skeleton/core/widgets/dilaog_utils.dart';
+import 'package:skeleton/features/branch_selection/logic/branch_selection_cubit.dart';
+import 'package:skeleton/features/branch_selection/logic/branch_selection_state.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 class BranchSelectionListener extends StatelessWidget {
   final Widget child;

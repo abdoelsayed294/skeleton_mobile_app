@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/theming/app_color.dart';
-import 'package:skeleton_mobile_app/core/theming/app_style.dart';
-import 'package:skeleton_mobile_app/core/widgets/custom_text_form_filed.dart';
+import 'package:skeleton/core/theming/app_color.dart';
+import 'package:skeleton/core/theming/app_style.dart';
+import 'package:skeleton/core/widgets/custom_text_form_filed.dart';
 
 class EditProfileField extends StatefulWidget {
   final String label;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
-import 'package:skeleton_mobile_app/core/theming/app_style.dart';
-import 'package:skeleton_mobile_app/features/home/ui/widgets/date_selector.dart';
+import 'package:skeleton/core/helpers/shared_pref_helper.dart';
+import 'package:skeleton/core/theming/app_style.dart';
+import 'package:skeleton/features/home/ui/widgets/date_selector.dart';
 
 class ProfitDetailsHeader extends StatelessWidget {
   final String title;

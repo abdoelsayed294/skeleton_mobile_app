@@ -1,4 +1,4 @@
-import 'package:skeleton_mobile_app/features/expeness/ui/widgets/expense_speriod_selector.dart';
+import 'package:skeleton/features/expeness/ui/widgets/expense_speriod_selector.dart';
 
 class ExpensesDateState {
   const ExpensesDateState({

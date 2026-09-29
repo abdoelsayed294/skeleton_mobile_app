@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
-import 'package:skeleton_mobile_app/core/networking/api_result.dart';
-import 'package:skeleton_mobile_app/features/today_sales/domain/entities/today_recent_transaction_entity.dart';
-import 'package:skeleton_mobile_app/features/today_sales/domain/repo/today_sales_repo.dart';
+import 'package:skeleton/core/networking/api_result.dart';
+import 'package:skeleton/features/today_sales/domain/entities/today_recent_transaction_entity.dart';
+import 'package:skeleton/features/today_sales/domain/repo/today_sales_repo.dart';
 
 @injectable
 class GetTodayRecentTransactionUseCase {

@@ -1,5 +1,5 @@
-import 'package:skeleton_mobile_app/features/home/data/models/summary_response_dto.dart';
-import 'package:skeleton_mobile_app/features/home/domain/entities/summary_response.dart';
+import 'package:skeleton/features/home/data/models/summary_response_dto.dart';
+import 'package:skeleton/features/home/domain/entities/summary_response.dart';
 
 extension DashboardsammaryResponseMapper on SummaryResponseDto {
   SummaryResponse toEntity() {

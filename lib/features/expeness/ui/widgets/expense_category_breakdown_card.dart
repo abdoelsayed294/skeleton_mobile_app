@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skeleton_mobile_app/core/theming/app_color.dart';
-import 'package:skeleton_mobile_app/features/expeness/ui/widgets/expense_category.dart';
-import 'package:skeleton_mobile_app/features/expeness/ui/widgets/expense_category_row.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/core/theming/app_color.dart';
+import 'package:skeleton/features/expeness/ui/widgets/expense_category.dart';
+import 'package:skeleton/features/expeness/ui/widgets/expense_category_row.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 /// "By Category" card: expense distribution across categories, each row
 /// with an icon, a gradient progress bar, the amount and its percentage.

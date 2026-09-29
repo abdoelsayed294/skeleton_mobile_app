@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skeleton_mobile_app/core/theming/app_color.dart';
-import 'package:skeleton_mobile_app/features/expeness/ui/widgets/expense_stat_column.dart';
-import 'package:skeleton_mobile_app/features/expeness/ui/widgets/expense_stat_divider.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/core/theming/app_color.dart';
+import 'package:skeleton/features/expeness/ui/widgets/expense_stat_column.dart';
+import 'package:skeleton/features/expeness/ui/widgets/expense_stat_divider.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 /// Gradient hero card at the top of the Expenses screen: total amount,
 /// the % change vs. last period and a 3-way stats row (transactions,

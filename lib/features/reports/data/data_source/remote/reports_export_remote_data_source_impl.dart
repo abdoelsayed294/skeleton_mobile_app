@@ -3,10 +3,10 @@ import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
-import 'package:skeleton_mobile_app/core/networking/api_constants.dart';
-import 'package:skeleton_mobile_app/core/networking/api_error_handler.dart';
-import 'package:skeleton_mobile_app/core/networking/api_result.dart';
-import 'package:skeleton_mobile_app/features/reports/data/data_source/remote/reports_export_remote_data_source.dart';
+import 'package:skeleton/core/networking/api_constants.dart';
+import 'package:skeleton/core/networking/api_error_handler.dart';
+import 'package:skeleton/core/networking/api_result.dart';
+import 'package:skeleton/features/reports/data/data_source/remote/reports_export_remote_data_source.dart';
 
 @Injectable(as: ReportsExportRemoteDataSource)
 class ReportsExportRemoteDataSourceImpl
@@ -193,4 +193,3 @@ class ReportsExportRemoteDataSourceImpl
     return const {};
   }
 }
- 

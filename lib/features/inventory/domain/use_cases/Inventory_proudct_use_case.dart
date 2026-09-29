@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
-import 'package:skeleton_mobile_app/core/networking/api_result.dart';
-import 'package:skeleton_mobile_app/features/inventory/domain/entity/inventroy_product_response.dart';
-import 'package:skeleton_mobile_app/features/inventory/domain/repo/inventory_summary_repo.dart';
+import 'package:skeleton/core/networking/api_result.dart';
+import 'package:skeleton/features/inventory/domain/entity/inventroy_product_response.dart';
+import 'package:skeleton/features/inventory/domain/repo/inventory_summary_repo.dart';
 
 @injectable
 class InventoryProudctUseCase {

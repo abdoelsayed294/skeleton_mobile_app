@@ -1,7 +1,7 @@
-import 'package:skeleton_mobile_app/features/purchases/data/model/purchases_dto.dart';
-import 'package:skeleton_mobile_app/features/purchases/domain/entity/purchase_record.dart';
-import 'package:skeleton_mobile_app/features/purchases/domain/entity/purchases_recent.dart';
-import 'package:skeleton_mobile_app/features/purchases/domain/entity/purchases_summary.dart';
+import 'package:skeleton/features/purchases/data/model/purchases_dto.dart';
+import 'package:skeleton/features/purchases/domain/entity/purchase_record.dart';
+import 'package:skeleton/features/purchases/domain/entity/purchases_recent.dart';
+import 'package:skeleton/features/purchases/domain/entity/purchases_summary.dart';
 
 extension PurchaseRecordDtoMapper on PurchaseRecordDto {
   PurchaseRecordEntity toEntity() => PurchaseRecordEntity(

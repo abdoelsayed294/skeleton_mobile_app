@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/features/inventory/logic/inventory_product_cubit.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/features/inventory/logic/inventory_product_cubit.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 class InventorySearchBar extends StatefulWidget {
   const InventorySearchBar({super.key});

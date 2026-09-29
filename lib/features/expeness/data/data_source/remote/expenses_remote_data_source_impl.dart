@@ -1,13 +1,13 @@
 import 'package:injectable/injectable.dart';
-import 'package:skeleton_mobile_app/core/networking/api_error_handler.dart';
-import 'package:skeleton_mobile_app/core/networking/api_result.dart';
-import 'package:skeleton_mobile_app/core/networking/api_service.dart';
-import 'package:skeleton_mobile_app/features/expeness/data/data_source/remote/expenses_remote_data_source.dart';
-import 'package:skeleton_mobile_app/features/expeness/data/model/expenses_by_category_dto.dart';
-import 'package:skeleton_mobile_app/features/expeness/data/model/expenses_monthly_trend_dto.dart';
-import 'package:skeleton_mobile_app/features/expeness/data/model/expenses_peak_days_dto.dart';
-import 'package:skeleton_mobile_app/features/expeness/data/model/expenses_summary_dto.dart';
-import 'package:skeleton_mobile_app/features/expeness/data/model/expenses_transactions_dto.dart';
+import 'package:skeleton/core/networking/api_error_handler.dart';
+import 'package:skeleton/core/networking/api_result.dart';
+import 'package:skeleton/core/networking/api_service.dart';
+import 'package:skeleton/features/expeness/data/data_source/remote/expenses_remote_data_source.dart';
+import 'package:skeleton/features/expeness/data/model/expenses_by_category_dto.dart';
+import 'package:skeleton/features/expeness/data/model/expenses_monthly_trend_dto.dart';
+import 'package:skeleton/features/expeness/data/model/expenses_peak_days_dto.dart';
+import 'package:skeleton/features/expeness/data/model/expenses_summary_dto.dart';
+import 'package:skeleton/features/expeness/data/model/expenses_transactions_dto.dart';
 
 @Injectable(as: ExpensesRemoteDataSource)
 class ExpensesRemoteDataSourceImpl implements ExpensesRemoteDataSource {

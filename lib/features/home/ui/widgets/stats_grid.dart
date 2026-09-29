@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
-import 'package:skeleton_mobile_app/core/routing/routes.dart';
-import 'package:skeleton_mobile_app/core/widgets/shimmer_block.dart';
-import 'package:skeleton_mobile_app/core/widgets/dilaog_utils.dart';
-import 'package:skeleton_mobile_app/features/home/logic/home_cubit.dart';
-import 'package:skeleton_mobile_app/features/home/logic/home_state.dart';
-import 'package:skeleton_mobile_app/features/home/ui/widgets/statCard.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/core/helpers/shared_pref_helper.dart';
+import 'package:skeleton/core/routing/routes.dart';
+import 'package:skeleton/core/widgets/shimmer_block.dart';
+import 'package:skeleton/core/widgets/dilaog_utils.dart';
+import 'package:skeleton/features/home/logic/home_cubit.dart';
+import 'package:skeleton/features/home/logic/home_state.dart';
+import 'package:skeleton/features/home/ui/widgets/statCard.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 class StatsGrid extends StatefulWidget {
   final DateTime selectedDate;

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:skeleton_mobile_app/core/di/injectoin.dart';
-import 'package:skeleton_mobile_app/core/theming/app_color.dart';
-import 'package:skeleton_mobile_app/core/widgets/animated_navbar/animated_navbar.dart';
-import 'package:skeleton_mobile_app/core/widgets/animated_navbar/navbar_item.dart';
-import 'package:skeleton_mobile_app/features/home/ui/screens/home_screan.dart';
-import 'package:skeleton_mobile_app/features/inventory/logic/inventory_cubit.dart';
-import 'package:skeleton_mobile_app/features/inventory/logic/inventory_product_cubit.dart';
-import 'package:skeleton_mobile_app/features/inventory/ui/scereens/inventory_screan.dart';
-import 'package:skeleton_mobile_app/features/reports/ui/screens/reports_screan.dart';
+import 'package:skeleton/core/di/injectoin.dart';
+import 'package:skeleton/core/theming/app_color.dart';
+import 'package:skeleton/core/widgets/animated_navbar/animated_navbar.dart';
+import 'package:skeleton/core/widgets/animated_navbar/navbar_item.dart';
+import 'package:skeleton/features/home/ui/screens/home_screan.dart';
+import 'package:skeleton/features/inventory/logic/inventory_cubit.dart';
+import 'package:skeleton/features/inventory/logic/inventory_product_cubit.dart';
+import 'package:skeleton/features/inventory/ui/scereens/inventory_screan.dart';
+import 'package:skeleton/features/reports/ui/screens/reports_screan.dart';
 
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});
@@ -36,8 +36,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           create: (_) => getIt<InventoryCubit>()..getInventorySummary(),
         ),
         BlocProvider(
-          create: (_) =>
-              getIt<InventoryProductCubit>()..getInventoryProducts(),
+          create: (_) => getIt<InventoryProductCubit>()..getInventoryProducts(),
         ),
       ],
       child: const InventoryScrean(),
@@ -67,7 +66,9 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
       body: IndexedStack(
         index: _currentIndex,
         children: List.generate(_screens.length, (index) {
-          return _initializedTabs[index] ? _screens[index] : const SizedBox.shrink();
+          return _initializedTabs[index]
+              ? _screens[index]
+              : const SizedBox.shrink();
         }),
       ),
       bottomNavigationBar: AnimatedSpotlightNavbar(

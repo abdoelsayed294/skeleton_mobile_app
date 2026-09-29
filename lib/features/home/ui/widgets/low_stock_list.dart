@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
-import 'package:skeleton_mobile_app/core/theming/app_color.dart';
-import 'package:skeleton_mobile_app/core/theming/app_style.dart';
-import 'package:skeleton_mobile_app/core/widgets/shimmer_block.dart';
-import 'package:skeleton_mobile_app/features/home/logic/home_cubit.dart';
-import 'package:skeleton_mobile_app/features/home/logic/home_state.dart';
-import 'package:skeleton_mobile_app/features/home/ui/widgets/stock_item.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/core/helpers/shared_pref_helper.dart';
+import 'package:skeleton/core/theming/app_color.dart';
+import 'package:skeleton/core/theming/app_style.dart';
+import 'package:skeleton/core/widgets/shimmer_block.dart';
+import 'package:skeleton/features/home/logic/home_cubit.dart';
+import 'package:skeleton/features/home/logic/home_state.dart';
+import 'package:skeleton/features/home/ui/widgets/stock_item.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 class LowStockList extends StatefulWidget {
   const LowStockList({super.key});

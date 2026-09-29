@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import 'package:skeleton_mobile_app/core/theming/app_color.dart';
-import 'package:skeleton_mobile_app/core/theming/app_style.dart';
-import 'package:skeleton_mobile_app/core/widgets/dilaog_utils.dart';
-import 'package:skeleton_mobile_app/features/purchases/logic/purchases_summary_cubit.dart';
-import 'package:skeleton_mobile_app/features/purchases/logic/purchases_summary_state.dart';
-import 'package:skeleton_mobile_app/features/purchases/ui/widgets/purchase_summary_metric.dart';
-import 'package:skeleton_mobile_app/features/purchases/ui/widgets/purchases_summary_shimmer.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/core/theming/app_color.dart';
+import 'package:skeleton/core/theming/app_style.dart';
+import 'package:skeleton/core/widgets/dilaog_utils.dart';
+import 'package:skeleton/features/purchases/logic/purchases_summary_cubit.dart';
+import 'package:skeleton/features/purchases/logic/purchases_summary_state.dart';
+import 'package:skeleton/features/purchases/ui/widgets/purchase_summary_metric.dart';
+import 'package:skeleton/features/purchases/ui/widgets/purchases_summary_shimmer.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 class PurchasesSummaryCard extends StatelessWidget {
   const PurchasesSummaryCard({super.key});

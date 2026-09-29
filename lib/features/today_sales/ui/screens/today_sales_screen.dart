@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/features/profit_details/ui/widgets/profit_details_header.dart';
-import 'package:skeleton_mobile_app/features/today_sales/logic/today_sales_date_cubit.dart';
-import 'package:skeleton_mobile_app/features/today_sales/ui/widgets/today_items_sold_stat_card.dart';
-import 'package:skeleton_mobile_app/features/today_sales/ui/widgets/today_recent_transactions_list.dart';
-import 'package:skeleton_mobile_app/features/today_sales/ui/widgets/today_returns_stat_card.dart';
-import 'package:skeleton_mobile_app/features/today_sales/ui/widgets/today_total_sales_card.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/features/profit_details/ui/widgets/profit_details_header.dart';
+import 'package:skeleton/features/today_sales/logic/today_sales_date_cubit.dart';
+import 'package:skeleton/features/today_sales/ui/widgets/today_items_sold_stat_card.dart';
+import 'package:skeleton/features/today_sales/ui/widgets/today_recent_transactions_list.dart';
+import 'package:skeleton/features/today_sales/ui/widgets/today_returns_stat_card.dart';
+import 'package:skeleton/features/today_sales/ui/widgets/today_total_sales_card.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 class TodaySalesScreen extends StatelessWidget {
   const TodaySalesScreen({super.key});

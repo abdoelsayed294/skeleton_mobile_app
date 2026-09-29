@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:skeleton_mobile_app/core/networking/api_error_model.dart';
-import 'package:skeleton_mobile_app/features/expeness/domain/entity/expenses_transactions.dart';
+import 'package:skeleton/core/networking/api_error_model.dart';
+import 'package:skeleton/features/expeness/domain/entity/expenses_transactions.dart';
 
 part 'expenses_transactions_state.freezed.dart';
 

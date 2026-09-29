@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/features/inventory/ui/widgets/inventory_shimmer_placeholder.dart';
+import 'package:skeleton/features/inventory/ui/widgets/inventory_shimmer_placeholder.dart';
 
 class InventoryProductTileShimmer extends StatelessWidget {
   const InventoryProductTileShimmer({super.key});

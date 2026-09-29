@@ -1,9 +1,9 @@
 import 'package:injectable/injectable.dart';
-import 'package:skeleton_mobile_app/core/networking/api_result.dart';
-import 'package:skeleton_mobile_app/features/branch_selection/data/data_sources/remote/branches_remote_data_source.dart';
-import 'package:skeleton_mobile_app/features/branch_selection/data/mappers/branches_mapper.dart';
-import 'package:skeleton_mobile_app/features/branch_selection/domain/entity/branches_response.dart';
-import 'package:skeleton_mobile_app/features/branch_selection/domain/repo/branches_repo.dart';
+import 'package:skeleton/core/networking/api_result.dart';
+import 'package:skeleton/features/branch_selection/data/data_sources/remote/branches_remote_data_source.dart';
+import 'package:skeleton/features/branch_selection/data/mappers/branches_mapper.dart';
+import 'package:skeleton/features/branch_selection/domain/entity/branches_response.dart';
+import 'package:skeleton/features/branch_selection/domain/repo/branches_repo.dart';
 
 @Injectable(as: BranchesRepo)
 class BranchesRepoImpl implements BranchesRepo {

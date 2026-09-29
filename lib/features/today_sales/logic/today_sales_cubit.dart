@@ -1,9 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
-import 'package:skeleton_mobile_app/core/networking/api_result.dart';
-import 'package:skeleton_mobile_app/features/today_sales/domain/use_cases/get_today_sales_use_case.dart';
-import 'package:skeleton_mobile_app/features/today_sales/logic/today_sales_state.dart';
+import 'package:skeleton/core/helpers/shared_pref_helper.dart';
+import 'package:skeleton/core/networking/api_result.dart';
+import 'package:skeleton/features/today_sales/domain/use_cases/get_today_sales_use_case.dart';
+import 'package:skeleton/features/today_sales/logic/today_sales_state.dart';
 
 @injectable
 class TodaySalesCubit extends Cubit<TodaySalesState> {

@@ -991,4 +991,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get logout => 'تسجيل الخروج';
+
+  @override
+  String get noInternetTitle => 'لا يوجد اتصال بالإنترنت';
+
+  @override
+  String get noInternetMessage => 'تحقق من اتصالك بالإنترنت وحاول مرة أخرى.';
 }

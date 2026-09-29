@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-import 'package:skeleton_mobile_app/core/networking/api_service.dart';
+import 'package:skeleton/core/networking/api_service.dart';
 
 @module
 abstract class DioModule {
@@ -12,10 +12,7 @@ abstract class DioModule {
     dio.options
       ..connectTimeout = const Duration(seconds: 30)
       ..receiveTimeout = const Duration(seconds: 30)
-      ..headers = {
-        'Content-Type': 'application/json',
-      };
-
+      ..headers = {'Content-Type': 'application/json'};
 
     dio.interceptors.add(
       PrettyDioLogger(

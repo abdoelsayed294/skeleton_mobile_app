@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import 'package:skeleton_mobile_app/core/networking/api_error_model.dart';
+import 'package:skeleton/core/networking/api_error_model.dart';
 
 sealed class ReportsExportState {
   const ReportsExportState();

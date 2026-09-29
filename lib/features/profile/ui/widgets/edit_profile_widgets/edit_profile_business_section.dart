@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/features/profile/ui/widgets/edit_profile_widgets/edit_profile_field.dart';
-import 'package:skeleton_mobile_app/features/profile/ui/widgets/edit_profile_widgets/edit_profile_section_card.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/features/profile/ui/widgets/edit_profile_widgets/edit_profile_field.dart';
+import 'package:skeleton/features/profile/ui/widgets/edit_profile_widgets/edit_profile_section_card.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 class EditProfileBusinessSection extends StatelessWidget {
   const EditProfileBusinessSection({super.key});

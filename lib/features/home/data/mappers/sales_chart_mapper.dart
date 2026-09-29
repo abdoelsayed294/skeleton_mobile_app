@@ -1,5 +1,5 @@
-import 'package:skeleton_mobile_app/features/home/data/models/sales_chart_response_dto.dart';
-import 'package:skeleton_mobile_app/features/home/domain/entities/sales_chart_response.dart';
+import 'package:skeleton/features/home/data/models/sales_chart_response_dto.dart';
+import 'package:skeleton/features/home/domain/entities/sales_chart_response.dart';
 
 extension DashboardSalesChartMapper on SalesChartResponseDto {
   SalesChartResponse toEntity() {
@@ -8,7 +8,7 @@ extension DashboardSalesChartMapper on SalesChartResponseDto {
       total: total,
       changePct: changePct,
       vsLabel: vsLabel,
-      chart: chart.map((e) => e.toEntity()).toList()
+      chart: chart.map((e) => e.toEntity()).toList(),
     );
   }
 }

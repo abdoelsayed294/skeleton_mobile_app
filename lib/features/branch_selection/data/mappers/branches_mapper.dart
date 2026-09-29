@@ -1,5 +1,5 @@
-import 'package:skeleton_mobile_app/features/branch_selection/data/model/branches_response_dto.dart';
-import 'package:skeleton_mobile_app/features/branch_selection/domain/entity/branches_response.dart';
+import 'package:skeleton/features/branch_selection/data/model/branches_response_dto.dart';
+import 'package:skeleton/features/branch_selection/domain/entity/branches_response.dart';
 
 extension BranchesResponseDtoMapper on BranchesResponseDto {
   BranchesResponse toEntity() => BranchesResponse(

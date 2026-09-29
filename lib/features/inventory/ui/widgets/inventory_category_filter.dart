@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/theming/app_style.dart';
-import 'package:skeleton_mobile_app/core/widgets/dilaog_utils.dart';
-import 'package:skeleton_mobile_app/features/inventory/logic/inventory_cubit.dart';
-import 'package:skeleton_mobile_app/features/inventory/logic/inventory_product_cubit.dart';
-import 'package:skeleton_mobile_app/features/inventory/logic/inventory_state.dart';
-import 'package:skeleton_mobile_app/features/inventory/ui/widgets/inventory_category_filter_shimmer.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/core/theming/app_style.dart';
+import 'package:skeleton/core/widgets/dilaog_utils.dart';
+import 'package:skeleton/features/inventory/logic/inventory_cubit.dart';
+import 'package:skeleton/features/inventory/logic/inventory_product_cubit.dart';
+import 'package:skeleton/features/inventory/logic/inventory_state.dart';
+import 'package:skeleton/features/inventory/ui/widgets/inventory_category_filter_shimmer.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 class InventoryCategoryFilter extends StatefulWidget {
   const InventoryCategoryFilter({super.key});

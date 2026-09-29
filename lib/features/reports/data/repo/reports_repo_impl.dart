@@ -1,16 +1,16 @@
 import 'package:injectable/injectable.dart';
-import 'package:skeleton_mobile_app/core/networking/api_error_handler.dart';
-import 'package:skeleton_mobile_app/core/networking/api_result.dart';
-import 'package:skeleton_mobile_app/features/reports/data/data_source/remote/recent_transaction_remote_data_source.dart';
-import 'package:skeleton_mobile_app/features/reports/data/data_source/remote/reports_sales_remote_data_source.dart';
-import 'package:skeleton_mobile_app/features/reports/data/data_source/remote/top_selling_remote_data_source.dart';
-import 'package:skeleton_mobile_app/features/reports/data/mappers/recent_transaction_mapper.dart';
-import 'package:skeleton_mobile_app/features/reports/data/mappers/reports_sales_mapper.dart';
-import 'package:skeleton_mobile_app/features/reports/data/mappers/top_selling_mapper.dart';
-import 'package:skeleton_mobile_app/features/reports/domain/entities/recent_transaction_entity.dart';
-import 'package:skeleton_mobile_app/features/reports/domain/entities/reports_sales_entity.dart';
-import 'package:skeleton_mobile_app/features/reports/domain/entities/top_selling_entity.dart';
-import 'package:skeleton_mobile_app/features/reports/domain/repo/reports_repo.dart';
+import 'package:skeleton/core/networking/api_error_handler.dart';
+import 'package:skeleton/core/networking/api_result.dart';
+import 'package:skeleton/features/reports/data/data_source/remote/recent_transaction_remote_data_source.dart';
+import 'package:skeleton/features/reports/data/data_source/remote/reports_sales_remote_data_source.dart';
+import 'package:skeleton/features/reports/data/data_source/remote/top_selling_remote_data_source.dart';
+import 'package:skeleton/features/reports/data/mappers/recent_transaction_mapper.dart';
+import 'package:skeleton/features/reports/data/mappers/reports_sales_mapper.dart';
+import 'package:skeleton/features/reports/data/mappers/top_selling_mapper.dart';
+import 'package:skeleton/features/reports/domain/entities/recent_transaction_entity.dart';
+import 'package:skeleton/features/reports/domain/entities/reports_sales_entity.dart';
+import 'package:skeleton/features/reports/domain/entities/top_selling_entity.dart';
+import 'package:skeleton/features/reports/domain/repo/reports_repo.dart';
 
 @Injectable(as: ReportsRepo)
 class ReportsRepoImpl extends ReportsRepo {

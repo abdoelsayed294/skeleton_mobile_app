@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/theming/app_color.dart';
-import 'package:skeleton_mobile_app/core/theming/app_style.dart';
-import 'package:skeleton_mobile_app/core/widgets/shimmer_block.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/core/theming/app_color.dart';
+import 'package:skeleton/core/theming/app_style.dart';
+import 'package:skeleton/core/widgets/shimmer_block.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:skeleton_mobile_app/features/reports/ui/widgets/stat_change_badge.dart';
-import 'package:skeleton_mobile_app/features/today_sales/logic/today_sales_cubit.dart';
-import 'package:skeleton_mobile_app/features/today_sales/logic/today_sales_state.dart';
+import 'package:skeleton/features/reports/ui/widgets/stat_change_badge.dart';
+import 'package:skeleton/features/today_sales/logic/today_sales_cubit.dart';
+import 'package:skeleton/features/today_sales/logic/today_sales_state.dart';
 
 class TodayReturnsStatCard extends StatelessWidget {
   const TodayReturnsStatCard({super.key});

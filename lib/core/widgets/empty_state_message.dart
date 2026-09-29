@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:skeleton_mobile_app/core/theming/app_style.dart';
+import 'package:skeleton/core/theming/app_style.dart';
 
 class EmptyStateMessage extends StatelessWidget {
   final String message;

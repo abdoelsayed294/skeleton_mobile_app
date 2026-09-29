@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:skeleton_mobile_app/core/networking/api_error_model.dart';
-import 'package:skeleton_mobile_app/features/today_sales/domain/entities/today_recent_transaction_entity.dart';
+import 'package:skeleton/core/networking/api_error_model.dart';
+import 'package:skeleton/features/today_sales/domain/entities/today_recent_transaction_entity.dart';
 
 part 'today_recent_transaction_state.freezed.dart';
 

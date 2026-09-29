@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/features/profit_details/ui/widgets/profit_details_header.dart';
-import 'package:skeleton_mobile_app/features/purchases/ui/widgets/purchases_list_section.dart';
-import 'package:skeleton_mobile_app/features/purchases/logic/purchases_recent_cubit.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/features/profit_details/ui/widgets/profit_details_header.dart';
+import 'package:skeleton/features/purchases/ui/widgets/purchases_list_section.dart';
+import 'package:skeleton/features/purchases/logic/purchases_recent_cubit.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 class PurchasesRecentTransactionsScreen extends StatefulWidget {
   const PurchasesRecentTransactionsScreen({super.key});

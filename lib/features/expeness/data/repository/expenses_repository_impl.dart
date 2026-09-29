@@ -1,13 +1,13 @@
 import 'package:injectable/injectable.dart';
-import 'package:skeleton_mobile_app/core/networking/api_result.dart';
-import 'package:skeleton_mobile_app/features/expeness/data/data_source/remote/expenses_remote_data_source.dart';
-import 'package:skeleton_mobile_app/features/expeness/data/mapper/expenses_mapper.dart';
-import 'package:skeleton_mobile_app/features/expeness/domain/entity/expenses_by_category.dart';
-import 'package:skeleton_mobile_app/features/expeness/domain/entity/expenses_monthly_trend.dart';
-import 'package:skeleton_mobile_app/features/expeness/domain/entity/expenses_peak_days.dart';
-import 'package:skeleton_mobile_app/features/expeness/domain/entity/expenses_summary.dart';
-import 'package:skeleton_mobile_app/features/expeness/domain/entity/expenses_transactions.dart';
-import 'package:skeleton_mobile_app/features/expeness/domain/repository/expenses_repository.dart';
+import 'package:skeleton/core/networking/api_result.dart';
+import 'package:skeleton/features/expeness/data/data_source/remote/expenses_remote_data_source.dart';
+import 'package:skeleton/features/expeness/data/mapper/expenses_mapper.dart';
+import 'package:skeleton/features/expeness/domain/entity/expenses_by_category.dart';
+import 'package:skeleton/features/expeness/domain/entity/expenses_monthly_trend.dart';
+import 'package:skeleton/features/expeness/domain/entity/expenses_peak_days.dart';
+import 'package:skeleton/features/expeness/domain/entity/expenses_summary.dart';
+import 'package:skeleton/features/expeness/domain/entity/expenses_transactions.dart';
+import 'package:skeleton/features/expeness/domain/repository/expenses_repository.dart';
 
 @LazySingleton(as: ExpensesRepository)
 class ExpensesRepositoryImpl implements ExpensesRepository {

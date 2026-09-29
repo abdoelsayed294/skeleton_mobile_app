@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/theming/app_color.dart';
-import 'package:skeleton_mobile_app/features/profile/ui/widgets/profile_widgets/management_section.dart';
-import 'package:skeleton_mobile_app/features/profile/ui/widgets/profile_widgets/profile_app_bar.dart';
-import 'package:skeleton_mobile_app/features/profile/ui/widgets/profile_widgets/profile_header_card.dart';
-import 'package:skeleton_mobile_app/features/profile/ui/widgets/profile_widgets/profile_stats_grid.dart';
-import 'package:skeleton_mobile_app/features/profile/ui/widgets/profile_widgets/store_information_section.dart';
-import 'package:skeleton_mobile_app/core/routing/routes.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/core/theming/app_color.dart';
+import 'package:skeleton/features/profile/ui/widgets/profile_widgets/management_section.dart';
+import 'package:skeleton/features/profile/ui/widgets/profile_widgets/profile_app_bar.dart';
+import 'package:skeleton/features/profile/ui/widgets/profile_widgets/profile_header_card.dart';
+import 'package:skeleton/features/profile/ui/widgets/profile_widgets/profile_stats_grid.dart';
+import 'package:skeleton/features/profile/ui/widgets/profile_widgets/store_information_section.dart';
+import 'package:skeleton/core/routing/routes.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 class ProfileScrean extends StatelessWidget {
   const ProfileScrean({super.key});

@@ -1,9 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
-import 'package:skeleton_mobile_app/core/networking/api_result.dart';
-import 'package:skeleton_mobile_app/features/profit_details/domain/use_cases/get_profit_summary_use_case.dart';
-import 'package:skeleton_mobile_app/features/profit_details/logic/profit_summary_state.dart';
+import 'package:skeleton/core/helpers/shared_pref_helper.dart';
+import 'package:skeleton/core/networking/api_result.dart';
+import 'package:skeleton/features/profit_details/domain/use_cases/get_profit_summary_use_case.dart';
+import 'package:skeleton/features/profit_details/logic/profit_summary_state.dart';
 
 @injectable
 class ProfitSummaryCubit extends Cubit<ProfitSummaryState> {

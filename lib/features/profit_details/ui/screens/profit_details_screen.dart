@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:skeleton_mobile_app/features/profit_details/logic/profit_summary_cubit.dart';
-import 'package:skeleton_mobile_app/features/profit_details/logic/profit_weekly_chart_cubit.dart';
-import 'package:skeleton_mobile_app/core/theming/app_color.dart';
-import 'package:skeleton_mobile_app/features/profit_details/ui/widgets/expense_breakdown_card.dart';
-import 'package:skeleton_mobile_app/features/profit_details/ui/widgets/profit_details_filters.dart';
-import 'package:skeleton_mobile_app/features/profit_details/ui/widgets/profit_metric_card.dart';
-import 'package:skeleton_mobile_app/features/profit_details/ui/widgets/profit_summary_card.dart';
-import 'package:skeleton_mobile_app/features/profit_details/ui/widgets/weekly_profit_summary_card.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/features/profit_details/logic/profit_summary_cubit.dart';
+import 'package:skeleton/features/profit_details/logic/profit_weekly_chart_cubit.dart';
+import 'package:skeleton/core/theming/app_color.dart';
+import 'package:skeleton/features/profit_details/ui/widgets/expense_breakdown_card.dart';
+import 'package:skeleton/features/profit_details/ui/widgets/profit_details_filters.dart';
+import 'package:skeleton/features/profit_details/ui/widgets/profit_metric_card.dart';
+import 'package:skeleton/features/profit_details/ui/widgets/profit_summary_card.dart';
+import 'package:skeleton/features/profit_details/ui/widgets/weekly_profit_summary_card.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 class ProfitDetailsScreen extends StatelessWidget {
   const ProfitDetailsScreen({super.key});

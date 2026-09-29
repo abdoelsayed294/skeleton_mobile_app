@@ -1,5 +1,5 @@
-import 'package:skeleton_mobile_app/core/networking/api_result.dart';
-import 'package:skeleton_mobile_app/features/reports/data/models/top_selling_dto.dart';
+import 'package:skeleton/core/networking/api_result.dart';
+import 'package:skeleton/features/reports/data/models/top_selling_dto.dart';
 
 abstract class TopSellingRemoteDataSource {
   Future<ApiResult<List<TopSellingDto>>> getTopSelling(

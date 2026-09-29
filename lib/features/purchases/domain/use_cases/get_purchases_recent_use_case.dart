@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
-import 'package:skeleton_mobile_app/core/networking/api_result.dart';
-import 'package:skeleton_mobile_app/features/purchases/domain/entity/purchases_recent.dart';
-import 'package:skeleton_mobile_app/features/purchases/domain/repo/purchases_repo.dart';
+import 'package:skeleton/core/networking/api_result.dart';
+import 'package:skeleton/features/purchases/domain/entity/purchases_recent.dart';
+import 'package:skeleton/features/purchases/domain/repo/purchases_repo.dart';
 
 @injectable
 class GetPurchasesRecentUseCase {

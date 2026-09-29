@@ -1,13 +1,13 @@
-import 'package:skeleton_mobile_app/features/expeness/data/model/expenses_by_category_dto.dart';
-import 'package:skeleton_mobile_app/features/expeness/data/model/expenses_monthly_trend_dto.dart';
-import 'package:skeleton_mobile_app/features/expeness/data/model/expenses_peak_days_dto.dart';
-import 'package:skeleton_mobile_app/features/expeness/data/model/expenses_summary_dto.dart';
-import 'package:skeleton_mobile_app/features/expeness/data/model/expenses_transactions_dto.dart';
-import 'package:skeleton_mobile_app/features/expeness/domain/entity/expenses_by_category.dart';
-import 'package:skeleton_mobile_app/features/expeness/domain/entity/expenses_monthly_trend.dart';
-import 'package:skeleton_mobile_app/features/expeness/domain/entity/expenses_peak_days.dart';
-import 'package:skeleton_mobile_app/features/expeness/domain/entity/expenses_summary.dart';
-import 'package:skeleton_mobile_app/features/expeness/domain/entity/expenses_transactions.dart';
+import 'package:skeleton/features/expeness/data/model/expenses_by_category_dto.dart';
+import 'package:skeleton/features/expeness/data/model/expenses_monthly_trend_dto.dart';
+import 'package:skeleton/features/expeness/data/model/expenses_peak_days_dto.dart';
+import 'package:skeleton/features/expeness/data/model/expenses_summary_dto.dart';
+import 'package:skeleton/features/expeness/data/model/expenses_transactions_dto.dart';
+import 'package:skeleton/features/expeness/domain/entity/expenses_by_category.dart';
+import 'package:skeleton/features/expeness/domain/entity/expenses_monthly_trend.dart';
+import 'package:skeleton/features/expeness/domain/entity/expenses_peak_days.dart';
+import 'package:skeleton/features/expeness/domain/entity/expenses_summary.dart';
+import 'package:skeleton/features/expeness/domain/entity/expenses_transactions.dart';
 
 extension ExpensesSummaryMapper on ExpensesSummaryDto {
   ExpensesSummary toEntity() => ExpensesSummary(

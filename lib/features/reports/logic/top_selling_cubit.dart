@@ -1,9 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
-import 'package:skeleton_mobile_app/core/networking/api_result.dart';
-import 'package:skeleton_mobile_app/features/reports/domain/use_cases/top_selling_use_case.dart';
-import 'package:skeleton_mobile_app/features/reports/logic/top_selling_state.dart';
+import 'package:skeleton/core/helpers/shared_pref_helper.dart';
+import 'package:skeleton/core/networking/api_result.dart';
+import 'package:skeleton/features/reports/domain/use_cases/top_selling_use_case.dart';
+import 'package:skeleton/features/reports/logic/top_selling_state.dart';
 
 @injectable
 class TopSellingCubit extends Cubit<TopSellingState> {

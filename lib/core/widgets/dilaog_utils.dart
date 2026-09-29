@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/theming/app_color.dart';
-import 'package:skeleton_mobile_app/core/theming/app_style.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/core/theming/app_color.dart';
+import 'package:skeleton/core/theming/app_style.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
-enum DialogType { success, error, warning, info }
+enum DialogType { success, error, warning, info, noInternet }
 
 class _DialogTypeStyle {
   final Color color;
@@ -53,6 +53,14 @@ class DialogUtils {
               ? AppColorsDark.primary.withValues(alpha: 0.14)
               : AppColorsLight.infoBg,
           Icons.info_rounded,
+        );
+      case DialogType.noInternet:
+        return _DialogTypeStyle(
+          isDark ? AppColorsDark.primary : AppColorsLight.primary,
+          isDark
+              ? AppColorsDark.primary.withValues(alpha: 0.14)
+              : AppColorsLight.infoBg,
+          Icons.wifi_off_rounded,
         );
     }
   }
@@ -134,17 +142,32 @@ class DialogUtils {
     Function? posAction,
     String? negActionName,
     Function? negAction,
+    bool barrierDismissible = true,
   }) {
     if (_isMessageVisible) return;
     _isMessageVisible = true;
 
+    final normalizedMessage = message.toLowerCase();
+    final isNetworkError =
+        normalizedMessage.contains('connection') ||
+        normalizedMessage.contains('internet') ||
+        normalizedMessage.contains('socketexception') ||
+        normalizedMessage.contains('network') ||
+        normalizedMessage.contains('unexpected error occurred');
+    final displayType = isNetworkError ? DialogType.noInternet : type;
+
     showDialog(
       context: context,
+      barrierDismissible: barrierDismissible,
       builder: (context) {
         final theme = Theme.of(context);
         final isDark = theme.brightness == Brightness.dark;
-        final style = _styleFor(context, type);
+        final style = _styleFor(context, displayType);
         final l10n = AppLocalizations.of(context)!;
+        final displayTitle = isNetworkError ? l10n.noInternetTitle : title;
+        final displayMessage = isNetworkError
+            ? l10n.noInternetMessage
+            : message;
         return Dialog(
           backgroundColor: Colors.transparent,
           elevation: 0,
@@ -174,9 +197,9 @@ class DialogUtils {
                   child: Icon(style.icon, color: style.color, size: 34.sp),
                 ),
                 SizedBox(height: 16.h),
-                if (title != null && title.isNotEmpty) ...[
+                if (displayTitle != null && displayTitle.isNotEmpty) ...[
                   Text(
-                    title,
+                    displayTitle,
                     textAlign: TextAlign.center,
                     style: isDark
                         ? AppStyles.reportsHeaderTitleDark
@@ -185,7 +208,7 @@ class DialogUtils {
                   SizedBox(height: 8.h),
                 ],
                 Text(
-                  message,
+                  displayMessage,
                   textAlign: TextAlign.center,
                   style: isDark ? AppStyles.txnIdDark : AppStyles.txnIdLight,
                 ),

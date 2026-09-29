@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import 'package:skeleton_mobile_app/core/theming/app_color.dart';
-import 'package:skeleton_mobile_app/core/theming/app_style.dart';
-import 'package:skeleton_mobile_app/features/purchases/ui/widgets/purchases_header_icon.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/core/theming/app_color.dart';
+import 'package:skeleton/core/theming/app_style.dart';
+import 'package:skeleton/features/purchases/ui/widgets/purchases_header_icon.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 class PurchasesAppBar extends StatelessWidget {
   const PurchasesAppBar({super.key});

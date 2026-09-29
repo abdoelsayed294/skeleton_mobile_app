@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:skeleton_mobile_app/core/networking/api_error_model.dart';
-import 'package:skeleton_mobile_app/features/reports/domain/entities/top_selling_entity.dart';
+import 'package:skeleton/core/networking/api_error_model.dart';
+import 'package:skeleton/features/reports/domain/entities/top_selling_entity.dart';
 
 part 'top_selling_state.freezed.dart';
 

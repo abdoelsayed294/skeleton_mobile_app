@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/widgets/dilaog_utils.dart';
-import 'package:skeleton_mobile_app/features/home/ui/widgets/section_card.dart';
-import 'package:skeleton_mobile_app/features/product_details/logic/product_header_cubit.dart';
-import 'package:skeleton_mobile_app/features/product_details/logic/product_header_state.dart';
-import 'package:skeleton_mobile_app/features/product_details/ui/widgets/info_row.dart';
-import 'package:skeleton_mobile_app/features/product_details/ui/widgets/product_details_section_shimmer.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/core/widgets/dilaog_utils.dart';
+import 'package:skeleton/features/home/ui/widgets/section_card.dart';
+import 'package:skeleton/features/product_details/logic/product_header_cubit.dart';
+import 'package:skeleton/features/product_details/logic/product_header_state.dart';
+import 'package:skeleton/features/product_details/ui/widgets/info_row.dart';
+import 'package:skeleton/features/product_details/ui/widgets/product_details_section_shimmer.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 class ProductInfoCard extends StatelessWidget {
   const ProductInfoCard({super.key});

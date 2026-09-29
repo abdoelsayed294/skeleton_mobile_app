@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
-import 'package:skeleton_mobile_app/core/networking/api_result.dart';
-import 'package:skeleton_mobile_app/features/profit_details/domain/entity/profit_summary.dart';
-import 'package:skeleton_mobile_app/features/profit_details/domain/repo/profit_repo.dart';
+import 'package:skeleton/core/networking/api_result.dart';
+import 'package:skeleton/features/profit_details/domain/entity/profit_summary.dart';
+import 'package:skeleton/features/profit_details/domain/repo/profit_repo.dart';
 
 @injectable
 class GetProfitSummaryUseCase {

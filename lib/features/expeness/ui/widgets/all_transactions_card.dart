@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skeleton_mobile_app/core/theming/app_color.dart';
-import 'package:skeleton_mobile_app/features/expeness/ui/widgets/expense_transaction.dart';
-import 'package:skeleton_mobile_app/features/expeness/ui/widgets/expense_transaction_row.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/core/theming/app_color.dart';
+import 'package:skeleton/features/expeness/ui/widgets/expense_transaction.dart';
+import 'package:skeleton/features/expeness/ui/widgets/expense_transaction_row.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 /// "All Transactions" card: header with the record count + a "Latest"
 /// sort badge, followed by a divided list of transaction rows.

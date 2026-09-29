@@ -1,9 +1,9 @@
 import 'package:injectable/injectable.dart';
-import 'package:skeleton_mobile_app/core/networking/api_error_handler.dart';
-import 'package:skeleton_mobile_app/core/networking/api_result.dart';
-import 'package:skeleton_mobile_app/core/networking/api_service.dart';
-import 'package:skeleton_mobile_app/features/purchases/data/data_sources/remote/purchases_remote_data_source.dart';
-import 'package:skeleton_mobile_app/features/purchases/data/model/purchases_dto.dart';
+import 'package:skeleton/core/networking/api_error_handler.dart';
+import 'package:skeleton/core/networking/api_result.dart';
+import 'package:skeleton/core/networking/api_service.dart';
+import 'package:skeleton/features/purchases/data/data_sources/remote/purchases_remote_data_source.dart';
+import 'package:skeleton/features/purchases/data/model/purchases_dto.dart';
 
 @Injectable(as: PurchasesRemoteDataSource)
 class PurchasesRemoteDataSourceImpl implements PurchasesRemoteDataSource {

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/features/profile/ui/widgets/edit_profile_widgets/edit_profile_actions.dart';
-import 'package:skeleton_mobile_app/features/profile/ui/widgets/edit_profile_widgets/edit_profile_app_bar.dart';
-import 'package:skeleton_mobile_app/features/profile/ui/widgets/edit_profile_widgets/edit_profile_business_section.dart';
-import 'package:skeleton_mobile_app/features/profile/ui/widgets/edit_profile_widgets/edit_profile_hero.dart';
-import 'package:skeleton_mobile_app/features/profile/ui/widgets/edit_profile_widgets/edit_profile_personal_section.dart';
-import 'package:skeleton_mobile_app/features/profile/ui/widgets/edit_profile_widgets/edit_profile_security_section.dart';
+import 'package:skeleton/features/profile/ui/widgets/edit_profile_widgets/edit_profile_actions.dart';
+import 'package:skeleton/features/profile/ui/widgets/edit_profile_widgets/edit_profile_app_bar.dart';
+import 'package:skeleton/features/profile/ui/widgets/edit_profile_widgets/edit_profile_business_section.dart';
+import 'package:skeleton/features/profile/ui/widgets/edit_profile_widgets/edit_profile_hero.dart';
+import 'package:skeleton/features/profile/ui/widgets/edit_profile_widgets/edit_profile_personal_section.dart';
+import 'package:skeleton/features/profile/ui/widgets/edit_profile_widgets/edit_profile_security_section.dart';
 
 class EditProfileScrean extends StatelessWidget {
   const EditProfileScrean({super.key});

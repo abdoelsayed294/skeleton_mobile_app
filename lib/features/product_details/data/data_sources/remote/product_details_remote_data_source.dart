@@ -1,5 +1,5 @@
-import 'package:skeleton_mobile_app/core/networking/api_result.dart';
-import 'package:skeleton_mobile_app/features/product_details/data/model/product_details_dto.dart';
+import 'package:skeleton/core/networking/api_result.dart';
+import 'package:skeleton/features/product_details/data/model/product_details_dto.dart';
 
 abstract class ProductDetailsRemoteDataSource {
   Future<ApiResult<ProductActivityDto>> getProductActivity(int id);

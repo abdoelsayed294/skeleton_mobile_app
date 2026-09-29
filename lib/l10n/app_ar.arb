@@ -562,5 +562,7 @@
   "selectedBranch": "الفرع المختار",
   "noneSelected": "لا شيء",
   "changeBranch": "تغيير الفرع",
-  "logout": "تسجيل الخروج"
+  "logout": "تسجيل الخروج",
+  "noInternetTitle": "لا يوجد اتصال بالإنترنت",
+  "noInternetMessage": "تحقق من اتصالك بالإنترنت وحاول مرة أخرى."
 }
