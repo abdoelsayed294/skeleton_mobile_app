@@ -1,5 +1,5 @@
-import 'package:skeleton_mobile_app/features/home/data/models/top_products_dto.dart';
-import 'package:skeleton_mobile_app/features/home/domain/entities/top_product_entity.dart';
+import 'package:skeleton/features/home/data/models/top_products_dto.dart';
+import 'package:skeleton/features/home/domain/entities/top_product_entity.dart';
 
 extension DashboardTopProductsMapper on TopProductDto {
   TopProductEntity toEntity() {

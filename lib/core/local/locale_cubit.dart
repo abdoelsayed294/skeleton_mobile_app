@@ -1,8 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
-import 'package:skeleton_mobile_app/core/local/app_language.dart';
+import 'package:skeleton/core/helpers/shared_pref_helper.dart';
+import 'package:skeleton/core/local/app_language.dart';
 
 class LocaleCubit extends Cubit<Locale> {
   LocaleCubit({Locale initialLocale = const Locale('en')})

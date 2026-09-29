@@ -1,12 +1,12 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
-import 'package:skeleton_mobile_app/core/networking/api_result.dart';
-import 'package:skeleton_mobile_app/features/home/domain/use_cases/low_stock_use_case.dart';
-import 'package:skeleton_mobile_app/features/home/domain/use_cases/sales_chart_use_case.dart';
-import 'package:skeleton_mobile_app/features/home/domain/use_cases/summary_use_case.dart';
-import 'package:skeleton_mobile_app/features/home/domain/use_cases/top_products_use_case.dart';
-import 'package:skeleton_mobile_app/features/home/logic/home_state.dart';
+import 'package:skeleton/core/helpers/shared_pref_helper.dart';
+import 'package:skeleton/core/networking/api_result.dart';
+import 'package:skeleton/features/home/domain/use_cases/low_stock_use_case.dart';
+import 'package:skeleton/features/home/domain/use_cases/sales_chart_use_case.dart';
+import 'package:skeleton/features/home/domain/use_cases/summary_use_case.dart';
+import 'package:skeleton/features/home/domain/use_cases/top_products_use_case.dart';
+import 'package:skeleton/features/home/logic/home_state.dart';
 
 @injectable
 class HomeCubit extends Cubit<HomeState> {

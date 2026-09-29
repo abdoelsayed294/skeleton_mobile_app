@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/helpers/spacing.dart';
-import 'package:skeleton_mobile_app/features/inventory/ui/widgets/inventory_header.dart';
-import 'package:skeleton_mobile_app/features/inventory/ui/widgets/inventory_product_list.dart';
-import 'package:skeleton_mobile_app/features/inventory/ui/widgets/inventory_search_bar.dart';
-import 'package:skeleton_mobile_app/features/inventory/ui/widgets/inventory_category_filter.dart';
-import 'package:skeleton_mobile_app/features/inventory/ui/widgets/inventory_stats.dart';
-import 'package:skeleton_mobile_app/features/inventory/logic/inventory_cubit.dart';
-import 'package:skeleton_mobile_app/features/inventory/logic/inventory_product_cubit.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/core/helpers/spacing.dart';
+import 'package:skeleton/features/inventory/ui/widgets/inventory_header.dart';
+import 'package:skeleton/features/inventory/ui/widgets/inventory_product_list.dart';
+import 'package:skeleton/features/inventory/ui/widgets/inventory_search_bar.dart';
+import 'package:skeleton/features/inventory/ui/widgets/inventory_category_filter.dart';
+import 'package:skeleton/features/inventory/ui/widgets/inventory_stats.dart';
+import 'package:skeleton/features/inventory/logic/inventory_cubit.dart';
+import 'package:skeleton/features/inventory/logic/inventory_product_cubit.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 class InventoryScrean extends StatefulWidget {
   const InventoryScrean({super.key});

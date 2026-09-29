@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/theming/app_color.dart';
-import 'package:skeleton_mobile_app/core/theming/app_style.dart';
-import 'package:skeleton_mobile_app/core/widgets/dilaog_utils.dart';
-import 'package:skeleton_mobile_app/features/product_details/logic/product_activity_cubit.dart';
-import 'package:skeleton_mobile_app/features/product_details/logic/product_activity_state.dart';
-import 'package:skeleton_mobile_app/features/product_details/ui/widgets/activity_row.dart';
-import 'package:skeleton_mobile_app/features/product_details/ui/widgets/product_details_section_shimmer.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/core/theming/app_color.dart';
+import 'package:skeleton/core/theming/app_style.dart';
+import 'package:skeleton/core/widgets/dilaog_utils.dart';
+import 'package:skeleton/features/product_details/logic/product_activity_cubit.dart';
+import 'package:skeleton/features/product_details/logic/product_activity_state.dart';
+import 'package:skeleton/features/product_details/ui/widgets/activity_row.dart';
+import 'package:skeleton/features/product_details/ui/widgets/product_details_section_shimmer.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 class ActivityEntry {
   final IconData icon;

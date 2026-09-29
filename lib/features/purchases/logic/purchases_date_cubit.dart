@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:skeleton_mobile_app/features/purchases/logic/purchases_recent_cubit.dart';
-import 'package:skeleton_mobile_app/features/purchases/logic/purchases_summary_cubit.dart';
+import 'package:skeleton/features/purchases/logic/purchases_recent_cubit.dart';
+import 'package:skeleton/features/purchases/logic/purchases_summary_cubit.dart';
 
 class PurchasesDateCubit extends Cubit<DateTime> {
   final PurchasesSummaryCubit _summaryCubit;

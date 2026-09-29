@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:skeleton_mobile_app/core/di/injectoin.dart';
-import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
-import 'package:skeleton_mobile_app/core/local/locale_cubit.dart';
-import 'package:skeleton_mobile_app/core/routing/app_router.dart';
-import 'package:skeleton_mobile_app/core/routing/routes.dart';
-import 'package:skeleton_mobile_app/core/theming/app_theme_cubit.dart';
-import 'package:skeleton_mobile_app/core/theming/app_theme_enum.dart';
-import 'package:skeleton_mobile_app/skeleton_app.dart';
+import 'package:skeleton/core/di/injectoin.dart';
+import 'package:skeleton/core/helpers/shared_pref_helper.dart';
+import 'package:skeleton/core/local/locale_cubit.dart';
+import 'package:skeleton/core/routing/app_router.dart';
+import 'package:skeleton/core/routing/routes.dart';
+import 'package:skeleton/core/theming/app_theme_cubit.dart';
+import 'package:skeleton/core/theming/app_theme_enum.dart';
+import 'package:skeleton/skeleton_app.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

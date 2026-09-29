@@ -1,5 +1,5 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/widgets/animated_navbar/navbar_item.dart';
+import 'package:skeleton/core/widgets/animated_navbar/navbar_item.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedNavbarIcon extends StatelessWidget {

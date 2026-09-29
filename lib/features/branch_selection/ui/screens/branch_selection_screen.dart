@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/theming/app_color.dart';
-import 'package:skeleton_mobile_app/core/theming/app_style.dart';
-import 'package:skeleton_mobile_app/features/branch_selection/logic/branches_cubit.dart';
-import 'package:skeleton_mobile_app/features/branch_selection/logic/branch_selection_cubit.dart';
-import 'package:skeleton_mobile_app/features/branch_selection/logic/branch_selection_state.dart';
-import 'package:skeleton_mobile_app/features/branch_selection/ui/widgets/branch_selection_footer.dart';
-import 'package:skeleton_mobile_app/features/branch_selection/ui/widgets/branch_selection_header.dart';
-import 'package:skeleton_mobile_app/features/branch_selection/ui/widgets/branch_selection_listener.dart';
-import 'package:skeleton_mobile_app/features/branch_selection/ui/widgets/branches_section.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/core/theming/app_color.dart';
+import 'package:skeleton/core/theming/app_style.dart';
+import 'package:skeleton/features/branch_selection/logic/branches_cubit.dart';
+import 'package:skeleton/features/branch_selection/logic/branch_selection_cubit.dart';
+import 'package:skeleton/features/branch_selection/logic/branch_selection_state.dart';
+import 'package:skeleton/features/branch_selection/ui/widgets/branch_selection_footer.dart';
+import 'package:skeleton/features/branch_selection/ui/widgets/branch_selection_header.dart';
+import 'package:skeleton/features/branch_selection/ui/widgets/branch_selection_listener.dart';
+import 'package:skeleton/features/branch_selection/ui/widgets/branches_section.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 class BranchSelectionScreen extends StatefulWidget {
   const BranchSelectionScreen({super.key});
@@ -72,12 +72,14 @@ class _BranchSelectionScreenState extends State<BranchSelectionScreen> {
                               SizedBox(height: 30.h),
                               Text(
                                 l10n.selectYourBranch,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
                                 style:
                                     (isDark
                                             ? AppStyles.font24BlackDark
                                             : AppStyles.font24BlackLight)
                                         .copyWith(
-                                          fontSize: 29.sp,
+                                          fontSize: 27.sp,
                                           height: 1.16,
                                         ),
                               ),

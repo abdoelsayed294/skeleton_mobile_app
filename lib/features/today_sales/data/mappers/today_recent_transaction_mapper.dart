@@ -1,6 +1,6 @@
-import 'package:skeleton_mobile_app/features/reports/domain/entities/recent_transaction_entity.dart';
-import 'package:skeleton_mobile_app/features/today_sales/data/models/today_recent_transaction_dto.dart';
-import 'package:skeleton_mobile_app/features/today_sales/domain/entities/today_recent_transaction_entity.dart';
+import 'package:skeleton/features/reports/domain/entities/recent_transaction_entity.dart';
+import 'package:skeleton/features/today_sales/data/models/today_recent_transaction_dto.dart';
+import 'package:skeleton/features/today_sales/domain/entities/today_recent_transaction_entity.dart';
 
 extension TodayRecentTransactionMapper on TodayRecentTransactionDto {
   TodayRecentTransactionEntity toEntity() {

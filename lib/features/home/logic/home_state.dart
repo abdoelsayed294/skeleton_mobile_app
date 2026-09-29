@@ -1,10 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:skeleton_mobile_app/core/networking/api_error_model.dart';
-import 'package:skeleton_mobile_app/features/home/domain/entities/low_stock_response.dart';
-import 'package:skeleton_mobile_app/features/home/domain/entities/sales_chart_response.dart';
-import 'package:skeleton_mobile_app/features/home/domain/entities/summary_response.dart';
-import 'package:skeleton_mobile_app/features/home/domain/entities/top_product_entity.dart';
+import 'package:skeleton/core/networking/api_error_model.dart';
+import 'package:skeleton/features/home/domain/entities/low_stock_response.dart';
+import 'package:skeleton/features/home/domain/entities/sales_chart_response.dart';
+import 'package:skeleton/features/home/domain/entities/summary_response.dart';
+import 'package:skeleton/features/home/domain/entities/top_product_entity.dart';
 
 part 'home_state.freezed.dart';
 

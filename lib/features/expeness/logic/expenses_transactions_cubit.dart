@@ -1,10 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
-import 'package:skeleton_mobile_app/core/networking/api_result.dart';
-import 'package:skeleton_mobile_app/features/expeness/domain/entity/expenses_transactions.dart';
-import 'package:skeleton_mobile_app/features/expeness/domain/use_case/get_expenses_transactions_use_case.dart';
-import 'package:skeleton_mobile_app/features/expeness/logic/expenses_transactions_state.dart';
+import 'package:skeleton/core/helpers/shared_pref_helper.dart';
+import 'package:skeleton/core/networking/api_result.dart';
+import 'package:skeleton/features/expeness/domain/entity/expenses_transactions.dart';
+import 'package:skeleton/features/expeness/domain/use_case/get_expenses_transactions_use_case.dart';
+import 'package:skeleton/features/expeness/logic/expenses_transactions_state.dart';
 
 @injectable
 class ExpensesTransactionsCubit extends Cubit<ExpensesTransactionsState> {

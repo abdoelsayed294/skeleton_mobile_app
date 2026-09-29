@@ -1,18 +1,14 @@
-
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/theming/app_style.dart';
-import 'package:skeleton_mobile_app/features/home/domain/entities/sales_chart_response.dart';
+import 'package:skeleton/core/theming/app_style.dart';
+import 'package:skeleton/features/home/domain/entities/sales_chart_response.dart';
 
 class SalesChart extends StatelessWidget {
   final List<ChartPoint> data;
 
-  const SalesChart({
-    super.key,
-    required this.data,
-  });
+  const SalesChart({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -81,19 +77,11 @@ class _SalesChartPainter extends CustomPainter {
     for (var index = 0; index < 4; index++) {
       final y = chartTop + chartHeight * index / 3;
 
-      canvas.drawLine(
-        Offset(chartLeft, y),
-        Offset(size.width, y),
-        gridPaint,
-      );
+      canvas.drawLine(Offset(chartLeft, y), Offset(size.width, y), gridPaint);
 
       final value = chartMax * (1 - index / 3);
 
-      _paintText(
-        canvas,
-        _formatValue(value),
-        Offset(0, y - 4.h),
-      );
+      _paintText(canvas, _formatValue(value), Offset(0, y - 4.h));
     }
 
     final points = List.generate(data.length, (index) {
@@ -108,8 +96,7 @@ class _SalesChartPainter extends CustomPainter {
       return Offset(x, y);
     });
 
-    final path = Path()
-      ..moveTo(points.first.dx, points.first.dy);
+    final path = Path()..moveTo(points.first.dx, points.first.dy);
 
     if (points.length == 1) {
       path.lineTo(points.first.dx, points.first.dy);
@@ -131,48 +118,30 @@ class _SalesChartPainter extends CustomPainter {
     }
 
     final fillPaint = Paint()
-      ..shader = LinearGradient(
-        colors: [
-          lineColor.withValues(alpha: 0.2),
-          lineColor.withValues(alpha: 0.02),
-        ],
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-      ).createShader(
-        Rect.fromLTWH(
-          chartLeft,
-          chartTop,
-          chartWidth,
-          chartHeight,
-        ),
-      );
+      ..shader =
+          LinearGradient(
+            colors: [
+              lineColor.withValues(alpha: 0.2),
+              lineColor.withValues(alpha: 0.02),
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ).createShader(
+            Rect.fromLTWH(chartLeft, chartTop, chartWidth, chartHeight),
+          );
 
     final fillPath = Path.from(path)
-      ..lineTo(
-        points.last.dx,
-        chartTop + chartHeight,
-      )
-      ..lineTo(
-        points.first.dx,
-        chartTop + chartHeight,
-      )
+      ..lineTo(points.last.dx, chartTop + chartHeight)
+      ..lineTo(points.first.dx, chartTop + chartHeight)
       ..close();
 
     canvas.drawPath(fillPath, fillPaint);
     canvas.drawPath(path, linePaint);
 
     for (final point in points) {
-      canvas.drawCircle(
-        point,
-        2.2.r,
-        Paint()..color = lineColor,
-      );
+      canvas.drawCircle(point, 2.2.r, Paint()..color = lineColor);
 
-      canvas.drawCircle(
-        point,
-        1.r,
-        Paint()..color = Colors.white,
-      );
+      canvas.drawCircle(point, 1.r, Paint()..color = Colors.white);
     }
 
     for (var index = 0; index < data.length; index++) {
@@ -184,13 +153,7 @@ class _SalesChartPainter extends CustomPainter {
           ? chartLeft + chartWidth / 2
           : chartLeft + chartWidth * index / (data.length - 1);
 
-      text.paint(
-        canvas,
-        Offset(
-          x - text.width / 2,
-          size.height - 11.h,
-        ),
-      );
+      text.paint(canvas, Offset(x - text.width / 2, size.height - 11.h));
     }
   }
 
@@ -211,32 +174,22 @@ class _SalesChartPainter extends CustomPainter {
     return value.toStringAsFixed(0);
   }
 
-  void _paintText(
-    Canvas canvas,
-    String value,
-    Offset offset,
-  ) {
+  void _paintText(Canvas canvas, String value, Offset offset) {
     _textPainter(value).paint(canvas, offset);
   }
 
   TextPainter _textPainter(String value) {
     return TextPainter(
-      text: TextSpan(
-        text: value,
-        style: labelStyle,
-      ),
+      text: TextSpan(text: value, style: labelStyle),
       textDirection: TextDirection.ltr,
     )..layout();
   }
 
   @override
-  bool shouldRepaint(
-    covariant _SalesChartPainter oldDelegate,
-  ) {
+  bool shouldRepaint(covariant _SalesChartPainter oldDelegate) {
     return oldDelegate.lineColor != lineColor ||
         oldDelegate.gridColor != gridColor ||
         oldDelegate.labelStyle != labelStyle ||
         oldDelegate.data != data;
   }
 }
-

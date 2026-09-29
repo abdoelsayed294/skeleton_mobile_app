@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/theming/app_style.dart';
-import 'package:skeleton_mobile_app/core/widgets/dilaog_utils.dart';
-import 'package:skeleton_mobile_app/features/reports/logic/reports_export_cubit.dart';
-import 'package:skeleton_mobile_app/features/reports/logic/reports_export_state.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/core/theming/app_style.dart';
+import 'package:skeleton/core/widgets/dilaog_utils.dart';
+import 'package:skeleton/features/reports/logic/reports_export_cubit.dart';
+import 'package:skeleton/features/reports/logic/reports_export_state.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 import 'package:printing/printing.dart';
 
 class ExportPdfButton extends StatelessWidget {

@@ -1,10 +1,10 @@
 import 'package:injectable/injectable.dart';
-import 'package:skeleton_mobile_app/core/networking/api_error_handler.dart';
-import 'package:skeleton_mobile_app/core/networking/api_result.dart';
-import 'package:skeleton_mobile_app/core/networking/api_service.dart';
-import 'package:skeleton_mobile_app/features/inventory/data/data_sources/remote/inventory_summary_remote_data_sources.dart';
-import 'package:skeleton_mobile_app/features/inventory/data/model/inventory_summary_response_dto.dart';
-import 'package:skeleton_mobile_app/features/inventory/data/model/inventroy_product_response_dto.dart';
+import 'package:skeleton/core/networking/api_error_handler.dart';
+import 'package:skeleton/core/networking/api_result.dart';
+import 'package:skeleton/core/networking/api_service.dart';
+import 'package:skeleton/features/inventory/data/data_sources/remote/inventory_summary_remote_data_sources.dart';
+import 'package:skeleton/features/inventory/data/model/inventory_summary_response_dto.dart';
+import 'package:skeleton/features/inventory/data/model/inventroy_product_response_dto.dart';
 
 @Injectable(as: InventorySummaryRemoteDataSource)
 class InventorySummaryRemoteDataSourcesImpl

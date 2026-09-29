@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
-import 'package:skeleton_mobile_app/core/networking/api_result.dart';
-import 'package:skeleton_mobile_app/features/inventory/domain/use_cases/Inventory_proudct_use_case.dart';
-import 'package:skeleton_mobile_app/features/inventory/domain/use_cases/inventory_summary_use_case.dart';
-import 'package:skeleton_mobile_app/features/inventory/logic/inventory_state.dart';
+import 'package:skeleton/core/helpers/shared_pref_helper.dart';
+import 'package:skeleton/core/networking/api_result.dart';
+import 'package:skeleton/features/inventory/domain/use_cases/Inventory_proudct_use_case.dart';
+import 'package:skeleton/features/inventory/domain/use_cases/inventory_summary_use_case.dart';
+import 'package:skeleton/features/inventory/logic/inventory_state.dart';
 
 @injectable
 class InventoryCubit extends Cubit<InventoryState> {

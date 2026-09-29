@@ -1,4 +1,4 @@
-import 'package:skeleton_mobile_app/features/reports/domain/entities/recent_transaction_entity.dart';
+import 'package:skeleton/features/reports/domain/entities/recent_transaction_entity.dart';
 
 class TodayRecentTransactionEntity {
   final String orderId;

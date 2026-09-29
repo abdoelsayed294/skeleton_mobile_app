@@ -1,5 +1,5 @@
-import 'package:skeleton_mobile_app/features/reports/data/models/recent_transaction_dto.dart';
-import 'package:skeleton_mobile_app/features/reports/domain/entities/recent_transaction_entity.dart';
+import 'package:skeleton/features/reports/data/models/recent_transaction_dto.dart';
+import 'package:skeleton/features/reports/domain/entities/recent_transaction_entity.dart';
 
 extension RecentTransactionMapper on RecentTransactionDto {
   RecentTransactionEntity toEntity() {

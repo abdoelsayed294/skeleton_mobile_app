@@ -1,19 +1,19 @@
 import 'package:injectable/injectable.dart';
-import 'package:skeleton_mobile_app/core/networking/api_error_handler.dart';
-import 'package:skeleton_mobile_app/core/networking/api_result.dart';
-import 'package:skeleton_mobile_app/features/home/data/data_source/remote/low_stock_remote_data_source.dart';
-import 'package:skeleton_mobile_app/features/home/data/data_source/remote/sales_chart_remote_data_source.dart';
-import 'package:skeleton_mobile_app/features/home/data/data_source/remote/summary_remote_data_source.dart';
-import 'package:skeleton_mobile_app/features/home/data/data_source/remote/top_products_remote_data_source.dart';
-import 'package:skeleton_mobile_app/features/home/data/mappers/low_stock_mapper.dart';
-import 'package:skeleton_mobile_app/features/home/data/mappers/sales_chart_mapper.dart';
-import 'package:skeleton_mobile_app/features/home/data/mappers/summary_mapper.dart';
-import 'package:skeleton_mobile_app/features/home/data/mappers/top_products_mapper.dart';
-import 'package:skeleton_mobile_app/features/home/domain/entities/low_stock_response.dart';
-import 'package:skeleton_mobile_app/features/home/domain/entities/sales_chart_response.dart';
-import 'package:skeleton_mobile_app/features/home/domain/entities/summary_response.dart';
-import 'package:skeleton_mobile_app/features/home/domain/entities/top_product_entity.dart';
-import 'package:skeleton_mobile_app/features/home/domain/repo/home_repo.dart';
+import 'package:skeleton/core/networking/api_error_handler.dart';
+import 'package:skeleton/core/networking/api_result.dart';
+import 'package:skeleton/features/home/data/data_source/remote/low_stock_remote_data_source.dart';
+import 'package:skeleton/features/home/data/data_source/remote/sales_chart_remote_data_source.dart';
+import 'package:skeleton/features/home/data/data_source/remote/summary_remote_data_source.dart';
+import 'package:skeleton/features/home/data/data_source/remote/top_products_remote_data_source.dart';
+import 'package:skeleton/features/home/data/mappers/low_stock_mapper.dart';
+import 'package:skeleton/features/home/data/mappers/sales_chart_mapper.dart';
+import 'package:skeleton/features/home/data/mappers/summary_mapper.dart';
+import 'package:skeleton/features/home/data/mappers/top_products_mapper.dart';
+import 'package:skeleton/features/home/domain/entities/low_stock_response.dart';
+import 'package:skeleton/features/home/domain/entities/sales_chart_response.dart';
+import 'package:skeleton/features/home/domain/entities/summary_response.dart';
+import 'package:skeleton/features/home/domain/entities/top_product_entity.dart';
+import 'package:skeleton/features/home/domain/repo/home_repo.dart';
 
 @Injectable(as: HomeRepo)
 class HomeRepoImpl extends HomeRepo {

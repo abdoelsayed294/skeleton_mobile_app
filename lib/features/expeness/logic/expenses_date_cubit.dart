@@ -1,11 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:skeleton_mobile_app/features/expeness/logic/expenses_by_category_cubit.dart';
-import 'package:skeleton_mobile_app/features/expeness/logic/expenses_date_state.dart';
-import 'package:skeleton_mobile_app/features/expeness/logic/expenses_monthly_trend_cubit.dart';
-import 'package:skeleton_mobile_app/features/expeness/logic/expenses_peak_days_cubit.dart';
-import 'package:skeleton_mobile_app/features/expeness/logic/expenses_summary_cubit.dart';
-import 'package:skeleton_mobile_app/features/expeness/logic/expenses_transactions_cubit.dart';
-import 'package:skeleton_mobile_app/features/expeness/ui/widgets/expense_speriod_selector.dart';
+import 'package:skeleton/features/expeness/logic/expenses_by_category_cubit.dart';
+import 'package:skeleton/features/expeness/logic/expenses_date_state.dart';
+import 'package:skeleton/features/expeness/logic/expenses_monthly_trend_cubit.dart';
+import 'package:skeleton/features/expeness/logic/expenses_peak_days_cubit.dart';
+import 'package:skeleton/features/expeness/logic/expenses_summary_cubit.dart';
+import 'package:skeleton/features/expeness/logic/expenses_transactions_cubit.dart';
+import 'package:skeleton/features/expeness/ui/widgets/expense_speriod_selector.dart';
 
 class ExpensesDateCubit extends Cubit<ExpensesDateState> {
   ExpensesDateCubit(

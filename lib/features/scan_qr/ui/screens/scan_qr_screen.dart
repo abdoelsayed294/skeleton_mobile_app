@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/routing/routes.dart';
-import 'package:skeleton_mobile_app/features/scan_qr/ui/widgets/scan_instructions_card.dart';
-import 'package:skeleton_mobile_app/features/scan_qr/ui/widgets/scan_qr_button.dart';
-import 'package:skeleton_mobile_app/features/scan_qr/ui/widgets/scan_qr_card.dart';
-import 'package:skeleton_mobile_app/features/scan_qr/ui/widgets/scan_qr_header.dart';
+import 'package:skeleton/core/routing/routes.dart';
+import 'package:skeleton/features/scan_qr/ui/widgets/scan_instructions_card.dart';
+import 'package:skeleton/features/scan_qr/ui/widgets/scan_qr_button.dart';
+import 'package:skeleton/features/scan_qr/ui/widgets/scan_qr_card.dart';
+import 'package:skeleton/features/scan_qr/ui/widgets/scan_qr_header.dart';
 
 class ScanQrScreen extends StatefulWidget {
   const ScanQrScreen({super.key});

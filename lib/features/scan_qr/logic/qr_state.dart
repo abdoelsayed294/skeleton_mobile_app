@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:skeleton_mobile_app/core/networking/api_error_model.dart';
+import 'package:skeleton/core/networking/api_error_model.dart';
 part 'qr_state.freezed.dart';
 
 @freezed

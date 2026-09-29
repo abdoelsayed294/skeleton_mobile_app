@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/routing/routes.dart';
-import 'package:skeleton_mobile_app/core/theming/app_style.dart';
-import 'package:skeleton_mobile_app/core/widgets/dilaog_utils.dart';
-import 'package:skeleton_mobile_app/features/inventory/domain/entity/inventroy_product_response.dart';
-import 'package:skeleton_mobile_app/features/inventory/logic/inventory_product_cubit.dart';
-import 'package:skeleton_mobile_app/features/inventory/logic/inventory_product_state.dart';
-import 'package:skeleton_mobile_app/features/inventory/ui/widgets/inventory_product_tile.dart';
-import 'package:skeleton_mobile_app/features/inventory/ui/widgets/inventory_product_list_shimmer.dart';
-import 'package:skeleton_mobile_app/features/inventory/ui/widgets/stock_status.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/core/routing/routes.dart';
+import 'package:skeleton/core/theming/app_style.dart';
+import 'package:skeleton/core/widgets/dilaog_utils.dart';
+import 'package:skeleton/features/inventory/domain/entity/inventroy_product_response.dart';
+import 'package:skeleton/features/inventory/logic/inventory_product_cubit.dart';
+import 'package:skeleton/features/inventory/logic/inventory_product_state.dart';
+import 'package:skeleton/features/inventory/ui/widgets/inventory_product_tile.dart';
+import 'package:skeleton/features/inventory/ui/widgets/inventory_product_list_shimmer.dart';
+import 'package:skeleton/features/inventory/ui/widgets/stock_status.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 class InventoryProductList extends StatefulWidget {
   const InventoryProductList({super.key, required this.scrollController});

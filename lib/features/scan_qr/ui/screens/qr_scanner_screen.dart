@@ -3,13 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:skeleton_mobile_app/core/routing/routes.dart';
-import 'package:skeleton_mobile_app/core/theming/app_style.dart';
-import 'package:skeleton_mobile_app/core/widgets/dilaog_utils.dart';
-import 'package:skeleton_mobile_app/features/scan_qr/domain/entity/qr_response.dart';
-import 'package:skeleton_mobile_app/features/scan_qr/logic/qr_cubit.dart';
-import 'package:skeleton_mobile_app/features/scan_qr/ui/widgets/qr_listener.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/core/routing/routes.dart';
+import 'package:skeleton/core/theming/app_style.dart';
+import 'package:skeleton/core/widgets/dilaog_utils.dart';
+import 'package:skeleton/features/scan_qr/domain/entity/qr_response.dart';
+import 'package:skeleton/features/scan_qr/logic/qr_cubit.dart';
+import 'package:skeleton/features/scan_qr/ui/widgets/qr_listener.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 class QrScannerScreen extends StatefulWidget {
   const QrScannerScreen({super.key});
@@ -86,12 +86,15 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
     final l10n = AppLocalizations.of(context)!;
 
     if (qrResponse.status?.toLowerCase() != 'approved') {
-      isNavigating = false;
+      isNavigating = true;
       DialogUtils.showMessage(
         context: context,
         type: DialogType.error,
+        barrierDismissible: false,
         title: l10n.invalidQrTitle,
-        message: qrResponse.message ?? l10n.invalidQrMessage,
+        message: l10n.alignQrInFrame,
+        posActionName: l10n.scanQrCode,
+        posAction: () => isNavigating = false,
       );
       return;
     }

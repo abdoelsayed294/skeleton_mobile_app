@@ -1,5 +1,5 @@
 import 'package:injectable/injectable.dart';
-import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
+import 'package:skeleton/core/helpers/shared_pref_helper.dart';
 
 @injectable
 class SaveSelectedBranchUseCase {

@@ -1,5 +1,5 @@
-import 'package:skeleton_mobile_app/core/networking/api_result.dart';
-import 'package:skeleton_mobile_app/features/product_details/domain/entity/product_details_entities.dart';
+import 'package:skeleton/core/networking/api_result.dart';
+import 'package:skeleton/features/product_details/domain/entity/product_details_entities.dart';
 
 abstract class ProductDetailsRepo {
   Future<ApiResult<ProductActivityEntity>> getProductActivity(int id);

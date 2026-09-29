@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:skeleton_mobile_app/core/networking/api_error_model.dart';
-import 'package:skeleton_mobile_app/features/purchases/domain/entity/purchases_recent.dart';
+import 'package:skeleton/core/networking/api_error_model.dart';
+import 'package:skeleton/features/purchases/domain/entity/purchases_recent.dart';
 
 part 'purchases_recent_state.freezed.dart';
 

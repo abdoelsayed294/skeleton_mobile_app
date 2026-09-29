@@ -1,9 +1,9 @@
-import 'package:skeleton_mobile_app/core/networking/api_result.dart';
-import 'package:skeleton_mobile_app/features/expeness/data/model/expenses_by_category_dto.dart';
-import 'package:skeleton_mobile_app/features/expeness/data/model/expenses_monthly_trend_dto.dart';
-import 'package:skeleton_mobile_app/features/expeness/data/model/expenses_peak_days_dto.dart';
-import 'package:skeleton_mobile_app/features/expeness/data/model/expenses_summary_dto.dart';
-import 'package:skeleton_mobile_app/features/expeness/data/model/expenses_transactions_dto.dart';
+import 'package:skeleton/core/networking/api_result.dart';
+import 'package:skeleton/features/expeness/data/model/expenses_by_category_dto.dart';
+import 'package:skeleton/features/expeness/data/model/expenses_monthly_trend_dto.dart';
+import 'package:skeleton/features/expeness/data/model/expenses_peak_days_dto.dart';
+import 'package:skeleton/features/expeness/data/model/expenses_summary_dto.dart';
+import 'package:skeleton/features/expeness/data/model/expenses_transactions_dto.dart';
 
 abstract class ExpensesRemoteDataSource {
   Future<ApiResult<ExpensesSummaryDto>> getSummary(

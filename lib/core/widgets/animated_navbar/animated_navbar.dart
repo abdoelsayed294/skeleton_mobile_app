@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:skeleton_mobile_app/core/theming/app_color.dart';
-import 'package:skeleton_mobile_app/core/widgets/animated_navbar/indicator.dart';
-import 'package:skeleton_mobile_app/core/widgets/animated_navbar/navbar_icon.dart';
-import 'package:skeleton_mobile_app/core/widgets/animated_navbar/navbar_item.dart';
-import 'package:skeleton_mobile_app/core/widgets/animated_navbar/spotlight.dart';
+import 'package:skeleton/core/theming/app_color.dart';
+import 'package:skeleton/core/widgets/animated_navbar/indicator.dart';
+import 'package:skeleton/core/widgets/animated_navbar/navbar_icon.dart';
+import 'package:skeleton/core/widgets/animated_navbar/navbar_item.dart';
+import 'package:skeleton/core/widgets/animated_navbar/spotlight.dart';
 
 class AnimatedSpotlightNavbar extends StatefulWidget {
   final List<AnimatedNavbarItem> items;

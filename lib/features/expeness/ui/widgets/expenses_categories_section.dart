@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:skeleton_mobile_app/core/theming/app_color.dart';
-import 'package:skeleton_mobile_app/core/widgets/dilaog_utils.dart';
-import 'package:skeleton_mobile_app/features/expeness/logic/expenses_by_category_cubit.dart';
-import 'package:skeleton_mobile_app/features/expeness/logic/expenses_by_category_state.dart';
-import 'package:skeleton_mobile_app/features/expeness/ui/widgets/expense_category.dart';
-import 'package:skeleton_mobile_app/features/expeness/ui/widgets/expense_category_breakdown_card.dart';
-import 'package:skeleton_mobile_app/features/expeness/ui/widgets/expenses_categories_shimmer.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/core/theming/app_color.dart';
+import 'package:skeleton/core/widgets/dilaog_utils.dart';
+import 'package:skeleton/features/expeness/logic/expenses_by_category_cubit.dart';
+import 'package:skeleton/features/expeness/logic/expenses_by_category_state.dart';
+import 'package:skeleton/features/expeness/ui/widgets/expense_category.dart';
+import 'package:skeleton/features/expeness/ui/widgets/expense_category_breakdown_card.dart';
+import 'package:skeleton/features/expeness/ui/widgets/expenses_categories_shimmer.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 class ExpensesCategoriesSection extends StatelessWidget {
   const ExpensesCategoriesSection({super.key});

@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:skeleton_mobile_app/core/theming/app_color.dart';
+import 'package:skeleton/core/theming/app_color.dart';
 
 class GradientScaffold extends StatelessWidget {
   final Widget body;
 
-  const GradientScaffold({
-    super.key,
-    required this.body,
-  });
+  const GradientScaffold({super.key, required this.body});
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +17,13 @@ class GradientScaffold extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: isDark
-               ? [
-                  AppColorsDark.primaryGradientStart,
-                  AppColorsDark.primaryGradientEnd
-                 ,
+                ? [
+                    AppColorsDark.primaryGradientStart,
+                    AppColorsDark.primaryGradientEnd,
                   ]
                 : [
-                  AppColorsLight.primaryGradientStart,
-                  AppColorsLight.primaryGradientEnd
+                    AppColorsLight.primaryGradientStart,
+                    AppColorsLight.primaryGradientEnd,
                   ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,

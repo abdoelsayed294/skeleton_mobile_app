@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/features/scan_qr/ui/widgets/qr_code_painter.dart';
-import 'package:skeleton_mobile_app/features/scan_qr/ui/widgets/qr_scan_frame_painter.dart';
+import 'package:skeleton/features/scan_qr/ui/widgets/qr_code_painter.dart';
+import 'package:skeleton/features/scan_qr/ui/widgets/qr_scan_frame_painter.dart';
 
 class AnimatedQrPreview extends StatefulWidget {
   const AnimatedQrPreview({super.key});

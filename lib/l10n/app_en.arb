@@ -562,5 +562,7 @@
   ,"selectedBranch": "Selected branch"
   ,"noneSelected": "None"
   ,"changeBranch": "Change branch"
-  ,"logout": "Log out"
+  ,"logout": "Log out",
+  "noInternetTitle": "No internet connection",
+  "noInternetMessage": "Check your internet connection and try again."
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:skeleton_mobile_app/features/purchases/ui/widgets/purchase_shimmer_block.dart';
+import 'package:skeleton/features/purchases/ui/widgets/purchase_shimmer_block.dart';
 
 class PurchasesListShimmer extends StatelessWidget {
   const PurchasesListShimmer({super.key});

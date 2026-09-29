@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/widgets/empty_state_message.dart';
-import 'package:skeleton_mobile_app/core/widgets/recent_transactions_shimmer_list.dart';
-import 'package:skeleton_mobile_app/features/profit_details/ui/widgets/profit_details_header.dart';
-import 'package:skeleton_mobile_app/features/reports/ui/widgets/transaction_row.dart';
-import 'package:skeleton_mobile_app/features/today_sales/logic/today_recent_transaction_cubit.dart';
-import 'package:skeleton_mobile_app/features/today_sales/logic/today_recent_transaction_state.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/core/widgets/empty_state_message.dart';
+import 'package:skeleton/core/widgets/recent_transactions_shimmer_list.dart';
+import 'package:skeleton/features/profit_details/ui/widgets/profit_details_header.dart';
+import 'package:skeleton/features/reports/ui/widgets/transaction_row.dart';
+import 'package:skeleton/features/today_sales/logic/today_recent_transaction_cubit.dart';
+import 'package:skeleton/features/today_sales/logic/today_recent_transaction_state.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 class TodayRecentTransactionsScreen extends StatefulWidget {
   const TodayRecentTransactionsScreen({super.key});

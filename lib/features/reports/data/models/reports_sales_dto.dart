@@ -1,7 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:skeleton_mobile_app/features/reports/data/models/top_selling_dto.dart';
-import 'package:skeleton_mobile_app/features/reports/data/models/daily_sales_dto.dart';
-import 'package:skeleton_mobile_app/features/reports/data/models/payment_breakdown_dto.dart';
+import 'package:skeleton/features/reports/data/models/top_selling_dto.dart';
+import 'package:skeleton/features/reports/data/models/daily_sales_dto.dart';
+import 'package:skeleton/features/reports/data/models/payment_breakdown_dto.dart';
 
 part 'reports_sales_dto.g.dart';
 

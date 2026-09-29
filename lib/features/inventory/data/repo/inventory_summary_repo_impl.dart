@@ -1,10 +1,10 @@
 import 'package:injectable/injectable.dart';
-import 'package:skeleton_mobile_app/core/networking/api_result.dart';
-import 'package:skeleton_mobile_app/features/inventory/data/data_sources/remote/inventory_summary_remote_data_sources.dart';
-import 'package:skeleton_mobile_app/features/inventory/data/mappers/Inventroy_maaper.dart';
-import 'package:skeleton_mobile_app/features/inventory/domain/entity/inventory_summary_response.dart';
-import 'package:skeleton_mobile_app/features/inventory/domain/entity/inventroy_product_response.dart';
-import 'package:skeleton_mobile_app/features/inventory/domain/repo/inventory_summary_repo.dart';
+import 'package:skeleton/core/networking/api_result.dart';
+import 'package:skeleton/features/inventory/data/data_sources/remote/inventory_summary_remote_data_sources.dart';
+import 'package:skeleton/features/inventory/data/mappers/Inventroy_maaper.dart';
+import 'package:skeleton/features/inventory/domain/entity/inventory_summary_response.dart';
+import 'package:skeleton/features/inventory/domain/entity/inventroy_product_response.dart';
+import 'package:skeleton/features/inventory/domain/repo/inventory_summary_repo.dart';
 
 @Injectable(as: InventorySummaryRepo)
 class InventorySummaryRepoImpl implements InventorySummaryRepo {

@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:skeleton_mobile_app/core/networking/api_error_model.dart';
+import 'package:skeleton/core/networking/api_error_model.dart';
 
 class ApiErrorHandler {
   static ApiErrorModel handle(dynamic error) {
@@ -42,36 +42,21 @@ class ApiErrorHandler {
           );
 
         case DioExceptionType.badResponse:
-          return _handleError(
-            error.response?.statusCode,
-            error.response?.data,
-          );
+          return _handleError(error.response?.statusCode, error.response?.data);
 
         default:
-          return _createError(
-            "unknown_error",
-            "Something went wrong",
-          );
+          return _createError("unknown_error", "Something went wrong");
       }
     }
 
-    return _createError(
-      "unexpected_error",
-      "Unexpected error occurred",
-    );
+    return _createError("unexpected_error", "Unexpected error occurred");
   }
 
-  static ApiErrorModel _handleError(
-    int? statusCode,
-    dynamic error,
-  ) {
+  static ApiErrorModel _handleError(int? statusCode, dynamic error) {
     if (error is Map<String, dynamic>) {
       final apiError = ApiErrorModel.fromJson(error);
 
-      return ApiErrorModel(
-        error: apiError.error,
-        statusCode: statusCode,
-      );
+      return ApiErrorModel(error: apiError.error, statusCode: statusCode);
     }
 
     return ApiErrorModel(
@@ -84,16 +69,9 @@ class ApiErrorHandler {
     );
   }
 
-  static ApiErrorModel _createError(
-    String code,
-    String message,
-  ) {
+  static ApiErrorModel _createError(String code, String message) {
     return ApiErrorModel(
-      error: ErrorResponse(
-        code: code,
-        message: message,
-        details: [],
-      ),
+      error: ErrorResponse(code: code, message: message, details: []),
     );
   }
 }

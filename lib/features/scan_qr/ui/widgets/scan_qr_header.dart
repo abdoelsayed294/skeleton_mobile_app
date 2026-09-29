@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/local/app_language.dart';
-import 'package:skeleton_mobile_app/core/local/locale_cubit.dart';
-import 'package:skeleton_mobile_app/core/theming/app_style.dart';
-import 'package:skeleton_mobile_app/core/theming/app_theme_cubit.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/core/local/app_language.dart';
+import 'package:skeleton/core/local/locale_cubit.dart';
+import 'package:skeleton/core/theming/app_style.dart';
+import 'package:skeleton/core/theming/app_theme_cubit.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 class ScanQrHeader extends StatelessWidget {
   const ScanQrHeader({super.key});

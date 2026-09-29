@@ -2,8 +2,8 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/theming/app_color.dart';
-import 'package:skeleton_mobile_app/features/reports/domain/entities/daily_sales_entity.dart';
+import 'package:skeleton/core/theming/app_color.dart';
+import 'package:skeleton/features/reports/domain/entities/daily_sales_entity.dart';
 
 class ReportsDailySalesChart extends StatelessWidget {
   final List<DailySalesEntity> points;

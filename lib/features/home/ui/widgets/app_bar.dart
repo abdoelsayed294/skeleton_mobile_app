@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/helpers/spacing.dart';
-import 'package:skeleton_mobile_app/core/local/app_language.dart';
-import 'package:skeleton_mobile_app/core/local/locale_cubit.dart';
-import 'package:skeleton_mobile_app/core/routing/routes.dart';
-import 'package:skeleton_mobile_app/core/theming/app_color.dart';
-import 'package:skeleton_mobile_app/core/theming/app_style.dart';
-import 'package:skeleton_mobile_app/core/theming/app_theme_cubit.dart';
-import 'package:skeleton_mobile_app/core/widgets/shimmer_block.dart';
-import 'package:skeleton_mobile_app/features/home/logic/home_cubit.dart';
-import 'package:skeleton_mobile_app/features/home/logic/home_state.dart';
-import 'package:skeleton_mobile_app/features/home/ui/widgets/app_bar_action.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/core/helpers/spacing.dart';
+import 'package:skeleton/core/local/app_language.dart';
+import 'package:skeleton/core/local/locale_cubit.dart';
+import 'package:skeleton/core/routing/routes.dart';
+import 'package:skeleton/core/theming/app_color.dart';
+import 'package:skeleton/core/theming/app_style.dart';
+import 'package:skeleton/core/theming/app_theme_cubit.dart';
+import 'package:skeleton/core/widgets/shimmer_block.dart';
+import 'package:skeleton/features/home/logic/home_cubit.dart';
+import 'package:skeleton/features/home/logic/home_state.dart';
+import 'package:skeleton/features/home/ui/widgets/app_bar_action.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 class AppBarHome extends StatelessWidget {
   const AppBarHome({super.key});

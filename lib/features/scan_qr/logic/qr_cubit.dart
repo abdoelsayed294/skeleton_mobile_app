@@ -1,9 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:skeleton_mobile_app/core/networking/api_result.dart';
-import 'package:skeleton_mobile_app/features/scan_qr/domain/use_cases/qr_use_case.dart';
-import 'package:skeleton_mobile_app/features/scan_qr/domain/use_cases/save_qr_data_use_case.dart';
-import 'package:skeleton_mobile_app/features/scan_qr/logic/qr_state.dart';
+import 'package:skeleton/core/networking/api_result.dart';
+import 'package:skeleton/features/scan_qr/domain/use_cases/qr_use_case.dart';
+import 'package:skeleton/features/scan_qr/domain/use_cases/save_qr_data_use_case.dart';
+import 'package:skeleton/features/scan_qr/logic/qr_state.dart';
 
 @injectable
 class QrCubit extends Cubit<QrState> {

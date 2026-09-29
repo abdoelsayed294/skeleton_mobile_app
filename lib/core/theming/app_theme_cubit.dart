@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
-import 'package:skeleton_mobile_app/core/theming/app_theme_enum.dart';
+import 'package:skeleton/core/helpers/shared_pref_helper.dart';
+import 'package:skeleton/core/theming/app_theme_enum.dart';
 
 class AppThemeCubit extends Cubit<AppThemeenum> {
   AppThemeCubit({AppThemeenum initialTheme = AppThemeenum.light})

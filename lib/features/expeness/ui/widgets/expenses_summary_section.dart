@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/theming/app_color.dart';
-import 'package:skeleton_mobile_app/core/widgets/dilaog_utils.dart';
-import 'package:skeleton_mobile_app/features/expeness/logic/expenses_summary_cubit.dart';
-import 'package:skeleton_mobile_app/features/expeness/logic/expenses_summary_state.dart';
-import 'package:skeleton_mobile_app/features/expeness/ui/widgets/expense_stat_mini_card.dart';
-import 'package:skeleton_mobile_app/features/expeness/ui/widgets/expenses_summary_shimmer.dart';
-import 'package:skeleton_mobile_app/features/expeness/ui/widgets/total_expenses_summary_card.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/core/theming/app_color.dart';
+import 'package:skeleton/core/widgets/dilaog_utils.dart';
+import 'package:skeleton/features/expeness/logic/expenses_summary_cubit.dart';
+import 'package:skeleton/features/expeness/logic/expenses_summary_state.dart';
+import 'package:skeleton/features/expeness/ui/widgets/expense_stat_mini_card.dart';
+import 'package:skeleton/features/expeness/ui/widgets/expenses_summary_shimmer.dart';
+import 'package:skeleton/features/expeness/ui/widgets/total_expenses_summary_card.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 class ExpensesSummarySection extends StatelessWidget {
   const ExpensesSummarySection({super.key});

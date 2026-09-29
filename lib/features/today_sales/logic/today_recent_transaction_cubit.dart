@@ -1,9 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
-import 'package:skeleton_mobile_app/core/networking/api_result.dart';
-import 'package:skeleton_mobile_app/features/today_sales/domain/use_cases/get_today_recent_transaction_use_case.dart';
-import 'package:skeleton_mobile_app/features/today_sales/logic/today_recent_transaction_state.dart';
+import 'package:skeleton/core/helpers/shared_pref_helper.dart';
+import 'package:skeleton/core/networking/api_result.dart';
+import 'package:skeleton/features/today_sales/domain/use_cases/get_today_recent_transaction_use_case.dart';
+import 'package:skeleton/features/today_sales/logic/today_recent_transaction_state.dart';
 
 @injectable
 class TodayRecentTransactionCubit extends Cubit<TodayRecentTransactionState> {
@@ -19,11 +19,8 @@ class TodayRecentTransactionCubit extends Cubit<TodayRecentTransactionState> {
   bool get hasMore => _hasMore;
   bool get isLoadingMore => _isLoadingMore;
 
-  Future<void> refresh() => getRecentTransactions(
-    date: _date,
-    take: _all ? _take : 10,
-    all: _all,
-  );
+  Future<void> refresh() =>
+      getRecentTransactions(date: _date, take: _all ? _take : 10, all: _all);
 
   TodayRecentTransactionCubit(this._getTodayRecentTransactionUseCase)
     : super(const TodayRecentTransactionState.initial());

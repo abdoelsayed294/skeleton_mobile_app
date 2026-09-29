@@ -1,10 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
-import 'package:skeleton_mobile_app/core/networking/api_error_handler.dart';
-import 'package:skeleton_mobile_app/features/branch_selection/domain/entity/branches_response.dart';
-import 'package:skeleton_mobile_app/features/branch_selection/domain/use_cases/save_selected_branch_use_case.dart';
-import 'package:skeleton_mobile_app/features/branch_selection/logic/branch_selection_state.dart';
+import 'package:skeleton/core/helpers/shared_pref_helper.dart';
+import 'package:skeleton/core/networking/api_error_handler.dart';
+import 'package:skeleton/features/branch_selection/domain/entity/branches_response.dart';
+import 'package:skeleton/features/branch_selection/domain/use_cases/save_selected_branch_use_case.dart';
+import 'package:skeleton/features/branch_selection/logic/branch_selection_state.dart';
 
 @injectable
 class BranchSelectionCubit extends Cubit<BranchSelectionState> {

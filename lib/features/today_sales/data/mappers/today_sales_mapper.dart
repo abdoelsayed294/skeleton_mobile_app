@@ -1,5 +1,5 @@
-import 'package:skeleton_mobile_app/features/today_sales/data/models/today_sales_dto.dart';
-import 'package:skeleton_mobile_app/features/today_sales/domain/entities/today_sales_entity.dart';
+import 'package:skeleton/features/today_sales/data/models/today_sales_dto.dart';
+import 'package:skeleton/features/today_sales/domain/entities/today_sales_entity.dart';
 
 extension TodaySalesMapper on TodaySalesDto {
   TodaySalesEntity toEntity() {

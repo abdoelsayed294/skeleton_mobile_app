@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/local/locale_cubit.dart';
-import 'package:skeleton_mobile_app/core/routing/app_router.dart';
-import 'package:skeleton_mobile_app/core/theming/app_theme.dart';
-import 'package:skeleton_mobile_app/core/theming/app_theme_cubit.dart';
-import 'package:skeleton_mobile_app/core/theming/app_theme_enum.dart';
-import 'package:skeleton_mobile_app/features/splash/ui/screens/splash_screen.dart';
+import 'package:skeleton/core/local/locale_cubit.dart';
+import 'package:skeleton/core/routing/app_router.dart';
+import 'package:skeleton/core/theming/app_theme.dart';
+import 'package:skeleton/core/theming/app_theme_cubit.dart';
+import 'package:skeleton/core/theming/app_theme_enum.dart';
+import 'package:skeleton/features/splash/ui/screens/splash_screen.dart';
 import 'l10n/app_localizations.dart';
 
 class SkeletonApp extends StatelessWidget {
@@ -44,7 +44,7 @@ class SkeletonApp extends StatelessWidget {
                 );
               },
             );
-          }, 
+          },
         );
       },
     );

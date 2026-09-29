@@ -1,6 +1,6 @@
-import 'package:skeleton_mobile_app/features/reports/domain/entities/daily_sales_entity.dart';
-import 'package:skeleton_mobile_app/features/reports/domain/entities/payment_breakdown_entity.dart';
-import 'package:skeleton_mobile_app/features/reports/domain/entities/top_selling_entity.dart';
+import 'package:skeleton/features/reports/domain/entities/daily_sales_entity.dart';
+import 'package:skeleton/features/reports/domain/entities/payment_breakdown_entity.dart';
+import 'package:skeleton/features/reports/domain/entities/top_selling_entity.dart';
 
 class ReportsSalesEntity {
   final String period;

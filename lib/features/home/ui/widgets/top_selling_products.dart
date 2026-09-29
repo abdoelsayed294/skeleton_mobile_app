@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
-import 'package:skeleton_mobile_app/core/widgets/shimmer_block.dart';
-import 'package:skeleton_mobile_app/features/home/domain/entities/top_product_entity.dart';
-import 'package:skeleton_mobile_app/features/home/logic/home_cubit.dart';
-import 'package:skeleton_mobile_app/features/home/logic/home_state.dart';
-import 'package:skeleton_mobile_app/features/home/ui/widgets/product_row.dart';
-import 'package:skeleton_mobile_app/features/home/ui/widgets/section_card.dart';
-import 'package:skeleton_mobile_app/features/home/ui/widgets/section_header.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/core/helpers/shared_pref_helper.dart';
+import 'package:skeleton/core/widgets/shimmer_block.dart';
+import 'package:skeleton/features/home/domain/entities/top_product_entity.dart';
+import 'package:skeleton/features/home/logic/home_cubit.dart';
+import 'package:skeleton/features/home/logic/home_state.dart';
+import 'package:skeleton/features/home/ui/widgets/product_row.dart';
+import 'package:skeleton/features/home/ui/widgets/section_card.dart';
+import 'package:skeleton/features/home/ui/widgets/section_header.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 class TopSellingProducts extends StatefulWidget {
   const TopSellingProducts({super.key});

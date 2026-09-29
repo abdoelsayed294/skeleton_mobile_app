@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/theming/app_style.dart';
-import 'package:skeleton_mobile_app/features/product_details/ui/widgets/product_activity_section.dart';
+import 'package:skeleton/core/theming/app_style.dart';
+import 'package:skeleton/features/product_details/ui/widgets/product_activity_section.dart';
 
 class ActivityRow extends StatelessWidget {
   final ActivityEntry entry;

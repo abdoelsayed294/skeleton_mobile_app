@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:skeleton_mobile_app/core/networking/api_error_model.dart';
-import 'package:skeleton_mobile_app/features/branch_selection/domain/entity/branches_response.dart';
+import 'package:skeleton/core/networking/api_error_model.dart';
+import 'package:skeleton/features/branch_selection/domain/entity/branches_response.dart';
 
 part 'branch_selection_state.freezed.dart';
 

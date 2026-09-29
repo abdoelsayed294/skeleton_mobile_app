@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:skeleton_mobile_app/core/theming/app_color.dart';
-import 'package:skeleton_mobile_app/core/widgets/dilaog_utils.dart';
-import 'package:skeleton_mobile_app/features/expeness/logic/expenses_peak_days_cubit.dart';
-import 'package:skeleton_mobile_app/features/expeness/logic/expenses_peak_days_state.dart';
-import 'package:skeleton_mobile_app/features/expeness/ui/widgets/expenses_peak_days_shimmer.dart';
-import 'package:skeleton_mobile_app/features/expeness/ui/widgets/peak_spending_day.dart';
-import 'package:skeleton_mobile_app/features/expeness/ui/widgets/peak_spending_days_card.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/core/theming/app_color.dart';
+import 'package:skeleton/core/widgets/dilaog_utils.dart';
+import 'package:skeleton/features/expeness/logic/expenses_peak_days_cubit.dart';
+import 'package:skeleton/features/expeness/logic/expenses_peak_days_state.dart';
+import 'package:skeleton/features/expeness/ui/widgets/expenses_peak_days_shimmer.dart';
+import 'package:skeleton/features/expeness/ui/widgets/peak_spending_day.dart';
+import 'package:skeleton/features/expeness/ui/widgets/peak_spending_days_card.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 class ExpensesPeakDaysSection extends StatelessWidget {
   const ExpensesPeakDaysSection({super.key});

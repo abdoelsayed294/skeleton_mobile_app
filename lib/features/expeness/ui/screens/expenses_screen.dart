@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/theming/app_color.dart';
-import 'package:skeleton_mobile_app/features/expeness/logic/expenses_date_cubit.dart';
-import 'package:skeleton_mobile_app/features/expeness/logic/expenses_date_state.dart';
-import 'package:skeleton_mobile_app/features/expeness/ui/widgets/expense_speriod_selector.dart';
-import 'package:skeleton_mobile_app/features/expeness/ui/widgets/expenses_categories_section.dart';
-import 'package:skeleton_mobile_app/features/expeness/ui/widgets/expenses_peak_days_section.dart';
-import 'package:skeleton_mobile_app/features/expeness/ui/widgets/expenses_summary_section.dart';
-import 'package:skeleton_mobile_app/features/expeness/ui/widgets/expenses_transactions_section.dart';
-import 'package:skeleton_mobile_app/features/expeness/ui/widgets/expenses_trend_section.dart';
-import 'package:skeleton_mobile_app/features/profit_details/ui/widgets/profit_details_header.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/core/theming/app_color.dart';
+import 'package:skeleton/features/expeness/logic/expenses_date_cubit.dart';
+import 'package:skeleton/features/expeness/logic/expenses_date_state.dart';
+import 'package:skeleton/features/expeness/ui/widgets/expense_speriod_selector.dart';
+import 'package:skeleton/features/expeness/ui/widgets/expenses_categories_section.dart';
+import 'package:skeleton/features/expeness/ui/widgets/expenses_peak_days_section.dart';
+import 'package:skeleton/features/expeness/ui/widgets/expenses_summary_section.dart';
+import 'package:skeleton/features/expeness/ui/widgets/expenses_transactions_section.dart';
+import 'package:skeleton/features/expeness/ui/widgets/expenses_trend_section.dart';
+import 'package:skeleton/features/profit_details/ui/widgets/profit_details_header.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 class ExpensesScreen extends StatelessWidget {
   const ExpensesScreen({super.key});

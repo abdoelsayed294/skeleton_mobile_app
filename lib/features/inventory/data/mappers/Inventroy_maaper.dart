@@ -1,12 +1,12 @@
-import 'package:skeleton_mobile_app/features/inventory/data/model/inventory_summary_response_dto.dart';
-import 'package:skeleton_mobile_app/features/inventory/data/model/inventroy_product_response_dto.dart'
+import 'package:skeleton/features/inventory/data/model/inventory_summary_response_dto.dart';
+import 'package:skeleton/features/inventory/data/model/inventroy_product_response_dto.dart'
     as dto;
-import 'package:skeleton_mobile_app/features/inventory/data/model/inventroy_product_response_dto.dart';
+import 'package:skeleton/features/inventory/data/model/inventroy_product_response_dto.dart';
 
-import 'package:skeleton_mobile_app/features/inventory/domain/entity/inventory_summary_response.dart';
-import 'package:skeleton_mobile_app/features/inventory/domain/entity/inventroy_product_response.dart'
+import 'package:skeleton/features/inventory/domain/entity/inventory_summary_response.dart';
+import 'package:skeleton/features/inventory/domain/entity/inventroy_product_response.dart'
     as domain;
-import 'package:skeleton_mobile_app/features/inventory/domain/entity/inventroy_product_response.dart'
+import 'package:skeleton/features/inventory/domain/entity/inventroy_product_response.dart'
     show InventroyProductResponse;
 
 // =====================================================

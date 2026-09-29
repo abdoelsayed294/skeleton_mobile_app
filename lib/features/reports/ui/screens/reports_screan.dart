@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import 'package:skeleton_mobile_app/core/helpers/spacing.dart';
-import 'package:skeleton_mobile_app/features/reports/logic/reports_month_cubit.dart';
-import 'package:skeleton_mobile_app/features/reports/ui/widgets/export_pdf_button.dart';
-import 'package:skeleton_mobile_app/features/reports/ui/widgets/last_synced_footer.dart';
-import 'package:skeleton_mobile_app/features/reports/ui/widgets/month_navigator.dart';
-import 'package:skeleton_mobile_app/features/reports/ui/widgets/recent_transactions_list.dart';
-import 'package:skeleton_mobile_app/features/reports/ui/widgets/reports_app_bar.dart';
-import 'package:skeleton_mobile_app/features/reports/ui/widgets/top_products_report_list.dart';
-import 'package:skeleton_mobile_app/features/reports/ui/widgets/total_sales_card.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/core/helpers/spacing.dart';
+import 'package:skeleton/features/reports/logic/reports_month_cubit.dart';
+import 'package:skeleton/features/reports/ui/widgets/export_pdf_button.dart';
+import 'package:skeleton/features/reports/ui/widgets/last_synced_footer.dart';
+import 'package:skeleton/features/reports/ui/widgets/month_navigator.dart';
+import 'package:skeleton/features/reports/ui/widgets/recent_transactions_list.dart';
+import 'package:skeleton/features/reports/ui/widgets/reports_app_bar.dart';
+import 'package:skeleton/features/reports/ui/widgets/top_products_report_list.dart';
+import 'package:skeleton/features/reports/ui/widgets/total_sales_card.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 class ReportsScrean extends StatelessWidget {
   const ReportsScrean({super.key});

@@ -1,4 +1,4 @@
-import 'package:skeleton_mobile_app/features/purchases/domain/entity/purchase_record.dart';
+import 'package:skeleton/features/purchases/domain/entity/purchase_record.dart';
 
 class PurchasesRecentEntity {
   final int? storeId;

@@ -1,5 +1,5 @@
-import 'package:skeleton_mobile_app/features/product_details/data/model/product_details_dto.dart';
-import 'package:skeleton_mobile_app/features/product_details/domain/entity/product_details_entities.dart';
+import 'package:skeleton/features/product_details/data/model/product_details_dto.dart';
+import 'package:skeleton/features/product_details/domain/entity/product_details_entities.dart';
 
 extension ProductActivityDtoMapper on ProductActivityDto {
   ProductActivityEntity toEntity() => ProductActivityEntity(

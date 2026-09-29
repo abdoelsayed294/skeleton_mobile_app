@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/theming/app_style.dart';
-import 'package:skeleton_mobile_app/features/profit_details/logic/profit_summary_cubit.dart';
-import 'package:skeleton_mobile_app/features/profit_details/logic/profit_summary_state.dart';
-import 'package:skeleton_mobile_app/features/profit_details/ui/widgets/profit_metric_shimmer.dart';
+import 'package:skeleton/core/theming/app_style.dart';
+import 'package:skeleton/features/profit_details/logic/profit_summary_cubit.dart';
+import 'package:skeleton/features/profit_details/logic/profit_summary_state.dart';
+import 'package:skeleton/features/profit_details/ui/widgets/profit_metric_shimmer.dart';
 
 enum ProfitMetricType { grossProfit, margin, revenue, expenses }
 

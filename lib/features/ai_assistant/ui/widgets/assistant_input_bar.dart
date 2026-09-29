@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/theming/app_style.dart';
+import 'package:skeleton/core/theming/app_style.dart';
 
 class AssistantInputBar extends StatelessWidget {
   final String hint;

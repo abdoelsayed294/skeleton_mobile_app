@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/core/widgets/shimmer_block.dart';
+import 'package:skeleton/core/widgets/shimmer_block.dart';
 
 class ProductDetailsSectionShimmer extends StatelessWidget {
   final double height;

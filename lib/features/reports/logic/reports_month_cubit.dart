@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:skeleton_mobile_app/features/reports/logic/recent_transaction_cubit.dart';
-import 'package:skeleton_mobile_app/features/reports/logic/reports_sales_cubit.dart';
-import 'package:skeleton_mobile_app/features/reports/logic/top_selling_cubit.dart';
+import 'package:skeleton/features/reports/logic/recent_transaction_cubit.dart';
+import 'package:skeleton/features/reports/logic/reports_sales_cubit.dart';
+import 'package:skeleton/features/reports/logic/top_selling_cubit.dart';
 
 class ReportsMonthCubit extends Cubit<DateTime> {
   final ReportsSalesCubit _reportsSalesCubit;

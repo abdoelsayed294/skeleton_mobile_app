@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart';
-import 'package:skeleton_mobile_app/core/helpers/shared_pref_helper.dart';
-import 'package:skeleton_mobile_app/features/scan_qr/domain/entity/qr_response.dart';
+import 'package:skeleton/core/helpers/shared_pref_helper.dart';
+import 'package:skeleton/features/scan_qr/domain/entity/qr_response.dart';
 
 @injectable
 class SaveQrDataUseCase {

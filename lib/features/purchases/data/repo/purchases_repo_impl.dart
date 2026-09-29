@@ -1,10 +1,10 @@
 import 'package:injectable/injectable.dart';
-import 'package:skeleton_mobile_app/core/networking/api_result.dart';
-import 'package:skeleton_mobile_app/features/purchases/data/data_sources/remote/purchases_remote_data_source.dart';
-import 'package:skeleton_mobile_app/features/purchases/data/mappers/purchases_mapper.dart';
-import 'package:skeleton_mobile_app/features/purchases/domain/entity/purchases_recent.dart';
-import 'package:skeleton_mobile_app/features/purchases/domain/entity/purchases_summary.dart';
-import 'package:skeleton_mobile_app/features/purchases/domain/repo/purchases_repo.dart';
+import 'package:skeleton/core/networking/api_result.dart';
+import 'package:skeleton/features/purchases/data/data_sources/remote/purchases_remote_data_source.dart';
+import 'package:skeleton/features/purchases/data/mappers/purchases_mapper.dart';
+import 'package:skeleton/features/purchases/domain/entity/purchases_recent.dart';
+import 'package:skeleton/features/purchases/domain/entity/purchases_summary.dart';
+import 'package:skeleton/features/purchases/domain/repo/purchases_repo.dart';
 
 @Injectable(as: PurchasesRepo)
 class PurchasesRepoImpl implements PurchasesRepo {

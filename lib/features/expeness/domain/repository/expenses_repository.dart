@@ -1,9 +1,9 @@
-import 'package:skeleton_mobile_app/core/networking/api_result.dart';
-import 'package:skeleton_mobile_app/features/expeness/domain/entity/expenses_by_category.dart';
-import 'package:skeleton_mobile_app/features/expeness/domain/entity/expenses_monthly_trend.dart';
-import 'package:skeleton_mobile_app/features/expeness/domain/entity/expenses_peak_days.dart';
-import 'package:skeleton_mobile_app/features/expeness/domain/entity/expenses_summary.dart';
-import 'package:skeleton_mobile_app/features/expeness/domain/entity/expenses_transactions.dart';
+import 'package:skeleton/core/networking/api_result.dart';
+import 'package:skeleton/features/expeness/domain/entity/expenses_by_category.dart';
+import 'package:skeleton/features/expeness/domain/entity/expenses_monthly_trend.dart';
+import 'package:skeleton/features/expeness/domain/entity/expenses_peak_days.dart';
+import 'package:skeleton/features/expeness/domain/entity/expenses_summary.dart';
+import 'package:skeleton/features/expeness/domain/entity/expenses_transactions.dart';
 
 abstract class ExpensesRepository {
   Future<ApiResult<ExpensesSummary>> getSummary(

@@ -1,9 +1,9 @@
 import 'package:injectable/injectable.dart';
-import 'package:skeleton_mobile_app/core/networking/api_error_handler.dart';
-import 'package:skeleton_mobile_app/core/networking/api_result.dart';
-import 'package:skeleton_mobile_app/core/networking/api_service.dart';
-import 'package:skeleton_mobile_app/features/product_details/data/data_sources/remote/product_details_remote_data_source.dart';
-import 'package:skeleton_mobile_app/features/product_details/data/model/product_details_dto.dart';
+import 'package:skeleton/core/networking/api_error_handler.dart';
+import 'package:skeleton/core/networking/api_result.dart';
+import 'package:skeleton/core/networking/api_service.dart';
+import 'package:skeleton/features/product_details/data/data_sources/remote/product_details_remote_data_source.dart';
+import 'package:skeleton/features/product_details/data/model/product_details_dto.dart';
 
 @Injectable(as: ProductDetailsRemoteDataSource)
 class ProductDetailsRemoteDataSourceImpl

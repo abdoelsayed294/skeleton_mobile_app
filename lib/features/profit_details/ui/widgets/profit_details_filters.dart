@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeleton_mobile_app/features/profit_details/logic/profit_summary_cubit.dart';
-import 'package:skeleton_mobile_app/features/profit_details/logic/profit_summary_state.dart';
-import 'package:skeleton_mobile_app/features/profit_details/logic/profit_weekly_chart_cubit.dart';
-import 'package:skeleton_mobile_app/features/profit_details/ui/widgets/profit_details_header.dart';
-import 'package:skeleton_mobile_app/features/profit_details/ui/widgets/profit_period_chip.dart';
-import 'package:skeleton_mobile_app/l10n/app_localizations.dart';
+import 'package:skeleton/features/profit_details/logic/profit_summary_cubit.dart';
+import 'package:skeleton/features/profit_details/logic/profit_summary_state.dart';
+import 'package:skeleton/features/profit_details/logic/profit_weekly_chart_cubit.dart';
+import 'package:skeleton/features/profit_details/ui/widgets/profit_details_header.dart';
+import 'package:skeleton/features/profit_details/ui/widgets/profit_period_chip.dart';
+import 'package:skeleton/l10n/app_localizations.dart';
 
 class ProfitDetailsFilters extends StatelessWidget {
   const ProfitDetailsFilters({super.key});

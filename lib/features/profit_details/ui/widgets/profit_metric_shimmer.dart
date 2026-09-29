@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:skeleton_mobile_app/features/profit_details/ui/widgets/profit_shimmer_block.dart';
+import 'package:skeleton/features/profit_details/ui/widgets/profit_shimmer_block.dart';
 
 class ProfitMetricShimmer extends StatelessWidget {
   const ProfitMetricShimmer({super.key});
