@@ -50,7 +50,7 @@ class ExpensesDateCubit extends Cubit<ExpensesDateState> {
 
   Future<void> _load(ExpensesDateState value) async {
     final period = switch (value.selectedPeriod) {
-      ExpensesPeriod.day => 'day',
+      ExpensesPeriod.day => 'today',
       ExpensesPeriod.week => 'week',
       ExpensesPeriod.month => 'month',
       ExpensesPeriod.quarter => 'quarter',
