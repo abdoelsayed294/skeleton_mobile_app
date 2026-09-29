@@ -63,7 +63,7 @@ class _TodayRecentTransactionsScreenState
                     TodayRecentTransactionState
                   >(
                     builder: (context, state) {
-                      final count = state.maybeWhen(
+                      final int? count = state.maybeWhen<int?>(
                         success: (transactions) => transactions.length,
                         orElse: () => null,
                       );
@@ -129,6 +129,7 @@ class _TodayRecentTransactionsScreenState
                                 tag: txn.paymentMethod,
                                 kind: txn.kind,
                                 amount: txn.amount.toStringAsFixed(2),
+                                quantity: txn.quantity,
                                 isDark: isDark,
                                 isLast: index == transactions.length - 1,
                               );

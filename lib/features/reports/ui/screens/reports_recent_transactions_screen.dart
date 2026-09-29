@@ -60,7 +60,7 @@ class _ReportsRecentTransactionsScreenState
               child:
                   BlocBuilder<RecentTransactionCubit, RecentTransactionState>(
                     builder: (context, state) {
-                      final count = state.maybeWhen(
+                      final int? count = state.maybeWhen<int?>(
                         success: (transactions) => transactions.length,
                         orElse: () => null,
                       );

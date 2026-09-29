@@ -6,6 +6,7 @@ class TodayRecentTransactionEntity {
   final String paymentMethod;
   final TransactionKind kind;
   final double amount;
+  final int quantity;
 
   TodayRecentTransactionEntity({
     required this.orderId,
@@ -13,5 +14,6 @@ class TodayRecentTransactionEntity {
     required this.paymentMethod,
     required this.kind,
     required this.amount,
+    required this.quantity,
   });
 }
